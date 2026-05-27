@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OPCP Introduction - Language Selection</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <main class="language-selector" id="main-content">
+        <header>
+            <h1>OPCP Introduction Skillhub</h1>
+            <p>Welcome to the OVHcloud Hosted Private Cloud training platform</p>
+        </header>
+        <section class="language-options" aria-labelledby="language-heading">
+            <h2 id="language-heading">Select your language / Choisissez votre langue</h2>
+            <div class="language-buttons" role="group" aria-label="Language selection">
+                <a href="en/introduction/what-is-opcp.html" class="language-btn" id="btn-en" lang="en" aria-label="Continue in English">
+                    <span class="lang-flag" aria-hidden="true">🇬🇧</span>
+                    <span class="lang-name">English</span>
+                </a>
+                <a href="fr/introduction/what-is-opcp.html" class="language-btn" id="btn-fr" lang="fr" aria-label="Continuer en français">
+                    <span class="lang-flag" aria-hidden="true">🇫🇷</span>
+                    <span class="lang-name">Français</span>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer role="contentinfo">
+        <p class="sr-only">&copy; 2024 OVHcloud — OPCP Introduction Skillhub</p>
+    </footer>
+    <script src="assets/js/i18n.js"></script>
+    <script>
+        // Detect browser language and pre-select
+        document.addEventListener('DOMContentLoaded', function() {
+            var browserLang = navigator.language || navigator.languages[0] || 'en';
+            var selectedBtn;
+            if (browserLang.toLowerCase().startsWith('fr')) {
+                selectedBtn = document.getElementById('btn-fr');
+            } else {
+                selectedBtn = document.getElementById('btn-en');
+            }
+            if (selectedBtn) {
+                selectedBtn.classList.add('pre-selected');
+            }
+        });
+    </script>
+</body>
+</html>

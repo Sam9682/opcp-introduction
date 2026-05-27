@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Apprenez les pratiques de gestion des données dans CloudStore : cycle de vie des données, organisation, politiques de rétention et bonnes pratiques pour les audiences non techniques.">
+    <title>Gestion des Données - Solutions de Stockage - OPCP Skillhub</title>
+    <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+
+    <div class="page-wrapper">
+        <nav class="nav-sidebar" aria-label="Navigation principale">
+            <div class="search-container">
+                <input type="search" class="search-input" placeholder="Rechercher des leçons..." aria-label="Rechercher des leçons">
+            </div>
+            <div class="progress-display">
+                <span class="progress-display__label">Progression globale</span>
+                <div class="progress-display__bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="Progression globale"><div class="progress-display__fill" style="width: 0%"></div></div>
+                <span class="progress-display__percentage" role="status" aria-live="polite">0%</span>
+            </div>
+            <a href="../glossary.html" class="glossary-link" aria-label="Voir le glossaire des termes"><span class="glossary-link__icon" aria-hidden="true">📖</span> Glossaire</a>
+
+            <button class="nav-sidebar__close" aria-label="Fermer la navigation">&times;</button>
+        </nav>
+
+        <button class="nav-hamburger" aria-label="Ouvrir le menu de navigation">
+            <span class="nav-hamburger__icon" aria-hidden="true">&#9776;</span>
+        </button>
+        <div class="nav-overlay" aria-hidden="true"></div>
+
+        <main class="content-area" id="main-content">
+            <article>
+                <header class="lesson-header">
+                    <h1>Gestion des Données</h1>
+                    <div class="lesson-meta">
+                        <span class="badge badge-intermediate">Intermédiaire</span>
+                        <a href="../../en/storage/data-management.html" class="language-switch" aria-label="Switch to English">
+                            <span>🇬🇧</span> <span>English</span>
+                        </a>
+                    </div>
+                </header>
+
+                <section aria-labelledby="intro-heading">
+                    <h2 id="intro-heading">Organiser vos données numériques</h2>
+                    <p>Stocker des données n'est que la première étape. Pour en tirer le meilleur parti, vous devez les <strong>organiser</strong>, les <strong>protéger</strong> et savoir <strong>quand les conserver ou les supprimer</strong>. La gestion des données, c'est comme gérer une bibliothèque bien organisée : chaque livre a sa place, les ouvrages anciens sont archivés et les documents importants sont conservés en lieu sûr.</p>
+
+                    <div class="info-box">
+                        <p><a href="../glossary.html#term-cloudstore" class="glossary-term"><strong class="term">La gestion des données</strong></a> désigne l'ensemble des pratiques permettant de collecter, stocker, organiser, maintenir et utiliser les données de manière efficace et sécurisée tout au long de leur existence.</p>
+                    </div>
+                </section>
+
+                <section aria-labelledby="lifecycle-heading">
+                    <h2 id="lifecycle-heading">Le cycle de vie des données</h2>
+                    <p>Toute donnée suit un parcours depuis sa création jusqu'à sa suppression. Comprendre ce cycle aide à prendre les bonnes décisions sur le stockage et la protection.</p>
+
+                    <figure class="diagram-scroll">
+                        <svg viewBox="0 0 750 350" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagramme illustrant le cycle de vie des données en cinq étapes : création, stockage actif, archivage, rétention et suppression">
+                            <!-- Étape 1 : Création -->
+                            <rect x="20" y="130" width="120" height="80" rx="10" fill="#e8f4fd" stroke="#000E9C" stroke-width="2"/>
+                            <text x="80" y="160" text-anchor="middle" font-size="11" font-weight="bold" fill="#000E9C">1. Création</text>
+                            <text x="80" y="180" text-anchor="middle" font-size="9" fill="#333">Données générées</text>
+                            <text x="80" y="195" text-anchor="middle" font-size="9" fill="#333">ou reçues</text>
+
+                            <!-- Flèche 1→2 -->
+                            <line x1="140" y1="170" x2="170" y2="170" stroke="#4949FF" stroke-width="2" marker-end="url(#arrow)"/>
+
+                            <!-- Étape 2 : Stockage actif -->
+                            <rect x="170" y="130" width="120" height="80" rx="10" fill="#d4edda" stroke="#1b7a3d" stroke-width="2"/>
+                            <text x="230" y="155" text-anchor="middle" font-size="11" font-weight="bold" fill="#1b7a3d">2. Stockage</text>
+                            <text x="230" y="172" text-anchor="middle" font-size="11" font-weight="bold" fill="#1b7a3d">actif</text>
+                            <text x="230" y="195" text-anchor="middle" font-size="9" fill="#333">Accès fréquent</text>
+
+                            <!-- Flèche 2→3 -->
+                            <line x1="290" y1="170" x2="320" y2="170" stroke="#4949FF" stroke-width="2" marker-end="url(#arrow)"/>
+
+                            <!-- Étape 3 : Archivage -->
+                            <rect x="320" y="130" width="120" height="80" rx="10" fill="#fff3cd" stroke="#856404" stroke-width="2"/>
+                            <text x="380" y="160" text-anchor="middle" font-size="11" font-weight="bold" fill="#856404">3. Archivage</text>
+                            <text x="380" y="180" text-anchor="middle" font-size="9" fill="#333">Accès rare,</text>
+                            <text x="380" y="195" text-anchor="middle" font-size="9" fill="#333">conservation longue</text>
+
+                            <!-- Flèche 3→4 -->
+                            <line x1="440" y1="170" x2="470" y2="170" stroke="#4949FF" stroke-width="2" marker-end="url(#arrow)"/>
+
+                            <!-- Étape 4 : Rétention -->
+                            <rect x="470" y="130" width="120" height="80" rx="10" fill="#f0e6ff" stroke="#4949FF" stroke-width="2"/>
+                            <text x="530" y="160" text-anchor="middle" font-size="11" font-weight="bold" fill="#4949FF">4. Rétention</text>
+                            <text x="530" y="180" text-anchor="middle" font-size="9" fill="#333">Conservation</text>
+                            <text x="530" y="195" text-anchor="middle" font-size="9" fill="#333">réglementaire</text>
+
+                            <!-- Flèche 4→5 -->
+                            <line x1="590" y1="170" x2="620" y2="170" stroke="#4949FF" stroke-width="2" marker-end="url(#arrow)"/>
+
+                            <!-- Étape 5 : Suppression -->
+                            <rect x="620" y="130" width="120" height="80" rx="10" fill="#f8d7da" stroke="#721c24" stroke-width="2"/>
+                            <text x="680" y="160" text-anchor="middle" font-size="11" font-weight="bold" fill="#721c24">5. Suppression</text>
+                            <text x="680" y="180" text-anchor="middle" font-size="9" fill="#333">Effacement</text>
+                            <text x="680" y="195" text-anchor="middle" font-size="9" fill="#333">sécurisé</text>
+
+                            <!-- Légende -->
+                            <text x="375" y="30" text-anchor="middle" font-size="14" font-weight="bold" fill="#333">Cycle de vie des données dans CloudStore</text>
+                            <text x="375" y="290" text-anchor="middle" font-size="10" fill="#666">Chaque étape correspond à des besoins de stockage et de protection différents</text>
+
+                            <!-- Annotations sous les étapes -->
+                            <text x="80" y="240" text-anchor="middle" font-size="8" fill="#666">Ex : nouveau contrat</text>
+                            <text x="230" y="240" text-anchor="middle" font-size="8" fill="#666">Ex : projet en cours</text>
+                            <text x="380" y="240" text-anchor="middle" font-size="8" fill="#666">Ex : projet terminé</text>
+                            <text x="530" y="240" text-anchor="middle" font-size="8" fill="#666">Ex : obligations légales</text>
+                            <text x="680" y="240" text-anchor="middle" font-size="8" fill="#666">Ex : données obsolètes</text>
+
+                            <!-- Marqueur de flèche -->
+                            <defs>
+                                <marker id="arrow" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+                                    <polygon points="0 0, 10 3.5, 0 7" fill="#4949FF"/>
+                                </marker>
+                            </defs>
+                        </svg>
+                        <figcaption>Le cycle de vie des données illustre les cinq étapes que traversent vos données, de la création à la suppression sécurisée</figcaption>
+                    </figure>
+                </section>
+
+                <section aria-labelledby="terms-heading">
+                    <h2 id="terms-heading">Termes essentiels</h2>
+                    <p>Avant d'aller plus loin, voici les termes clés que vous rencontrerez dans la gestion des données :</p>
+
+                    <ul>
+                        <li><strong class="term">Objet</strong> — une unité de données stockée dans CloudStore (un fichier, une image, un document). Pensez-y comme un livre individuel dans une bibliothèque.</li>
+                        <li><strong class="term">Conteneur</strong> (ou bucket) — un regroupement logique d'objets, comme une étagère dans la bibliothèque qui rassemble les livres d'un même sujet.</li>
+                        <li><strong class="term">Métadonnées</strong> — des informations décrivant vos données (date de création, taille, type). C'est l'équivalent de la fiche descriptive collée sur chaque livre.</li>
+                        <li><strong class="term">Politique de rétention</strong> — une règle définissant combien de temps les données doivent être conservées avant suppression. Comme la durée légale de conservation des factures.</li>
+                        <li><strong class="term">Versionnement</strong> — la conservation automatique des versions précédentes d'un fichier à chaque modification. Comme garder tous les brouillons d'un contrat.</li>
+                    </ul>
+                </section>
+
+                <section aria-labelledby="organization-heading">
+                    <h2 id="organization-heading">Organiser vos données</h2>
+                    <p>Une bonne organisation facilite la recherche, le partage et la protection des données. Voici les bonnes pratiques :</p>
+
+                    <h3>Structure par projet ou département</h3>
+                    <p>Créez des conteneurs séparés pour chaque projet ou département. C'est comme avoir des armoires distinctes pour la comptabilité, le marketing et les ressources humaines — chacun sait où chercher.</p>
+
+                    <h3>Nommage cohérent</h3>
+                    <p>Utilisez des conventions de nommage claires et uniformes. Par exemple : <code>2024-01-rapport-ventes-Q1.pdf</code> est bien plus facile à retrouver que <code>doc_final_v2_FINAL.pdf</code>.</p>
+
+                    <h3>Étiquetage (tags)</h3>
+                    <p>Ajoutez des <strong class="term">tags</strong> (étiquettes) à vos objets pour les catégoriser. Les tags sont des mots-clés que vous attachez aux fichiers pour les retrouver facilement, comme des post-it colorés sur des dossiers.</p>
+                </section>
+
+                <section aria-labelledby="retention-heading">
+                    <h2 id="retention-heading">Politiques de rétention</h2>
+                    <p>Toutes les données n'ont pas besoin d'être conservées indéfiniment. Les politiques de rétention vous aident à :</p>
+
+                    <ul>
+                        <li><strong>Réduire les coûts</strong> — supprimer les données obsolètes libère de l'espace et réduit la facture.</li>
+                        <li><strong>Respecter la réglementation</strong> — certaines lois exigent de conserver des données pendant une durée minimale (ex : 10 ans pour les documents comptables en France).</li>
+                        <li><strong>Limiter les risques</strong> — moins de données stockées signifie moins de données exposées en cas d'incident de sécurité.</li>
+                    </ul>
+
+                    <div class="info-box">
+                        <p><strong>Analogie du monde réel :</strong> Pensez aux politiques de rétention comme aux règles d'une bibliothèque municipale. Les journaux du jour sont en libre accès, ceux de la semaine dernière vont en réserve, ceux de plus d'un an sont archivés au sous-sol, et ceux de plus de 10 ans sont recyclés — sauf les éditions historiques qui sont conservées indéfiniment.</p>
+                    </div>
+                </section>
+
+                <section aria-labelledby="versioning-heading">
+                    <h2 id="versioning-heading">Versionnement des fichiers</h2>
+                    <p>Le <strong class="term">versionnement</strong> conserve automatiquement un historique de chaque modification apportée à un fichier. Si quelqu'un écrase accidentellement un document important, vous pouvez revenir à une version antérieure en quelques clics.</p>
+
+                    <h3>Quand utiliser le versionnement</h3>
+                    <ul>
+                        <li>Documents collaboratifs modifiés par plusieurs personnes</li>
+                        <li>Fichiers de configuration critiques</li>
+                        <li>Données contractuelles nécessitant un historique d'audit</li>
+                    </ul>
+                </section>
+
+                <section aria-labelledby="summary-heading">
+                    <h2 id="summary-heading">Points clés à retenir</h2>
+                    <ul>
+                        <li>Les données suivent un <strong>cycle de vie</strong> : création, stockage actif, archivage, rétention et suppression.</li>
+                        <li>Une bonne <strong>organisation</strong> (conteneurs, nommage, tags) facilite la gestion au quotidien.</li>
+                        <li>Les <strong>politiques de rétention</strong> réduisent les coûts et assurent la conformité réglementaire.</li>
+                        <li>Le <strong>versionnement</strong> protège contre les modifications accidentelles en conservant l'historique des fichiers.</li>
+                        <li>CloudStore fournit les outils pour gérer chaque étape du cycle de vie sans expertise technique.</li>
+                    </ul>
+                </section>
+
+                <nav class="nav-sequential" aria-label="Navigation entre leçons">
+                    <a href="storage-capabilities.html" class="nav-sequential__btn nav-sequential__btn--prev">
+                        <span class="nav-sequential__arrow" aria-hidden="true">&larr;</span>
+                        <span class="nav-sequential__label">Précédent : Capacités de stockage</span>
+                    </a>
+                    <a href="backup-recovery.html" class="nav-sequential__btn nav-sequential__btn--next">
+                        <span class="nav-sequential__label">Suivant : Sauvegarde et récupération</span>
+                        <span class="nav-sequential__arrow" aria-hidden="true">&rarr;</span>
+                    </a>
+                </nav>
+            </article>
+        </main>
+    </div>
+
+    <footer class="site-footer" role="contentinfo">
+        <p>&copy; 2024 OVHcloud — Skillhub Formation OPCP</p>
+    </footer>
+
+    <script src="../../assets/js/main.js"></script>
+</body>
+</html>

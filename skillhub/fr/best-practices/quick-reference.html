@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Référence Rapide - Bonnes Pratiques</title>
+    <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+
+    <header class="page-header">
+        <nav aria-label="Changement de langue">
+            <a href="../../en/best-practices/quick-reference.html" class="lang-switch" aria-label="Passer en anglais">EN</a>
+        </nav>
+            <a href="../glossary.html" class="glossary-link" aria-label="Voir le glossaire des termes"><span class="glossary-link__icon" aria-hidden="true">📖</span> Glossaire</a>
+        <span class="difficulty-badge beginner" aria-label="Difficulté : Débutant">Débutant</span>
+    </header>
+
+    <main class="content-area" id="main-content">
+        <article>
+            <header>
+                <h1>Référence Rapide</h1>
+                <p class="lesson-intro">Fiches récapitulatives pour chaque section de la formation OPCP. Utilisez-les comme aide-mémoire lors de vos conversations avec les clients.</p>
+            </header>
+
+            <section aria-labelledby="ref-introduction" class="reference-card">
+                <h2 id="ref-introduction">Introduction</h2>
+                <h3>Sujets principaux</h3>
+                <ul>
+                    <li>Ce qu'est OPCP et comment il fonctionne (infrastructure cloud dédiée gérée par OVHcloud)</li>
+                    <li>Avantages métier : prévisibilité des coûts, sécurité, évolutivité, souveraineté</li>
+                    <li>Publics cibles : moyennes et grandes entreprises, industries réglementées, entreprises en croissance</li>
+                    <li>Fonctionnalités clés : ressources dédiées, virtualisation basée sur VMware, isolation réseau, accès API</li>
+                </ul>
+                <h3>Terminologie clé</h3>
+                <ul>
+                    <li><a href="../glossary.html#term-opcp" class="glossary-term"><strong>OPCP</strong></a> — OVHcloud Hosted Private Cloud : un environnement cloud dédié hébergé et géré par OVHcloud</li>
+                    <li><strong>Hosted Private Cloud</strong> — Infrastructure réservée exclusivement à un client, non partagée avec d'autres</li>
+                    <li><strong>Hyperviseur</strong> — Logiciel qui crée et exécute des machines virtuelles sur du matériel physique</li>
+                </ul>
+                <h3>Arguments pour les clients</h3>
+                <ul>
+                    <li>« Votre propre infrastructure dédiée sans le coût de construction d'un centre de données. »</li>
+                    <li>« Souveraineté européenne des données avec les certifications ISO 27001 et SOC 2. »</li>
+                    <li>« Ajustez les ressources à la hausse ou à la baisse sans engagements matériels à long terme. »</li>
+                </ul>
+            </section>
+
+            <section aria-labelledby="ref-getting-started" class="reference-card">
+                <h2 id="ref-getting-started">Premiers pas</h2>
+                <h3>Sujets principaux</h3>
+                <ul>
+                    <li>Processus de création de compte et configuration initiale</li>
+                    <li>Accès au tableau de bord de gestion OPCP</li>
+                    <li>Navigation dans l'interface du panneau de contrôle</li>
+                    <li>Étapes de configuration initiale pour un nouvel environnement</li>
+                </ul>
+                <h3>Terminologie clé</h3>
+                <ul>
+                    <li><strong>Espace Client</strong> — L'interface web où les clients gèrent leurs services OVHcloud</li>
+                    <li><strong>Tableau de bord</strong> — L'écran principal affichant l'état des ressources en un coup d'œil</li>
+                    <li><strong>Identifiant client (NIC Handle)</strong> — L'identifiant unique du client utilisé pour se connecter aux services OVHcloud</li>
+                </ul>
+                <h3>Arguments pour les clients</h3>
+                <ul>
+                    <li>« Vous pouvez être opérationnel en quelques heures, pas en semaines. »</li>
+                    <li>« Le tableau de bord vous offre une vue unique de toutes vos ressources et de leur état. »</li>
+                    <li>« Aucune expertise en ligne de commande nécessaire — tout est gérable via l'interface web. »</li>
+                </ul>
+            </section>
+
+            <section aria-labelledby="ref-core-concepts" class="reference-card">
+                <h2 id="ref-core-concepts">Concepts fondamentaux</h2>
+                <h3>Sujets principaux</h3>
+                <ul>
+                    <li>Cycle de vie des nœuds : provisionnement → configuration → exploitation → décommissionnement</li>
+                    <li>Types de nœuds et leur adéquation aux charges de travail (optimisé calcul, optimisé mémoire, optimisé stockage)</li>
+                    <li>Allocation des ressources : comment le CPU, la RAM et le stockage sont attribués</li>
+                    <li>Architecture réseau : réseaux publics vs privés, bande passante, isolation</li>
+                </ul>
+                <h3>Terminologie clé</h3>
+                <ul>
+                    <li><a href="../glossary.html#term-node" class="glossary-term"><strong>Nœud</strong></a> — Un serveur physique dédié à votre environnement Private Cloud</li>
+                    <li><strong>vCPU</strong> — CPU virtuel : une part de puissance de traitement allouée à une machine virtuelle</li>
+                    <li><strong>VLAN</strong> — Réseau local virtuel : un segment réseau isolé pour la sécurité et l'organisation</li>
+                    <li><a href="../glossary.html#term-datastore" class="glossary-term"><strong>Datastore</strong></a> — Un volume de stockage attaché à votre Private Cloud pour les disques des machines virtuelles</li>
+                </ul>
+                <h3>Arguments pour les clients</h3>
+                <ul>
+                    <li>« Choisissez le type de nœud qui correspond à votre charge de travail — ne payez pas pour de la puissance dont vous n'avez pas besoin. »</li>
+                    <li>« Les ressources peuvent être ajoutées ou retirées sans interruption de service. »</li>
+                    <li>« Les réseaux privés gardent votre trafic interne complètement isolé de l'internet public. »</li>
+                </ul>
+            </section>
+
+            <section aria-labelledby="ref-technical-ops" class="reference-card">
+                <h2 id="ref-technical-ops">Opérations techniques</h2>
+                <h3>Sujets principaux</h3>
+                <ul>
+                    <li>Workflow de mise en place d'instance (demande → provisionnement → configuration → validation)</li>
+                    <li>Identifiants API : ce qu'ils permettent, comment ils sont gérés</li>
+                    <li>Options de configuration des nœuds et leur impact métier</li>
+                    <li>Réseau avancé : LACP (agrégation de liens), Trunk (étiquetage VLAN), RAID logiciel (redondance disque)</li>
+                </ul>
+                <h3>Terminologie clé</h3>
+                <ul>
+                    <li><a href="../glossary.html#term-api" class="glossary-term"><strong>API</strong></a> — Interface de programmation applicative : permet aux logiciels d'interagir avec OPCP de manière programmatique</li>
+                    <li><a href="../glossary.html#term-lacp" class="glossary-term"><strong>LACP</strong></a> — Agrégation de liens : combiner plusieurs connexions réseau pour la vitesse et la fiabilité</li>
+                    <li><a href="../glossary.html#term-trunk" class="glossary-term"><strong>Trunk</strong></a> — Une connexion unique transportant le trafic de plusieurs VLAN</li>
+                    <li><a href="../glossary.html#term-raid" class="glossary-term"><strong>RAID</strong></a> — Ensemble redondant de disques indépendants : protège les données en les répartissant sur plusieurs disques</li>
+                </ul>
+                <h3>Arguments pour les clients</h3>
+                <ul>
+                    <li>« L'automatisation via API signifie que les tâches répétitives peuvent être gérées sans intervention manuelle. »</li>
+                    <li>« L'agrégation de liens offre à la fois des vitesses plus élevées et un basculement automatique si une connexion tombe. »</li>
+                    <li>« Le RAID garantit qu'une panne de disque unique n'entraîne pas de perte de données. »</li>
+                </ul>
+            </section>
+
+            <section aria-labelledby="ref-storage" class="reference-card">
+                <h2 id="ref-storage">Solutions de stockage</h2>
+                <h3>Sujets principaux</h3>
+                <ul>
+                    <li>Présentation de CloudStore : stockage objet pour les données non structurées</li>
+                    <li>Capacités de stockage : évolutivité, redondance, méthodes d'accès, niveaux de capacité</li>
+                    <li>Gestion des données : organisation, politiques de cycle de vie, rétention</li>
+                    <li>Sauvegarde et récupération : sauvegardes automatisées, procédures de restauration, reprise après sinistre</li>
+                </ul>
+                <h3>Terminologie clé</h3>
+                <ul>
+                    <li><a href="../glossary.html#term-cloudstore" class="glossary-term"><strong>CloudStore</strong></a> — Le service de stockage objet évolutif d'OVHcloud</li>
+                    <li><strong>Stockage objet</strong> — Une méthode de stockage des données sous forme d'objets discrets (fichiers) plutôt que dans une hiérarchie de système de fichiers traditionnelle</li>
+                    <li><strong>Redondance</strong> — Stocker plusieurs copies des données à différents emplacements pour prévenir la perte</li>
+                    <li><strong>RPO/RTO</strong> — Objectif de point de récupération (combien de données vous pouvez vous permettre de perdre) / Objectif de temps de récupération (à quelle vitesse vous devez être de nouveau opérationnel)</li>
+                </ul>
+                <h3>Arguments pour les clients</h3>
+                <ul>
+                    <li>« Le stockage évolue automatiquement — vous ne payez que ce que vous utilisez. »</li>
+                    <li>« La redondance intégrée signifie que vos données sont protégées même en cas de panne matérielle. »</li>
+                    <li>« Les sauvegardes automatisées s'exécutent selon un calendrier pour que vous n'oubliiez jamais de protéger les données critiques. »</li>
+                </ul>
+            </section>
+
+            <section aria-labelledby="ref-best-practices" class="reference-card">
+                <h2 id="ref-best-practices">Bonnes pratiques</h2>
+                <h3>Sujets principaux</h3>
+                <ul>
+                    <li>Opérations : surveillance des ressources, stratégies de mise à l'échelle, planification de la maintenance</li>
+                    <li>Sécurité : contrôle d'accès (moindre privilège), chiffrement, conformité (ISO 27001, SOC 2)</li>
+                    <li>Performance : dimensionnement adapté, mise en cache, répartition de charge</li>
+                    <li>Dépannage : problèmes courants (réponse lente, connectivité, stockage), chemins d'escalade</li>
+                </ul>
+                <h3>Terminologie clé</h3>
+                <ul>
+                    <li><a href="../glossary.html#term-least-privilege" class="glossary-term"><strong>Moindre privilège</strong></a> — Donner aux utilisateurs uniquement l'accès minimum nécessaire pour accomplir leur travail</li>
+                    <li><strong>Dimensionnement adapté</strong> — Faire correspondre l'allocation des ressources aux besoins réels de la charge de travail</li>
+                    <li><a href="../glossary.html#term-load-balancer" class="glossary-term"><strong>Répartiteur de charge</strong></a> — Un système qui distribue le trafic entrant sur plusieurs serveurs</li>
+                    <li><strong>SLA</strong> — Accord de niveau de service : les engagements garantis en matière de disponibilité et de performance</li>
+                </ul>
+                <h3>Arguments pour les clients</h3>
+                <ul>
+                    <li>« Une surveillance régulière prévient les surprises — vous verrez les problèmes avant vos utilisateurs. »</li>
+                    <li>« Les certifications d'OVHcloud signifient que vos exigences de conformité sont déjà couvertes au niveau de l'infrastructure. »</li>
+                    <li>« Plusieurs canaux de support garantissent que vous pouvez toujours obtenir de l'aide quand vous en avez besoin. »</li>
+                </ul>
+            </section>
+        </article>
+    </main>
+
+    <footer class="page-footer">
+        <nav aria-label="Navigation entre leçons">
+            <a href="resources-support.html" class="nav-prev" aria-label="Leçon précédente : Ressources et Support">← Précédent</a>
+        </nav>
+    </footer>
+
+    <script src="../../assets/js/main.js"></script>
+</body>
+</html>

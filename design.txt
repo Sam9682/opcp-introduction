@@ -1,0 +1,97 @@
+# OPCP Training Website Design Document
+
+## Overview
+Website for training non-technical personnel (sales team) on OVHcloud's Hosted Private Cloud (OPCP) service.
+
+## Target Audience
+- Sales personnel
+- Non-technical staff
+- Business stakeholders
+- Project managers
+
+## Key Learning Objectives
+1. Understand what OPCP is and its benefits
+2. Learn basic OPCP concepts and terminology
+3. Understand how to get started with OPCP
+4. Learn about node lifecycle management
+5. Understand API usage and credential management
+6. Learn instance setup procedures
+7. Understand network configuration options
+8. Learn about storage solutions (CloudStore)
+
+## Website Structure
+
+### 1. Introduction Section
+- What is OPCP?
+- Benefits of using OPCP
+- Who should use OPCP?
+- Key features overview
+
+### 2. Getting Started Guide
+- Account setup process
+- Accessing the OPCP dashboard
+- Basic navigation
+- Initial configuration steps
+
+### 3. Core Concepts
+- Node lifecycle overview
+- Node types and specifications
+- Resource allocation concepts
+- Network architecture basics
+
+### 4. Technical Operations
+- Instance setup procedures
+- API usage and credential management
+- Node configuration options
+- LACP setup instructions
+- Trunk setup guidance
+- Software RAID configuration
+
+### 5. Storage Solutions
+- CloudStore overview
+- Storage capabilities
+- Data management practices
+- Backup and recovery concepts
+
+### 6. Best Practices
+- Operational guidelines
+- Security considerations
+- Performance optimization
+- Troubleshooting tips
+
+### 7. Resources & Support
+- Documentation links
+- Support channels
+- Community resources
+- Training materials
+
+## Content Strategy
+- Simplified explanations with analogies
+- Visual diagrams and illustrations
+- Step-by-step guides with screenshots
+- Glossary of terms
+- Quick reference cards
+- Interactive elements for engagement
+
+## Design Requirements
+- Clean, professional appearance
+- Mobile-responsive design
+- Accessible for users with disabilities
+- Consistent branding with OVHcloud
+- Easy navigation with clear menu structure
+- Visual hierarchy that emphasizes key information
+
+## Technical Implementation
+- HTML5/CSS3/JavaScript frontend
+- Responsive design using Bootstrap
+- Simple backend for form submissions (if needed)
+- Integration with OVHcloud documentation
+- Search functionality for easy content discovery
+
+## User Experience Considerations
+- Minimal technical jargon
+- Clear visual indicators
+- Progress tracking for learning modules
+- Feedback mechanisms
+- Downloadable resources
+- Quick start guides

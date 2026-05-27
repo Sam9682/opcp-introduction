@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Performance &amp; Troubleshooting - Best Practices</title>
+    <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header class="page-header">
+        <nav aria-label="Language switch">
+            <a href="../../fr/best-practices/performance-troubleshooting.html" class="lang-switch" aria-label="Switch to French">FR</a>
+        </nav>
+            <a href="../glossary.html" class="glossary-link" aria-label="View glossary of terms"><span class="glossary-link__icon" aria-hidden="true">📖</span> Glossary</a>
+        <span class="difficulty-badge beginner" aria-label="Difficulty: Beginner">Beginner</span>
+    </header>
+
+    <main class="content-area" id="main-content">
+        <article>
+            <header>
+                <h1>Performance &amp; Troubleshooting</h1>
+                <p class="lesson-intro">Understand how to keep your OPCP services running at peak efficiency and what to do when something goes wrong — no technical expertise required.</p>
+            </header>
+
+            <section aria-labelledby="optimization-heading">
+                <h2 id="optimization-heading">Performance Optimization</h2>
+                <p>Think of your cloud environment like a car engine. A well-tuned engine runs smoothly, uses fuel efficiently, and lasts longer. Here is how to keep your OPCP "engine" in top shape.</p>
+
+                <h3>Right-Sizing Resources</h3>
+                <p>Imagine buying a delivery truck to carry a single envelope — that is wasted capacity. Conversely, stuffing a compact car with heavy cargo will slow it down. <strong>Right-sizing</strong> means matching your resources to your actual workload:</p>
+                <ul>
+                    <li>Review usage reports monthly to spot over-provisioned or under-provisioned resources.</li>
+                    <li>Scale down during quiet periods (nights, weekends) to save costs — like turning off lights in empty rooms.</li>
+                    <li>Scale up before known busy periods (product launches, end-of-quarter) — like hiring extra staff before the holiday rush.</li>
+                </ul>
+
+                <h3>Caching — The Express Lane</h3>
+                <p>Caching is like keeping frequently used tools on your workbench instead of walking to the storage room every time. When data is cached, it can be retrieved much faster because it is stored closer to where it is needed.</p>
+                <p>If customers report that pages or applications feel sluggish, caching is often the first lever to pull.</p>
+
+                <h3>Load Balancing — Sharing the Work</h3>
+                <p>Imagine a supermarket with ten checkout lanes but all customers queuing at lane one. A <span class="glossary-term" data-term="load-balancer">load balancer</span> is like a store greeter directing customers to the shortest queue, ensuring no single lane is overwhelmed.</p>
+            </section>
+
+            <section aria-labelledby="troubleshooting-heading">
+                <h2 id="troubleshooting-heading">Common Issues and Solutions</h2>
+                <p>When something is not working as expected, use the following guide to identify and address the most frequent problems.</p>
+
+                <h3>Slow Response Times</h3>
+                <p><strong>Analogy:</strong> Your car is sluggish going uphill.</p>
+                <p><strong>Likely cause:</strong> Resources (CPU or RAM) are maxed out — the engine does not have enough power for the load.</p>
+                <p><strong>What to check:</strong></p>
+                <ul>
+                    <li>Open the OPCP dashboard and look at CPU and memory usage graphs.</li>
+                    <li>If usage is consistently above 80%, consider scaling up (adding more power) or scaling out (adding more instances).</li>
+                    <li>Check if a single process is consuming most resources — like one passenger hogging all the legroom.</li>
+                </ul>
+
+                <h3>Connectivity Issues</h3>
+                <p><strong>Analogy:</strong> The road between two cities is blocked.</p>
+                <p><strong>Likely cause:</strong> Network configuration or firewall rules are preventing traffic from flowing.</p>
+                <p><strong>What to check:</strong></p>
+                <ul>
+                    <li>Verify that the correct network ports are open — like making sure the right highway exits are not closed for construction.</li>
+                    <li>Check firewall rules to ensure legitimate traffic is not being blocked.</li>
+                    <li>Confirm DNS settings are pointing to the right addresses — like verifying the GPS has the correct destination.</li>
+                </ul>
+
+                <h3>Storage Running Low</h3>
+                <p><strong>Analogy:</strong> Your filing cabinets are overflowing.</p>
+                <p><strong>Likely cause:</strong> Data has accumulated over time without cleanup or archiving.</p>
+                <p><strong>What to check:</strong></p>
+                <ul>
+                    <li>Review storage usage in the dashboard to identify which volumes are nearly full.</li>
+                    <li>Archive old data that is rarely accessed — move it to cheaper, long-term storage (like moving old files to an off-site warehouse).</li>
+                    <li>Set up alerts to notify you when storage reaches 80% capacity, giving you time to act before it fills completely.</li>
+                </ul>
+
+                <h3>Service Unavailable Errors</h3>
+                <p><strong>Analogy:</strong> The shop is closed when it should be open.</p>
+                <p><strong>Likely cause:</strong> An instance has crashed or a deployment did not complete successfully.</p>
+                <p><strong>What to check:</strong></p>
+                <ul>
+                    <li>Check the instance status in the dashboard — is it running, stopped, or in an error state?</li>
+                    <li>Review recent changes — did someone modify a configuration just before the issue started?</li>
+                    <li>Try restarting the affected service — sometimes a simple restart resolves temporary glitches, like rebooting a frozen computer.</li>
+                </ul>
+            </section>
+
+            <section aria-labelledby="escalation-heading">
+                <h2 id="escalation-heading">When to Escalate</h2>
+                <p>Not every problem needs to be solved alone. Escalate to OVHcloud support when:</p>
+                <ul>
+                    <li>The issue persists after basic checks (resource usage, network, restarts).</li>
+                    <li>You see errors related to the underlying infrastructure rather than your own configuration.</li>
+                    <li>Multiple services are affected simultaneously — this may indicate a platform-level event.</li>
+                    <li>You are unsure whether the problem is on your side or OVHcloud's side.</li>
+                </ul>
+                <p>When contacting support, provide: what you observed, when it started, what you have already tried, and any error messages you see. This helps the support team resolve your issue faster — like giving a mechanic a clear description of the noise your car is making.</p>
+            </section>
+
+            <section aria-labelledby="summary-heading">
+                <h2 id="summary-heading">Key Takeaways</h2>
+                <ul>
+                    <li>Right-size your resources — match capacity to actual demand, like choosing the right vehicle for the job.</li>
+                    <li>Use caching and load balancing to improve speed and distribute work evenly.</li>
+                    <li>For slow responses, check resource usage first.</li>
+                    <li>For connectivity issues, verify network and firewall settings.</li>
+                    <li>For storage problems, archive old data and set up usage alerts.</li>
+                    <li>Escalate to support when basic troubleshooting does not resolve the issue.</li>
+                </ul>
+            </section>
+        </article>
+    </main>
+
+    <footer class="page-footer">
+        <nav aria-label="Lesson navigation">
+            <a href="operations-security.html" class="nav-prev" aria-label="Previous lesson: Operations &amp; Security">← Previous</a>
+            <a href="resources-support.html" class="nav-next" aria-label="Next lesson: Resources &amp; Support">Next →</a>
+        </nav>
+    </footer>
+
+    <script src="../../assets/js/main.js"></script>
+</body>
+</html>

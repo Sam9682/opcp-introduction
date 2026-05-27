@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Understand backup and recovery concepts in CloudStore with workflow diagrams illustrating the backup and restoration processes.">
+    <title>Backup and Recovery - Storage Solutions - OPCP Skillhub</title>
+    <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <div class="page-wrapper">
+        <nav class="nav-sidebar" aria-label="Main navigation">
+            <div class="search-container">
+                <input type="search" class="search-input" placeholder="Search lessons..." aria-label="Search lessons">
+            </div>
+            <div class="progress-display">
+                <span class="progress-display__label">Overall Progress</span>
+                <div class="progress-display__bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="Overall completion progress"><div class="progress-display__fill" style="width: 0%"></div></div>
+                <span class="progress-display__percentage" role="status" aria-live="polite">0%</span>
+            </div>
+            <a href="../glossary.html" class="glossary-link" aria-label="View glossary of terms"><span class="glossary-link__icon" aria-hidden="true">📖</span> Glossary</a>
+
+            <button class="nav-sidebar__close" aria-label="Close navigation">&times;</button>
+        </nav>
+
+        <button class="nav-hamburger" aria-label="Open navigation menu">
+            <span class="nav-hamburger__icon" aria-hidden="true">&#9776;</span>
+        </button>
+        <div class="nav-overlay" aria-hidden="true"></div>
+
+        <main class="content-area" id="main-content">
+            <article>
+                <header class="lesson-header">
+                    <h1>Backup and Recovery</h1>
+                    <div class="lesson-meta">
+                        <span class="badge badge-intermediate">Intermediate</span>
+                        <a href="../../fr/storage/backup-recovery.html" class="language-switch" aria-label="Switch to French">
+                            <span>🇫🇷</span> <span>Français</span>
+                        </a>
+                    </div>
+                </header>
+
+                <section aria-labelledby="intro-heading">
+                    <h2 id="intro-heading">Why Back Up Your Data?</h2>
+                    <p>Imagine all the files in your office disappearing overnight — client contracts, financial reports, ongoing projects. A <a href="../glossary.html#term-backup" class="glossary-term"><strong>backup</strong></a> is your safety net: a copy of your data stored separately, ready to be restored when something goes wrong.</p>
+
+                    <div class="info-box">
+                        <p><strong>Real-world analogy:</strong> Backups work like photocopies of your important documents kept in a safe at the bank. If a fire destroys your office, you can rebuild your files from the copies stored in a secure location.</p>
+                    </div>
+
+                    <p>Incidents that can cause data loss are more common than you might think:</p>
+                    <ul>
+                        <li><strong>Human error</strong> — accidentally deleting an important file</li>
+                        <li><strong>Hardware failure</strong> — a hard drive or server breaking down</li>
+                        <li><strong>Cyberattack</strong> — ransomware encrypting your data</li>
+                        <li><strong>Natural disaster</strong> — flooding or fire affecting your premises</li>
+                    </ul>
+                </section>
+
+                <section aria-labelledby="terms-heading">
+                    <h2 id="terms-heading">Essential Terms</h2>
+                    <ul>
+                        <li><strong class="term">Full backup</strong> — a complete copy of all your data. Like photocopying every single file in your cabinets.</li>
+                        <li><strong class="term">Incremental backup</strong> — a copy of only the data that has changed since the last backup. Like photocopying only the new pages that were added.</li>
+                        <li><strong class="term">Restore point</strong> — a specific moment in time you can return to. Like a bookmark in time that marks the state of your data at a given moment.</li>
+                        <li><strong class="term">RPO (Recovery Point Objective)</strong> — the maximum amount of data you can accept losing, measured in time. An RPO of 1 hour means you could lose at most 1 hour of work.</li>
+                        <li><strong class="term">RTO (Recovery Time Objective)</strong> — the maximum acceptable time to restore your data after an incident. An RTO of 4 hours means your systems must be operational within 4 hours.</li>
+                    </ul>
+                </section>
+
+                <section aria-labelledby="backup-workflow-heading">
+                    <h2 id="backup-workflow-heading">The Backup Process</h2>
+                    <p>The backup process in CloudStore follows several automated steps. Once configured, it runs without manual intervention.</p>
+
+                    <figure class="diagram-scroll">
+                        <svg viewBox="0 0 750 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Workflow diagram showing the backup process in 5 steps: scheduling, data selection, secure transfer, redundant storage, and verification">
+                            <!-- Title -->
+                            <text x="375" y="30" text-anchor="middle" font-size="14" font-weight="bold" fill="#000E9C">CloudStore Backup Workflow</text>
+
+                            <!-- Step 1: Scheduling -->
+                            <rect x="50" y="60" width="140" height="90" rx="10" fill="#e8f4fd" stroke="#000E9C" stroke-width="2"/>
+                            <text x="120" y="85" text-anchor="middle" font-size="11" font-weight="bold" fill="#000E9C">1. Scheduling</text>
+                            <text x="120" y="105" text-anchor="middle" font-size="9" fill="#333">Define frequency</text>
+                            <text x="120" y="120" text-anchor="middle" font-size="9" fill="#333">(daily, weekly,</text>
+                            <text x="120" y="135" text-anchor="middle" font-size="9" fill="#333">monthly)</text>
+
+                            <!-- Arrow 1→2 -->
+                            <line x1="190" y1="105" x2="210" y2="105" stroke="#4949FF" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+                            <!-- Step 2: Selection -->
+                            <rect x="210" y="60" width="140" height="90" rx="10" fill="#d4edda" stroke="#1b7a3d" stroke-width="2"/>
+                            <text x="280" y="85" text-anchor="middle" font-size="11" font-weight="bold" fill="#1b7a3d">2. Selection</text>
+                            <text x="280" y="105" text-anchor="middle" font-size="9" fill="#333">Identify data to</text>
+                            <text x="280" y="120" text-anchor="middle" font-size="9" fill="#333">back up (full or</text>
+                            <text x="280" y="135" text-anchor="middle" font-size="9" fill="#333">incremental)</text>
+
+                            <!-- Arrow 2→3 -->
+                            <line x1="350" y1="105" x2="370" y2="105" stroke="#4949FF" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+                            <!-- Step 3: Transfer -->
+                            <rect x="370" y="60" width="140" height="90" rx="10" fill="#fff3cd" stroke="#856404" stroke-width="2"/>
+                            <text x="440" y="85" text-anchor="middle" font-size="11" font-weight="bold" fill="#856404">3. Transfer</text>
+                            <text x="440" y="105" text-anchor="middle" font-size="9" fill="#333">Encrypted upload</text>
+                            <text x="440" y="120" text-anchor="middle" font-size="9" fill="#333">to CloudStore via</text>
+                            <text x="440" y="135" text-anchor="middle" font-size="9" fill="#333">secure channel</text>
+
+                            <!-- Arrow 3→4 -->
+                            <line x1="510" y1="105" x2="530" y2="105" stroke="#4949FF" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+                            <!-- Step 4: Storage -->
+                            <rect x="530" y="60" width="140" height="90" rx="10" fill="#f0e6ff" stroke="#4949FF" stroke-width="2"/>
+                            <text x="600" y="85" text-anchor="middle" font-size="11" font-weight="bold" fill="#4949FF">4. Storage</text>
+                            <text x="600" y="105" text-anchor="middle" font-size="9" fill="#333">Copy replicated</text>
+                            <text x="600" y="120" text-anchor="middle" font-size="9" fill="#333">across multiple</text>
+                            <text x="600" y="135" text-anchor="middle" font-size="9" fill="#333">locations</text>
+
+                            <!-- Arrow 4→5 (downward) -->
+                            <line x1="600" y1="150" x2="600" y2="200" stroke="#4949FF" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+                            <!-- Step 5: Verification -->
+                            <rect x="530" y="200" width="140" height="90" rx="10" fill="#d4edda" stroke="#1b7a3d" stroke-width="2"/>
+                            <text x="600" y="225" text-anchor="middle" font-size="11" font-weight="bold" fill="#1b7a3d">5. Verification</text>
+                            <text x="600" y="245" text-anchor="middle" font-size="9" fill="#333">Integrity check</text>
+                            <text x="600" y="260" text-anchor="middle" font-size="9" fill="#333">and success</text>
+                            <text x="600" y="275" text-anchor="middle" font-size="9" fill="#333">notification</text>
+
+                            <!-- Final result -->
+                            <rect x="250" y="320" width="250" height="50" rx="8" fill="#d4edda" stroke="#1b7a3d" stroke-width="2"/>
+                            <text x="375" y="345" text-anchor="middle" font-size="11" font-weight="bold" fill="#1b7a3d">&#10003; Backup Complete</text>
+                            <text x="375" y="362" text-anchor="middle" font-size="9" fill="#333">Data protected and verified</text>
+
+                            <!-- Arrow to result -->
+                            <line x1="530" y1="245" x2="500" y2="345" stroke="#1b7a3d" stroke-width="1.5" stroke-dasharray="4"/>
+
+                            <!-- Arrow marker -->
+                            <defs>
+                                <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+                                    <polygon points="0 0, 10 3.5, 0 7" fill="#4949FF"/>
+                                </marker>
+                            </defs>
+                        </svg>
+                        <figcaption>The CloudStore backup process: from scheduling to verification, each step is automated to ensure your data is protected</figcaption>
+                    </figure>
+
+                    <h3>What happens at each step</h3>
+                    <ul>
+                        <li><strong>Scheduling</strong> — You define when backups should occur (e.g., every night at 2 AM).</li>
+                        <li><strong>Selection</strong> — The system identifies which data has changed since the last backup.</li>
+                        <li><strong>Transfer</strong> — Data is encrypted then sent to CloudStore via a secure channel.</li>
+                        <li><strong>Storage</strong> — The backup is replicated across multiple geographic locations for added safety.</li>
+                        <li><strong>Verification</strong> — CloudStore verifies the copy is intact and sends you a confirmation.</li>
+                    </ul>
+                </section>
+
+                <section aria-labelledby="recovery-workflow-heading">
+                    <h2 id="recovery-workflow-heading">The Recovery Process</h2>
+                    <p><strong class="term">Recovery</strong> (or restoration) is the reverse process: retrieving your data from a backup when an incident occurs. It's like going to the bank's safe to collect your photocopies after a disaster.</p>
+
+                    <figure class="diagram-scroll">
+                        <svg viewBox="0 0 750 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Workflow diagram showing the recovery process in 5 steps: incident detection, restore point selection, data extraction, restoration, and validation">
+                            <!-- Title -->
+                            <text x="375" y="30" text-anchor="middle" font-size="14" font-weight="bold" fill="#721c24">CloudStore Recovery Workflow</text>
+
+                            <!-- Step 1: Detection -->
+                            <rect x="50" y="60" width="140" height="90" rx="10" fill="#f8d7da" stroke="#721c24" stroke-width="2"/>
+                            <text x="120" y="85" text-anchor="middle" font-size="11" font-weight="bold" fill="#721c24">1. Detection</text>
+                            <text x="120" y="105" text-anchor="middle" font-size="9" fill="#333">Incident identified</text>
+                            <text x="120" y="120" text-anchor="middle" font-size="9" fill="#333">(data loss,</text>
+                            <text x="120" y="135" text-anchor="middle" font-size="9" fill="#333">corruption, failure)</text>
+
+                            <!-- Arrow 1→2 -->
+                            <line x1="190" y1="105" x2="210" y2="105" stroke="#4949FF" stroke-width="2" marker-end="url(#arrowR)"/>
+
+                            <!-- Step 2: Point selection -->
+                            <rect x="210" y="60" width="140" height="90" rx="10" fill="#e8f4fd" stroke="#000E9C" stroke-width="2"/>
+                            <text x="280" y="80" text-anchor="middle" font-size="11" font-weight="bold" fill="#000E9C">2. Point</text>
+                            <text x="280" y="95" text-anchor="middle" font-size="11" font-weight="bold" fill="#000E9C">Selection</text>
+                            <text x="280" y="115" text-anchor="middle" font-size="9" fill="#333">Choose the restore</text>
+                            <text x="280" y="130" text-anchor="middle" font-size="9" fill="#333">point (date and</text>
+                            <text x="280" y="145" text-anchor="middle" font-size="9" fill="#333">time)</text>
+
+                            <!-- Arrow 2→3 -->
+                            <line x1="350" y1="105" x2="370" y2="105" stroke="#4949FF" stroke-width="2" marker-end="url(#arrowR)"/>
+
+                            <!-- Step 3: Extraction -->
+                            <rect x="370" y="60" width="140" height="90" rx="10" fill="#fff3cd" stroke="#856404" stroke-width="2"/>
+                            <text x="440" y="85" text-anchor="middle" font-size="11" font-weight="bold" fill="#856404">3. Extraction</text>
+                            <text x="440" y="105" text-anchor="middle" font-size="9" fill="#333">Retrieve backup</text>
+                            <text x="440" y="120" text-anchor="middle" font-size="9" fill="#333">from secure</text>
+                            <text x="440" y="135" text-anchor="middle" font-size="9" fill="#333">storage</text>
+
+                            <!-- Arrow 3→4 -->
+                            <line x1="510" y1="105" x2="530" y2="105" stroke="#4949FF" stroke-width="2" marker-end="url(#arrowR)"/>
+
+                            <!-- Step 4: Restoration -->
+                            <rect x="530" y="60" width="140" height="90" rx="10" fill="#f0e6ff" stroke="#4949FF" stroke-width="2"/>
+                            <text x="600" y="85" text-anchor="middle" font-size="11" font-weight="bold" fill="#4949FF">4. Restoration</text>
+                            <text x="600" y="105" text-anchor="middle" font-size="9" fill="#333">Place data back</text>
+                            <text x="600" y="120" text-anchor="middle" font-size="9" fill="#333">into the target</text>
+                            <text x="600" y="135" text-anchor="middle" font-size="9" fill="#333">environment</text>
+
+                            <!-- Arrow 4→5 (downward) -->
+                            <line x1="600" y1="150" x2="600" y2="200" stroke="#4949FF" stroke-width="2" marker-end="url(#arrowR)"/>
+
+                            <!-- Step 5: Validation -->
+                            <rect x="530" y="200" width="140" height="90" rx="10" fill="#d4edda" stroke="#1b7a3d" stroke-width="2"/>
+                            <text x="600" y="225" text-anchor="middle" font-size="11" font-weight="bold" fill="#1b7a3d">5. Validation</text>
+                            <text x="600" y="245" text-anchor="middle" font-size="9" fill="#333">Verify integrity</text>
+                            <text x="600" y="260" text-anchor="middle" font-size="9" fill="#333">and test</text>
+                            <text x="600" y="275" text-anchor="middle" font-size="9" fill="#333">functionality</text>
+
+                            <!-- Final result -->
+                            <rect x="250" y="320" width="250" height="50" rx="8" fill="#d4edda" stroke="#1b7a3d" stroke-width="2"/>
+                            <text x="375" y="345" text-anchor="middle" font-size="11" font-weight="bold" fill="#1b7a3d">&#10003; Data Restored</text>
+                            <text x="375" y="362" text-anchor="middle" font-size="9" fill="#333">Normal operations resumed</text>
+
+                            <!-- Arrow to result -->
+                            <line x1="530" y1="245" x2="500" y2="345" stroke="#1b7a3d" stroke-width="1.5" stroke-dasharray="4"/>
+
+                            <!-- Arrow marker -->
+                            <defs>
+                                <marker id="arrowR" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+                                    <polygon points="0 0, 10 3.5, 0 7" fill="#4949FF"/>
+                                </marker>
+                            </defs>
+                        </svg>
+                        <figcaption>The CloudStore recovery process: from incident detection to restoration validation, each step is guided to minimise downtime</figcaption>
+                    </figure>
+
+                    <h3>What happens at each step</h3>
+                    <ul>
+                        <li><strong>Detection</strong> — An incident is identified (deleted file, corrupted data, system failure).</li>
+                        <li><strong>Point selection</strong> — You choose which point in time you want to return to (e.g., "yesterday at 6 PM").</li>
+                        <li><strong>Extraction</strong> — CloudStore retrieves the corresponding backup from its secure locations.</li>
+                        <li><strong>Restoration</strong> — Data is placed back into your working environment.</li>
+                        <li><strong>Validation</strong> — You verify that the restored data is complete and functional.</li>
+                    </ul>
+                </section>
+
+                <section aria-labelledby="best-practices-heading">
+                    <h2 id="best-practices-heading">Backup Best Practices</h2>
+
+                    <div class="info-box">
+                        <p><strong>The 3-2-1 rule:</strong> Keep <strong>3</strong> copies of your data, on <strong>2</strong> different types of media, with <strong>1</strong> copy offsite. CloudStore makes following this rule easy by automatically providing offsite storage and redundancy.</p>
+                    </div>
+
+                    <h3>Tips for customer conversations</h3>
+                    <ul>
+                        <li><strong>Test regularly</strong> — A backup that has never been tested is not reliable. Recommend quarterly restoration tests.</li>
+                        <li><strong>Match frequency to change rate</strong> — The more often data changes, the more frequent backups should be.</li>
+                        <li><strong>Set priorities</strong> — Not all data is equally important. Critical data deserves more frequent backups.</li>
+                        <li><strong>Document the plan</strong> — In an emergency, everyone needs to know who does what and in what order.</li>
+                    </ul>
+                </section>
+
+                <section aria-labelledby="summary-heading">
+                    <h2 id="summary-heading">Key Takeaways</h2>
+                    <ul>
+                        <li><strong>Backup</strong> creates safety copies of your data to protect against loss.</li>
+                        <li><strong>Recovery</strong> restores your data from those copies when an incident occurs.</li>
+                        <li>The backup process is <strong>automated</strong>: scheduling, selection, transfer, storage, and verification.</li>
+                        <li>The recovery process is <strong>guided</strong>: detection, point selection, extraction, restoration, and validation.</li>
+                        <li>Follow the <strong>3-2-1 rule</strong> and test your restorations regularly.</li>
+                    </ul>
+                </section>
+
+                <nav class="nav-sequential" aria-label="Lesson navigation">
+                    <a href="data-management.html" class="nav-sequential__btn nav-sequential__btn--prev">
+                        <span class="nav-sequential__arrow" aria-hidden="true">&larr;</span>
+                        <span class="nav-sequential__label">Previous: Data Management</span>
+                    </a>
+                    <a href="../best-practices/operations-security.html" class="nav-sequential__btn nav-sequential__btn--next">
+                        <span class="nav-sequential__label">Next: Operations &amp; Security</span>
+                        <span class="nav-sequential__arrow" aria-hidden="true">&rarr;</span>
+                    </a>
+                </nav>
+            </article>
+        </main>
+    </div>
+
+    <footer class="site-footer" role="contentinfo">
+        <p>&copy; 2024 OVHcloud — OPCP Introduction Skillhub</p>
+    </footer>
+
+    <script src="../../assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resource Allocation - Core Concepts - OPCP Training</title>
+    <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header class="site-header">
+        <nav class="top-nav" aria-label="Top navigation">
+            <a href="../../index.html" class="logo-link" aria-label="OPCP Training Home">OPCP Training</a>
+            <a href="../../fr/core-concepts/resource-allocation.html" class="lang-switch" aria-label="Switch to French">FR</a>
+        </nav>
+    </header>
+
+    <div class="page-layout">
+        <nav class="sidebar" id="sidebar-nav" aria-label="Lesson navigation">
+            <!-- Navigation rendered by navigation.js -->
+                <a href="../glossary.html" class="glossary-link" aria-label="View glossary of terms"><span class="glossary-link__icon" aria-hidden="true">📖</span> Glossary</a>
+    </nav>
+
+        <main class="content-area" id="main-content">
+            <article>
+                <header class="lesson-header">
+                    <h1>Resource Allocation</h1>
+                    <span class="difficulty-badge intermediate" aria-label="Difficulty: Intermediate">Intermediate</span>
+                </header>
+
+                <section aria-labelledby="overview-heading">
+                    <h2 id="overview-heading">What is Resource Allocation?</h2>
+                    <p>When you set up a <span class="glossary-term" data-term="node">node</span> in OPCP, you need to decide how much computing power to assign to it. This is called <span class="glossary-term" data-term="resource-allocation">resource allocation</span> — the process of dividing available resources among your workloads.</p>
+
+                    <p>Think of it like <strong>dividing a department budget</strong>. You have a total amount to work with, and you need to distribute it wisely across salaries, equipment, travel, and supplies. Give too much to one area and others suffer. Give too little everywhere and nothing works well.</p>
+                </section>
+
+                <section aria-labelledby="diagram-heading">
+                    <h2 id="diagram-heading">The Three Core Resources</h2>
+
+                    <figure class="diagram-container" role="img" aria-label="Diagram showing three core resources: CPU represented as processing power, RAM represented as working memory, and Storage represented as filing space, with a budget pie chart showing how they are distributed">
+                        <svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg" class="resource-diagram" aria-hidden="true">
+                            <!-- Title -->
+                            <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#000E9C">Resource Distribution — Like Dividing a Budget</text>
+
+                            <!-- Budget Pie Chart (center) -->
+                            <circle cx="400" cy="200" r="100" fill="none" stroke="#E8EAFF" stroke-width="40"/>
+                            <!-- CPU slice -->
+                            <circle cx="400" cy="200" r="100" fill="none" stroke="#000E9C" stroke-width="40" stroke-dasharray="105 315" stroke-dashoffset="0" transform="rotate(-90 400 200)"/>
+                            <!-- RAM slice -->
+                            <circle cx="400" cy="200" r="100" fill="none" stroke="#4949FF" stroke-width="40" stroke-dasharray="125 295" stroke-dashoffset="-105" transform="rotate(-90 400 200)"/>
+                            <!-- Storage slice -->
+                            <circle cx="400" cy="200" r="100" fill="none" stroke="#7B7BFF" stroke-width="40" stroke-dasharray="90 330" stroke-dashoffset="-230" transform="rotate(-90 400 200)"/>
+
+                            <!-- Center label -->
+                            <circle cx="400" cy="200" r="60" fill="#fff"/>
+                            <text x="400" y="195" text-anchor="middle" font-size="13" font-weight="bold" fill="#333">Your</text>
+                            <text x="400" y="215" text-anchor="middle" font-size="13" font-weight="bold" fill="#333">Resources</text>
+
+                            <!-- CPU Box (left) -->
+                            <rect x="40" y="100" width="180" height="130" rx="10" fill="#F0F1FF" stroke="#000E9C" stroke-width="2"/>
+                            <text x="130" y="130" text-anchor="middle" font-size="14" font-weight="bold" fill="#000E9C">🧠 CPU</text>
+                            <text x="130" y="155" text-anchor="middle" font-size="11" fill="#333">Processing Power</text>
+                            <line x1="60" y1="168" x2="200" y2="168" stroke="#E8EAFF" stroke-width="1"/>
+                            <text x="130" y="188" text-anchor="middle" font-size="11" fill="#555">Like: Number of</text>
+                            <text x="130" y="205" text-anchor="middle" font-size="11" fill="#555">employees working</text>
+                            <text x="130" y="222" text-anchor="middle" font-size="11" fill="#555">simultaneously</text>
+
+                            <!-- RAM Box (right-top) -->
+                            <rect x="580" y="70" width="180" height="130" rx="10" fill="#F0F1FF" stroke="#4949FF" stroke-width="2"/>
+                            <text x="670" y="100" text-anchor="middle" font-size="14" font-weight="bold" fill="#4949FF">💾 RAM</text>
+                            <text x="670" y="125" text-anchor="middle" font-size="11" fill="#333">Working Memory</text>
+                            <line x1="600" y1="138" x2="740" y2="138" stroke="#E8EAFF" stroke-width="1"/>
+                            <text x="670" y="158" text-anchor="middle" font-size="11" fill="#555">Like: Size of your</text>
+                            <text x="670" y="175" text-anchor="middle" font-size="11" fill="#555">desk — how many</text>
+                            <text x="670" y="192" text-anchor="middle" font-size="11" fill="#555">documents open at once</text>
+
+                            <!-- Storage Box (right-bottom) -->
+                            <rect x="580" y="230" width="180" height="130" rx="10" fill="#F0F1FF" stroke="#7B7BFF" stroke-width="2"/>
+                            <text x="670" y="260" text-anchor="middle" font-size="14" font-weight="bold" fill="#7B7BFF">📁 Storage</text>
+                            <text x="670" y="285" text-anchor="middle" font-size="11" fill="#333">Filing Space</text>
+                            <line x1="600" y1="298" x2="740" y2="298" stroke="#E8EAFF" stroke-width="1"/>
+                            <text x="670" y="318" text-anchor="middle" font-size="11" fill="#555">Like: Size of your</text>
+                            <text x="670" y="335" text-anchor="middle" font-size="11" fill="#555">filing cabinet — how</text>
+                            <text x="670" y="352" text-anchor="middle" font-size="11" fill="#555">much you can keep</text>
+
+                            <!-- Legend -->
+                            <rect x="100" y="350" width="16" height="16" fill="#000E9C" rx="3"/>
+                            <text x="122" y="363" font-size="12" fill="#333">CPU</text>
+                            <rect x="200" y="350" width="16" height="16" fill="#4949FF" rx="3"/>
+                            <text x="222" y="363" font-size="12" fill="#333">RAM</text>
+                            <rect x="300" y="350" width="16" height="16" fill="#7B7BFF" rx="3"/>
+                            <text x="322" y="363" font-size="12" fill="#333">Storage</text>
+                        </svg>
+                        <figcaption>The three core resources in OPCP — CPU, RAM, and Storage — distributed like a budget across your workloads.</figcaption>
+                    </figure>
+                </section>
+
+                <section aria-labelledby="cpu-heading">
+                    <h2 id="cpu-heading">CPU — Your Processing Power</h2>
+                    <h3>The Budget Analogy: Number of Employees</h3>
+                    <p><span class="glossary-term" data-term="cpu">CPU</span> (Central Processing Unit) is the brain of your node. It determines how many tasks can be processed at the same time. Think of it like the number of employees in a department — more employees means more work gets done simultaneously.</p>
+
+                    <h3>What It Means for Customers</h3>
+                    <ul>
+                        <li><strong>More CPU</strong> = handles more simultaneous users and tasks</li>
+                        <li><strong>Less CPU</strong> = fine for simple, low-traffic applications</li>
+                        <li>Applications that do heavy calculations (reports, data analysis) need more CPU</li>
+                        <li>Simple websites or file storage need less CPU</li>
+                    </ul>
+                </section>
+
+                <section aria-labelledby="ram-heading">
+                    <h2 id="ram-heading">RAM — Your Working Memory</h2>
+                    <h3>The Budget Analogy: Desk Size</h3>
+                    <p><span class="glossary-term" data-term="ram">RAM</span> (Random Access Memory) is the short-term working space. It's like the size of your desk — a bigger desk lets you spread out more documents and work on multiple things without constantly going to the filing cabinet.</p>
+
+                    <h3>What It Means for Customers</h3>
+                    <ul>
+                        <li><strong>More RAM</strong> = applications run faster, handle more data at once</li>
+                        <li><strong>Less RAM</strong> = applications may slow down under heavy use</li>
+                        <li>Databases and analytics tools benefit greatly from more RAM</li>
+                        <li>Simple web pages and basic services need less RAM</li>
+                    </ul>
+                </section>
+
+                <section aria-labelledby="storage-heading">
+                    <h2 id="storage-heading">Storage — Your Filing Space</h2>
+                    <h3>The Budget Analogy: Filing Cabinet Size</h3>
+                    <p><span class="glossary-term" data-term="storage">Storage</span> is where all your data lives permanently. It's like a filing cabinet — the bigger it is, the more documents, photos, records, and files you can keep. Unlike RAM (your desk), storage keeps data even when the node is turned off.</p>
+
+                    <h3>What It Means for Customers</h3>
+                    <ul>
+                        <li><strong>More storage</strong> = room for more data, files, backups, and history</li>
+                        <li><strong>Less storage</strong> = suitable for applications with minimal data</li>
+                        <li>Businesses with lots of documents, images, or records need more storage</li>
+                        <li>Storage can often be expanded later without disrupting operations</li>
+                    </ul>
+                </section>
+
+                <section aria-labelledby="balance-heading">
+                    <h2 id="balance-heading">Balancing Resources — Getting It Right</h2>
+                    <p>Just like a budget, the key is balance. Here are common scenarios:</p>
+
+                    <div class="scrollable-container">
+                        <table class="resource-table" aria-label="Resource allocation examples by workload type">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Workload Type</th>
+                                    <th scope="col">CPU Priority</th>
+                                    <th scope="col">RAM Priority</th>
+                                    <th scope="col">Storage Priority</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Company website</td>
+                                    <td>Low</td>
+                                    <td>Low</td>
+                                    <td>Low</td>
+                                </tr>
+                                <tr>
+                                    <td>E-commerce platform</td>
+                                    <td>High</td>
+                                    <td>High</td>
+                                    <td>Medium</td>
+                                </tr>
+                                <tr>
+                                    <td>Data analytics</td>
+                                    <td>High</td>
+                                    <td>Very High</td>
+                                    <td>High</td>
+                                </tr>
+                                <tr>
+                                    <td>File storage service</td>
+                                    <td>Low</td>
+                                    <td>Low</td>
+                                    <td>Very High</td>
+                                </tr>
+                                <tr>
+                                    <td>Email server</td>
+                                    <td>Medium</td>
+                                    <td>Medium</td>
+                                    <td>High</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section aria-labelledby="summary-heading">
+                    <h2 id="summary-heading">Key Takeaways</h2>
+                    <ul>
+                        <li>Resource allocation is like dividing a budget — distribute wisely based on needs</li>
+                        <li>CPU = processing power (number of employees working)</li>
+                        <li>RAM = working memory (size of your desk)</li>
+                        <li>Storage = filing space (size of your filing cabinet)</li>
+                        <li>Different workloads need different resource balances</li>
+                        <li>Resources can be adjusted over time as needs change</li>
+                    </ul>
+                </section>
+
+                <footer class="lesson-footer">
+                    <nav class="lesson-nav" aria-label="Lesson navigation">
+                        <a href="node-types.html" class="btn-prev" aria-label="Previous lesson: Node Types">← Previous</a>
+                        <a href="network-architecture.html" class="btn-next" aria-label="Next lesson: Network Architecture">Next →</a>
+                    </nav>
+                </footer>
+            </article>
+        </main>
+    </div>
+
+    <footer class="site-footer" role="contentinfo">
+        <p>&copy; 2024 OVHcloud — OPCP Training Skillhub</p>
+    </footer>
+
+    <script src="../../assets/js/main.js"></script>
+</body>
+</html>

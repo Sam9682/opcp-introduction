@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node Lifecycle - Core Concepts - OPCP Training</title>
+    <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header class="site-header">
+        <nav class="top-nav" aria-label="Top navigation">
+            <a href="../../index.html" class="logo-link" aria-label="OPCP Training Home">OPCP Training</a>
+            <a href="../../fr/core-concepts/node-lifecycle.html" class="lang-switch" aria-label="Switch to French">FR</a>
+        </nav>
+    </header>
+
+    <div class="page-layout">
+        <nav class="sidebar" id="sidebar-nav" aria-label="Lesson navigation">
+            <!-- Navigation rendered by navigation.js -->
+                <a href="../glossary.html" class="glossary-link" aria-label="View glossary of terms"><span class="glossary-link__icon" aria-hidden="true">📖</span> Glossary</a>
+    </nav>
+
+        <main class="content-area" id="main-content">
+            <article>
+                <header class="lesson-header">
+                    <h1>Node Lifecycle</h1>
+                    <span class="difficulty-badge intermediate" aria-label="Difficulty: Intermediate">Intermediate</span>
+                </header>
+
+                <section aria-labelledby="overview-heading">
+                    <h2 id="overview-heading">Understanding the Node Lifecycle</h2>
+                    <p>Every <span class="glossary-term" data-term="node">node</span> in OPCP goes through a series of stages during its existence — from the moment you request it to the moment it is retired. Understanding these stages helps you plan projects, set expectations with customers, and anticipate what happens at each step.</p>
+
+                    <p>Think of it like <strong>renting and furnishing an office space</strong>. You don't just walk in and start working — there's a process of signing the lease, setting up furniture, using the space daily, and eventually moving out when the lease ends.</p>
+                </section>
+
+                <section aria-labelledby="diagram-heading">
+                    <h2 id="diagram-heading">Lifecycle Stages at a Glance</h2>
+
+                    <figure class="diagram-container" role="img" aria-label="Node lifecycle diagram showing four stages: Provisioning, Configuration, Operation, and Decommissioning, connected by arrows in sequence">
+                        <svg viewBox="0 0 800 220" xmlns="http://www.w3.org/2000/svg" class="lifecycle-diagram" aria-hidden="true">
+                            <!-- Stage 1: Provisioning -->
+                            <rect x="20" y="60" width="160" height="100" rx="12" fill="#E8EAFF" stroke="#000E9C" stroke-width="2"/>
+                            <text x="100" y="95" text-anchor="middle" font-size="14" font-weight="bold" fill="#000E9C">Provisioning</text>
+                            <text x="100" y="115" text-anchor="middle" font-size="11" fill="#333">Sign the lease</text>
+                            <text x="100" y="135" text-anchor="middle" font-size="11" fill="#333">Get the keys</text>
+
+                            <!-- Arrow 1 -->
+                            <polygon points="190,110 210,100 210,120" fill="#4949FF"/>
+                            <line x1="180" y1="110" x2="210" y2="110" stroke="#4949FF" stroke-width="2"/>
+
+                            <!-- Stage 2: Configuration -->
+                            <rect x="220" y="60" width="160" height="100" rx="12" fill="#E8EAFF" stroke="#000E9C" stroke-width="2"/>
+                            <text x="300" y="95" text-anchor="middle" font-size="14" font-weight="bold" fill="#000E9C">Configuration</text>
+                            <text x="300" y="115" text-anchor="middle" font-size="11" fill="#333">Set up furniture</text>
+                            <text x="300" y="135" text-anchor="middle" font-size="11" fill="#333">Install equipment</text>
+
+                            <!-- Arrow 2 -->
+                            <polygon points="390,110 410,100 410,120" fill="#4949FF"/>
+                            <line x1="380" y1="110" x2="410" y2="110" stroke="#4949FF" stroke-width="2"/>
+
+                            <!-- Stage 3: Operation -->
+                            <rect x="420" y="60" width="160" height="100" rx="12" fill="#E8EAFF" stroke="#000E9C" stroke-width="2"/>
+                            <text x="500" y="95" text-anchor="middle" font-size="14" font-weight="bold" fill="#000E9C">Operation</text>
+                            <text x="500" y="115" text-anchor="middle" font-size="11" fill="#333">Daily work</text>
+                            <text x="500" y="135" text-anchor="middle" font-size="11" fill="#333">Ongoing use</text>
+
+                            <!-- Arrow 3 -->
+                            <polygon points="590,110 610,100 610,120" fill="#4949FF"/>
+                            <line x1="580" y1="110" x2="610" y2="110" stroke="#4949FF" stroke-width="2"/>
+
+                            <!-- Stage 4: Decommissioning -->
+                            <rect x="620" y="60" width="160" height="100" rx="12" fill="#E8EAFF" stroke="#000E9C" stroke-width="2"/>
+                            <text x="700" y="95" text-anchor="middle" font-size="14" font-weight="bold" fill="#000E9C">Decommissioning</text>
+                            <text x="700" y="115" text-anchor="middle" font-size="11" fill="#333">Pack up</text>
+                            <text x="700" y="135" text-anchor="middle" font-size="11" fill="#333">Return the keys</text>
+
+                            <!-- Stage numbers -->
+                            <circle cx="100" cy="45" r="14" fill="#000E9C"/>
+                            <text x="100" y="50" text-anchor="middle" font-size="12" fill="#fff" font-weight="bold">1</text>
+                            <circle cx="300" cy="45" r="14" fill="#000E9C"/>
+                            <text x="300" y="50" text-anchor="middle" font-size="12" fill="#fff" font-weight="bold">2</text>
+                            <circle cx="500" cy="45" r="14" fill="#000E9C"/>
+                            <text x="500" y="50" text-anchor="middle" font-size="12" fill="#fff" font-weight="bold">3</text>
+                            <circle cx="700" cy="45" r="14" fill="#000E9C"/>
+                            <text x="700" y="50" text-anchor="middle" font-size="12" fill="#fff" font-weight="bold">4</text>
+                        </svg>
+                        <figcaption>The four stages of a node's lifecycle in OPCP, from initial request to retirement.</figcaption>
+                    </figure>
+                </section>
+
+                <section aria-labelledby="provisioning-heading">
+                    <h2 id="provisioning-heading">Stage 1: Provisioning</h2>
+                    <h3>The Office Analogy: Signing the Lease</h3>
+                    <p>When you decide you need a new office, the first step is finding a space and signing the lease. You choose the size, location, and type of space that fits your needs. Once the paperwork is done, the landlord prepares the space for you.</p>
+
+                    <h3>What Happens in OPCP</h3>
+                    <p><span class="glossary-term" data-term="provisioning">Provisioning</span> is the process of requesting and allocating a new node. During this stage:</p>
+                    <ul>
+                        <li>You select the type and size of node you need (like choosing an office size)</li>
+                        <li>The system reserves the physical resources — CPU, memory, and storage</li>
+                        <li>The base operating environment is prepared</li>
+                        <li>The node becomes available for the next stage</li>
+                    </ul>
+                    <p><strong>Typical duration:</strong> Minutes to a few hours, depending on the node type selected.</p>
+                </section>
+
+                <section aria-labelledby="configuration-heading">
+                    <h2 id="configuration-heading">Stage 2: Configuration</h2>
+                    <h3>The Office Analogy: Setting Up Furniture</h3>
+                    <p>Once you have the keys, you furnish the office. You bring in desks, chairs, computers, and set up the phone lines. You arrange everything to suit how your team works.</p>
+
+                    <h3>What Happens in OPCP</h3>
+                    <p><span class="glossary-term" data-term="configuration">Configuration</span> is where the node is customized for its intended workload:</p>
+                    <ul>
+                        <li>Network connections are established (like connecting phone and internet)</li>
+                        <li>Security settings are applied (like installing locks and access badges)</li>
+                        <li>Software and services are installed (like setting up computers and printers)</li>
+                        <li>The node is tested to ensure everything works correctly</li>
+                    </ul>
+                    <p><strong>Key point for customers:</strong> This stage is where specific business requirements are addressed. A node for a web application will be configured differently from one handling data analysis.</p>
+                </section>
+
+                <section aria-labelledby="operation-heading">
+                    <h2 id="operation-heading">Stage 3: Operation</h2>
+                    <h3>The Office Analogy: Daily Work</h3>
+                    <p>This is the longest phase — the day-to-day use of the office. People come in, do their work, and the space serves its purpose. Occasionally you might rearrange furniture or add new equipment, but the core function remains the same.</p>
+
+                    <h3>What Happens in OPCP</h3>
+                    <p>During <span class="glossary-term" data-term="operation">operation</span>, the node is actively running workloads:</p>
+                    <ul>
+                        <li>Applications and services run continuously</li>
+                        <li>Performance is monitored (like checking that the office runs smoothly)</li>
+                        <li>Updates and patches are applied as needed (like routine maintenance)</li>
+                        <li>Resources can be adjusted if demands change (like adding more desks for new hires)</li>
+                    </ul>
+                    <p><strong>This is where value is delivered.</strong> The node is doing the work your customer needs — hosting their applications, processing their data, or running their services.</p>
+                </section>
+
+                <section aria-labelledby="decommissioning-heading">
+                    <h2 id="decommissioning-heading">Stage 4: Decommissioning</h2>
+                    <h3>The Office Analogy: Moving Out</h3>
+                    <p>When the lease ends or you no longer need the space, you pack up your belongings, clean the office, and return the keys. The space is then available for someone else.</p>
+
+                    <h3>What Happens in OPCP</h3>
+                    <p><span class="glossary-term" data-term="decommissioning">Decommissioning</span> is the orderly shutdown and removal of a node:</p>
+                    <ul>
+                        <li>Data is backed up or migrated to another location (like packing your files)</li>
+                        <li>Services are gracefully stopped (like notifying clients of your new address)</li>
+                        <li>Security credentials are revoked (like returning access badges)</li>
+                        <li>Resources are released back to the pool (like handing back the keys)</li>
+                    </ul>
+                    <p><strong>Important for customers:</strong> Decommissioning is planned and controlled. Data is never simply deleted without warning — there are safeguards to ensure nothing important is lost.</p>
+                </section>
+
+                <section aria-labelledby="summary-heading">
+                    <h2 id="summary-heading">Key Takeaways</h2>
+                    <ul>
+                        <li>Every node follows a predictable lifecycle: Provisioning → Configuration → Operation → Decommissioning</li>
+                        <li>Each stage has clear responsibilities and expected durations</li>
+                        <li>The process is designed to be safe and controlled at every step</li>
+                        <li>Customers can plan their projects around these stages with confidence</li>
+                    </ul>
+                </section>
+
+                <footer class="lesson-footer">
+                    <nav class="lesson-nav" aria-label="Lesson navigation">
+                        <a href="../getting-started/initial-configuration.html" class="btn-prev" aria-label="Previous lesson: Initial Configuration">← Previous</a>
+                        <a href="node-types.html" class="btn-next" aria-label="Next lesson: Node Types">Next →</a>
+                    </nav>
+                </footer>
+            </article>
+        </main>
+    </div>
+
+    <footer class="site-footer" role="contentinfo">
+        <p>&copy; 2024 OVHcloud — OPCP Training Skillhub</p>
+    </footer>
+
+    <script src="../../assets/js/main.js"></script>
+</body>
+</html>

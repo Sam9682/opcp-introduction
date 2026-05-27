@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node Types - Core Concepts - OPCP Training</title>
+    <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header class="site-header">
+        <nav class="top-nav" aria-label="Top navigation">
+            <a href="../../index.html" class="logo-link" aria-label="OPCP Training Home">OPCP Training</a>
+            <a href="../../fr/core-concepts/node-types.html" class="lang-switch" aria-label="Switch to French">FR</a>
+        </nav>
+    </header>
+
+    <div class="page-layout">
+        <nav class="sidebar" id="sidebar-nav" aria-label="Lesson navigation">
+            <!-- Navigation rendered by navigation.js -->
+                <a href="../glossary.html" class="glossary-link" aria-label="View glossary of terms"><span class="glossary-link__icon" aria-hidden="true">📖</span> Glossary</a>
+    </nav>
+
+        <main class="content-area" id="main-content">
+            <article>
+                <header class="lesson-header">
+                    <h1>Node Types</h1>
+                    <span class="difficulty-badge intermediate" aria-label="Difficulty: Intermediate">Intermediate</span>
+                </header>
+
+                <section aria-labelledby="overview-heading">
+                    <h2 id="overview-heading">Choosing the Right Node</h2>
+                    <p>Not every job requires the same tool. You wouldn't use a delivery truck to commute to work, and you wouldn't try to move furniture in a compact car. The same principle applies to <span class="glossary-term" data-term="node">nodes</span> in OPCP — different workloads need different types of computing power.</p>
+
+                    <p>Think of node types like <strong>choosing a vehicle</strong>. Each type is designed for specific tasks, and picking the right one means better performance and better value for your customer.</p>
+                </section>
+
+                <section aria-labelledby="diagram-heading">
+                    <h2 id="diagram-heading">Node Types Comparison</h2>
+
+                    <figure class="diagram-container" role="img" aria-label="Diagram comparing three node types: Standard nodes shown as a compact car for everyday tasks, Performance nodes shown as an SUV for demanding workloads, and High-Memory nodes shown as a truck for heavy data processing">
+                        <svg viewBox="0 0 800 350" xmlns="http://www.w3.org/2000/svg" class="node-types-diagram" aria-hidden="true">
+                            <!-- Standard Node -->
+                            <rect x="30" y="30" width="220" height="290" rx="12" fill="#F0F1FF" stroke="#000E9C" stroke-width="2"/>
+                            <rect x="30" y="30" width="220" height="50" rx="12" fill="#000E9C"/>
+                            <rect x="30" y="68" width="220" height="12" fill="#000E9C"/>
+                            <text x="140" y="62" text-anchor="middle" font-size="16" font-weight="bold" fill="#fff">Standard</text>
+
+                            <!-- Car icon simplified -->
+                            <text x="140" y="120" text-anchor="middle" font-size="36">🚗</text>
+                            <text x="140" y="150" text-anchor="middle" font-size="12" fill="#333" font-style="italic">"The Compact Car"</text>
+
+                            <text x="50" y="180" font-size="12" fill="#333">✓ Everyday workloads</text>
+                            <text x="50" y="200" font-size="12" fill="#333">✓ Web applications</text>
+                            <text x="50" y="220" font-size="12" fill="#333">✓ Small databases</text>
+                            <text x="50" y="240" font-size="12" fill="#333">✓ Development environments</text>
+                            <text x="50" y="270" font-size="11" fill="#666">Best for: Teams starting out</text>
+                            <text x="50" y="290" font-size="11" fill="#666">or running light applications</text>
+
+                            <!-- Performance Node -->
+                            <rect x="290" y="30" width="220" height="290" rx="12" fill="#F0F1FF" stroke="#4949FF" stroke-width="2"/>
+                            <rect x="290" y="30" width="220" height="50" rx="12" fill="#4949FF"/>
+                            <rect x="290" y="68" width="220" height="12" fill="#4949FF"/>
+                            <text x="400" y="62" text-anchor="middle" font-size="16" font-weight="bold" fill="#fff">Performance</text>
+
+                            <!-- SUV icon -->
+                            <text x="400" y="120" text-anchor="middle" font-size="36">🚙</text>
+                            <text x="400" y="150" text-anchor="middle" font-size="12" fill="#333" font-style="italic">"The SUV"</text>
+
+                            <text x="310" y="180" font-size="12" fill="#333">✓ Demanding applications</text>
+                            <text x="310" y="200" font-size="12" fill="#333">✓ Medium databases</text>
+                            <text x="310" y="220" font-size="12" fill="#333">✓ Business-critical services</text>
+                            <text x="310" y="240" font-size="12" fill="#333">✓ Multi-user platforms</text>
+                            <text x="310" y="270" font-size="11" fill="#666">Best for: Growing businesses</text>
+                            <text x="310" y="290" font-size="11" fill="#666">with production workloads</text>
+
+                            <!-- High-Memory Node -->
+                            <rect x="550" y="30" width="220" height="290" rx="12" fill="#F0F1FF" stroke="#000E9C" stroke-width="2"/>
+                            <rect x="550" y="30" width="220" height="50" rx="12" fill="#000E9C"/>
+                            <rect x="550" y="68" width="220" height="12" fill="#000E9C"/>
+                            <text x="660" y="62" text-anchor="middle" font-size="16" font-weight="bold" fill="#fff">High-Memory</text>
+
+                            <!-- Truck icon -->
+                            <text x="660" y="120" text-anchor="middle" font-size="36">🚛</text>
+                            <text x="660" y="150" text-anchor="middle" font-size="12" fill="#333" font-style="italic">"The Truck"</text>
+
+                            <text x="570" y="180" font-size="12" fill="#333">✓ Large data processing</text>
+                            <text x="570" y="200" font-size="12" fill="#333">✓ In-memory databases</text>
+                            <text x="570" y="220" font-size="12" fill="#333">✓ Analytics and reporting</text>
+                            <text x="570" y="240" font-size="12" fill="#333">✓ High-traffic applications</text>
+                            <text x="570" y="270" font-size="11" fill="#666">Best for: Enterprises with</text>
+                            <text x="570" y="290" font-size="11" fill="#666">heavy data requirements</text>
+                        </svg>
+                        <figcaption>OPCP node types compared to vehicles — each designed for different workload sizes and demands.</figcaption>
+                    </figure>
+                </section>
+
+                <section aria-labelledby="standard-heading">
+                    <h2 id="standard-heading">Standard Nodes — The Compact Car</h2>
+                    <p>Just like a compact car is perfect for daily commuting and errands, <strong>Standard nodes</strong> are ideal for everyday computing tasks that don't require exceptional power.</p>
+
+                    <h3>Best Suited For</h3>
+                    <ul>
+                        <li><strong>Web applications</strong> — Company websites, internal portals, and lightweight web services</li>
+                        <li><strong>Development and testing</strong> — Building and testing software before it goes live</li>
+                        <li><strong>Small databases</strong> — Customer lists, product catalogs, and internal records</li>
+                        <li><strong>Email and collaboration tools</strong> — Supporting team communication</li>
+                    </ul>
+
+                    <h3>Customer Conversation Tip</h3>
+                    <p>Recommend Standard nodes when a customer says: "We need to host our company website" or "We want a development environment for our team."</p>
+                </section>
+
+                <section aria-labelledby="performance-heading">
+                    <h2 id="performance-heading">Performance Nodes — The SUV</h2>
+                    <p>An SUV handles rougher terrain and carries more passengers. <strong>Performance nodes</strong> deliver more computing power for applications that need to handle heavier loads or respond faster.</p>
+
+                    <h3>Best Suited For</h3>
+                    <ul>
+                        <li><strong>Business-critical applications</strong> — ERP systems, CRM platforms, and financial software</li>
+                        <li><strong>Medium-scale databases</strong> — Transaction processing, order management</li>
+                        <li><strong>Multi-user platforms</strong> — Applications serving hundreds of simultaneous users</li>
+                        <li><strong>Containerized workloads</strong> — Running multiple services on a single node</li>
+                    </ul>
+
+                    <h3>Customer Conversation Tip</h3>
+                    <p>Recommend Performance nodes when a customer says: "Our application needs to handle peak traffic during business hours" or "We're running our core business software."</p>
+                </section>
+
+                <section aria-labelledby="highmem-heading">
+                    <h2 id="highmem-heading">High-Memory Nodes — The Truck</h2>
+                    <p>A truck is built to carry heavy loads that other vehicles simply can't handle. <strong>High-Memory nodes</strong> provide large amounts of memory for workloads that need to process or hold massive amounts of data at once.</p>
+
+                    <h3>Best Suited For</h3>
+                    <ul>
+                        <li><strong>Large data processing</strong> — Analyzing millions of records, generating complex reports</li>
+                        <li><strong>In-memory databases</strong> — Applications that keep entire datasets in memory for speed</li>
+                        <li><strong>Analytics platforms</strong> — Business intelligence tools processing large data sets</li>
+                        <li><strong>High-traffic applications</strong> — Services handling thousands of simultaneous connections</li>
+                    </ul>
+
+                    <h3>Customer Conversation Tip</h3>
+                    <p>Recommend High-Memory nodes when a customer says: "We need to run real-time analytics on our entire customer database" or "Our application processes large files in memory."</p>
+                </section>
+
+                <section aria-labelledby="choosing-heading">
+                    <h2 id="choosing-heading">How to Help Customers Choose</h2>
+                    <p>When discussing node types with customers, focus on <strong>what they need to accomplish</strong> rather than technical specifications. Ask questions like:</p>
+                    <ul>
+                        <li>"How many people will use this application at the same time?"</li>
+                        <li>"How much data does your application work with?"</li>
+                        <li>"Is this for development/testing or for production use?"</li>
+                        <li>"Does your application need to respond very quickly, or is some delay acceptable?"</li>
+                    </ul>
+                    <p>Their answers will naturally point toward the right node type. And remember — customers can always start with a Standard node and upgrade later as their needs grow.</p>
+                </section>
+
+                <section aria-labelledby="summary-heading">
+                    <h2 id="summary-heading">Key Takeaways</h2>
+                    <ul>
+                        <li>Standard nodes are for everyday workloads — like a compact car for daily commuting</li>
+                        <li>Performance nodes handle demanding applications — like an SUV for tougher terrain</li>
+                        <li>High-Memory nodes process large data — like a truck for heavy loads</li>
+                        <li>Focus on customer needs, not technical specs, when recommending a type</li>
+                        <li>Customers can upgrade node types as their business grows</li>
+                    </ul>
+                </section>
+
+                <footer class="lesson-footer">
+                    <nav class="lesson-nav" aria-label="Lesson navigation">
+                        <a href="node-lifecycle.html" class="btn-prev" aria-label="Previous lesson: Node Lifecycle">← Previous</a>
+                        <a href="resource-allocation.html" class="btn-next" aria-label="Next lesson: Resource Allocation">Next →</a>
+                    </nav>
+                </footer>
+            </article>
+        </main>
+    </div>
+
+    <footer class="site-footer" role="contentinfo">
+        <p>&copy; 2024 OVHcloud — OPCP Training Skillhub</p>
+    </footer>
+
+    <script src="../../assets/js/main.js"></script>
+</body>
+</html>

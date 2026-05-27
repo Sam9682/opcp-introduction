@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Key Features - Introduction - OPCP Skillhub</title>
+    <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <div class="page-wrapper">
+        <nav class="nav-sidebar" aria-label="Main navigation">
+            <div class="search-container">
+                <input type="search" class="search-input" placeholder="Search lessons..." aria-label="Search lessons">
+            </div>
+            <div class="progress-display">
+                <span class="progress-display__label">Overall Progress</span>
+                <div class="progress-display__bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="Overall completion progress"><div class="progress-display__fill" style="width: 0%"></div></div>
+                <span class="progress-display__percentage" role="status" aria-live="polite">0%</span>
+            </div>
+            <a href="../glossary.html" class="glossary-link" aria-label="View glossary of terms"><span class="glossary-link__icon" aria-hidden="true">📖</span> Glossary</a>
+
+            <button class="nav-sidebar__close" aria-label="Close navigation">&times;</button>
+        </nav>
+
+        <button class="nav-hamburger" aria-label="Open navigation menu">
+            <span class="nav-hamburger__icon" aria-hidden="true">&#9776;</span>
+        </button>
+        <div class="nav-overlay" aria-hidden="true"></div>
+
+        <main class="content-area" id="main-content">
+            <article>
+                <header class="lesson-header">
+                    <h1>Key Features</h1>
+                    <div class="lesson-meta">
+                        <span class="badge badge-beginner">Beginner</span>
+                        <a href="../../fr/introduction/key-features.html" class="language-switch" aria-label="Switch to French">
+                            <span>🇫🇷</span> <span>Français</span>
+                        </a>
+                    </div>
+                </header>
+
+                <section aria-labelledby="intro-heading">
+                    <h2 id="intro-heading">What Makes OPCP Stand Out</h2>
+                    <p><a href="../glossary.html#term-opcp" class="glossary-term">OPCP</a> (OVHcloud Hosted Private Cloud) offers a set of features designed to give businesses the power of dedicated infrastructure with the convenience of a managed service. Each feature below is explained with a visual diagram to help you understand how it works.</p>
+                </section>
+
+                <section aria-labelledby="feature-dedicated-heading">
+                    <h2 id="feature-dedicated-heading">1. Dedicated Resources</h2>
+                    <p>Every <a href="../glossary.html#term-node" class="glossary-term">node</a> in your OPCP environment is exclusively yours. No other customer shares your <a href="../glossary.html#term-cpu" class="glossary-term">CPU</a>, <a href="../glossary.html#term-ram" class="glossary-term">RAM</a>, or <a href="../glossary.html#term-storage" class="glossary-term">storage</a>. Think of it like having your own private gym versus a public one — the equipment is always available when you need it, with no waiting.</p>
+
+                    <figure class="diagram-scroll">
+                        <svg viewBox="0 0 600 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram showing dedicated resources: CPU, RAM, and Storage exclusively allocated to one customer">
+                            <rect x="50" y="30" width="500" height="150" rx="12" fill="#d4edda" stroke="#1b7a3d" stroke-width="2"/>
+                            <text x="300" y="25" text-anchor="middle" font-size="13" font-weight="bold" fill="#1b7a3d">Your Dedicated Environment</text>
+                            <rect x="80" y="60" width="120" height="90" rx="8" fill="#ffffff" stroke="#000E9C" stroke-width="1.5"/>
+                            <text x="140" y="90" text-anchor="middle" font-size="12" font-weight="bold" fill="#000E9C">CPU</text>
+                            <text x="140" y="115" text-anchor="middle" font-size="10" fill="#333">Processing power</text>
+                            <text x="140" y="135" text-anchor="middle" font-size="10" fill="#333">100% yours</text>
+                            <rect x="240" y="60" width="120" height="90" rx="8" fill="#ffffff" stroke="#000E9C" stroke-width="1.5"/>
+                            <text x="300" y="90" text-anchor="middle" font-size="12" font-weight="bold" fill="#000E9C">RAM</text>
+                            <text x="300" y="115" text-anchor="middle" font-size="10" fill="#333">Working memory</text>
+                            <text x="300" y="135" text-anchor="middle" font-size="10" fill="#333">100% yours</text>
+                            <rect x="400" y="60" width="120" height="90" rx="8" fill="#ffffff" stroke="#000E9C" stroke-width="1.5"/>
+                            <text x="460" y="90" text-anchor="middle" font-size="12" font-weight="bold" fill="#000E9C">Storage</text>
+                            <text x="460" y="115" text-anchor="middle" font-size="10" fill="#333">Data space</text>
+                            <text x="460" y="135" text-anchor="middle" font-size="10" fill="#333">100% yours</text>
+                        </svg>
+                        <figcaption>All computing resources in your OPCP environment are exclusively dedicated to your organisation</figcaption>
+                    </figure>
+                </section>
+
+                <section aria-labelledby="feature-scalability-heading">
+                    <h2 id="feature-scalability-heading">2. On-Demand Scalability</h2>
+                    <p>Need more power? Add nodes. Need less? Remove them. OPCP lets you scale your infrastructure up or down based on business needs — like adding extra rooms to your office when the team grows, or releasing them when a project ends.</p>
+
+                    <figure class="diagram-scroll">
+                        <svg viewBox="0 0 600 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram showing scalability: adding or removing nodes based on demand">
+                            <text x="300" y="25" text-anchor="middle" font-size="13" font-weight="bold" fill="#000E9C">Scale Up or Down as Needed</text>
+                            <!-- Low demand -->
+                            <rect x="30" y="50" width="150" height="130" rx="8" fill="#f5f7fa" stroke="#4949FF" stroke-width="1.5"/>
+                            <text x="105" y="75" text-anchor="middle" font-size="11" font-weight="bold" fill="#4949FF">Low Demand</text>
+                            <rect x="55" y="90" width="50" height="35" rx="4" fill="#e8eaff" stroke="#000E9C" stroke-width="1"/>
+                            <text x="80" y="112" text-anchor="middle" font-size="9" fill="#333">Node 1</text>
+                            <rect x="55" y="130" width="50" height="35" rx="4" fill="#e8eaff" stroke="#000E9C" stroke-width="1"/>
+                            <text x="80" y="152" text-anchor="middle" font-size="9" fill="#333">Node 2</text>
+                            <!-- Arrow -->
+                            <polygon points="200,115 220,105 220,125" fill="#4949FF"/>
+                            <line x1="190" y1="115" x2="220" y2="115" stroke="#4949FF" stroke-width="2"/>
+                            <!-- High demand -->
+                            <rect x="240" y="50" width="170" height="130" rx="8" fill="#f5f7fa" stroke="#4949FF" stroke-width="1.5"/>
+                            <text x="325" y="75" text-anchor="middle" font-size="11" font-weight="bold" fill="#4949FF">High Demand</text>
+                            <rect x="255" y="90" width="50" height="35" rx="4" fill="#e8eaff" stroke="#000E9C" stroke-width="1"/>
+                            <text x="280" y="112" text-anchor="middle" font-size="9" fill="#333">Node 1</text>
+                            <rect x="315" y="90" width="50" height="35" rx="4" fill="#e8eaff" stroke="#000E9C" stroke-width="1"/>
+                            <text x="340" y="112" text-anchor="middle" font-size="9" fill="#333">Node 2</text>
+                            <rect x="255" y="130" width="50" height="35" rx="4" fill="#e8eaff" stroke="#000E9C" stroke-width="1"/>
+                            <text x="280" y="152" text-anchor="middle" font-size="9" fill="#333">Node 3</text>
+                            <rect x="315" y="130" width="50" height="35" rx="4" fill="#d4edda" stroke="#1b7a3d" stroke-width="1.5"/>
+                            <text x="340" y="152" text-anchor="middle" font-size="9" fill="#1b7a3d">Node 4</text>
+                            <!-- Arrow -->
+                            <polygon points="430" fill="#4949FF"/>
+                            <line x1="420" y1="115" x2="450" y2="115" stroke="#4949FF" stroke-width="2"/>
+                            <polygon points="440,115 460,105 460,125" fill="#4949FF"/>
+                            <!-- Peak demand -->
+                            <rect x="470" y="40" width="120" height="145" rx="8" fill="#f5f7fa" stroke="#1b7a3d" stroke-width="1.5"/>
+                            <text x="530" y="60" text-anchor="middle" font-size="11" font-weight="bold" fill="#1b7a3d">Peak</text>
+                            <rect x="485" y="70" width="40" height="30" rx="4" fill="#e8eaff" stroke="#000E9C" stroke-width="1"/>
+                            <rect x="535" y="70" width="40" height="30" rx="4" fill="#e8eaff" stroke="#000E9C" stroke-width="1"/>
+                            <rect x="485" y="105" width="40" height="30" rx="4" fill="#e8eaff" stroke="#000E9C" stroke-width="1"/>
+                            <rect x="535" y="105" width="40" height="30" rx="4" fill="#e8eaff" stroke="#000E9C" stroke-width="1"/>
+                            <rect x="485" y="140" width="40" height="30" rx="4" fill="#d4edda" stroke="#1b7a3d" stroke-width="1.5"/>
+                            <rect x="535" y="140" width="40" height="30" rx="4" fill="#d4edda" stroke="#1b7a3d" stroke-width="1.5"/>
+                        </svg>
+                        <figcaption>OPCP scales with your business: add nodes when demand grows, release them when it subsides</figcaption>
+                    </figure>
+                </section>
+
+                <section aria-labelledby="feature-network-heading">
+                    <h2 id="feature-network-heading">3. Network Isolation</h2>
+                    <p>Your <a href="../glossary.html#term-private-network" class="glossary-term">private network</a> is completely separated from other customers and the public internet. It's like having internal corridors in your office building that only your employees can access — visitors use the main entrance, but your internal communications stay private.</p>
+
+                    <figure class="diagram-scroll">
+                        <svg viewBox="0 0 600 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram showing network isolation with private and public network separation">
+                            <text x="300" y="20" text-anchor="middle" font-size="13" font-weight="bold" fill="#000E9C">Network Isolation</text>
+                            <!-- Public network -->
+                            <rect x="30" y="40" width="540" height="60" rx="8" fill="#fff3cd" stroke="#7a5c00" stroke-width="1.5"/>
+                            <text x="300" y="65" text-anchor="middle" font-size="12" font-weight="bold" fill="#7a5c00">🌐 Public Network (Internet)</text>
+                            <text x="300" y="85" text-anchor="middle" font-size="10" fill="#333">Accessible from outside — like the building's main entrance</text>
+                            <!-- Firewall -->
+                            <rect x="250" y="105" width="100" height="25" rx="4" fill="#f8d7da" stroke="#a71d2a" stroke-width="1.5"/>
+                            <text x="300" y="122" text-anchor="middle" font-size="10" font-weight="bold" fill="#a71d2a">🔒 Firewall</text>
+                            <!-- Private network -->
+                            <rect x="30" y="140" width="540" height="70" rx="8" fill="#d4edda" stroke="#1b7a3d" stroke-width="1.5"/>
+                            <text x="300" y="165" text-anchor="middle" font-size="12" font-weight="bold" fill="#1b7a3d">🔐 Private Network (Your vRack)</text>
+                            <text x="300" y="185" text-anchor="middle" font-size="10" fill="#333">Only your nodes can communicate here — like internal office corridors</text>
+                            <text x="300" y="200" text-anchor="middle" font-size="10" fill="#333">Invisible to other customers and the public internet</text>
+                        </svg>
+                        <figcaption>OPCP separates your private network from the public internet, ensuring internal traffic stays secure</figcaption>
+                    </figure>
+                </section>
+
+                <section aria-labelledby="feature-api-heading">
+                    <h2 id="feature-api-heading">4. API-Driven Management</h2>
+                    <p>Everything you can do in the dashboard, you can also do through the <a href="../glossary.html#term-api" class="glossary-term">API</a>. This means repetitive tasks can be automated — like having a personal assistant who follows your instructions precisely, every time, without you needing to be present.</p>
+
+                    <figure class="diagram-scroll">
+                        <svg viewBox="0 0 600 180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram showing API-driven management: dashboard and API both control OPCP resources">
+                            <text x="300" y="20" text-anchor="middle" font-size="13" font-weight="bold" fill="#000E9C">Two Ways to Manage OPCP</text>
+                            <!-- Dashboard -->
+                            <rect x="50" y="50" width="150" height="70" rx="8" fill="#e8eaff" stroke="#000E9C" stroke-width="1.5"/>
+                            <text x="125" y="80" text-anchor="middle" font-size="11" font-weight="bold" fill="#000E9C">🖥️ Dashboard</text>
+                            <text x="125" y="100" text-anchor="middle" font-size="10" fill="#333">Click and configure</text>
+                            <!-- API -->
+                            <rect x="50" y="130" width="150" height="40" rx="8" fill="#e8eaff" stroke="#4949FF" stroke-width="1.5"/>
+                            <text x="125" y="155" text-anchor="middle" font-size="11" font-weight="bold" fill="#4949FF">⚡ API</text>
+                            <!-- Arrows -->
+                            <line x1="200" y1="85" x2="300" y2="100" stroke="#000E9C" stroke-width="2"/>
+                            <line x1="200" y1="150" x2="300" y2="110" stroke="#4949FF" stroke-width="2"/>
+                            <!-- OPCP Resources -->
+                            <rect x="300" y="60" width="250" height="90" rx="10" fill="#d4edda" stroke="#1b7a3d" stroke-width="2"/>
+                            <text x="425" y="90" text-anchor="middle" font-size="12" font-weight="bold" fill="#1b7a3d">OPCP Resources</text>
+                            <text x="425" y="112" text-anchor="middle" font-size="10" fill="#333">Create nodes, configure networks,</text>
+                            <text x="425" y="128" text-anchor="middle" font-size="10" fill="#333">manage storage, monitor performance</text>
+                        </svg>
+                        <figcaption>OPCP can be managed through the web dashboard (manual) or the API (automated)</figcaption>
+                    </figure>
+                </section>
+
+                <section aria-labelledby="feature-sovereignty-heading">
+                    <h2 id="feature-sovereignty-heading">5. European Data Sovereignty</h2>
+                    <p>All data stays within European <a href="../glossary.html#term-datacentre" class="glossary-term">data centres</a>, governed by European law. This is critical for businesses in regulated industries. Think of it like keeping your company's legal documents in a local solicitor's office rather than sending them overseas — you know exactly where they are and which laws protect them.</p>
+                </section>
+
+                <section aria-labelledby="summary-heading">
+                    <h2 id="summary-heading">Feature Summary</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>What It Means</th>
+                                <th>Real-World Analogy</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Dedicated Resources</td>
+                                <td>CPU, RAM, storage exclusively yours</td>
+                                <td>Private gym — equipment always available</td>
+                            </tr>
+                            <tr>
+                                <td>On-Demand Scalability</td>
+                                <td>Add or remove nodes as needed</td>
+                                <td>Expanding office space with business growth</td>
+                            </tr>
+                            <tr>
+                                <td>Network Isolation</td>
+                                <td>Private network separated from others</td>
+                                <td>Internal corridors only your team can use</td>
+                            </tr>
+                            <tr>
+                                <td>API-Driven Management</td>
+                                <td>Automate any management task</td>
+                                <td>Personal assistant following precise instructions</td>
+                            </tr>
+                            <tr>
+                                <td>Data Sovereignty</td>
+                                <td>Data stays in European data centres</td>
+                                <td>Documents kept at a local solicitor's office</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <nav class="nav-sequential" aria-label="Lesson navigation">
+                    <a href="target-audience.html" class="nav-sequential__btn nav-sequential__btn--prev">
+                        <span class="nav-sequential__arrow" aria-hidden="true">&larr;</span>
+                        <span class="nav-sequential__label">Previous: Target Audience</span>
+                    </a>
+                    <a href="../getting-started/account-setup.html" class="nav-sequential__btn nav-sequential__btn--next">
+                        <span class="nav-sequential__label">Next: Account Setup</span>
+                        <span class="nav-sequential__arrow" aria-hidden="true">&rarr;</span>
+                    </a>
+                </nav>
+            </article>
+        </main>
+    </div>
+
+    <footer class="site-footer" role="contentinfo">
+        <p>&copy; 2024 OVHcloud — OPCP Introduction Skillhub</p>
+    </footer>
+
+    <script src="../../assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Architecture Réseau - Concepts Fondamentaux - Formation OPCP</title>
+    <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+
+    <header class="site-header">
+        <nav class="top-nav" aria-label="Navigation principale">
+            <a href="../../index.html" class="logo-link" aria-label="Accueil Formation OPCP">Formation OPCP</a>
+            <a href="../../en/core-concepts/network-architecture.html" class="lang-switch" aria-label="Passer en anglais">EN</a>
+        </nav>
+    </header>
+
+    <div class="page-layout">
+        <nav class="sidebar" id="sidebar-nav" aria-label="Navigation des leçons">
+            <!-- Navigation rendue par navigation.js -->
+                <a href="../glossary.html" class="glossary-link" aria-label="Voir le glossaire des termes"><span class="glossary-link__icon" aria-hidden="true">📖</span> Glossaire</a>
+    </nav>
+
+        <main class="content-area" id="main-content">
+            <article>
+                <header class="lesson-header">
+                    <h1>Architecture Réseau</h1>
+                    <span class="difficulty-badge intermediate" aria-label="Difficulté : Intermédiaire">Intermédiaire</span>
+                </header>
+
+                <section aria-labelledby="overview-heading">
+                    <h2 id="overview-heading">Comprendre l'Architecture Réseau</h2>
+                    <p>Dans OPCP, les <span class="glossary-term" data-term="node">nœuds</span> ne fonctionnent pas de manière isolée — ils doivent communiquer entre eux et avec le monde extérieur. L'<span class="glossary-term" data-term="network-architecture">architecture réseau</span> définit comment ces connexions sont organisées, sécurisées et optimisées.</p>
+
+                    <p>Pensez-y comme <strong>le système routier d'une ville</strong>. Il y a des routes principales (réseau public) qui connectent la ville au reste du monde, et des rues internes (réseau privé) qui relient les bâtiments entre eux. Certaines routes sont plus larges et rapides que d'autres, et des barrières de sécurité contrôlent qui peut accéder à quoi.</p>
+                </section>
+
+                <section aria-labelledby="diagram-heading">
+                    <h2 id="diagram-heading">Topologie Réseau OPCP</h2>
+
+                    <figure class="diagram-container" role="img" aria-label="Diagramme de topologie réseau montrant la séparation entre réseau public et réseau privé, avec des nœuds connectés via un réseau privé interne et un accès internet via le réseau public">
+                        <svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg" class="network-diagram" aria-hidden="true">
+                            <!-- Titre -->
+                            <text x="400" y="25" text-anchor="middle" font-size="16" font-weight="bold" fill="#000E9C">Architecture Réseau — Comme le Système Routier d'une Ville</text>
+
+                            <!-- Internet (nuage) -->
+                            <ellipse cx="400" cy="75" rx="120" ry="35" fill="#F0F1FF" stroke="#000E9C" stroke-width="2"/>
+                            <text x="400" y="80" text-anchor="middle" font-size="14" font-weight="bold" fill="#000E9C">🌐 Internet</text>
+
+                            <!-- Ligne vers le pare-feu -->
+                            <line x1="400" y1="110" x2="400" y2="140" stroke="#000E9C" stroke-width="2" stroke-dasharray="5,3"/>
+
+                            <!-- Pare-feu -->
+                            <rect x="340" y="140" width="120" height="40" rx="6" fill="#FFE8E8" stroke="#CC0000" stroke-width="2"/>
+                            <text x="400" y="165" text-anchor="middle" font-size="12" font-weight="bold" fill="#CC0000">🛡️ Pare-feu</text>
+
+                            <!-- Ligne vers le réseau public -->
+                            <line x1="400" y1="180" x2="400" y2="210" stroke="#000E9C" stroke-width="2"/>
+
+                            <!-- Zone Réseau Public -->
+                            <rect x="200" y="210" width="400" height="60" rx="10" fill="#E8EAFF" stroke="#000E9C" stroke-width="2"/>
+                            <text x="400" y="235" text-anchor="middle" font-size="13" font-weight="bold" fill="#000E9C">Réseau Public</text>
+                            <text x="400" y="255" text-anchor="middle" font-size="11" fill="#555">Route principale — Accès depuis l'extérieur</text>
+
+                            <!-- Lignes vers le réseau privé -->
+                            <line x1="300" y1="270" x2="300" y2="310" stroke="#4949FF" stroke-width="2"/>
+                            <line x1="400" y1="270" x2="400" y2="310" stroke="#4949FF" stroke-width="2"/>
+                            <line x1="500" y1="270" x2="500" y2="310" stroke="#4949FF" stroke-width="2"/>
+
+                            <!-- Zone Réseau Privé -->
+                            <rect x="100" y="310" width="600" height="120" rx="10" fill="#F0FFF0" stroke="#4949FF" stroke-width="2" stroke-dasharray="8,4"/>
+                            <text x="400" y="335" text-anchor="middle" font-size="13" font-weight="bold" fill="#4949FF">Réseau Privé</text>
+                            <text x="400" y="352" text-anchor="middle" font-size="11" fill="#555">Rues internes — Communication entre nœuds uniquement</text>
+
+                            <!-- Nœuds -->
+                            <rect x="140" y="365" width="120" height="50" rx="8" fill="#fff" stroke="#4949FF" stroke-width="2"/>
+                            <text x="200" y="385" text-anchor="middle" font-size="11" font-weight="bold" fill="#4949FF">Nœud A</text>
+                            <text x="200" y="402" text-anchor="middle" font-size="10" fill="#555">App Web</text>
+
+                            <rect x="340" y="365" width="120" height="50" rx="8" fill="#fff" stroke="#4949FF" stroke-width="2"/>
+                            <text x="400" y="385" text-anchor="middle" font-size="11" font-weight="bold" fill="#4949FF">Nœud B</text>
+                            <text x="400" y="402" text-anchor="middle" font-size="10" fill="#555">Base de données</text>
+
+                            <rect x="540" y="365" width="120" height="50" rx="8" fill="#fff" stroke="#4949FF" stroke-width="2"/>
+                            <text x="600" y="385" text-anchor="middle" font-size="11" font-weight="bold" fill="#4949FF">Nœud C</text>
+                            <text x="600" y="402" text-anchor="middle" font-size="10" fill="#555">Stockage</text>
+
+                            <!-- Connexions entre nœuds (réseau privé) -->
+                            <line x1="260" y1="390" x2="340" y2="390" stroke="#4949FF" stroke-width="1.5" stroke-dasharray="3,2"/>
+                            <line x1="460" y1="390" x2="540" y2="390" stroke="#4949FF" stroke-width="1.5" stroke-dasharray="3,2"/>
+
+                            <!-- Légende -->
+                            <rect x="50" y="440" width="12" height="3" fill="#000E9C"/>
+                            <text x="68" y="444" font-size="10" fill="#333">Réseau public</text>
+                            <line x1="180" y1="442" x2="200" y2="442" stroke="#4949FF" stroke-width="2" stroke-dasharray="3,2"/>
+                            <text x="208" y="444" font-size="10" fill="#333">Réseau privé</text>
+                            <line x1="320" y1="442" x2="340" y2="442" stroke="#000E9C" stroke-width="2" stroke-dasharray="5,3"/>
+                            <text x="348" y="444" font-size="10" fill="#333">Accès internet</text>
+                        </svg>
+                        <figcaption>Topologie réseau OPCP montrant la séparation entre réseau public (accès externe) et réseau privé (communication interne entre nœuds).</figcaption>
+                    </figure>
+                </section>
+
+                <section aria-labelledby="public-heading">
+                    <h2 id="public-heading">Réseau Public — La Route Principale</h2>
+                    <h3>L'analogie de la ville : Les autoroutes</h3>
+                    <p>Le réseau public est comme l'autoroute qui connecte votre ville au reste du monde. C'est par là que les visiteurs (utilisateurs, clients) arrivent pour accéder à vos services.</p>
+
+                    <h3>Ce que cela signifie dans OPCP</h3>
+                    <p>Le <span class="glossary-term" data-term="public-network">réseau public</span> permet à vos nœuds d'être accessibles depuis internet :</p>
+                    <ul>
+                        <li>Les utilisateurs finaux accèdent à vos applications via le réseau public</li>
+                        <li>Chaque nœud peut recevoir une adresse IP publique (comme une adresse postale visible)</li>
+                        <li>Le trafic est protégé par des pare-feux et des règles de sécurité</li>
+                        <li>La bande passante détermine combien de visiteurs peuvent accéder simultanément</li>
+                    </ul>
+                    <p><strong>Pour les clients :</strong> Le réseau public est ce qui rend leurs applications accessibles à leurs propres clients et utilisateurs.</p>
+                </section>
+
+                <section aria-labelledby="private-heading">
+                    <h2 id="private-heading">Réseau Privé — Les Rues Internes</h2>
+                    <h3>L'analogie de la ville : Les rues résidentielles</h3>
+                    <p>Le réseau privé est comme les rues internes d'un quartier résidentiel. Seuls les résidents (vos nœuds) peuvent y circuler. Les visiteurs extérieurs n'y ont pas accès directement.</p>
+
+                    <h3>Ce que cela signifie dans OPCP</h3>
+                    <p>Le <span class="glossary-term" data-term="private-network">réseau privé</span> permet à vos nœuds de communiquer entre eux en toute sécurité :</p>
+                    <ul>
+                        <li>Les nœuds échangent des données sans passer par internet (plus rapide et plus sûr)</li>
+                        <li>La base de données communique avec l'application web sans exposition externe</li>
+                        <li>Le trafic interne est isolé du trafic public (comme un quartier fermé)</li>
+                        <li>Pas de frais de bande passante pour les communications internes</li>
+                    </ul>
+                    <p><strong>Pour les clients :</strong> Le réseau privé garantit que les données sensibles (comme les informations de base de données) ne transitent jamais sur internet public.</p>
+                </section>
+
+                <section aria-labelledby="bandwidth-heading">
+                    <h2 id="bandwidth-heading">Bande Passante — La Largeur de la Route</h2>
+                    <h3>L'analogie de la ville : Le nombre de voies</h3>
+                    <p>La <span class="glossary-term" data-term="bandwidth">bande passante</span> est comme le nombre de voies sur une route. Une route à deux voies peut gérer un certain volume de trafic, mais aux heures de pointe, elle devient congestionnée. Une autoroute à six voies gère beaucoup plus de véhicules simultanément.</p>
+
+                    <h3>Ce que cela signifie pour les clients</h3>
+                    <ul>
+                        <li><strong>Plus de bande passante</strong> = plus d'utilisateurs peuvent accéder aux services en même temps</li>
+                        <li><strong>Moins de bande passante</strong> = suffisant pour des applications à faible trafic</li>
+                        <li>Les sites e-commerce pendant les soldes ont besoin de plus de bande passante</li>
+                        <li>Un outil interne utilisé par 10 personnes nécessite peu de bande passante</li>
+                    </ul>
+                </section>
+
+                <section aria-labelledby="security-heading">
+                    <h2 id="security-heading">Sécurité Réseau — Les Barrières et Contrôles</h2>
+                    <h3>L'analogie de la ville : Les postes de contrôle</h3>
+                    <p>Comme une ville a des postes de contrôle aux entrées et des caméras de surveillance, le réseau OPCP dispose de mécanismes de sécurité pour protéger vos nœuds :</p>
+                    <ul>
+                        <li><strong>Pare-feux</strong> — Comme des gardes à l'entrée qui vérifient qui peut entrer</li>
+                        <li><strong>Règles de filtrage</strong> — Comme des panneaux « accès interdit » sur certaines routes</li>
+                        <li><strong>Isolation réseau</strong> — Comme des murs entre les propriétés voisines</li>
+                        <li><strong>Chiffrement</strong> — Comme envoyer des messages dans des enveloppes scellées</li>
+                    </ul>
+                </section>
+
+                <section aria-labelledby="summary-heading">
+                    <h2 id="summary-heading">Points Clés à Retenir</h2>
+                    <ul>
+                        <li>Le réseau public connecte vos nœuds à internet — c'est la route principale vers le monde extérieur</li>
+                        <li>Le réseau privé permet aux nœuds de communiquer entre eux en toute sécurité — ce sont les rues internes</li>
+                        <li>La bande passante détermine combien de trafic peut circuler — c'est la largeur de la route</li>
+                        <li>La sécurité réseau protège vos nœuds avec des pare-feux et des règles de filtrage</li>
+                        <li>La séparation public/privé est essentielle pour protéger les données sensibles</li>
+                    </ul>
+                </section>
+
+                <footer class="lesson-footer">
+                    <nav class="lesson-nav" aria-label="Navigation des leçons">
+                        <a href="resource-allocation.html" class="btn-prev" aria-label="Leçon précédente : Allocation des Ressources">← Précédent</a>
+                        <a href="../technical-operations/instance-setup.html" class="btn-next" aria-label="Leçon suivante : Mise en Place d'Instance">Suivant →</a>
+                    </nav>
+                </footer>
+            </article>
+        </main>
+    </div>
+
+    <footer class="site-footer" role="contentinfo">
+        <p>&copy; 2024 OVHcloud — Skillhub Formation OPCP</p>
+    </footer>
+
+    <script src="../../assets/js/main.js"></script>
+</body>
+</html>

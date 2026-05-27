@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuration Initiale - Premiers Pas - OPCP Skillhub</title>
+    <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+
+    <header class="site-header">
+        <nav class="top-nav" aria-label="Navigation du site">
+            <a href="../../index.html" class="logo">OPCP Skillhub</a>
+            <a href="../../en/getting-started/initial-configuration.html" class="lang-switch" aria-label="Passer en anglais">EN</a>
+        </nav>
+    </header>
+
+    <nav class="sidebar" aria-label="Navigation des leçons">
+        <!-- Sidebar populated by navigation.js -->
+            <a href="../glossary.html" class="glossary-link" aria-label="Voir le glossaire des termes"><span class="glossary-link__icon" aria-hidden="true">📖</span> Glossaire</a>
+    </nav>
+
+    <main class="content-area" id="main-content">
+        <article>
+            <header class="lesson-header">
+                <h1>Configuration Initiale</h1>
+                <span class="difficulty-badge beginner" aria-label="Difficulté : Débutant">Débutant</span>
+            </header>
+
+            <section aria-labelledby="overview">
+                <h2 id="overview">Présentation</h2>
+                <p>Après votre première connexion, quelques étapes de configuration sont nécessaires avant que votre environnement <dfn class="glossary-term" title="OVHcloud Hosted Private Cloud (OPCP) — un service d'infrastructure cloud dédié où votre organisation dispose de ses propres ressources informatiques privées, séparées des autres clients">OPCP</dfn> soit prêt à l'emploi. C'est comme emménager dans un nouveau bureau : le bâtiment est prêt, mais vous devez encore installer votre poste de travail, brancher le téléphone et faire configurer votre badge de sécurité.</p>
+                <p>Cette leçon vous guide à travers les étapes essentielles de configuration initiale en utilisant un langage simple et non technique.</p>
+            </section>
+
+            <section aria-labelledby="step1">
+                <h2 id="step1">Étape 1 : Sélectionner l'emplacement de votre centre de données</h2>
+                <p>Votre première décision est de choisir où vos ressources de cloud privé seront physiquement hébergées. Un <dfn class="glossary-term" title="Centre de données — un bâtiment sécurisé et climatisé rempli d'ordinateurs puissants (serveurs) qui stockent et traitent les données. OVHcloud exploite des centres de données en Europe, en Amérique du Nord et en Asie-Pacifique. Considérez-le comme un entrepôt haute sécurité pour vos actifs numériques.">centre de données</dfn> est une installation sécurisée qui héberge les ordinateurs exécutant vos services.</p>
+                <p>Choisissez un emplacement en fonction de :</p>
+                <ul>
+                    <li><strong>La proximité avec vos utilisateurs</strong> — Des emplacements plus proches signifient des temps de réponse plus rapides</li>
+                    <li><strong>Les exigences légales</strong> — Certaines réglementations imposent que les données restent dans certains pays</li>
+                    <li><strong>Les besoins de redondance</strong> — Vous pouvez souhaiter des ressources dans plusieurs emplacements à des fins de sauvegarde</li>
+                </ul>
+                <figure>
+                    <img src="../../assets/images/initial-config-step1-datacentre.png" alt="Carte montrant les emplacements des centres de données OVHcloud en Europe et en Amérique du Nord avec des épingles sélectionnables">
+                    <figcaption>L'écran de sélection du centre de données. Cliquez sur une épingle sur la carte pour choisir où vos ressources seront hébergées. Les emplacements disponibles sont indiqués par des épingles bleues.</figcaption>
+                </figure>
+            </section>
+
+            <section aria-labelledby="step2">
+                <h2 id="step2">Étape 2 : Configurer votre réseau privé</h2>
+                <p>Ensuite, vous créez un <dfn class="glossary-term" title="vRack — la technologie de réseau privé d'OVHcloud qui connecte vos services cloud entre eux de manière sécurisée. Imaginez-le comme un couloir privé entre des bureaux auquel seule votre équipe peut accéder — les autres clients ne peuvent ni voir ni atteindre votre trafic.">vRack</dfn> — votre réseau privé. C'est la connexion sécurisée entre tous vos services cloud. Imaginez-le comme un couloir privé reliant différentes pièces de votre bureau : seule votre équipe peut l'emprunter.</p>
+                <p>La mise en place d'un vRack implique :</p>
+                <ol>
+                    <li>Donner à votre réseau privé un nom que vous reconnaîtrez (ex. : « Réseau Production »)</li>
+                    <li>Choisir quels services doivent y être connectés</li>
+                    <li>Confirmer la configuration</li>
+                </ol>
+                <figure>
+                    <img src="../../assets/images/initial-config-step2-vrack.png" alt="Formulaire de création vRack montrant un champ de nom et une liste de services à connecter, avec des cases à cocher à côté de chaque service">
+                    <figcaption>L'écran de configuration du vRack. Saisissez un nom descriptif (1), sélectionnez les services à connecter à l'aide des cases à cocher (2), et cliquez sur « Créer » (3).</figcaption>
+                </figure>
+            </section>
+
+            <section aria-labelledby="step3">
+                <h2 id="step3">Étape 3 : Configurer votre premier hôte</h2>
+                <p>Un <dfn class="glossary-term" title="Hôte — un serveur physique au sein de votre cloud privé qui fournit de la puissance de calcul (traitement et mémoire). Considérez-le comme un poste de travail puissant dédié entièrement aux tâches de votre organisation.">hôte</dfn> est le serveur physique qui fournit la puissance de calcul pour votre cloud privé. Configurer votre premier hôte signifie choisir sa puissance — un peu comme choisir entre une voiture compacte et un camion selon ce que vous devez transporter.</p>
+                <p>Lors de la configuration de l'hôte, vous sélectionnerez :</p>
+                <ul>
+                    <li><strong>Type d'hôte</strong> — Différentes tailles pour différentes charges de travail (petit pour les tests, grand pour la production)</li>
+                    <li><strong>Quantité</strong> — Combien d'hôtes vous avez besoin pour commencer (vous pourrez en ajouter plus tard)</li>
+                    <li><strong>Affectation au centre de données</strong> — À quel emplacement cet hôte appartient</li>
+                </ul>
+                <figure>
+                    <img src="../../assets/images/initial-config-step3-host.png" alt="Écran de configuration d'hôte montrant les options de type d'hôte sous forme de cartes avec les spécifications, un sélecteur de quantité et un menu déroulant de centre de données">
+                    <figcaption>L'écran de configuration de l'hôte. Choisissez un type d'hôte parmi les cartes affichées (A), définissez la quantité (B), et confirmez le centre de données (C). Chaque carte présente les capacités de l'hôte en termes simples.</figcaption>
+                </figure>
+            </section>
+
+            <section aria-labelledby="step4">
+                <h2 id="step4">Étape 4 : Ajouter du stockage</h2>
+                <p>Votre hôte a besoin d'un endroit pour stocker les données. Ajouter un <dfn class="glossary-term" title="Datastore — un volume de stockage attaché à votre cloud privé où les fichiers, bases de données et données d'application sont conservés. Considérez-le comme un disque dur pour vos serveurs cloud.">datastore</dfn>, c'est comme ajouter une armoire de classement à votre nouveau bureau — cela donne à vos applications un endroit pour sauvegarder leur travail.</p>
+                <p>Choisissez votre stockage en fonction de :</p>
+                <ul>
+                    <li><strong>Capacité</strong> — L'espace dont vous avez besoin (mesuré en gigaoctets ou téraoctets)</li>
+                    <li><strong>Niveau de performance</strong> — Stockage standard pour un usage quotidien, ou stockage haute performance pour les applications exigeantes</li>
+                </ul>
+                <figure>
+                    <img src="../../assets/images/initial-config-step4-storage.png" alt="Écran de configuration du stockage montrant un curseur de capacité et les options de niveau de performance (Standard et Haute Performance)">
+                    <figcaption>L'écran de configuration du stockage. Utilisez le curseur (1) pour définir la capacité et choisissez un niveau de performance (2). Le coût mensuel estimé se met à jour automatiquement lorsque vous ajustez les paramètres.</figcaption>
+                </figure>
+            </section>
+
+            <section aria-labelledby="step5">
+                <h2 id="step5">Étape 5 : Configurer les accès utilisateurs</h2>
+                <p>Enfin, décidez qui dans votre équipe doit avoir accès à l'environnement OPCP et ce qu'ils doivent être autorisés à faire. C'est comme distribuer des badges de sécurité — chaque personne n'a accès qu'aux zones dont elle a besoin.</p>
+                <p>Vous pouvez créer des comptes utilisateurs avec différents niveaux de permissions :</p>
+                <ul>
+                    <li><strong>Administrateur</strong> — Accès complet à tous les paramètres et services (pour les responsables informatiques)</li>
+                    <li><strong>Opérateur</strong> — Peut gérer les services mais ne peut pas modifier la facturation ou les paramètres du compte</li>
+                    <li><strong>Lecture seule</strong> — Peut consulter les informations mais ne peut pas effectuer de modifications (utile pour les auditeurs ou observateurs)</li>
+                </ul>
+                <figure>
+                    <img src="../../assets/images/initial-config-step5-users.png" alt="Écran de gestion des utilisateurs montrant une liste de membres d'équipe avec des menus déroulants de rôles et un bouton Ajouter un utilisateur">
+                    <figcaption>L'écran d'accès utilisateurs. Cliquez sur « Ajouter un utilisateur » (mis en évidence) pour inviter un membre de l'équipe, puis attribuez-lui un rôle depuis le menu déroulant à côté de son nom.</figcaption>
+                </figure>
+            </section>
+
+            <section aria-labelledby="summary">
+                <h2 id="summary">Configuration terminée</h2>
+                <p>Une fois ces cinq étapes accomplies, votre environnement OPCP est prêt à l'emploi. Votre équipe peut commencer à déployer des applications et stocker des données dans votre cloud privé. Voici un récapitulatif rapide :</p>
+                <ol>
+                    <li>Emplacement du centre de données choisi</li>
+                    <li>Réseau privé (vRack) créé</li>
+                    <li>Premier hôte configuré</li>
+                    <li>Stockage ajouté</li>
+                    <li>Accès de l'équipe configuré</li>
+                </ol>
+                <p>À partir d'ici, vous pouvez explorer la section <a href="../core-concepts/node-lifecycle.html">Concepts Fondamentaux</a> pour en savoir plus sur le fonctionnement de vos ressources, ou passer aux <a href="../technical-operations/instance-setup.html">Opérations Techniques</a> pour une vue d'ensemble de la gestion quotidienne.</p>
+            </section>
+
+            <footer class="lesson-footer">
+                <nav class="sequential-nav" aria-label="Navigation des leçons">
+                    <a href="navigation.html" class="nav-prev">Précédent : Navigation</a>
+                    <a href="../core-concepts/node-lifecycle.html" class="nav-next">Suivant : Cycle de Vie des Nœuds</a>
+                </nav>
+            </footer>
+        </article>
+    </main>
+
+    <footer class="site-footer" role="contentinfo">
+        <p>&copy; OVHcloud — OPCP Skillhub</p>
+    </footer>
+
+    <script src="../../assets/js/main.js"></script>
+</body>
+</html>

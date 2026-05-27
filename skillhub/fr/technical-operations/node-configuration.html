@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuration des Nœuds - Opérations Techniques - OPCP Skillhub</title>
+    <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+
+    <header class="site-header">
+        <nav aria-label="Navigation du site" class="top-nav">
+            <a href="../../index.html" class="site-logo">OPCP Skillhub</a>
+            <a href="../../en/technical-operations/node-configuration.html" class="lang-switch" aria-label="Passer en anglais">EN</a>
+        </nav>
+    </header>
+
+    <nav aria-label="Navigation latérale" class="sidebar" id="sidebar">
+        <ul class="nav-menu">
+            <li><a href="../introduction/what-is-opcp.html">Introduction</a></li>
+            <li><a href="../getting-started/account-setup.html">Premiers Pas</a></li>
+            <li><a href="../core-concepts/node-lifecycle.html">Concepts Fondamentaux</a></li>
+            <li class="active-section">
+                <a href="instance-setup.html">Opérations Techniques</a>
+                <ul>
+                    <li><a href="instance-setup.html">Configuration d'Instance</a></li>
+                    <li><a href="api-credentials.html">API &amp; Identifiants</a></li>
+                    <li class="active"><a href="node-configuration.html">Configuration des Nœuds</a></li>
+                    <li><a href="lacp-trunk-raid.html">LACP, Trunk &amp; RAID</a></li>
+                </ul>
+            </li>
+            <li><a href="../storage/cloudstore-overview.html">Solutions de Stockage</a></li>
+            <li><a href="../best-practices/operations-security.html">Bonnes Pratiques</a></li>
+        </ul>
+            <a href="../glossary.html" class="glossary-link" aria-label="Voir le glossaire des termes"><span class="glossary-link__icon" aria-hidden="true">📖</span> Glossaire</a>
+    </nav>
+
+    <main class="content-area" id="main-content">
+        <article>
+            <header class="lesson-header">
+                <h1>Configuration des Nœuds</h1>
+                <span class="difficulty-badge intermediate" aria-label="Difficulté : Intermédiaire">Intermédiaire</span>
+            </header>
+
+            <section aria-labelledby="overview">
+                <h2 id="overview">Présentation</h2>
+                <p>La <a href="../glossary.html#term-configuration" class="glossary-term">configuration</a> des <a href="../glossary.html#term-node" class="glossary-term">nœuds</a> détermine le comportement et les performances de vos ressources cloud. Chaque option de configuration affecte directement l'expérience de vos clients — de la rapidité de réponse de leurs applications au maintien en ligne de leur service pendant les opérations de maintenance.</p>
+                <p><strong>Analogie :</strong> Configurer un nœud est comme aménager un nouveau magasin. Vous décidez des horaires d'ouverture (disponibilité), du nombre de caisses à ouvrir (performance), de l'installation d'un groupe électrogène de secours (résilience) et de l'organisation de la réserve (stockage). Chaque décision façonne l'expérience client.</p>
+            </section>
+
+            <section aria-labelledby="availability-options">
+                <h2 id="availability-options">Configuration de la Disponibilité</h2>
+                <p>Les paramètres de disponibilité déterminent la fiabilité avec laquelle votre service reste accessible aux utilisateurs.</p>
+
+                <figure class="diagram-scroll">
+                    <svg viewBox="0 0 650 180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagramme montrant les catégories de configuration des nœuds : Disponibilité, Performance, Résilience et Stockage">
+                        <text x="325" y="20" text-anchor="middle" font-size="13" font-weight="bold" fill="#000E9C">Options de Configuration des Nœuds</text>
+                        <rect x="20" y="40" width="140" height="120" rx="8" fill="#d4edda" stroke="#1b7a3d" stroke-width="1.5"/>
+                        <text x="90" y="65" text-anchor="middle" font-size="11" font-weight="bold" fill="#1b7a3d">⏰ Disponibilité</text>
+                        <text x="90" y="85" text-anchor="middle" font-size="9" fill="#333">Haute disponibilité</text>
+                        <text x="90" y="100" text-anchor="middle" font-size="9" fill="#333">Fenêtres maintenance</text>
+                        <text x="90" y="120" text-anchor="middle" font-size="9" fill="#666">→ Temps de fonct.</text>
+                        <rect x="180" y="40" width="140" height="120" rx="8" fill="#e8eaff" stroke="#000E9C" stroke-width="1.5"/>
+                        <text x="250" y="65" text-anchor="middle" font-size="11" font-weight="bold" fill="#000E9C">⚡ Performance</text>
+                        <text x="250" y="85" text-anchor="middle" font-size="9" fill="#333">Mise à l'échelle</text>
+                        <text x="250" y="100" text-anchor="middle" font-size="9" fill="#333">Niveaux de priorité</text>
+                        <text x="250" y="120" text-anchor="middle" font-size="9" fill="#666">→ Rapidité</text>
+                        <rect x="340" y="40" width="140" height="120" rx="8" fill="#fff3cd" stroke="#7a5c00" stroke-width="1.5"/>
+                        <text x="410" y="65" text-anchor="middle" font-size="11" font-weight="bold" fill="#7a5c00">🛡️ Résilience</text>
+                        <text x="410" y="85" text-anchor="middle" font-size="9" fill="#333">Fréquence sauvegarde</text>
+                        <text x="410" y="100" text-anchor="middle" font-size="9" fill="#333">Paramètres failover</text>
+                        <text x="410" y="120" text-anchor="middle" font-size="9" fill="#666">→ Sécurité</text>
+                        <rect x="500" y="40" width="140" height="120" rx="8" fill="#f5f7fa" stroke="#4949FF" stroke-width="1.5"/>
+                        <text x="570" y="65" text-anchor="middle" font-size="11" font-weight="bold" fill="#4949FF">💾 Stockage</text>
+                        <text x="570" y="85" text-anchor="middle" font-size="9" fill="#333">Type de disque</text>
+                        <text x="570" y="100" text-anchor="middle" font-size="9" fill="#333">Allocation capacité</text>
+                        <text x="570" y="120" text-anchor="middle" font-size="9" fill="#666">→ Capacité</text>
+                    </svg>
+                    <figcaption>Les quatre catégories de configuration des nœuds, chacune affectant directement un aspect différent de l'expérience client</figcaption>
+                </figure>
+
+                <section aria-labelledby="high-availability">
+                    <h3 id="high-availability">Haute Disponibilité</h3>
+                    <p><strong>Ce que cela fait :</strong> Exécute votre charge de travail sur plusieurs serveurs physiques simultanément, de sorte que si un serveur rencontre un problème, un autre prend le relais instantanément.</p>
+                    <p class="customer-impact"><strong>Impact client :</strong> Activer la haute disponibilité signifie que votre service reste en ligne même si un serveur physique tombe en panne. Vos utilisateurs ne subissent aucune interruption — le basculement se fait automatiquement en quelques secondes.</p>
+                    <p><strong>Analogie :</strong> Comme avoir deux ponts traversant une rivière. Si l'un est fermé pour réparations, le trafic emprunte automatiquement l'autre sans que les conducteurs aient besoin de chercher un détour.</p>
+                    <p><strong>Quand les clients en ont besoin :</strong> Tout service où une interruption coûte directement de l'argent ou nuit à la réputation — sites e-commerce, portails clients, outils de communication en temps réel.</p>
+                </section>
+
+                <section aria-labelledby="maintenance-windows">
+                    <h3 id="maintenance-windows">Planification des Fenêtres de Maintenance</h3>
+                    <p><strong>Ce que cela fait :</strong> Permet de définir quand les mises à jour de routine et les activités de maintenance de la plateforme ont lieu.</p>
+                    <p class="customer-impact"><strong>Impact client :</strong> Planifier les fenêtres de maintenance pendant les heures creuses signifie que vos utilisateurs sont moins susceptibles de remarquer de brefs ajustements de service. Les opérations métier se poursuivent sans interruption pendant les heures critiques.</p>
+                    <p><strong>Analogie :</strong> Comme planifier des travaux routiers à 2 heures du matin plutôt qu'aux heures de pointe — le travail est quand même effectué, mais moins de personnes sont impactées.</p>
+                    <p><strong>Quand les clients en ont besoin :</strong> Les organisations avec des schémas d'utilisation prévisibles qui souhaitent minimiser tout impact potentiel sur leurs périodes les plus chargées.</p>
+                </section>
+            </section>
+
+            <section aria-labelledby="performance-options">
+                <h2 id="performance-options">Configuration des Performances</h2>
+                <p>Les paramètres de performance contrôlent la rapidité de réponse de vos applications et la quantité de travail qu'elles peuvent traiter simultanément.</p>
+
+                <section aria-labelledby="resource-scaling">
+                    <h3 id="resource-scaling">Mise à l'Échelle des Ressources</h3>
+                    <p><strong>Ce que cela fait :</strong> Ajuste la quantité de puissance de traitement et de mémoire allouée à votre nœud, soit manuellement, soit en fonction de la demande.</p>
+                    <p class="customer-impact"><strong>Impact client :</strong> Une mise à l'échelle appropriée des ressources garantit que votre application répond rapidement même lors des pics de trafic. Vos clients ne subissent jamais de ralentissements pendant les périodes de forte utilisation — le système s'adapte pour répondre à la demande.</p>
+                    <p><strong>Analogie :</strong> Comme un restaurant qui peut ouvrir des salles supplémentaires lorsqu'un grand groupe arrive, plutôt que de faire attendre les convives pour une table.</p>
+                    <p><strong>Quand les clients en ont besoin :</strong> Les services à demande variable — entreprises saisonnières, trafic lié à des événements, ou organisations en croissance dont les besoins évoluent dans le temps.</p>
+                </section>
+
+                <section aria-labelledby="storage-performance">
+                    <h3 id="storage-performance">Niveaux de Performance du Stockage</h3>
+                    <p><strong>Ce que cela fait :</strong> Sélectionne la vitesse à laquelle les données peuvent être lues et écrites sur le stockage, allant des niveaux standard aux niveaux haute performance.</p>
+                    <p class="customer-impact"><strong>Impact client :</strong> Choisir un niveau de performance de stockage supérieur signifie que vos applications chargent les données plus rapidement. Les requêtes de base de données retournent des résultats plus vite, les téléchargements de fichiers se terminent plus tôt, et la réactivité globale de l'application s'améliore.</p>
+                    <p><strong>Analogie :</strong> Comme choisir entre un service postal standard et une livraison express. Les deux livrent le colis, mais l'express est nettement plus rapide quand la vitesse compte.</p>
+                    <p><strong>Quand les clients en ont besoin :</strong> Les applications qui lisent ou écrivent fréquemment de grandes quantités de données — bases de données, traitement multimédia, plateformes d'analytique.</p>
+                </section>
+            </section>
+
+            <section aria-labelledby="network-options">
+                <h2 id="network-options">Configuration Réseau</h2>
+                <p>Les paramètres réseau contrôlent la façon dont votre nœud communique avec le monde extérieur et avec les autres ressources de votre environnement.</p>
+
+                <section aria-labelledby="bandwidth-allocation">
+                    <h3 id="bandwidth-allocation">Allocation de Bande Passante</h3>
+                    <p><strong>Ce que cela fait :</strong> Définit la quantité maximale de données pouvant transiter vers et depuis votre nœud par seconde.</p>
+                    <p class="customer-impact"><strong>Impact client :</strong> Une allocation de bande passante adéquate garantit que vos utilisateurs peuvent télécharger des fichiers, diffuser du contenu et interagir avec votre application sans délais ni mise en mémoire tampon — même lorsque de nombreux utilisateurs sont connectés simultanément.</p>
+                    <p><strong>Analogie :</strong> Comme choisir le diamètre d'un tuyau d'eau. Un tuyau plus large délivre plus d'eau à la fois, alimentant plus de robinets sans réduire la pression à aucun d'entre eux.</p>
+                    <p><strong>Quand les clients en ont besoin :</strong> Les services qui délivrent de gros fichiers, diffusent des médias ou servent de nombreux utilisateurs simultanés — diffusion de contenu, plateformes vidéo, applications web à grande échelle.</p>
+                </section>
+
+                <section aria-labelledby="network-isolation">
+                    <h3 id="network-isolation">Isolation Réseau</h3>
+                    <p><strong>Ce que cela fait :</strong> Crée des segments de réseau privés qui séparent vos ressources des autres locataires et de l'internet public.</p>
+                    <p class="customer-impact"><strong>Impact client :</strong> L'isolation réseau signifie que vos données sensibles transitent uniquement par des canaux privés, jamais exposées à l'internet public. Cela fournit une couche de sécurité supplémentaire et aide à respecter les exigences de conformité réglementaire.</p>
+                    <p><strong>Analogie :</strong> Comme avoir une route privée entre vos bâtiments de bureaux plutôt que d'utiliser les voies publiques. Seuls vos véhicules y circulent, et les personnes extérieures ne peuvent pas y accéder.</p>
+                    <p><strong>Quand les clients en ont besoin :</strong> Les organisations manipulant des données sensibles — santé, finance, gouvernement — ou toute entreprise devant démontrer des contrôles de sécurité solides aux auditeurs.</p>
+                </section>
+            </section>
+
+            <section aria-labelledby="cost-options">
+                <h2 id="cost-options">Configuration Liée aux Coûts</h2>
+
+                <section aria-labelledby="resource-limits">
+                    <h3 id="resource-limits">Limites de Ressources</h3>
+                    <p><strong>Ce que cela fait :</strong> Définit des plafonds maximaux de consommation de ressources pour éviter des augmentations de coûts inattendues.</p>
+                    <p class="customer-impact"><strong>Impact client :</strong> Définir des limites de ressources signifie que votre facture mensuelle reste prévisible. Vous ne serez jamais surpris par des frais inattendus liés à un pic soudain d'utilisation — le système respecte les limites que vous définissez.</p>
+                    <p><strong>Analogie :</strong> Comme fixer un plafond de dépenses sur une carte de crédit d'entreprise. La carte fonctionne normalement jusqu'à la limite, puis s'arrête pour éviter les dépassements.</p>
+                    <p><strong>Quand les clients en ont besoin :</strong> Les organisations soucieuses de leur budget, les départements avec des allocations IT fixes, ou tout client qui privilégie la prévisibilité des coûts par rapport à une flexibilité illimitée.</p>
+                </section>
+
+                <section aria-labelledby="reserved-resources">
+                    <h3 id="reserved-resources">Ressources Réservées vs. À la Demande</h3>
+                    <p><strong>Ce que cela fait :</strong> Permet de s'engager sur un niveau de ressources pour une période plus longue (réservé) à un tarif réduit, ou de payer un tarif plus élevé pour la flexibilité (à la demande).</p>
+                    <p class="customer-impact"><strong>Impact client :</strong> Choisir des ressources réservées réduit significativement votre coût unitaire — généralement 20 à 40 % d'économies par rapport à la tarification à la demande. Votre capacité est garantie et toujours disponible quand vous en avez besoin.</p>
+                    <p><strong>Analogie :</strong> Comme choisir entre un abonnement mensuel à la salle de sport (réservé — moins cher par visite, avec engagement) et le paiement à la séance (à la demande — plus cher par visite, mais sans engagement).</p>
+                    <p><strong>Quand les clients en ont besoin :</strong> Les organisations avec des charges de travail stables et prévisibles bénéficient de la tarification réservée. Celles avec des besoins imprévisibles ou temporaires bénéficient de la flexibilité à la demande.</p>
+                </section>
+            </section>
+
+            <section aria-labelledby="what-to-tell-customers">
+                <h2 id="what-to-tell-customers">Ce qu'il Faut Dire aux Clients</h2>
+                <ul>
+                    <li>Chaque option de configuration a un impact direct et compréhensible sur la qualité de leur service ou leurs coûts</li>
+                    <li>La haute disponibilité protège contre les pannes inattendues — leurs utilisateurs restent connectés</li>
+                    <li>La mise à l'échelle des ressources signifie qu'ils ne paient que ce qu'ils utilisent, tout en ayant toujours assez de capacité</li>
+                    <li>L'isolation réseau fournit une sécurité de niveau entreprise sans configuration complexe</li>
+                    <li>Les limites de ressources évitent les mauvaises surprises sur la facture — les coûts restent dans les limites définies</li>
+                    <li>Les modifications de configuration peuvent être effectuées à tout moment via l'interface de gestion — ils ne sont pas enfermés dans leurs choix initiaux</li>
+                </ul>
+            </section>
+
+            <footer class="lesson-footer">
+                <nav aria-label="Navigation de la leçon" class="lesson-nav">
+                    <a href="api-credentials.html" class="btn-previous" aria-label="Leçon précédente">← Précédent : API &amp; Identifiants</a>
+                    <a href="lacp-trunk-raid.html" class="btn-next" aria-label="Leçon suivante">Suivant : LACP, Trunk &amp; RAID →</a>
+                </nav>
+            </footer>
+        </article>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2024 OVHcloud — OPCP Introduction Skillhub</p>
+    </footer>
+
+    <script src="../../assets/js/main.js"></script>
+</body>
+</html>

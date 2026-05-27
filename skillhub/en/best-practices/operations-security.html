@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operations &amp; Security - Best Practices</title>
+    <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header class="page-header">
+        <nav aria-label="Language switch">
+            <a href="../../fr/best-practices/operations-security.html" class="lang-switch" aria-label="Switch to French">FR</a>
+        </nav>
+            <a href="../glossary.html" class="glossary-link" aria-label="View glossary of terms"><span class="glossary-link__icon" aria-hidden="true">📖</span> Glossary</a>
+        <span class="difficulty-badge beginner" aria-label="Difficulty: Beginner">Beginner</span>
+    </header>
+
+    <main class="content-area" id="main-content">
+        <article>
+            <header>
+                <h1>Operations &amp; Security</h1>
+                <p class="lesson-intro">Learn how to keep your OPCP environment running smoothly and securely — explained through the analogy of managing a building.</p>
+            </header>
+
+            <section aria-labelledby="analogy-heading">
+                <h2 id="analogy-heading">Think of It Like Managing a Building</h2>
+                <p>Imagine you own a large office building. You need to keep the lights on, the elevators running, and the doors locked. Managing your OPCP environment works the same way:</p>
+                <ul>
+                    <li><strong>Resource management</strong> is like monitoring electricity and water usage — you track what is being consumed and plan for peak demand.</li>
+                    <li><strong>Maintenance</strong> is like scheduling elevator inspections and replacing light bulbs before they burn out.</li>
+                    <li><strong>Security</strong> is like controlling who has keys to which floors, installing cameras, and following fire safety codes.</li>
+                </ul>
+            </section>
+
+            <section aria-labelledby="resource-heading">
+                <h2 id="resource-heading">Resource Management</h2>
+                <p>Just as a building manager watches utility meters, you should regularly check how your cloud resources are being used.</p>
+
+                <h3>Monitoring Usage</h3>
+                <p>Keep an eye on how much computing power (CPU), memory (RAM), and storage your services consume. The OPCP dashboard provides usage graphs that work like the gauges on your car's dashboard — they tell you at a glance whether everything is running within normal limits.</p>
+                <ul>
+                    <li><strong>CPU usage</strong> — Think of this as how hard the engine is working. Consistently high usage means you may need more power.</li>
+                    <li><strong>Memory (RAM)</strong> — Like desk space for your workers. If everyone is cramped, productivity drops.</li>
+                    <li><strong>Storage</strong> — Your filing cabinets. When they are full, you need to archive old files or add more cabinets.</li>
+                </ul>
+
+                <h3>Scaling</h3>
+                <p>When demand grows — like a building adding more tenants — you can scale your resources up or down:</p>
+                <ul>
+                    <li><strong>Scaling up</strong> means giving existing resources more power (upgrading to a bigger elevator).</li>
+                    <li><strong>Scaling out</strong> means adding more resources (installing additional elevators).</li>
+                </ul>
+                <p>OPCP lets you adjust resources without shutting everything down, much like adding a new floor to a building while the other floors remain open for business.</p>
+            </section>
+
+            <section aria-labelledby="maintenance-heading">
+                <h2 id="maintenance-heading">Maintenance Practices</h2>
+                <p>A well-maintained building rarely has emergencies. The same principle applies to your cloud environment.</p>
+
+                <h3>Regular Updates</h3>
+                <p>Software updates are like replacing worn-out parts in your building's HVAC system. They fix known issues and improve performance. OVHcloud handles many infrastructure updates automatically, but you should stay informed about scheduled maintenance windows — just as tenants are notified before a water shut-off.</p>
+
+                <h3>Health Checks</h3>
+                <p>Routine health checks are your building inspections. They catch small problems before they become big ones:</p>
+                <ul>
+                    <li><strong>Service status checks</strong> — Is everything responding? Like checking that all lights turn on.</li>
+                    <li><strong>Performance baselines</strong> — Know what "normal" looks like so you can spot anomalies early.</li>
+                    <li><strong>Backup verification</strong> — Confirm your backups actually work, just as you would test a fire alarm.</li>
+                </ul>
+            </section>
+
+            <section aria-labelledby="security-heading">
+                <h2 id="security-heading">Security</h2>
+                <p>Security in the cloud follows the same logic as physical building security: control access, protect valuables, and follow regulations.</p>
+
+                <h3>Access Control</h3>
+                <p>Not everyone needs a master key. In OPCP, you assign permissions based on roles:</p>
+                <ul>
+                    <li><strong>Administrators</strong> — Building managers with access to every room.</li>
+                    <li><strong>Operators</strong> — Maintenance staff who can enter utility rooms but not private offices.</li>
+                    <li><strong>Viewers</strong> — Visitors who can look around the lobby but cannot open any doors.</li>
+                </ul>
+                <p>The principle of <span class="glossary-term" data-term="least-privilege">least privilege</span> means giving each person only the access they need — nothing more.</p>
+
+                <h3>Data Protection</h3>
+                <p>Protecting data is like securing the valuables inside your building:</p>
+                <ul>
+                    <li><strong>Encryption at rest</strong> — Locking documents in a safe even when no one is using them.</li>
+                    <li><strong>Encryption in transit</strong> — Using armoured vehicles to move valuables between locations.</li>
+                    <li><strong>Regular backups</strong> — Keeping copies of important documents in a separate, secure location.</li>
+                </ul>
+
+                <h3>Compliance Awareness</h3>
+                <p>Just as buildings must meet fire codes and accessibility standards, your cloud environment must comply with data regulations:</p>
+                <ul>
+                    <li><strong>Data residency</strong> — Some regulations require data to stay within certain geographic boundaries, like keeping tenant records on-site.</li>
+                    <li><strong>Audit trails</strong> — Keeping a log of who accessed what and when, similar to a visitor sign-in book.</li>
+                    <li><strong>Certifications</strong> — OVHcloud maintains industry certifications (ISO 27001, SOC 2) so you can assure customers their data is handled responsibly.</li>
+                </ul>
+            </section>
+
+            <section aria-labelledby="summary-heading">
+                <h2 id="summary-heading">Key Takeaways</h2>
+                <ul>
+                    <li>Monitor resource usage regularly — like reading your building's utility meters.</li>
+                    <li>Keep systems updated and run health checks — preventive maintenance avoids emergencies.</li>
+                    <li>Apply the principle of least privilege — only give access that is truly needed.</li>
+                    <li>Protect data with encryption and backups — lock the safe and keep copies off-site.</li>
+                    <li>Stay aware of compliance requirements — follow the "building codes" for data.</li>
+                </ul>
+            </section>
+        </article>
+    </main>
+
+    <footer class="page-footer">
+        <nav aria-label="Lesson navigation">
+            <a href="../storage/backup-recovery.html" class="nav-prev" aria-label="Previous lesson: Backup &amp; Recovery">← Previous</a>
+            <a href="performance-troubleshooting.html" class="nav-next" aria-label="Next lesson: Performance &amp; Troubleshooting">Next →</a>
+        </nav>
+    </footer>
+
+    <script src="../../assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Initial Configuration - Getting Started - OPCP Skillhub</title>
+    <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header class="site-header">
+        <nav class="top-nav" aria-label="Site navigation">
+            <a href="../../index.html" class="logo">OPCP Skillhub</a>
+            <a href="../../fr/getting-started/initial-configuration.html" class="lang-switch" aria-label="Switch to French">FR</a>
+        </nav>
+    </header>
+
+    <nav class="sidebar" aria-label="Lesson navigation">
+        <!-- Sidebar populated by navigation.js -->
+            <a href="../glossary.html" class="glossary-link" aria-label="View glossary of terms"><span class="glossary-link__icon" aria-hidden="true">📖</span> Glossary</a>
+    </nav>
+
+    <main class="content-area" id="main-content">
+        <article>
+            <header class="lesson-header">
+                <h1>Initial Configuration</h1>
+                <span class="difficulty-badge beginner" aria-label="Difficulty: Beginner">Beginner</span>
+            </header>
+
+            <section aria-labelledby="overview">
+                <h2 id="overview">Overview</h2>
+                <p>After logging in for the first time, there are a few setup steps to complete before your <dfn class="glossary-term" title="OVHcloud Hosted Private Cloud (OPCP) — a dedicated cloud infrastructure service where your organisation gets its own private computing resources, separate from other customers">OPCP</dfn> environment is ready to use. Think of this like moving into a new office: the building is ready, but you still need to set up your desk, connect the phone, and get your security badge configured.</p>
+                <p>This lesson walks you through the essential first-time configuration steps using plain, non-technical language.</p>
+            </section>
+
+            <section aria-labelledby="step1">
+                <h2 id="step1">Step 1: Select Your Datacentre Location</h2>
+                <p>Your first decision is choosing where your private cloud resources will physically live. A <dfn class="glossary-term" title="Datacentre — a secure, climate-controlled building filled with powerful computers (servers) that store and process data. OVHcloud operates datacentres across Europe, North America, and Asia-Pacific. Think of it as a high-security warehouse for your digital assets.">datacentre</dfn> is a secure facility that houses the computers running your services.</p>
+                <p>Choose a location based on:</p>
+                <ul>
+                    <li><strong>Proximity to your users</strong> — Closer locations mean faster response times</li>
+                    <li><strong>Legal requirements</strong> — Some regulations require data to stay within certain countries</li>
+                    <li><strong>Redundancy needs</strong> — You may want resources in multiple locations for backup purposes</li>
+                </ul>
+                <figure>
+                    <img src="../../assets/images/initial-config-step1-datacentre.png" alt="Map showing OVHcloud datacentre locations across Europe and North America with selectable pins">
+                    <figcaption>The datacentre selection screen. Click a location pin on the map to choose where your resources will be hosted. Available locations are shown as blue pins.</figcaption>
+                </figure>
+            </section>
+
+            <section aria-labelledby="step2">
+                <h2 id="step2">Step 2: Set Up Your Private Network</h2>
+                <p>Next, you create a <dfn class="glossary-term" title="vRack — OVHcloud's private network technology that securely connects your cloud services together. Think of it as a private corridor between offices that only your team can access — other customers cannot see or reach your traffic.">vRack</dfn> — your private network. This is the secure connection between all your cloud services. Imagine it as a private hallway connecting different rooms in your office: only your team can walk through it.</p>
+                <p>Setting up a vRack involves:</p>
+                <ol>
+                    <li>Giving your private network a name you will recognise (e.g., "Production Network")</li>
+                    <li>Choosing which services should be connected to it</li>
+                    <li>Confirming the setup</li>
+                </ol>
+                <figure>
+                    <img src="../../assets/images/initial-config-step2-vrack.png" alt="vRack creation form showing a name field and a list of services to connect, with checkboxes next to each service">
+                    <figcaption>The vRack setup screen. Enter a descriptive name (1), select which services to connect using the checkboxes (2), and click "Create" (3).</figcaption>
+                </figure>
+            </section>
+
+            <section aria-labelledby="step3">
+                <h2 id="step3">Step 3: Configure Your First Host</h2>
+                <p>A <dfn class="glossary-term" title="Host — a physical server within your private cloud that provides computing power (processing and memory). Think of it as a powerful workstation dedicated entirely to your organisation's tasks.">host</dfn> is the physical server that provides computing power for your private cloud. Configuring your first host means choosing how powerful it should be — similar to choosing between a compact car and a lorry depending on what you need to carry.</p>
+                <p>During host configuration, you will select:</p>
+                <ul>
+                    <li><strong>Host type</strong> — Different sizes for different workloads (small for testing, large for production)</li>
+                    <li><strong>Quantity</strong> — How many hosts you need to start with (you can add more later)</li>
+                    <li><strong>Datacentre assignment</strong> — Which location this host belongs to</li>
+                </ul>
+                <figure>
+                    <img src="../../assets/images/initial-config-step3-host.png" alt="Host configuration screen showing host type options as cards with specifications, a quantity selector, and a datacentre dropdown">
+                    <figcaption>The host configuration screen. Choose a host type from the cards shown (A), set the quantity (B), and confirm the datacentre (C). Each card shows the host's capabilities in simple terms.</figcaption>
+                </figure>
+            </section>
+
+            <section aria-labelledby="step4">
+                <h2 id="step4">Step 4: Add Storage</h2>
+                <p>Your host needs somewhere to store data. Adding a <dfn class="glossary-term" title="Datastore — a storage volume attached to your private cloud where files, databases, and application data are kept. Think of it as a hard drive for your cloud servers.">datastore</dfn> is like adding a filing cabinet to your new office — it gives your applications a place to save their work.</p>
+                <p>Choose your storage based on:</p>
+                <ul>
+                    <li><strong>Capacity</strong> — How much space you need (measured in gigabytes or terabytes)</li>
+                    <li><strong>Performance tier</strong> — Standard storage for everyday use, or high-performance storage for demanding applications</li>
+                </ul>
+                <figure>
+                    <img src="../../assets/images/initial-config-step4-storage.png" alt="Storage configuration screen showing capacity slider and performance tier options (Standard and High Performance)">
+                    <figcaption>The storage setup screen. Use the slider (1) to set capacity and choose a performance tier (2). The estimated monthly cost updates automatically as you adjust settings.</figcaption>
+                </figure>
+            </section>
+
+            <section aria-labelledby="step5">
+                <h2 id="step5">Step 5: Set Up User Access</h2>
+                <p>Finally, decide who on your team should have access to the OPCP environment and what they should be allowed to do. This is like issuing security badges — each person gets access only to the areas they need.</p>
+                <p>You can create user accounts with different permission levels:</p>
+                <ul>
+                    <li><strong>Administrator</strong> — Full access to all settings and services (for IT managers)</li>
+                    <li><strong>Operator</strong> — Can manage services but cannot change billing or account settings</li>
+                    <li><strong>Read-only</strong> — Can view information but cannot make changes (useful for auditors or observers)</li>
+                </ul>
+                <figure>
+                    <img src="../../assets/images/initial-config-step5-users.png" alt="User management screen showing a list of team members with role dropdowns and an Add User button">
+                    <figcaption>The user access screen. Click "Add User" (highlighted) to invite a team member, then assign their role from the dropdown menu next to their name.</figcaption>
+                </figure>
+            </section>
+
+            <section aria-labelledby="summary">
+                <h2 id="summary">Configuration Complete</h2>
+                <p>Once these five steps are done, your OPCP environment is ready for use. Your team can begin deploying applications and storing data in your private cloud. Here is a quick recap:</p>
+                <ol>
+                    <li>Datacentre location chosen</li>
+                    <li>Private network (vRack) created</li>
+                    <li>First host configured</li>
+                    <li>Storage added</li>
+                    <li>Team access set up</li>
+                </ol>
+                <p>From here, you can explore the <a href="../core-concepts/node-lifecycle.html">Core Concepts</a> section to learn more about how your resources work, or jump to <a href="../technical-operations/instance-setup.html">Technical Operations</a> for a high-level view of day-to-day management.</p>
+            </section>
+
+            <footer class="lesson-footer">
+                <nav class="sequential-nav" aria-label="Lesson navigation">
+                    <a href="navigation.html" class="nav-prev">Previous: Navigation</a>
+                    <a href="../core-concepts/node-lifecycle.html" class="nav-next">Next: Node Lifecycle</a>
+                </nav>
+            </footer>
+        </article>
+    </main>
+
+    <footer class="site-footer" role="contentinfo">
+        <p>&copy; OVHcloud — OPCP Skillhub</p>
+    </footer>
+
+    <script src="../../assets/js/main.js"></script>
+</body>
+</html>

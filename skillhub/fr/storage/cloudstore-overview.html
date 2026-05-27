@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Découvrez ce qu'est CloudStore grâce à une analogie avec un entrepôt sécurisé, et explorez ses cas d'utilisation pour les entreprises.">
+    <title>Présentation de CloudStore - Solutions de Stockage - OPCP Skillhub</title>
+    <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+
+    <div class="page-wrapper">
+        <nav class="nav-sidebar" aria-label="Navigation principale">
+            <div class="search-container">
+                <input type="search" class="search-input" placeholder="Rechercher des leçons..." aria-label="Rechercher des leçons">
+            </div>
+            <div class="progress-display">
+                <span class="progress-display__label">Progression globale</span>
+                <div class="progress-display__bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="Progression globale"><div class="progress-display__fill" style="width: 0%"></div></div>
+                <span class="progress-display__percentage" role="status" aria-live="polite">0%</span>
+            </div>
+            <a href="../glossary.html" class="glossary-link" aria-label="Voir le glossaire des termes"><span class="glossary-link__icon" aria-hidden="true">📖</span> Glossaire</a>
+
+            <button class="nav-sidebar__close" aria-label="Fermer la navigation">&times;</button>
+        </nav>
+
+        <button class="nav-hamburger" aria-label="Ouvrir le menu de navigation">
+            <span class="nav-hamburger__icon" aria-hidden="true">&#9776;</span>
+        </button>
+        <div class="nav-overlay" aria-hidden="true"></div>
+
+        <main class="content-area" id="main-content">
+            <article>
+                <header class="lesson-header">
+                    <h1>Présentation de CloudStore</h1>
+                    <div class="lesson-meta">
+                        <span class="badge badge-intermediate">Intermédiaire</span>
+                        <a href="../../en/storage/cloudstore-overview.html" class="language-switch" aria-label="Switch to English">
+                            <span>🇬🇧</span> <span>English</span>
+                        </a>
+                    </div>
+                </header>
+
+                <section aria-labelledby="analogy-heading">
+                    <h2 id="analogy-heading">L'analogie de l'entrepôt sécurisé</h2>
+                    <p>Imaginez que votre entreprise génère des montagnes de documents, photos, vidéos et fichiers de données chaque jour. Où stockez-vous tout cela ?</p>
+
+                    <p>Pensez à <a href="../glossary.html#term-cloudstore" class="glossary-term"><strong>CloudStore</strong></a> comme <strong>un entrepôt sécurisé et extensible pour vos actifs numériques</strong>. Tout comme un centre de stockage professionnel :</p>
+
+                    <ul>
+                        <li><strong>Il grandit avec vous</strong> — besoin de plus d'espace ? Il suffit de demander de la place supplémentaire. Aucune construction nécessaire.</li>
+                        <li><strong>Il est toujours accessible</strong> — le personnel autorisé peut récupérer des éléments à tout moment, depuis n'importe où, grâce à un badge d'accès sécurisé.</li>
+                        <li><strong>Il est géré professionnellement</strong> — l'installation gère la sécurité, la climatisation et la maintenance. Vous vous concentrez sur votre activité.</li>
+                        <li><strong>Vos éléments sont protégés</strong> — plusieurs copies sont stockées dans différents emplacements, donc même si une étagère est endommagée, vos biens sont en sécurité.</li>
+                    </ul>
+
+                    <div class="info-box">
+                        <p><strong>CloudStore</strong> est le service de stockage d'OVHcloud au sein de la plateforme OPCP. Il vous permet de stocker, organiser et récupérer tout type de données numériques — des simples fichiers texte aux grandes archives vidéo — sans gérer vous-même des disques durs physiques ou des serveurs.</p>
+                    </div>
+                </section>
+
+                <section aria-labelledby="diagram-heading">
+                    <h2 id="diagram-heading">Comment fonctionne CloudStore</h2>
+                    <figure class="diagram-scroll">
+                        <svg viewBox="0 0 700 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagramme montrant comment CloudStore connecte votre entreprise à un stockage sécurisé et redondant géré par OVHcloud">
+                            <!-- Votre Entreprise -->
+                            <rect x="20" y="100" width="160" height="100" rx="10" fill="#e8f4fd" stroke="#000E9C" stroke-width="2"/>
+                            <text x="100" y="135" text-anchor="middle" font-size="13" font-weight="bold" fill="#000E9C">Votre Entreprise</text>
+                            <text x="100" y="160" text-anchor="middle" font-size="10" fill="#333">Documents, médias,</text>
+                            <text x="100" y="175" text-anchor="middle" font-size="10" fill="#333">données applicatives</text>
+
+                            <!-- Flèche -->
+                            <line x1="180" y1="150" x2="260" y2="150" stroke="#4949FF" stroke-width="2" marker-end="url(#arrowhead)"/>
+                            <text x="220" y="140" text-anchor="middle" font-size="9" fill="#4949FF">Envoi / Accès</text>
+
+                            <!-- CloudStore -->
+                            <rect x="260" y="60" width="200" height="180" rx="10" fill="#d4edda" stroke="#1b7a3d" stroke-width="2"/>
+                            <text x="360" y="50" text-anchor="middle" font-size="14" font-weight="bold" fill="#1b7a3d">CloudStore</text>
+                            <rect x="280" y="85" width="160" height="35" rx="5" fill="#ffffff" stroke="#1b7a3d" stroke-width="1"/>
+                            <text x="360" y="107" text-anchor="middle" font-size="11" fill="#333">Redondance automatique</text>
+                            <rect x="280" y="130" width="160" height="35" rx="5" fill="#ffffff" stroke="#1b7a3d" stroke-width="1"/>
+                            <text x="360" y="152" text-anchor="middle" font-size="11" fill="#333">Capacité évolutive</text>
+                            <rect x="280" y="175" width="160" height="35" rx="5" fill="#ffffff" stroke="#1b7a3d" stroke-width="1"/>
+                            <text x="360" y="197" text-anchor="middle" font-size="11" fill="#333">Contrôle d'accès sécurisé</text>
+
+                            <!-- Flèche vers OVHcloud -->
+                            <line x1="460" y1="150" x2="520" y2="150" stroke="#4949FF" stroke-width="2" marker-end="url(#arrowhead)"/>
+                            <text x="490" y="140" text-anchor="middle" font-size="9" fill="#4949FF">Géré</text>
+
+                            <!-- OVHcloud -->
+                            <rect x="520" y="80" width="160" height="140" rx="10" fill="#f0e6ff" stroke="#4949FF" stroke-width="2"/>
+                            <text x="600" y="115" text-anchor="middle" font-size="12" font-weight="bold" fill="#4949FF">OVHcloud</text>
+                            <text x="600" y="140" text-anchor="middle" font-size="10" fill="#333">Infrastructure physique</text>
+                            <text x="600" y="160" text-anchor="middle" font-size="10" fill="#333">Sécurité et surveillance</text>
+                            <text x="600" y="180" text-anchor="middle" font-size="10" fill="#333">Maintenance</text>
+                            <text x="600" y="200" text-anchor="middle" font-size="10" fill="#333">Centres de données européens</text>
+
+                            <!-- Marqueur de flèche -->
+                            <defs>
+                                <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+                                    <polygon points="0 0, 10 3.5, 0 7" fill="#4949FF"/>
+                                </marker>
+                            </defs>
+                        </svg>
+                        <figcaption>CloudStore se situe entre votre entreprise et l'infrastructure gérée d'OVHcloud, fournissant un stockage sécurisé et évolutif</figcaption>
+                    </figure>
+                </section>
+
+                <section aria-labelledby="use-cases-heading">
+                    <h2 id="use-cases-heading">Cas d'utilisation courants</h2>
+                    <p>CloudStore est suffisamment polyvalent pour répondre à de nombreux besoins métier. Voici les scénarios les plus courants :</p>
+
+                    <h3>Stockage de documents</h3>
+                    <p>Stockez contrats, rapports, tableurs et présentations dans un emplacement central accessible à toute votre équipe. Pensez-y comme un classeur partagé qui ne manque jamais de tiroirs et qui est accessible depuis n'importe quel bureau.</p>
+
+                    <h3>Archives multimédia</h3>
+                    <p>Conservez de grandes collections d'images, vidéos et fichiers audio en toute sécurité et de manière organisée. Les équipes marketing, agences créatives et entreprises médias utilisent CloudStore pour maintenir leurs bibliothèques grandissantes sans se soucier du manque d'espace.</p>
+
+                    <h3>Données applicatives</h3>
+                    <p>Les applications logicielles génèrent des données en permanence — enregistrements utilisateurs, journaux de transactions, fichiers de configuration. CloudStore fournit un hébergement fiable pour ces données, garantissant que les applications peuvent lire et écrire des informations rapidement et en toute sécurité.</p>
+
+                    <h3>Sauvegardes</h3>
+                    <p>Créez des copies de sécurité de vos données métier critiques. Si quelque chose tourne mal avec vos systèmes principaux — panne matérielle, suppression accidentelle ou incident de sécurité — vos sauvegardes dans CloudStore vous permettent de récupérer rapidement.</p>
+                </section>
+
+                <section aria-labelledby="benefits-heading">
+                    <h2 id="benefits-heading">Pourquoi les clients choisissent CloudStore</h2>
+                    <ul>
+                        <li><strong>Aucun matériel à gérer</strong> — OVHcloud s'occupe de toute l'infrastructure physique.</li>
+                        <li><strong>Payez ce que vous utilisez</strong> — le stockage évolue avec vos besoins, sans investissement initial en disques durs.</li>
+                        <li><strong>Souveraineté des données</strong> — les données restent dans des centres de données européens, respectant les exigences de conformité.</li>
+                        <li><strong>Protection intégrée</strong> — la redondance automatique signifie que vos données sont copiées dans plusieurs emplacements.</li>
+                        <li><strong>Accès depuis n'importe où</strong> — accédez à vos données en toute sécurité depuis n'importe quel endroit disposant d'une connexion internet.</li>
+                    </ul>
+                </section>
+
+                <section aria-labelledby="summary-heading">
+                    <h2 id="summary-heading">Points clés à retenir</h2>
+                    <ul>
+                        <li><strong>CloudStore</strong> est le service de stockage géré d'OVHcloud — un entrepôt sécurisé et extensible pour vos actifs numériques.</li>
+                        <li>Il gère documents, médias, données applicatives et sauvegardes sans nécessiter la gestion de matériel physique.</li>
+                        <li>Les données sont automatiquement protégées par la redondance et stockées dans des centres de données européens.</li>
+                        <li>Vous ne payez que le stockage que vous utilisez réellement, et pouvez augmenter ou réduire la capacité selon l'évolution de vos besoins.</li>
+                    </ul>
+                </section>
+
+                <nav class="nav-sequential" aria-label="Navigation entre leçons">
+                    <a href="../technical-operations/lacp-trunk-raid.html" class="nav-sequential__btn nav-sequential__btn--prev">
+                        <span class="nav-sequential__arrow" aria-hidden="true">&larr;</span>
+                        <span class="nav-sequential__label">Précédent : LACP, Trunk &amp; RAID</span>
+                    </a>
+                    <a href="storage-capabilities.html" class="nav-sequential__btn nav-sequential__btn--next">
+                        <span class="nav-sequential__label">Suivant : Capacités de stockage</span>
+                        <span class="nav-sequential__arrow" aria-hidden="true">&rarr;</span>
+                    </a>
+                </nav>
+            </article>
+        </main>
+    </div>
+
+    <footer class="site-footer" role="contentinfo">
+        <p>&copy; 2024 OVHcloud — Skillhub Formation OPCP</p>
+    </footer>
+
+    <script src="../../assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Comprenez les concepts de sauvegarde et de récupération dans CloudStore avec des diagrammes de workflow illustrant les processus de sauvegarde et de restauration.">
+    <title>Sauvegarde et Récupération - Solutions de Stockage - OPCP Skillhub</title>
+    <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+
+    <div class="page-wrapper">
+        <nav class="nav-sidebar" aria-label="Navigation principale">
+            <div class="search-container">
+                <input type="search" class="search-input" placeholder="Rechercher des leçons..." aria-label="Rechercher des leçons">
+            </div>
+            <div class="progress-display">
+                <span class="progress-display__label">Progression globale</span>
+                <div class="progress-display__bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="Progression globale"><div class="progress-display__fill" style="width: 0%"></div></div>
+                <span class="progress-display__percentage" role="status" aria-live="polite">0%</span>
+            </div>
+            <a href="../glossary.html" class="glossary-link" aria-label="Voir le glossaire des termes"><span class="glossary-link__icon" aria-hidden="true">📖</span> Glossaire</a>
+
+            <button class="nav-sidebar__close" aria-label="Fermer la navigation">&times;</button>
+        </nav>
+
+        <button class="nav-hamburger" aria-label="Ouvrir le menu de navigation">
+            <span class="nav-hamburger__icon" aria-hidden="true">&#9776;</span>
+        </button>
+        <div class="nav-overlay" aria-hidden="true"></div>
+
+        <main class="content-area" id="main-content">
+            <article>
+                <header class="lesson-header">
+                    <h1>Sauvegarde et Récupération</h1>
+                    <div class="lesson-meta">
+                        <span class="badge badge-intermediate">Intermédiaire</span>
+                        <a href="../../en/storage/backup-recovery.html" class="language-switch" aria-label="Switch to English">
+                            <span>🇬🇧</span> <span>English</span>
+                        </a>
+                    </div>
+                </header>
+
+                <section aria-labelledby="intro-heading">
+                    <h2 id="intro-heading">Pourquoi sauvegarder vos données ?</h2>
+                    <p>Imaginez que tous les dossiers de votre bureau disparaissent du jour au lendemain — contrats clients, rapports financiers, projets en cours. La <a href="../glossary.html#term-backup" class="glossary-term"><strong class="term">sauvegarde</strong></a> est votre filet de sécurité : une copie de vos données stockée séparément, prête à être restaurée en cas de problème.</p>
+
+                    <div class="info-box">
+                        <p><strong>Analogie du monde réel :</strong> La sauvegarde fonctionne comme une photocopie de vos documents importants rangée dans un coffre-fort à la banque. Si un incendie détruit votre bureau, vous pouvez reconstituer vos dossiers grâce aux copies conservées en lieu sûr.</p>
+                    </div>
+
+                    <p>Les incidents pouvant entraîner une perte de données sont plus courants qu'on ne le pense :</p>
+                    <ul>
+                        <li><strong>Erreur humaine</strong> — suppression accidentelle d'un fichier important</li>
+                        <li><strong>Panne matérielle</strong> — défaillance d'un disque dur ou d'un serveur</li>
+                        <li><strong>Cyberattaque</strong> — ransomware chiffrant vos données</li>
+                        <li><strong>Catastrophe naturelle</strong> — inondation ou incendie affectant les locaux</li>
+                    </ul>
+                </section>
+
+                <section aria-labelledby="terms-heading">
+                    <h2 id="terms-heading">Termes essentiels</h2>
+                    <ul>
+                        <li><strong class="term">Sauvegarde complète</strong> — une copie intégrale de toutes vos données. Comme photocopier l'ensemble de vos classeurs.</li>
+                        <li><strong class="term">Sauvegarde incrémentale</strong> — une copie uniquement des données modifiées depuis la dernière sauvegarde. Comme ne photocopier que les nouvelles pages ajoutées.</li>
+                        <li><strong class="term">Point de restauration</strong> — un instant précis auquel vous pouvez revenir. Comme un signet dans le temps qui marque l'état de vos données à un moment donné.</li>
+                        <li><strong class="term">RPO (Recovery Point Objective)</strong> — la quantité maximale de données que vous acceptez de perdre, mesurée en temps. Un RPO de 1 heure signifie que vous pourriez perdre au maximum 1 heure de travail.</li>
+                        <li><strong class="term">RTO (Recovery Time Objective)</strong> — le temps maximum acceptable pour restaurer vos données après un incident. Un RTO de 4 heures signifie que vos systèmes doivent être opérationnels dans les 4 heures.</li>
+                    </ul>
+                </section>
+
+                <section aria-labelledby="backup-workflow-heading">
+                    <h2 id="backup-workflow-heading">Processus de sauvegarde</h2>
+                    <p>Le processus de sauvegarde dans CloudStore se déroule en plusieurs étapes automatisées. Une fois configuré, il fonctionne sans intervention manuelle.</p>
+
+                    <figure class="diagram-scroll">
+                        <svg viewBox="0 0 750 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagramme de workflow montrant le processus de sauvegarde en 5 étapes : planification, sélection des données, transfert sécurisé, stockage redondant et vérification">
+                            <!-- Titre -->
+                            <text x="375" y="30" text-anchor="middle" font-size="14" font-weight="bold" fill="#000E9C">Workflow de sauvegarde CloudStore</text>
+
+                            <!-- Étape 1 : Planification -->
+                            <rect x="50" y="60" width="140" height="90" rx="10" fill="#e8f4fd" stroke="#000E9C" stroke-width="2"/>
+                            <text x="120" y="85" text-anchor="middle" font-size="11" font-weight="bold" fill="#000E9C">1. Planification</text>
+                            <text x="120" y="105" text-anchor="middle" font-size="9" fill="#333">Définir la fréquence</text>
+                            <text x="120" y="120" text-anchor="middle" font-size="9" fill="#333">(quotidienne, hebdo,</text>
+                            <text x="120" y="135" text-anchor="middle" font-size="9" fill="#333">mensuelle)</text>
+
+                            <!-- Flèche 1→2 -->
+                            <line x1="190" y1="105" x2="210" y2="105" stroke="#4949FF" stroke-width="2" marker-end="url(#arrowB)"/>
+
+                            <!-- Étape 2 : Sélection -->
+                            <rect x="210" y="60" width="140" height="90" rx="10" fill="#d4edda" stroke="#1b7a3d" stroke-width="2"/>
+                            <text x="280" y="85" text-anchor="middle" font-size="11" font-weight="bold" fill="#1b7a3d">2. Sélection</text>
+                            <text x="280" y="105" text-anchor="middle" font-size="9" fill="#333">Identifier les données</text>
+                            <text x="280" y="120" text-anchor="middle" font-size="9" fill="#333">à sauvegarder</text>
+                            <text x="280" y="135" text-anchor="middle" font-size="9" fill="#333">(complète ou incrémentale)</text>
+
+                            <!-- Flèche 2→3 -->
+                            <line x1="350" y1="105" x2="370" y2="105" stroke="#4949FF" stroke-width="2" marker-end="url(#arrowB)"/>
+
+                            <!-- Étape 3 : Transfert -->
+                            <rect x="370" y="60" width="140" height="90" rx="10" fill="#fff3cd" stroke="#856404" stroke-width="2"/>
+                            <text x="440" y="85" text-anchor="middle" font-size="11" font-weight="bold" fill="#856404">3. Transfert</text>
+                            <text x="440" y="105" text-anchor="middle" font-size="9" fill="#333">Envoi chiffré vers</text>
+                            <text x="440" y="120" text-anchor="middle" font-size="9" fill="#333">CloudStore via canal</text>
+                            <text x="440" y="135" text-anchor="middle" font-size="9" fill="#333">sécurisé</text>
+
+                            <!-- Flèche 3→4 -->
+                            <line x1="510" y1="105" x2="530" y2="105" stroke="#4949FF" stroke-width="2" marker-end="url(#arrowB)"/>
+
+                            <!-- Étape 4 : Stockage -->
+                            <rect x="530" y="60" width="140" height="90" rx="10" fill="#f0e6ff" stroke="#4949FF" stroke-width="2"/>
+                            <text x="600" y="85" text-anchor="middle" font-size="11" font-weight="bold" fill="#4949FF">4. Stockage</text>
+                            <text x="600" y="105" text-anchor="middle" font-size="9" fill="#333">Copie répliquée</text>
+                            <text x="600" y="120" text-anchor="middle" font-size="9" fill="#333">dans plusieurs</text>
+                            <text x="600" y="135" text-anchor="middle" font-size="9" fill="#333">emplacements</text>
+
+                            <!-- Flèche 4→5 (vers le bas) -->
+                            <line x1="600" y1="150" x2="600" y2="200" stroke="#4949FF" stroke-width="2" marker-end="url(#arrowB)"/>
+
+                            <!-- Étape 5 : Vérification -->
+                            <rect x="530" y="200" width="140" height="90" rx="10" fill="#d4edda" stroke="#1b7a3d" stroke-width="2"/>
+                            <text x="600" y="225" text-anchor="middle" font-size="11" font-weight="bold" fill="#1b7a3d">5. Vérification</text>
+                            <text x="600" y="245" text-anchor="middle" font-size="9" fill="#333">Contrôle d'intégrité</text>
+                            <text x="600" y="260" text-anchor="middle" font-size="9" fill="#333">et notification</text>
+                            <text x="600" y="275" text-anchor="middle" font-size="9" fill="#333">de succès</text>
+
+                            <!-- Résultat final -->
+                            <rect x="250" y="320" width="250" height="50" rx="8" fill="#d4edda" stroke="#1b7a3d" stroke-width="2"/>
+                            <text x="375" y="345" text-anchor="middle" font-size="11" font-weight="bold" fill="#1b7a3d">&#10003; Sauvegarde terminée</text>
+                            <text x="375" y="362" text-anchor="middle" font-size="9" fill="#333">Données protégées et vérifiées</text>
+
+                            <!-- Flèche vers résultat -->
+                            <line x1="530" y1="245" x2="500" y2="345" stroke="#1b7a3d" stroke-width="1.5" stroke-dasharray="4"/>
+
+                            <!-- Marqueur de flèche -->
+                            <defs>
+                                <marker id="arrowB" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+                                    <polygon points="0 0, 10 3.5, 0 7" fill="#4949FF"/>
+                                </marker>
+                            </defs>
+                        </svg>
+                        <figcaption>Le processus de sauvegarde CloudStore : de la planification à la vérification, chaque étape est automatisée pour garantir la protection de vos données</figcaption>
+                    </figure>
+
+                    <h3>Ce qui se passe à chaque étape</h3>
+                    <ul>
+                        <li><strong>Planification</strong> — Vous définissez quand les sauvegardes doivent se produire (ex : chaque nuit à 2h du matin).</li>
+                        <li><strong>Sélection</strong> — Le système identifie quelles données ont changé depuis la dernière sauvegarde.</li>
+                        <li><strong>Transfert</strong> — Les données sont chiffrées puis envoyées vers CloudStore via un canal sécurisé.</li>
+                        <li><strong>Stockage</strong> — La sauvegarde est répliquée dans plusieurs emplacements géographiques pour plus de sécurité.</li>
+                        <li><strong>Vérification</strong> — CloudStore vérifie que la copie est intacte et vous envoie une confirmation.</li>
+                    </ul>
+                </section>
+
+                <section aria-labelledby="recovery-workflow-heading">
+                    <h2 id="recovery-workflow-heading">Processus de récupération</h2>
+                    <p>La <strong class="term">récupération</strong> (ou restauration) est le processus inverse : retrouver vos données à partir d'une sauvegarde lorsqu'un incident survient. C'est comme aller chercher vos photocopies au coffre-fort de la banque après un sinistre.</p>
+
+                    <figure class="diagram-scroll">
+                        <svg viewBox="0 0 750 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagramme de workflow montrant le processus de récupération en 5 étapes : détection de l'incident, choix du point de restauration, extraction des données, restauration et validation">
+                            <!-- Titre -->
+                            <text x="375" y="30" text-anchor="middle" font-size="14" font-weight="bold" fill="#721c24">Workflow de récupération CloudStore</text>
+
+                            <!-- Étape 1 : Détection -->
+                            <rect x="50" y="60" width="140" height="90" rx="10" fill="#f8d7da" stroke="#721c24" stroke-width="2"/>
+                            <text x="120" y="85" text-anchor="middle" font-size="11" font-weight="bold" fill="#721c24">1. Détection</text>
+                            <text x="120" y="105" text-anchor="middle" font-size="9" fill="#333">Incident identifié</text>
+                            <text x="120" y="120" text-anchor="middle" font-size="9" fill="#333">(perte de données,</text>
+                            <text x="120" y="135" text-anchor="middle" font-size="9" fill="#333">corruption, panne)</text>
+
+                            <!-- Flèche 1→2 -->
+                            <line x1="190" y1="105" x2="210" y2="105" stroke="#4949FF" stroke-width="2" marker-end="url(#arrowR)"/>
+
+                            <!-- Étape 2 : Choix du point -->
+                            <rect x="210" y="60" width="140" height="90" rx="10" fill="#e8f4fd" stroke="#000E9C" stroke-width="2"/>
+                            <text x="280" y="80" text-anchor="middle" font-size="11" font-weight="bold" fill="#000E9C">2. Choix du</text>
+                            <text x="280" y="95" text-anchor="middle" font-size="11" font-weight="bold" fill="#000E9C">point</text>
+                            <text x="280" y="115" text-anchor="middle" font-size="9" fill="#333">Sélectionner le point</text>
+                            <text x="280" y="130" text-anchor="middle" font-size="9" fill="#333">de restauration</text>
+                            <text x="280" y="145" text-anchor="middle" font-size="9" fill="#333">(date et heure)</text>
+
+                            <!-- Flèche 2→3 -->
+                            <line x1="350" y1="105" x2="370" y2="105" stroke="#4949FF" stroke-width="2" marker-end="url(#arrowR)"/>
+
+                            <!-- Étape 3 : Extraction -->
+                            <rect x="370" y="60" width="140" height="90" rx="10" fill="#fff3cd" stroke="#856404" stroke-width="2"/>
+                            <text x="440" y="85" text-anchor="middle" font-size="11" font-weight="bold" fill="#856404">3. Extraction</text>
+                            <text x="440" y="105" text-anchor="middle" font-size="9" fill="#333">Récupération de la</text>
+                            <text x="440" y="120" text-anchor="middle" font-size="9" fill="#333">sauvegarde depuis</text>
+                            <text x="440" y="135" text-anchor="middle" font-size="9" fill="#333">le stockage sécurisé</text>
+
+                            <!-- Flèche 3→4 -->
+                            <line x1="510" y1="105" x2="530" y2="105" stroke="#4949FF" stroke-width="2" marker-end="url(#arrowR)"/>
+
+                            <!-- Étape 4 : Restauration -->
+                            <rect x="530" y="60" width="140" height="90" rx="10" fill="#f0e6ff" stroke="#4949FF" stroke-width="2"/>
+                            <text x="600" y="85" text-anchor="middle" font-size="11" font-weight="bold" fill="#4949FF">4. Restauration</text>
+                            <text x="600" y="105" text-anchor="middle" font-size="9" fill="#333">Remise en place</text>
+                            <text x="600" y="120" text-anchor="middle" font-size="9" fill="#333">des données dans</text>
+                            <text x="600" y="135" text-anchor="middle" font-size="9" fill="#333">l'environnement cible</text>
+
+                            <!-- Flèche 4→5 (vers le bas) -->
+                            <line x1="600" y1="150" x2="600" y2="200" stroke="#4949FF" stroke-width="2" marker-end="url(#arrowR)"/>
+
+                            <!-- Étape 5 : Validation -->
+                            <rect x="530" y="200" width="140" height="90" rx="10" fill="#d4edda" stroke="#1b7a3d" stroke-width="2"/>
+                            <text x="600" y="225" text-anchor="middle" font-size="11" font-weight="bold" fill="#1b7a3d">5. Validation</text>
+                            <text x="600" y="245" text-anchor="middle" font-size="9" fill="#333">Vérification de</text>
+                            <text x="600" y="260" text-anchor="middle" font-size="9" fill="#333">l'intégrité et test</text>
+                            <text x="600" y="275" text-anchor="middle" font-size="9" fill="#333">de fonctionnement</text>
+
+                            <!-- Résultat final -->
+                            <rect x="250" y="320" width="250" height="50" rx="8" fill="#d4edda" stroke="#1b7a3d" stroke-width="2"/>
+                            <text x="375" y="345" text-anchor="middle" font-size="11" font-weight="bold" fill="#1b7a3d">&#10003; Données restaurées</text>
+                            <text x="375" y="362" text-anchor="middle" font-size="9" fill="#333">Activité normale reprise</text>
+
+                            <!-- Flèche vers résultat -->
+                            <line x1="530" y1="245" x2="500" y2="345" stroke="#1b7a3d" stroke-width="1.5" stroke-dasharray="4"/>
+
+                            <!-- Marqueur de flèche -->
+                            <defs>
+                                <marker id="arrowR" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+                                    <polygon points="0 0, 10 3.5, 0 7" fill="#4949FF"/>
+                                </marker>
+                            </defs>
+                        </svg>
+                        <figcaption>Le processus de récupération CloudStore : de la détection de l'incident à la validation de la restauration, chaque étape est guidée pour minimiser le temps d'interruption</figcaption>
+                    </figure>
+
+                    <h3>Ce qui se passe à chaque étape</h3>
+                    <ul>
+                        <li><strong>Détection</strong> — Un incident est identifié (fichier supprimé, données corrompues, panne système).</li>
+                        <li><strong>Choix du point</strong> — Vous sélectionnez à quel moment dans le temps vous souhaitez revenir (ex : « hier à 18h »).</li>
+                        <li><strong>Extraction</strong> — CloudStore récupère la sauvegarde correspondante depuis ses emplacements sécurisés.</li>
+                        <li><strong>Restauration</strong> — Les données sont remises en place dans votre environnement de travail.</li>
+                        <li><strong>Validation</strong> — Vous vérifiez que les données restaurées sont complètes et fonctionnelles.</li>
+                    </ul>
+                </section>
+
+                <section aria-labelledby="best-practices-heading">
+                    <h2 id="best-practices-heading">Bonnes pratiques de sauvegarde</h2>
+
+                    <div class="info-box">
+                        <p><strong>La règle 3-2-1 :</strong> Conservez <strong>3</strong> copies de vos données, sur <strong>2</strong> types de supports différents, dont <strong>1</strong> copie hors site. CloudStore facilite l'application de cette règle en fournissant automatiquement le stockage hors site et la redondance.</p>
+                    </div>
+
+                    <h3>Conseils pour les conversations clients</h3>
+                    <ul>
+                        <li><strong>Testez régulièrement</strong> — Une sauvegarde qui n'a jamais été testée n'est pas fiable. Recommandez des tests de restauration trimestriels.</li>
+                        <li><strong>Adaptez la fréquence</strong> — Plus les données changent souvent, plus les sauvegardes doivent être fréquentes.</li>
+                        <li><strong>Définissez les priorités</strong> — Toutes les données n'ont pas la même importance. Les données critiques méritent des sauvegardes plus fréquentes.</li>
+                        <li><strong>Documentez le plan</strong> — En cas d'urgence, chacun doit savoir qui fait quoi et dans quel ordre.</li>
+                    </ul>
+                </section>
+
+                <section aria-labelledby="summary-heading">
+                    <h2 id="summary-heading">Points clés à retenir</h2>
+                    <ul>
+                        <li>La <strong>sauvegarde</strong> crée des copies de sécurité de vos données pour vous protéger contre les pertes.</li>
+                        <li>La <strong>récupération</strong> restaure vos données à partir de ces copies en cas d'incident.</li>
+                        <li>Le processus de sauvegarde est <strong>automatisé</strong> : planification, sélection, transfert, stockage et vérification.</li>
+                        <li>Le processus de récupération est <strong>guidé</strong> : détection, choix du point, extraction, restauration et validation.</li>
+                        <li>Appliquez la <strong>règle 3-2-1</strong> et testez régulièrement vos restaurations.</li>
+                    </ul>
+                </section>
+
+                <nav class="nav-sequential" aria-label="Navigation entre leçons">
+                    <a href="data-management.html" class="nav-sequential__btn nav-sequential__btn--prev">
+                        <span class="nav-sequential__arrow" aria-hidden="true">&larr;</span>
+                        <span class="nav-sequential__label">Précédent : Gestion des données</span>
+                    </a>
+                    <a href="../best-practices/operations-security.html" class="nav-sequential__btn nav-sequential__btn--next">
+                        <span class="nav-sequential__label">Suivant : Opérations et sécurité</span>
+                        <span class="nav-sequential__arrow" aria-hidden="true">&rarr;</span>
+                    </a>
+                </nav>
+            </article>
+        </main>
+    </div>
+
+    <footer class="site-footer" role="contentinfo">
+        <p>&copy; 2024 OVHcloud — Skillhub Formation OPCP</p>
+    </footer>
+
+    <script src="../../assets/js/main.js"></script>
+</body>
+</html>

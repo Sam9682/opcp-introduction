@@ -1,0 +1,20 @@
+{
+  "name": "opcp-introduction",
+  "version": "1.0.0",
+  "description": "OPCP Introduction Skillhub - Static training website for OVHcloud Hosted Private Cloud",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "vitest --run",
+    "test:watch": "vitest",
+    "test:unit": "vitest --run tests/unit/",
+    "test:property": "vitest --run tests/property/",
+    "test:smoke": "vitest --run tests/smoke/",
+    "test:integration": "vitest --run tests/integration/",
+    "build:search-index": "node scripts/build-search-index.js"
+  },
+  "devDependencies": {
+    "vitest": "^3.2.1",
+    "fast-check": "^4.1.1"
+  }
+}

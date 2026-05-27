@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node Configuration - Technical Operations - OPCP Skillhub</title>
+    <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header class="site-header">
+        <nav aria-label="Site navigation" class="top-nav">
+            <a href="../../index.html" class="site-logo">OPCP Skillhub</a>
+            <a href="../../fr/technical-operations/node-configuration.html" class="lang-switch" aria-label="Switch to French">FR</a>
+        </nav>
+    </header>
+
+    <nav aria-label="Sidebar navigation" class="sidebar" id="sidebar">
+        <ul class="nav-menu">
+            <li><a href="../introduction/what-is-opcp.html">Introduction</a></li>
+            <li><a href="../getting-started/account-setup.html">Getting Started</a></li>
+            <li><a href="../core-concepts/node-lifecycle.html">Core Concepts</a></li>
+            <li class="active-section">
+                <a href="instance-setup.html">Technical Operations</a>
+                <ul>
+                    <li><a href="instance-setup.html">Instance Setup</a></li>
+                    <li><a href="api-credentials.html">API &amp; Credentials</a></li>
+                    <li class="active"><a href="node-configuration.html">Node Configuration</a></li>
+                    <li><a href="lacp-trunk-raid.html">LACP, Trunk &amp; RAID</a></li>
+                </ul>
+            </li>
+            <li><a href="../storage/cloudstore-overview.html">Storage Solutions</a></li>
+            <li><a href="../best-practices/operations-security.html">Best Practices</a></li>
+        </ul>
+            <a href="../glossary.html" class="glossary-link" aria-label="View glossary of terms"><span class="glossary-link__icon" aria-hidden="true">📖</span> Glossary</a>
+    </nav>
+
+    <main class="content-area" id="main-content">
+        <article>
+            <header class="lesson-header">
+                <h1>Node Configuration</h1>
+                <span class="difficulty-badge intermediate" aria-label="Difficulty: Intermediate">Intermediate</span>
+            </header>
+
+            <section aria-labelledby="overview">
+                <h2 id="overview">Overview</h2>
+                <p><a href="../glossary.html#term-node" class="glossary-term">Node</a> <a href="../glossary.html#term-configuration" class="glossary-term">configuration</a> determines how your cloud resources behave and perform. Each configuration option directly affects what your customers experience — from how fast their applications respond to whether their service stays online during maintenance.</p>
+                <p><strong>Real-world analogy:</strong> Configuring a node is like setting up a new retail store. You decide the opening hours (availability), how many checkout lanes to open (performance), whether to have a backup generator (resilience), and how to organise the stockroom (storage). Each decision shapes the customer experience.</p>
+            </section>
+
+            <section aria-labelledby="availability-options">
+                <h2 id="availability-options">Availability Configuration</h2>
+                <p>Availability settings determine how reliably your service stays accessible to users.</p>
+
+                <figure class="diagram-scroll">
+                    <svg viewBox="0 0 650 180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram showing node configuration categories: Availability, Performance, Resilience, and Storage, each affecting customer experience">
+                        <text x="325" y="20" text-anchor="middle" font-size="13" font-weight="bold" fill="#000E9C">Node Configuration Options</text>
+                        <rect x="20" y="40" width="140" height="120" rx="8" fill="#d4edda" stroke="#1b7a3d" stroke-width="1.5"/>
+                        <text x="90" y="65" text-anchor="middle" font-size="11" font-weight="bold" fill="#1b7a3d">⏰ Availability</text>
+                        <text x="90" y="85" text-anchor="middle" font-size="9" fill="#333">High availability</text>
+                        <text x="90" y="100" text-anchor="middle" font-size="9" fill="#333">Maintenance windows</text>
+                        <text x="90" y="120" text-anchor="middle" font-size="9" fill="#666">→ Uptime</text>
+                        <rect x="180" y="40" width="140" height="120" rx="8" fill="#e8eaff" stroke="#000E9C" stroke-width="1.5"/>
+                        <text x="250" y="65" text-anchor="middle" font-size="11" font-weight="bold" fill="#000E9C">⚡ Performance</text>
+                        <text x="250" y="85" text-anchor="middle" font-size="9" fill="#333">Resource scaling</text>
+                        <text x="250" y="100" text-anchor="middle" font-size="9" fill="#333">Priority levels</text>
+                        <text x="250" y="120" text-anchor="middle" font-size="9" fill="#666">→ Speed</text>
+                        <rect x="340" y="40" width="140" height="120" rx="8" fill="#fff3cd" stroke="#7a5c00" stroke-width="1.5"/>
+                        <text x="410" y="65" text-anchor="middle" font-size="11" font-weight="bold" fill="#7a5c00">🛡️ Resilience</text>
+                        <text x="410" y="85" text-anchor="middle" font-size="9" fill="#333">Backup frequency</text>
+                        <text x="410" y="100" text-anchor="middle" font-size="9" fill="#333">Failover settings</text>
+                        <text x="410" y="120" text-anchor="middle" font-size="9" fill="#666">→ Safety</text>
+                        <rect x="500" y="40" width="140" height="120" rx="8" fill="#f5f7fa" stroke="#4949FF" stroke-width="1.5"/>
+                        <text x="570" y="65" text-anchor="middle" font-size="11" font-weight="bold" fill="#4949FF">💾 Storage</text>
+                        <text x="570" y="85" text-anchor="middle" font-size="9" fill="#333">Disk type</text>
+                        <text x="570" y="100" text-anchor="middle" font-size="9" fill="#333">Capacity allocation</text>
+                        <text x="570" y="120" text-anchor="middle" font-size="9" fill="#666">→ Capacity</text>
+                    </svg>
+                    <figcaption>The four categories of node configuration, each directly affecting a different aspect of customer experience</figcaption>
+                </figure>
+
+                <section aria-labelledby="high-availability">
+                    <h3 id="high-availability">High Availability</h3>
+                    <p><strong>What it does:</strong> Runs your workload across multiple physical servers simultaneously, so if one server encounters a problem, another takes over instantly.</p>
+                    <p class="customer-impact"><strong>Customer impact:</strong> Enabling high availability means your service stays online even if one physical server fails. Your users experience no interruption — the switchover happens automatically in seconds.</p>
+                    <p><strong>Analogy:</strong> Like having two bridges crossing a river. If one is closed for repairs, traffic automatically flows over the other without drivers needing to find a detour.</p>
+                    <p><strong>When customers need this:</strong> Any service where downtime directly costs money or damages reputation — e-commerce sites, customer portals, real-time communication tools.</p>
+                </section>
+
+                <section aria-labelledby="maintenance-windows">
+                    <h3 id="maintenance-windows">Maintenance Window Scheduling</h3>
+                    <p><strong>What it does:</strong> Allows you to define when routine platform updates and maintenance activities occur.</p>
+                    <p class="customer-impact"><strong>Customer impact:</strong> Scheduling maintenance windows during off-peak hours means your users are less likely to notice any brief service adjustments. Business operations continue uninterrupted during critical hours.</p>
+                    <p><strong>Analogy:</strong> Like scheduling road repairs for 2 AM instead of rush hour — the work still gets done, but fewer people are affected.</p>
+                    <p><strong>When customers need this:</strong> Organisations with predictable usage patterns who want to minimise any potential impact on their busiest periods.</p>
+                </section>
+            </section>
+
+            <section aria-labelledby="performance-options">
+                <h2 id="performance-options">Performance Configuration</h2>
+                <p>Performance settings control how quickly your applications respond and how much work they can handle simultaneously.</p>
+
+                <section aria-labelledby="resource-scaling">
+                    <h3 id="resource-scaling">Resource Scaling</h3>
+                    <p><strong>What it does:</strong> Adjusts the amount of processing power and memory allocated to your node, either manually or based on demand.</p>
+                    <p class="customer-impact"><strong>Customer impact:</strong> Proper resource scaling ensures your application responds quickly even during traffic spikes. Your customers never experience slowdowns during peak usage — the system grows to meet demand.</p>
+                    <p><strong>Analogy:</strong> Like a restaurant that can open additional dining rooms when a large party arrives, rather than making guests wait for a table.</p>
+                    <p><strong>When customers need this:</strong> Services with variable demand — seasonal businesses, event-driven traffic, or growing organisations whose needs change over time.</p>
+                </section>
+
+                <section aria-labelledby="storage-performance">
+                    <h3 id="storage-performance">Storage Performance Tiers</h3>
+                    <p><strong>What it does:</strong> Selects the speed at which data can be read from and written to storage, ranging from standard to high-performance tiers.</p>
+                    <p class="customer-impact"><strong>Customer impact:</strong> Choosing a higher storage performance tier means your applications load data faster. Database queries return results more quickly, file uploads complete sooner, and overall application responsiveness improves.</p>
+                    <p><strong>Analogy:</strong> Like choosing between a standard postal service and express delivery. Both get the package there, but express is significantly faster when speed matters.</p>
+                    <p><strong>When customers need this:</strong> Applications that frequently read or write large amounts of data — databases, media processing, analytics platforms.</p>
+                </section>
+            </section>
+
+            <section aria-labelledby="network-options">
+                <h2 id="network-options">Network Configuration</h2>
+                <p>Network settings control how your node communicates with the outside world and with other resources in your environment.</p>
+
+                <section aria-labelledby="bandwidth-allocation">
+                    <h3 id="bandwidth-allocation">Bandwidth Allocation</h3>
+                    <p><strong>What it does:</strong> Sets the maximum amount of data that can flow to and from your node per second.</p>
+                    <p class="customer-impact"><strong>Customer impact:</strong> Adequate bandwidth allocation ensures your users can download files, stream content, and interact with your application without delays or buffering — even when many users are connected simultaneously.</p>
+                    <p><strong>Analogy:</strong> Like choosing the width of a water pipe. A wider pipe delivers more water at once, serving more taps without reducing pressure at any single one.</p>
+                    <p><strong>When customers need this:</strong> Services that deliver large files, stream media, or serve many concurrent users — content delivery, video platforms, large-scale web applications.</p>
+                </section>
+
+                <section aria-labelledby="network-isolation">
+                    <h3 id="network-isolation">Network Isolation</h3>
+                    <p><strong>What it does:</strong> Creates private network segments that separate your resources from other tenants and from the public internet.</p>
+                    <p class="customer-impact"><strong>Customer impact:</strong> Network isolation means your sensitive data travels only through private channels, never exposed to the public internet. This provides an additional layer of security and helps meet regulatory compliance requirements.</p>
+                    <p><strong>Analogy:</strong> Like having a private road between your office buildings rather than using public streets. Only your vehicles travel on it, and outsiders cannot access it.</p>
+                    <p><strong>When customers need this:</strong> Organisations handling sensitive data — healthcare, finance, government — or any business that needs to demonstrate strong security controls to auditors.</p>
+                </section>
+            </section>
+
+            <section aria-labelledby="cost-options">
+                <h2 id="cost-options">Cost-Related Configuration</h2>
+
+                <section aria-labelledby="resource-limits">
+                    <h3 id="resource-limits">Resource Limits</h3>
+                    <p><strong>What it does:</strong> Sets maximum caps on resource consumption to prevent unexpected cost increases.</p>
+                    <p class="customer-impact"><strong>Customer impact:</strong> Setting resource limits means your monthly bill stays predictable. You will never be surprised by unexpected charges from a sudden spike in usage — the system respects the boundaries you define.</p>
+                    <p><strong>Analogy:</strong> Like setting a spending limit on a company credit card. The card works normally up to the limit, then stops to prevent overspending.</p>
+                    <p><strong>When customers need this:</strong> Budget-conscious organisations, departments with fixed IT allocations, or any customer who values cost predictability over unlimited flexibility.</p>
+                </section>
+
+                <section aria-labelledby="reserved-resources">
+                    <h3 id="reserved-resources">Reserved vs. On-Demand Resources</h3>
+                    <p><strong>What it does:</strong> Allows you to commit to a resource level for a longer period (reserved) at a lower rate, or pay a higher rate for flexibility (on-demand).</p>
+                    <p class="customer-impact"><strong>Customer impact:</strong> Choosing reserved resources reduces your per-unit cost significantly — typically 20-40% savings compared to on-demand pricing. Your capacity is guaranteed and always available when you need it.</p>
+                    <p><strong>Analogy:</strong> Like choosing between a monthly gym membership (reserved — cheaper per visit, committed) versus paying per session (on-demand — more expensive per visit, but no commitment).</p>
+                    <p><strong>When customers need this:</strong> Organisations with stable, predictable workloads benefit from reserved pricing. Those with unpredictable or temporary needs benefit from on-demand flexibility.</p>
+                </section>
+            </section>
+
+            <section aria-labelledby="what-to-tell-customers">
+                <h2 id="what-to-tell-customers">What to Tell Customers</h2>
+                <ul>
+                    <li>Every configuration option has a direct, understandable impact on their service quality or cost</li>
+                    <li>High availability protects against unexpected outages — their users stay connected</li>
+                    <li>Resource scaling means they only pay for what they use, while always having enough capacity</li>
+                    <li>Network isolation provides enterprise-grade security without complex setup</li>
+                    <li>Resource limits prevent bill shock — costs stay within defined boundaries</li>
+                    <li>Configuration changes can be made at any time through the management interface — they are not locked into initial choices</li>
+                </ul>
+            </section>
+
+            <footer class="lesson-footer">
+                <nav aria-label="Lesson navigation" class="lesson-nav">
+                    <a href="api-credentials.html" class="btn-previous" aria-label="Previous lesson">← Previous: API &amp; Credentials</a>
+                    <a href="lacp-trunk-raid.html" class="btn-next" aria-label="Next lesson">Next: LACP, Trunk &amp; RAID →</a>
+                </nav>
+            </footer>
+        </article>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2024 OVHcloud — OPCP Introduction Skillhub</p>
+    </footer>
+
+    <script src="../../assets/js/main.js"></script>
+</body>
+</html>

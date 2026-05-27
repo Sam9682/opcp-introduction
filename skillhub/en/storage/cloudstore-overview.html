@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn what CloudStore is using a real-world warehouse analogy, and discover its key use cases for business.">
+    <title>CloudStore Overview - Storage Solutions - OPCP Skillhub</title>
+    <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <div class="page-wrapper">
+        <nav class="nav-sidebar" aria-label="Main navigation">
+            <div class="search-container">
+                <input type="search" class="search-input" placeholder="Search lessons..." aria-label="Search lessons">
+            </div>
+            <div class="progress-display">
+                <span class="progress-display__label">Overall Progress</span>
+                <div class="progress-display__bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="Overall completion progress"><div class="progress-display__fill" style="width: 0%"></div></div>
+                <span class="progress-display__percentage" role="status" aria-live="polite">0%</span>
+            </div>
+            <a href="../glossary.html" class="glossary-link" aria-label="View glossary of terms"><span class="glossary-link__icon" aria-hidden="true">📖</span> Glossary</a>
+
+            <button class="nav-sidebar__close" aria-label="Close navigation">&times;</button>
+        </nav>
+
+        <button class="nav-hamburger" aria-label="Open navigation menu">
+            <span class="nav-hamburger__icon" aria-hidden="true">&#9776;</span>
+        </button>
+        <div class="nav-overlay" aria-hidden="true"></div>
+
+        <main class="content-area" id="main-content">
+            <article>
+                <header class="lesson-header">
+                    <h1>CloudStore Overview</h1>
+                    <div class="lesson-meta">
+                        <span class="badge badge-intermediate">Intermediate</span>
+                        <a href="../../fr/storage/cloudstore-overview.html" class="language-switch" aria-label="Switch to French">
+                            <span>🇫🇷</span> <span>Français</span>
+                        </a>
+                    </div>
+                </header>
+
+                <section aria-labelledby="analogy-heading">
+                    <h2 id="analogy-heading">The Secure Warehouse Analogy</h2>
+                    <p>Imagine your business generates mountains of documents, photos, videos, and data files every day. Where do you keep all of it?</p>
+
+                    <p>Think of <a href="../glossary.html#term-cloudstore" class="glossary-term"><strong>CloudStore</strong></a> as <strong>a secure, expandable warehouse for your digital assets</strong>. Just like a professional storage facility:</p>
+
+                    <ul>
+                        <li><strong>It grows with you</strong> — need more space? Simply request additional room. No construction required.</li>
+                        <li><strong>It's always accessible</strong> — authorised staff can retrieve items anytime, from anywhere, using a secure access pass.</li>
+                        <li><strong>It's professionally managed</strong> — the facility handles security, climate control, and maintenance. You focus on your business.</li>
+                        <li><strong>Your items are protected</strong> — multiple copies are stored in different locations, so even if one shelf is damaged, your belongings are safe.</li>
+                    </ul>
+
+                    <div class="info-box">
+                        <p><strong>CloudStore</strong> is OVHcloud's storage service within the OPCP platform. It lets you store, organise, and retrieve any type of digital data — from simple text files to large video archives — without managing physical hard drives or servers yourself.</p>
+                    </div>
+                </section>
+
+                <section aria-labelledby="diagram-heading">
+                    <h2 id="diagram-heading">How CloudStore Works</h2>
+                    <figure class="diagram-scroll">
+                        <svg viewBox="0 0 700 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram showing how CloudStore connects your business to secure, redundant storage managed by OVHcloud">
+                            <!-- Your Business -->
+                            <rect x="20" y="100" width="160" height="100" rx="10" fill="#e8f4fd" stroke="#000E9C" stroke-width="2"/>
+                            <text x="100" y="135" text-anchor="middle" font-size="13" font-weight="bold" fill="#000E9C">Your Business</text>
+                            <text x="100" y="160" text-anchor="middle" font-size="10" fill="#333">Documents, media,</text>
+                            <text x="100" y="175" text-anchor="middle" font-size="10" fill="#333">application data</text>
+
+                            <!-- Arrow -->
+                            <line x1="180" y1="150" x2="260" y2="150" stroke="#4949FF" stroke-width="2" marker-end="url(#arrowhead)"/>
+                            <text x="220" y="140" text-anchor="middle" font-size="9" fill="#4949FF">Upload / Access</text>
+
+                            <!-- CloudStore -->
+                            <rect x="260" y="60" width="200" height="180" rx="10" fill="#d4edda" stroke="#1b7a3d" stroke-width="2"/>
+                            <text x="360" y="50" text-anchor="middle" font-size="14" font-weight="bold" fill="#1b7a3d">CloudStore</text>
+                            <rect x="280" y="85" width="160" height="35" rx="5" fill="#ffffff" stroke="#1b7a3d" stroke-width="1"/>
+                            <text x="360" y="107" text-anchor="middle" font-size="11" fill="#333">Automatic Redundancy</text>
+                            <rect x="280" y="130" width="160" height="35" rx="5" fill="#ffffff" stroke="#1b7a3d" stroke-width="1"/>
+                            <text x="360" y="152" text-anchor="middle" font-size="11" fill="#333">Scalable Capacity</text>
+                            <rect x="280" y="175" width="160" height="35" rx="5" fill="#ffffff" stroke="#1b7a3d" stroke-width="1"/>
+                            <text x="360" y="197" text-anchor="middle" font-size="11" fill="#333">Secure Access Control</text>
+
+                            <!-- Arrow to OVHcloud -->
+                            <line x1="460" y1="150" x2="520" y2="150" stroke="#4949FF" stroke-width="2" marker-end="url(#arrowhead)"/>
+                            <text x="490" y="140" text-anchor="middle" font-size="9" fill="#4949FF">Managed</text>
+
+                            <!-- OVHcloud -->
+                            <rect x="520" y="80" width="160" height="140" rx="10" fill="#f0e6ff" stroke="#4949FF" stroke-width="2"/>
+                            <text x="600" y="115" text-anchor="middle" font-size="12" font-weight="bold" fill="#4949FF">OVHcloud</text>
+                            <text x="600" y="140" text-anchor="middle" font-size="10" fill="#333">Physical hardware</text>
+                            <text x="600" y="160" text-anchor="middle" font-size="10" fill="#333">Security &amp; monitoring</text>
+                            <text x="600" y="180" text-anchor="middle" font-size="10" fill="#333">Maintenance</text>
+                            <text x="600" y="200" text-anchor="middle" font-size="10" fill="#333">European data centres</text>
+
+                            <!-- Arrowhead marker -->
+                            <defs>
+                                <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+                                    <polygon points="0 0, 10 3.5, 0 7" fill="#4949FF"/>
+                                </marker>
+                            </defs>
+                        </svg>
+                        <figcaption>CloudStore sits between your business and OVHcloud's managed infrastructure, providing secure and scalable storage</figcaption>
+                    </figure>
+                </section>
+
+                <section aria-labelledby="use-cases-heading">
+                    <h2 id="use-cases-heading">Common Use Cases</h2>
+                    <p>CloudStore is versatile enough to handle many different business needs. Here are the most common scenarios:</p>
+
+                    <h3>Document Storage</h3>
+                    <p>Store contracts, reports, spreadsheets, and presentations in a central location accessible to your entire team. Think of it as a shared filing cabinet that never runs out of drawers and can be accessed from any office.</p>
+
+                    <h3>Media Archives</h3>
+                    <p>Keep large collections of images, videos, and audio files safe and organised. Marketing teams, creative agencies, and media companies use CloudStore to maintain their growing libraries without worrying about running out of space.</p>
+
+                    <h3>Application Data</h3>
+                    <p>Software applications generate data constantly — user records, transaction logs, configuration files. CloudStore provides a reliable home for this data, ensuring applications can read and write information quickly and safely.</p>
+
+                    <h3>Backups</h3>
+                    <p>Create safety copies of your critical business data. If something goes wrong with your primary systems — hardware failure, accidental deletion, or a security incident — your backups in CloudStore let you recover quickly.</p>
+                </section>
+
+                <section aria-labelledby="benefits-heading">
+                    <h2 id="benefits-heading">Why Customers Choose CloudStore</h2>
+                    <ul>
+                        <li><strong>No hardware to manage</strong> — OVHcloud handles all physical infrastructure.</li>
+                        <li><strong>Pay for what you use</strong> — storage scales with your needs, no upfront investment in hard drives.</li>
+                        <li><strong>Data sovereignty</strong> — data stays in European data centres, meeting compliance requirements.</li>
+                        <li><strong>Built-in protection</strong> — automatic redundancy means your data is copied across multiple locations.</li>
+                        <li><strong>Access from anywhere</strong> — securely reach your data from any location with an internet connection.</li>
+                    </ul>
+                </section>
+
+                <section aria-labelledby="summary-heading">
+                    <h2 id="summary-heading">Key Takeaways</h2>
+                    <ul>
+                        <li><strong>CloudStore</strong> is OVHcloud's managed storage service — a secure, expandable warehouse for your digital assets.</li>
+                        <li>It handles documents, media, application data, and backups without requiring you to manage physical hardware.</li>
+                        <li>Data is automatically protected through redundancy and stored in European data centres.</li>
+                        <li>You pay only for the storage you actually use, and can scale up or down as your business needs change.</li>
+                    </ul>
+                </section>
+
+                <nav class="nav-sequential" aria-label="Lesson navigation">
+                    <a href="../technical-operations/lacp-trunk-raid.html" class="nav-sequential__btn nav-sequential__btn--prev">
+                        <span class="nav-sequential__arrow" aria-hidden="true">&larr;</span>
+                        <span class="nav-sequential__label">Previous: LACP, Trunk &amp; RAID</span>
+                    </a>
+                    <a href="storage-capabilities.html" class="nav-sequential__btn nav-sequential__btn--next">
+                        <span class="nav-sequential__label">Next: Storage Capabilities</span>
+                        <span class="nav-sequential__arrow" aria-hidden="true">&rarr;</span>
+                    </a>
+                </nav>
+            </article>
+        </main>
+    </div>
+
+    <footer class="site-footer" role="contentinfo">
+        <p>&copy; 2024 OVHcloud — OPCP Introduction Skillhub</p>
+    </footer>
+
+    <script src="../../assets/js/main.js"></script>
+</body>
+</html>

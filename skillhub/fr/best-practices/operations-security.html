@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opérations et Sécurité - Bonnes Pratiques</title>
+    <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+
+    <header class="page-header">
+        <nav aria-label="Changement de langue">
+            <a href="../../en/best-practices/operations-security.html" class="lang-switch" aria-label="Passer en anglais">EN</a>
+        </nav>
+            <a href="../glossary.html" class="glossary-link" aria-label="Voir le glossaire des termes"><span class="glossary-link__icon" aria-hidden="true">📖</span> Glossaire</a>
+        <span class="difficulty-badge beginner" aria-label="Difficulté : Débutant">Débutant</span>
+    </header>
+
+    <main class="content-area" id="main-content">
+        <article>
+            <header>
+                <h1>Opérations et Sécurité</h1>
+                <p class="lesson-intro">Apprenez à maintenir votre environnement OPCP en bon état de fonctionnement et en toute sécurité — expliqué à travers l'analogie de la gestion d'un immeuble.</p>
+            </header>
+
+            <section aria-labelledby="analogy-heading">
+                <h2 id="analogy-heading">Imaginez la gestion d'un immeuble</h2>
+                <p>Imaginez que vous êtes propriétaire d'un grand immeuble de bureaux. Vous devez maintenir l'éclairage, faire fonctionner les ascenseurs et verrouiller les portes. La gestion de votre environnement OPCP fonctionne de la même manière :</p>
+                <ul>
+                    <li><strong>La gestion des ressources</strong> revient à surveiller la consommation d'électricité et d'eau — vous suivez ce qui est consommé et planifiez les pics de demande.</li>
+                    <li><strong>La maintenance</strong> revient à planifier les inspections d'ascenseurs et à remplacer les ampoules avant qu'elles ne grillent.</li>
+                    <li><strong>La sécurité</strong> revient à contrôler qui possède les clés de chaque étage, installer des caméras et respecter les normes de sécurité incendie.</li>
+                </ul>
+            </section>
+
+            <section aria-labelledby="resource-heading">
+                <h2 id="resource-heading">Gestion des ressources</h2>
+                <p>Tout comme un gestionnaire d'immeuble surveille les compteurs, vous devez vérifier régulièrement comment vos ressources cloud sont utilisées.</p>
+
+                <h3>Surveillance de l'utilisation</h3>
+                <p>Gardez un œil sur la puissance de calcul (CPU), la mémoire (RAM) et le stockage consommés par vos services. Le tableau de bord OPCP fournit des graphiques d'utilisation qui fonctionnent comme les jauges du tableau de bord de votre voiture — ils vous indiquent en un coup d'œil si tout fonctionne dans les limites normales.</p>
+                <ul>
+                    <li><strong>Utilisation CPU</strong> — Pensez-y comme l'effort fourni par le moteur. Une utilisation constamment élevée signifie que vous avez peut-être besoin de plus de puissance.</li>
+                    <li><strong>Mémoire (RAM)</strong> — Comme l'espace de bureau pour vos collaborateurs. Si tout le monde est à l'étroit, la productivité diminue.</li>
+                    <li><strong>Stockage</strong> — Vos armoires de classement. Quand elles sont pleines, vous devez archiver les anciens dossiers ou ajouter de nouvelles armoires.</li>
+                </ul>
+
+                <h3>Mise à l'échelle</h3>
+                <p>Quand la demande augmente — comme un immeuble qui accueille de nouveaux locataires — vous pouvez ajuster vos ressources à la hausse ou à la baisse :</p>
+                <ul>
+                    <li><strong>Mise à l'échelle verticale</strong> signifie donner plus de puissance aux ressources existantes (passer à un ascenseur plus grand).</li>
+                    <li><strong>Mise à l'échelle horizontale</strong> signifie ajouter davantage de ressources (installer des ascenseurs supplémentaires).</li>
+                </ul>
+                <p>OPCP vous permet d'ajuster les ressources sans tout arrêter, un peu comme ajouter un étage à un immeuble pendant que les autres étages restent ouverts.</p>
+            </section>
+
+            <section aria-labelledby="maintenance-heading">
+                <h2 id="maintenance-heading">Pratiques de maintenance</h2>
+                <p>Un immeuble bien entretenu connaît rarement des urgences. Le même principe s'applique à votre environnement cloud.</p>
+
+                <h3>Mises à jour régulières</h3>
+                <p>Les mises à jour logicielles sont comme le remplacement des pièces usées dans le système de climatisation de votre immeuble. Elles corrigent les problèmes connus et améliorent les performances. OVHcloud gère automatiquement de nombreuses mises à jour d'infrastructure, mais vous devez rester informé des fenêtres de maintenance planifiées — tout comme les locataires sont prévenus avant une coupure d'eau.</p>
+
+                <h3>Contrôles de santé</h3>
+                <p>Les contrôles de routine sont vos inspections d'immeuble. Ils détectent les petits problèmes avant qu'ils ne deviennent importants :</p>
+                <ul>
+                    <li><strong>Vérifications de l'état des services</strong> — Tout répond-il correctement ? Comme vérifier que toutes les lumières s'allument.</li>
+                    <li><strong>Références de performance</strong> — Savoir à quoi ressemble le fonctionnement « normal » pour repérer les anomalies rapidement.</li>
+                    <li><strong>Vérification des sauvegardes</strong> — Confirmer que vos sauvegardes fonctionnent réellement, comme vous testeriez une alarme incendie.</li>
+                </ul>
+            </section>
+
+            <section aria-labelledby="security-heading">
+                <h2 id="security-heading">Sécurité</h2>
+                <p>La sécurité dans le cloud suit la même logique que la sécurité physique d'un immeuble : contrôler les accès, protéger les objets de valeur et respecter les réglementations.</p>
+
+                <h3>Contrôle d'accès</h3>
+                <p>Tout le monde n'a pas besoin d'un passe-partout. Dans OPCP, vous attribuez des permissions en fonction des rôles :</p>
+                <ul>
+                    <li><strong>Administrateurs</strong> — Les gestionnaires d'immeuble avec accès à toutes les pièces.</li>
+                    <li><strong>Opérateurs</strong> — Le personnel de maintenance qui peut accéder aux locaux techniques mais pas aux bureaux privés.</li>
+                    <li><strong>Lecteurs</strong> — Les visiteurs qui peuvent regarder le hall d'entrée mais ne peuvent ouvrir aucune porte.</li>
+                </ul>
+                <p>Le principe du <span class="glossary-term" data-term="least-privilege">moindre privilège</span> signifie donner à chaque personne uniquement l'accès dont elle a besoin — rien de plus.</p>
+
+                <h3>Protection des données</h3>
+                <p>Protéger les données revient à sécuriser les objets de valeur à l'intérieur de votre immeuble :</p>
+                <ul>
+                    <li><strong>Chiffrement au repos</strong> — Verrouiller les documents dans un coffre-fort même quand personne ne les utilise.</li>
+                    <li><strong>Chiffrement en transit</strong> — Utiliser des véhicules blindés pour transporter les objets de valeur entre les sites.</li>
+                    <li><strong>Sauvegardes régulières</strong> — Conserver des copies des documents importants dans un emplacement séparé et sécurisé.</li>
+                </ul>
+
+                <h3>Sensibilisation à la conformité</h3>
+                <p>Tout comme les immeubles doivent respecter les normes incendie et d'accessibilité, votre environnement cloud doit se conformer aux réglementations sur les données :</p>
+                <ul>
+                    <li><strong>Résidence des données</strong> — Certaines réglementations exigent que les données restent dans certaines limites géographiques, comme conserver les dossiers des locataires sur place.</li>
+                    <li><strong>Pistes d'audit</strong> — Tenir un registre de qui a accédé à quoi et quand, similaire à un cahier de signatures des visiteurs.</li>
+                    <li><strong>Certifications</strong> — OVHcloud maintient des certifications industrielles (ISO 27001, SOC 2) pour que vous puissiez assurer à vos clients que leurs données sont traitées de manière responsable.</li>
+                </ul>
+            </section>
+
+            <section aria-labelledby="summary-heading">
+                <h2 id="summary-heading">Points clés à retenir</h2>
+                <ul>
+                    <li>Surveillez régulièrement l'utilisation des ressources — comme lire les compteurs de votre immeuble.</li>
+                    <li>Maintenez les systèmes à jour et effectuez des contrôles de santé — la maintenance préventive évite les urgences.</li>
+                    <li>Appliquez le principe du moindre privilège — n'accordez que les accès réellement nécessaires.</li>
+                    <li>Protégez les données avec le chiffrement et les sauvegardes — verrouillez le coffre et conservez des copies hors site.</li>
+                    <li>Restez informé des exigences de conformité — respectez les « codes du bâtiment » pour les données.</li>
+                </ul>
+            </section>
+        </article>
+    </main>
+
+    <footer class="page-footer">
+        <nav aria-label="Navigation entre leçons">
+            <a href="../storage/backup-recovery.html" class="nav-prev" aria-label="Leçon précédente : Sauvegarde et Récupération">← Précédent</a>
+            <a href="performance-troubleshooting.html" class="nav-next" aria-label="Leçon suivante : Performance et Dépannage">Suivant →</a>
+        </nav>
+    </footer>
+
+    <script src="../../assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuration d'Instance - Opérations Techniques - OPCP Skillhub</title>
+    <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+
+    <header class="site-header">
+        <nav aria-label="Navigation du site" class="top-nav">
+            <a href="../../index.html" class="site-logo">OPCP Skillhub</a>
+            <a href="../../en/technical-operations/instance-setup.html" class="lang-switch" aria-label="Passer en anglais">EN</a>
+        </nav>
+    </header>
+
+    <nav aria-label="Navigation latérale" class="sidebar" id="sidebar">
+        <ul class="nav-menu">
+            <li><a href="../introduction/what-is-opcp.html">Introduction</a></li>
+            <li><a href="../getting-started/account-setup.html">Premiers Pas</a></li>
+            <li><a href="../core-concepts/node-lifecycle.html">Concepts Fondamentaux</a></li>
+            <li class="active-section">
+                <a href="instance-setup.html">Opérations Techniques</a>
+                <ul>
+                    <li class="active"><a href="instance-setup.html">Configuration d'Instance</a></li>
+                    <li><a href="api-credentials.html">API &amp; Identifiants</a></li>
+                    <li><a href="node-configuration.html">Configuration des Nœuds</a></li>
+                    <li><a href="lacp-trunk-raid.html">LACP, Trunk &amp; RAID</a></li>
+                </ul>
+            </li>
+            <li><a href="../storage/cloudstore-overview.html">Solutions de Stockage</a></li>
+            <li><a href="../best-practices/operations-security.html">Bonnes Pratiques</a></li>
+        </ul>
+            <a href="../glossary.html" class="glossary-link" aria-label="Voir le glossaire des termes"><span class="glossary-link__icon" aria-hidden="true">📖</span> Glossaire</a>
+    </nav>
+
+    <main class="content-area" id="main-content">
+        <article>
+            <header class="lesson-header">
+                <h1>Configuration d'Instance</h1>
+                <span class="difficulty-badge intermediate" aria-label="Difficulté : Intermédiaire">Intermédiaire</span>
+            </header>
+
+            <section aria-labelledby="overview">
+                <h2 id="overview">Présentation</h2>
+                <p>Configurer une nouvelle <a href="../glossary.html#term-noeud" class="glossary-term">instance</a> dans <a href="../glossary.html#term-opcp" class="glossary-term">OPCP</a> est similaire à l'emménagement dans un nouveau bureau. Vous choisissez la taille et l'agencement dont vous avez besoin, confirmez les détails, puis l'espace est préparé pour vous. Cette page vous guide à travers le processus complet à un niveau conceptuel — aucune commande technique n'est requise.</p>
+                <p><strong>Analogie :</strong> Pensez à la configuration d'instance comme à la commande d'un ordinateur sur mesure dans un catalogue. Vous sélectionnez les spécifications dont vous avez besoin, confirmez votre commande, et le système est assemblé et livré prêt à l'emploi.</p>
+            </section>
+
+            <section aria-labelledby="workflow-steps">
+                <h2 id="workflow-steps">Le Processus de Configuration</h2>
+                <p>La création d'une nouvelle instance suit un processus clair, étape par étape, via l'interface de gestion. Voici ce que chaque étape implique :</p>
+
+                <figure class="diagram-scroll">
+                    <svg viewBox="0 0 750 160" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagramme du workflow de configuration d'instance en 5 étapes : Modèle, Ressources, Nommage, Vérification, Déploiement">
+                        <rect x="10" y="40" width="130" height="80" rx="8" fill="#e8eaff" stroke="#000E9C" stroke-width="2"/>
+                        <text x="75" y="70" text-anchor="middle" font-size="11" font-weight="bold" fill="#000E9C">1. Modèle</text>
+                        <text x="75" y="90" text-anchor="middle" font-size="9" fill="#333">Choisir le type</text>
+                        <text x="75" y="105" text-anchor="middle" font-size="9" fill="#333">de charge</text>
+                        <polygon points="145,80 160,72 160,88" fill="#4949FF"/>
+                        <rect x="165" y="40" width="130" height="80" rx="8" fill="#e8eaff" stroke="#000E9C" stroke-width="2"/>
+                        <text x="230" y="70" text-anchor="middle" font-size="11" font-weight="bold" fill="#000E9C">2. Ressources</text>
+                        <text x="230" y="90" text-anchor="middle" font-size="9" fill="#333">CPU, RAM,</text>
+                        <text x="230" y="105" text-anchor="middle" font-size="9" fill="#333">Stockage</text>
+                        <polygon points="300,80 315,72 315,88" fill="#4949FF"/>
+                        <rect x="320" y="40" width="130" height="80" rx="8" fill="#e8eaff" stroke="#000E9C" stroke-width="2"/>
+                        <text x="385" y="70" text-anchor="middle" font-size="11" font-weight="bold" fill="#000E9C">3. Nommage</text>
+                        <text x="385" y="90" text-anchor="middle" font-size="9" fill="#333">Étiqueter et</text>
+                        <text x="385" y="105" text-anchor="middle" font-size="9" fill="#333">organiser</text>
+                        <polygon points="455,80 470,72 470,88" fill="#4949FF"/>
+                        <rect x="475" y="40" width="130" height="80" rx="8" fill="#e8eaff" stroke="#000E9C" stroke-width="2"/>
+                        <text x="540" y="70" text-anchor="middle" font-size="11" font-weight="bold" fill="#000E9C">4. Vérification</text>
+                        <text x="540" y="90" text-anchor="middle" font-size="9" fill="#333">Confirmer et</text>
+                        <text x="540" y="105" text-anchor="middle" font-size="9" fill="#333">approuver</text>
+                        <polygon points="610,80 625,72 625,88" fill="#4949FF"/>
+                        <rect x="630" y="40" width="110" height="80" rx="8" fill="#d4edda" stroke="#1b7a3d" stroke-width="2"/>
+                        <text x="685" y="70" text-anchor="middle" font-size="11" font-weight="bold" fill="#1b7a3d">5. Déployer</text>
+                        <text x="685" y="90" text-anchor="middle" font-size="9" fill="#333">Instance</text>
+                        <text x="685" y="105" text-anchor="middle" font-size="9" fill="#333">prête ✓</text>
+                    </svg>
+                    <figcaption>Le workflow de configuration d'instance : cinq étapes guidées, de la sélection du modèle à une instance opérationnelle</figcaption>
+                </figure>
+
+                <section aria-labelledby="step1">
+                    <h3 id="step1">Étape 1 : Choisir un Modèle</h3>
+                    <p>Commencez par sélectionner un modèle préconfiguré qui correspond à vos besoins. Les modèles sont comme des plans d'appartement — chacun propose une combinaison recommandée de puissance de traitement, de mémoire et de stockage adaptée à un type de travail particulier.</p>
+                    <ul>
+                        <li><strong>Usage Général</strong> — Ressources équilibrées pour les applications métier courantes</li>
+                        <li><strong>Optimisé Calcul</strong> — Puissance de traitement supplémentaire pour les tâches intensives en données</li>
+                        <li><strong>Optimisé Mémoire</strong> — Mémoire additionnelle pour les applications qui traitent de grands volumes de données simultanément</li>
+                        <li><strong>Optimisé Stockage</strong> — Capacité de stockage étendue pour l'archivage ou les charges de travail riches en médias</li>
+                    </ul>
+                </section>
+
+                <section aria-labelledby="step2">
+                    <h3 id="step2">Étape 2 : Configurer les Ressources</h3>
+                    <p>Après avoir sélectionné un modèle, vous ajustez l'allocation des ressources. C'est comme réorganiser les meubles après avoir choisi votre appartement — vous décidez exactement de la quantité de chaque ressource dont vous avez besoin.</p>
+                    <ul>
+                        <li><strong>Capacité de traitement</strong> — La puissance de calcul dédiée à votre instance</li>
+                        <li><strong>Allocation mémoire</strong> — La mémoire de travail disponible pour les tâches actives</li>
+                        <li><strong>Volume de stockage</strong> — L'espace disque attribué à vos données</li>
+                        <li><strong>Connectivité réseau</strong> — Les réseaux avec lesquels votre instance peut communiquer</li>
+                    </ul>
+                </section>
+
+                <section aria-labelledby="step3">
+                    <h3 id="step3">Étape 3 : Nommage et Organisation</h3>
+                    <p>Donnez un nom significatif à votre instance et assignez-la à un projet ou un département. C'est comme étiqueter les pièces d'un bâtiment — cela aide tout le monde à trouver et gérer les ressources efficacement.</p>
+                    <ul>
+                        <li>Choisissez un nom descriptif qui identifie l'objectif (ex. : « Analytique Marketing » ou « Portail Client »)</li>
+                        <li>Assignez au groupe organisationnel approprié pour la facturation et le contrôle d'accès</li>
+                        <li>Ajoutez des étiquettes optionnelles pour faciliter la recherche et le filtrage ultérieurs</li>
+                    </ul>
+                </section>
+
+                <section aria-labelledby="step4">
+                    <h3 id="step4">Étape 4 : Vérification et Confirmation</h3>
+                    <p>Avant la création de l'instance, vous voyez un récapitulatif de tous vos choix — modèle, ressources, nommage et coûts estimés. C'est votre occasion de tout vérifier, comme relire une commande avant de cliquer sur « Acheter ».</p>
+                    <ul>
+                        <li>Vérifiez le modèle sélectionné et les niveaux de ressources</li>
+                        <li>Confirmez le nommage et l'assignation organisationnelle</li>
+                        <li>Consultez le coût mensuel estimé</li>
+                        <li>Approuvez la configuration pour lancer le provisionnement</li>
+                    </ul>
+                </section>
+
+                <section aria-labelledby="step5">
+                    <h3 id="step5">Étape 5 : Déploiement</h3>
+                    <p>Une fois confirmée, la plateforme provisionne automatiquement votre instance. Cela prend généralement quelques minutes — similaire à l'attente qu'un nouveau téléphone termine sa configuration initiale. Vous recevrez une notification lorsque l'instance sera prête à l'emploi.</p>
+                    <ul>
+                        <li>Le système alloue les ressources demandées à partir de la capacité disponible</li>
+                        <li>Les connexions réseau sont établies automatiquement</li>
+                        <li>L'instance apparaît dans votre tableau de bord avec le statut « Prêt »</li>
+                        <li>Vous pouvez commencer à l'utiliser immédiatement ou la transmettre à votre équipe technique</li>
+                    </ul>
+                </section>
+            </section>
+
+            <section aria-labelledby="what-to-tell-customers">
+                <h2 id="what-to-tell-customers">Ce qu'il Faut Dire aux Clients</h2>
+                <ul>
+                    <li>La configuration d'instance est un processus guidé et visuel — aucune expertise technique n'est requise pour l'initier</li>
+                    <li>Les modèles simplifient la prise de décision en proposant des configurations pré-validées</li>
+                    <li>L'ensemble du processus, de la sélection à une instance opérationnelle, prend généralement moins de 10 minutes</li>
+                    <li>Les coûts sont transparents et visibles avant tout engagement</li>
+                    <li>Les instances peuvent être modifiées après leur création si les besoins évoluent</li>
+                </ul>
+            </section>
+
+            <footer class="lesson-footer">
+                <nav aria-label="Navigation de la leçon" class="lesson-nav">
+                    <a href="../core-concepts/network-architecture.html" class="btn-previous" aria-label="Leçon précédente">← Précédent : Architecture Réseau</a>
+                    <a href="api-credentials.html" class="btn-next" aria-label="Leçon suivante">Suivant : API &amp; Identifiants →</a>
+                </nav>
+            </footer>
+        </article>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2024 OVHcloud — OPCP Introduction Skillhub</p>
+    </footer>
+
+    <script src="../../assets/js/main.js"></script>
+</body>
+</html>

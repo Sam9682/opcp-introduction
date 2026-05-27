@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Performance et Dépannage - Bonnes Pratiques</title>
+    <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+
+    <header class="page-header">
+        <nav aria-label="Changement de langue">
+            <a href="../../en/best-practices/performance-troubleshooting.html" class="lang-switch" aria-label="Passer en anglais">EN</a>
+        </nav>
+            <a href="../glossary.html" class="glossary-link" aria-label="Voir le glossaire des termes"><span class="glossary-link__icon" aria-hidden="true">📖</span> Glossaire</a>
+        <span class="difficulty-badge beginner" aria-label="Difficulté : Débutant">Débutant</span>
+    </header>
+
+    <main class="content-area" id="main-content">
+        <article>
+            <header>
+                <h1>Performance et Dépannage</h1>
+                <p class="lesson-intro">Comprenez comment maintenir vos services OPCP à leur efficacité maximale et que faire quand quelque chose ne va pas — aucune expertise technique requise.</p>
+            </header>
+
+            <section aria-labelledby="optimization-heading">
+                <h2 id="optimization-heading">Optimisation des performances</h2>
+                <p>Pensez à votre environnement cloud comme à un moteur de voiture. Un moteur bien réglé tourne en douceur, consomme le carburant efficacement et dure plus longtemps. Voici comment garder votre « moteur » OPCP en pleine forme.</p>
+
+                <h3>Dimensionnement adapté</h3>
+                <p>Imaginez acheter un camion de livraison pour transporter une seule enveloppe — c'est du gaspillage de capacité. À l'inverse, charger une voiture compacte avec un chargement lourd la ralentira. Le <strong>dimensionnement adapté</strong> consiste à faire correspondre vos ressources à votre charge de travail réelle :</p>
+                <ul>
+                    <li>Consultez les rapports d'utilisation mensuellement pour repérer les ressources sur-provisionnées ou sous-provisionnées.</li>
+                    <li>Réduisez les ressources pendant les périodes calmes (nuits, week-ends) pour économiser — comme éteindre les lumières dans les pièces vides.</li>
+                    <li>Augmentez les ressources avant les périodes d'affluence connues (lancements de produits, fin de trimestre) — comme embaucher du personnel supplémentaire avant les fêtes.</li>
+                </ul>
+
+                <h3>Mise en cache — La voie express</h3>
+                <p>La mise en cache revient à garder les outils fréquemment utilisés sur votre établi au lieu d'aller les chercher dans la réserve à chaque fois. Quand les données sont en cache, elles peuvent être récupérées beaucoup plus rapidement car elles sont stockées plus près de l'endroit où elles sont nécessaires.</p>
+                <p>Si des clients signalent que les pages ou applications semblent lentes, la mise en cache est souvent le premier levier à actionner.</p>
+
+                <h3>Répartition de charge — Partager le travail</h3>
+                <p>Imaginez un supermarché avec dix caisses mais tous les clients faisant la queue à la caisse numéro un. Un <span class="glossary-term" data-term="load-balancer">répartiteur de charge</span> est comme un employé d'accueil dirigeant les clients vers la file la plus courte, garantissant qu'aucune caisse n'est submergée.</p>
+            </section>
+
+            <section aria-labelledby="troubleshooting-heading">
+                <h2 id="troubleshooting-heading">Problèmes courants et solutions</h2>
+                <p>Quand quelque chose ne fonctionne pas comme prévu, utilisez le guide suivant pour identifier et résoudre les problèmes les plus fréquents.</p>
+
+                <h3>Temps de réponse lents</h3>
+                <p><strong>Analogie :</strong> Votre voiture peine dans les montées.</p>
+                <p><strong>Cause probable :</strong> Les ressources (CPU ou RAM) sont au maximum — le moteur n'a pas assez de puissance pour la charge.</p>
+                <p><strong>Que vérifier :</strong></p>
+                <ul>
+                    <li>Ouvrez le tableau de bord OPCP et consultez les graphiques d'utilisation CPU et mémoire.</li>
+                    <li>Si l'utilisation est constamment au-dessus de 80 %, envisagez une mise à l'échelle verticale (ajouter plus de puissance) ou horizontale (ajouter plus d'instances).</li>
+                    <li>Vérifiez si un seul processus consomme la majorité des ressources — comme un passager qui accapare tout l'espace.</li>
+                </ul>
+
+                <h3>Problèmes de connectivité</h3>
+                <p><strong>Analogie :</strong> La route entre deux villes est bloquée.</p>
+                <p><strong>Cause probable :</strong> La configuration réseau ou les règles de pare-feu empêchent le trafic de circuler.</p>
+                <p><strong>Que vérifier :</strong></p>
+                <ul>
+                    <li>Vérifiez que les bons ports réseau sont ouverts — comme s'assurer que les bonnes sorties d'autoroute ne sont pas fermées pour travaux.</li>
+                    <li>Contrôlez les règles de pare-feu pour vous assurer que le trafic légitime n'est pas bloqué.</li>
+                    <li>Confirmez que les paramètres DNS pointent vers les bonnes adresses — comme vérifier que le GPS a la bonne destination.</li>
+                </ul>
+
+                <h3>Stockage insuffisant</h3>
+                <p><strong>Analogie :</strong> Vos armoires de classement débordent.</p>
+                <p><strong>Cause probable :</strong> Les données se sont accumulées au fil du temps sans nettoyage ni archivage.</p>
+                <p><strong>Que vérifier :</strong></p>
+                <ul>
+                    <li>Consultez l'utilisation du stockage dans le tableau de bord pour identifier les volumes presque pleins.</li>
+                    <li>Archivez les anciennes données rarement consultées — déplacez-les vers un stockage à long terme moins coûteux (comme déplacer d'anciens dossiers vers un entrepôt externe).</li>
+                    <li>Configurez des alertes pour être notifié quand le stockage atteint 80 % de sa capacité, vous laissant le temps d'agir avant qu'il ne soit complètement plein.</li>
+                </ul>
+
+                <h3>Erreurs de service indisponible</h3>
+                <p><strong>Analogie :</strong> Le magasin est fermé alors qu'il devrait être ouvert.</p>
+                <p><strong>Cause probable :</strong> Une instance a planté ou un déploiement ne s'est pas terminé correctement.</p>
+                <p><strong>Que vérifier :</strong></p>
+                <ul>
+                    <li>Vérifiez l'état de l'instance dans le tableau de bord — est-elle en cours d'exécution, arrêtée ou en erreur ?</li>
+                    <li>Examinez les changements récents — quelqu'un a-t-il modifié une configuration juste avant le début du problème ?</li>
+                    <li>Essayez de redémarrer le service concerné — parfois un simple redémarrage résout les problèmes temporaires, comme redémarrer un ordinateur figé.</li>
+                </ul>
+            </section>
+
+            <section aria-labelledby="escalation-heading">
+                <h2 id="escalation-heading">Quand escalader</h2>
+                <p>Tous les problèmes n'ont pas besoin d'être résolus seul. Escaladez vers le support OVHcloud quand :</p>
+                <ul>
+                    <li>Le problème persiste après les vérifications de base (utilisation des ressources, réseau, redémarrages).</li>
+                    <li>Vous voyez des erreurs liées à l'infrastructure sous-jacente plutôt qu'à votre propre configuration.</li>
+                    <li>Plusieurs services sont affectés simultanément — cela peut indiquer un événement au niveau de la plateforme.</li>
+                    <li>Vous n'êtes pas sûr si le problème vient de votre côté ou de celui d'OVHcloud.</li>
+                </ul>
+                <p>Lorsque vous contactez le support, fournissez : ce que vous avez observé, quand cela a commencé, ce que vous avez déjà essayé, et les messages d'erreur que vous voyez. Cela aide l'équipe support à résoudre votre problème plus rapidement — comme donner à un mécanicien une description claire du bruit que fait votre voiture.</p>
+            </section>
+
+            <section aria-labelledby="summary-heading">
+                <h2 id="summary-heading">Points clés à retenir</h2>
+                <ul>
+                    <li>Dimensionnez correctement vos ressources — adaptez la capacité à la demande réelle, comme choisir le bon véhicule pour le travail.</li>
+                    <li>Utilisez la mise en cache et la répartition de charge pour améliorer la vitesse et distribuer le travail uniformément.</li>
+                    <li>Pour les réponses lentes, vérifiez d'abord l'utilisation des ressources.</li>
+                    <li>Pour les problèmes de connectivité, vérifiez les paramètres réseau et pare-feu.</li>
+                    <li>Pour les problèmes de stockage, archivez les anciennes données et configurez des alertes d'utilisation.</li>
+                    <li>Escaladez vers le support quand le dépannage de base ne résout pas le problème.</li>
+                </ul>
+            </section>
+        </article>
+    </main>
+
+    <footer class="page-footer">
+        <nav aria-label="Navigation entre leçons">
+            <a href="operations-security.html" class="nav-prev" aria-label="Leçon précédente : Opérations et Sécurité">← Précédent</a>
+            <a href="resources-support.html" class="nav-next" aria-label="Leçon suivante : Ressources et Support">Suivant →</a>
+        </nav>
+    </footer>
+
+    <script src="../../assets/js/main.js"></script>
+</body>
+</html>

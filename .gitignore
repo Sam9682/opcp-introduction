@@ -1,0 +1,51 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg
+
+# Virtual environments
+venv/
+.venv/
+env/
+.env
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Node.js (testing)
+node_modules/
+coverage/
+.nyc_output/
+
+# Docker
+.docker/
+
+# Logs
+*.log
+logs/
+
+# Environment files
+.env.local
+.env.production
+
+# Compiled assets
+*.min.js
+*.min.css
+
+# Temporary files
+tmp/
+temp/

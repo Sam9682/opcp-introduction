@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Allocation des Ressources - Concepts Fondamentaux - Formation OPCP</title>
+    <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+
+    <header class="site-header">
+        <nav class="top-nav" aria-label="Navigation principale">
+            <a href="../../index.html" class="logo-link" aria-label="Accueil Formation OPCP">Formation OPCP</a>
+            <a href="../../en/core-concepts/resource-allocation.html" class="lang-switch" aria-label="Passer en anglais">EN</a>
+        </nav>
+    </header>
+
+    <div class="page-layout">
+        <nav class="sidebar" id="sidebar-nav" aria-label="Navigation des leçons">
+            <!-- Navigation rendue par navigation.js -->
+                <a href="../glossary.html" class="glossary-link" aria-label="Voir le glossaire des termes"><span class="glossary-link__icon" aria-hidden="true">📖</span> Glossaire</a>
+    </nav>
+
+        <main class="content-area" id="main-content">
+            <article>
+                <header class="lesson-header">
+                    <h1>Allocation des Ressources</h1>
+                    <span class="difficulty-badge intermediate" aria-label="Difficulté : Intermédiaire">Intermédiaire</span>
+                </header>
+
+                <section aria-labelledby="overview-heading">
+                    <h2 id="overview-heading">Qu'est-ce que l'Allocation des Ressources ?</h2>
+                    <p>Lorsque vous configurez un <span class="glossary-term" data-term="node">nœud</span> dans OPCP, vous devez décider quelle puissance de calcul lui attribuer. C'est ce qu'on appelle l'<span class="glossary-term" data-term="resource-allocation">allocation des ressources</span> — le processus de répartition des ressources disponibles entre vos charges de travail.</p>
+
+                    <p>Pensez-y comme <strong>répartir un budget de département</strong>. Vous avez un montant total à disposition, et vous devez le distribuer judicieusement entre les salaires, l'équipement, les déplacements et les fournitures. Donnez trop à un poste et les autres en souffrent. Donnez trop peu partout et rien ne fonctionne bien.</p>
+                </section>
+
+                <section aria-labelledby="diagram-heading">
+                    <h2 id="diagram-heading">Les Trois Ressources Fondamentales</h2>
+
+                    <figure class="diagram-container" role="img" aria-label="Diagramme montrant les trois ressources fondamentales : le CPU représenté comme puissance de traitement, la RAM représentée comme mémoire de travail, et le Stockage représenté comme espace de classement, avec un diagramme circulaire montrant leur répartition">
+                        <svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg" class="resource-diagram" aria-hidden="true">
+                            <!-- Titre -->
+                            <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#000E9C">Répartition des Ressources — Comme Diviser un Budget</text>
+
+                            <!-- Diagramme circulaire (centre) -->
+                            <circle cx="400" cy="200" r="100" fill="none" stroke="#E8EAFF" stroke-width="40"/>
+                            <!-- Part CPU -->
+                            <circle cx="400" cy="200" r="100" fill="none" stroke="#000E9C" stroke-width="40" stroke-dasharray="105 315" stroke-dashoffset="0" transform="rotate(-90 400 200)"/>
+                            <!-- Part RAM -->
+                            <circle cx="400" cy="200" r="100" fill="none" stroke="#4949FF" stroke-width="40" stroke-dasharray="125 295" stroke-dashoffset="-105" transform="rotate(-90 400 200)"/>
+                            <!-- Part Stockage -->
+                            <circle cx="400" cy="200" r="100" fill="none" stroke="#7B7BFF" stroke-width="40" stroke-dasharray="90 330" stroke-dashoffset="-230" transform="rotate(-90 400 200)"/>
+
+                            <!-- Étiquette centrale -->
+                            <circle cx="400" cy="200" r="60" fill="#fff"/>
+                            <text x="400" y="195" text-anchor="middle" font-size="13" font-weight="bold" fill="#333">Vos</text>
+                            <text x="400" y="215" text-anchor="middle" font-size="13" font-weight="bold" fill="#333">Ressources</text>
+
+                            <!-- Boîte CPU (gauche) -->
+                            <rect x="40" y="100" width="180" height="130" rx="10" fill="#F0F1FF" stroke="#000E9C" stroke-width="2"/>
+                            <text x="130" y="130" text-anchor="middle" font-size="14" font-weight="bold" fill="#000E9C">🧠 CPU</text>
+                            <text x="130" y="155" text-anchor="middle" font-size="11" fill="#333">Puissance de Traitement</text>
+                            <line x1="60" y1="168" x2="200" y2="168" stroke="#E8EAFF" stroke-width="1"/>
+                            <text x="130" y="188" text-anchor="middle" font-size="11" fill="#555">Comme : Le nombre</text>
+                            <text x="130" y="205" text-anchor="middle" font-size="11" fill="#555">d'employés travaillant</text>
+                            <text x="130" y="222" text-anchor="middle" font-size="11" fill="#555">simultanément</text>
+
+                            <!-- Boîte RAM (droite-haut) -->
+                            <rect x="580" y="70" width="180" height="130" rx="10" fill="#F0F1FF" stroke="#4949FF" stroke-width="2"/>
+                            <text x="670" y="100" text-anchor="middle" font-size="14" font-weight="bold" fill="#4949FF">💾 RAM</text>
+                            <text x="670" y="125" text-anchor="middle" font-size="11" fill="#333">Mémoire de Travail</text>
+                            <line x1="600" y1="138" x2="740" y2="138" stroke="#E8EAFF" stroke-width="1"/>
+                            <text x="670" y="158" text-anchor="middle" font-size="11" fill="#555">Comme : La taille de</text>
+                            <text x="670" y="175" text-anchor="middle" font-size="11" fill="#555">votre bureau — combien</text>
+                            <text x="670" y="192" text-anchor="middle" font-size="11" fill="#555">de documents ouverts</text>
+
+                            <!-- Boîte Stockage (droite-bas) -->
+                            <rect x="580" y="230" width="180" height="130" rx="10" fill="#F0F1FF" stroke="#7B7BFF" stroke-width="2"/>
+                            <text x="670" y="260" text-anchor="middle" font-size="14" font-weight="bold" fill="#7B7BFF">📁 Stockage</text>
+                            <text x="670" y="285" text-anchor="middle" font-size="11" fill="#333">Espace de Classement</text>
+                            <line x1="600" y1="298" x2="740" y2="298" stroke="#E8EAFF" stroke-width="1"/>
+                            <text x="670" y="318" text-anchor="middle" font-size="11" fill="#555">Comme : La taille de</text>
+                            <text x="670" y="335" text-anchor="middle" font-size="11" fill="#555">votre armoire — combien</text>
+                            <text x="670" y="352" text-anchor="middle" font-size="11" fill="#555">vous pouvez conserver</text>
+
+                            <!-- Légende -->
+                            <rect x="100" y="350" width="16" height="16" fill="#000E9C" rx="3"/>
+                            <text x="122" y="363" font-size="12" fill="#333">CPU</text>
+                            <rect x="200" y="350" width="16" height="16" fill="#4949FF" rx="3"/>
+                            <text x="222" y="363" font-size="12" fill="#333">RAM</text>
+                            <rect x="300" y="350" width="16" height="16" fill="#7B7BFF" rx="3"/>
+                            <text x="322" y="363" font-size="12" fill="#333">Stockage</text>
+                        </svg>
+                        <figcaption>Les trois ressources fondamentales dans OPCP — CPU, RAM et Stockage — réparties comme un budget entre vos charges de travail.</figcaption>
+                    </figure>
+                </section>
+
+                <section aria-labelledby="cpu-heading">
+                    <h2 id="cpu-heading">CPU — Votre Puissance de Traitement</h2>
+                    <h3>L'analogie du budget : Le nombre d'employés</h3>
+                    <p>Le <span class="glossary-term" data-term="cpu">CPU</span> (Central Processing Unit, ou processeur) est le cerveau de votre nœud. Il détermine combien de tâches peuvent être traitées en même temps. Pensez-y comme le nombre d'employés dans un département — plus d'employés signifie plus de travail accompli simultanément.</p>
+
+                    <h3>Ce que cela signifie pour les clients</h3>
+                    <ul>
+                        <li><strong>Plus de CPU</strong> = gère plus d'utilisateurs et de tâches simultanés</li>
+                        <li><strong>Moins de CPU</strong> = suffisant pour des applications simples à faible trafic</li>
+                        <li>Les applications qui font des calculs intensifs (rapports, analyse de données) nécessitent plus de CPU</li>
+                        <li>Les sites web simples ou le stockage de fichiers nécessitent moins de CPU</li>
+                    </ul>
+                </section>
+
+                <section aria-labelledby="ram-heading">
+                    <h2 id="ram-heading">RAM — Votre Mémoire de Travail</h2>
+                    <h3>L'analogie du budget : La taille du bureau</h3>
+                    <p>La <span class="glossary-term" data-term="ram">RAM</span> (Random Access Memory, ou mémoire vive) est l'espace de travail à court terme. C'est comme la taille de votre bureau — un bureau plus grand vous permet d'étaler plus de documents et de travailler sur plusieurs choses sans constamment aller à l'armoire de classement.</p>
+
+                    <h3>Ce que cela signifie pour les clients</h3>
+                    <ul>
+                        <li><strong>Plus de RAM</strong> = les applications fonctionnent plus vite, gèrent plus de données à la fois</li>
+                        <li><strong>Moins de RAM</strong> = les applications peuvent ralentir sous forte charge</li>
+                        <li>Les bases de données et outils analytiques bénéficient grandement de plus de RAM</li>
+                        <li>Les pages web simples et services basiques nécessitent moins de RAM</li>
+                    </ul>
+                </section>
+
+                <section aria-labelledby="storage-heading">
+                    <h2 id="storage-heading">Stockage — Votre Espace de Classement</h2>
+                    <h3>L'analogie du budget : La taille de l'armoire</h3>
+                    <p>Le <span class="glossary-term" data-term="storage">stockage</span> est l'endroit où toutes vos données résident de manière permanente. C'est comme une armoire de classement — plus elle est grande, plus vous pouvez conserver de documents, photos, registres et fichiers. Contrairement à la RAM (votre bureau), le stockage conserve les données même lorsque le nœud est éteint.</p>
+
+                    <h3>Ce que cela signifie pour les clients</h3>
+                    <ul>
+                        <li><strong>Plus de stockage</strong> = de la place pour plus de données, fichiers, sauvegardes et historique</li>
+                        <li><strong>Moins de stockage</strong> = adapté aux applications avec peu de données</li>
+                        <li>Les entreprises avec beaucoup de documents, images ou registres ont besoin de plus de stockage</li>
+                        <li>Le stockage peut souvent être étendu ultérieurement sans perturber les opérations</li>
+                    </ul>
+                </section>
+
+                <section aria-labelledby="balance-heading">
+                    <h2 id="balance-heading">Équilibrer les Ressources — Trouver le Bon Dosage</h2>
+                    <p>Comme pour un budget, la clé est l'équilibre. Voici des scénarios courants :</p>
+
+                    <div class="scrollable-container">
+                        <table class="resource-table" aria-label="Exemples d'allocation de ressources par type de charge de travail">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Type de Charge</th>
+                                    <th scope="col">Priorité CPU</th>
+                                    <th scope="col">Priorité RAM</th>
+                                    <th scope="col">Priorité Stockage</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Site web d'entreprise</td>
+                                    <td>Faible</td>
+                                    <td>Faible</td>
+                                    <td>Faible</td>
+                                </tr>
+                                <tr>
+                                    <td>Plateforme e-commerce</td>
+                                    <td>Élevée</td>
+                                    <td>Élevée</td>
+                                    <td>Moyenne</td>
+                                </tr>
+                                <tr>
+                                    <td>Analyse de données</td>
+                                    <td>Élevée</td>
+                                    <td>Très élevée</td>
+                                    <td>Élevée</td>
+                                </tr>
+                                <tr>
+                                    <td>Service de stockage de fichiers</td>
+                                    <td>Faible</td>
+                                    <td>Faible</td>
+                                    <td>Très élevée</td>
+                                </tr>
+                                <tr>
+                                    <td>Serveur de messagerie</td>
+                                    <td>Moyenne</td>
+                                    <td>Moyenne</td>
+                                    <td>Élevée</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section aria-labelledby="summary-heading">
+                    <h2 id="summary-heading">Points Clés à Retenir</h2>
+                    <ul>
+                        <li>L'allocation des ressources est comme répartir un budget — distribuez judicieusement selon les besoins</li>
+                        <li>CPU = puissance de traitement (nombre d'employés qui travaillent)</li>
+                        <li>RAM = mémoire de travail (taille de votre bureau)</li>
+                        <li>Stockage = espace de classement (taille de votre armoire)</li>
+                        <li>Différentes charges de travail nécessitent différents équilibres de ressources</li>
+                        <li>Les ressources peuvent être ajustées au fil du temps à mesure que les besoins évoluent</li>
+                    </ul>
+                </section>
+
+                <footer class="lesson-footer">
+                    <nav class="lesson-nav" aria-label="Navigation des leçons">
+                        <a href="node-types.html" class="btn-prev" aria-label="Leçon précédente : Types de Nœuds">← Précédent</a>
+                        <a href="network-architecture.html" class="btn-next" aria-label="Leçon suivante : Architecture Réseau">Suivant →</a>
+                    </nav>
+                </footer>
+            </article>
+        </main>
+    </div>
+
+    <footer class="site-footer" role="contentinfo">
+        <p>&copy; 2024 OVHcloud — Skillhub Formation OPCP</p>
+    </footer>
+
+    <script src="../../assets/js/main.js"></script>
+</body>
+</html>

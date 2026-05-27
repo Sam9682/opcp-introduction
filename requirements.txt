@@ -1,0 +1,6 @@
+# OPCP Introduction Skillhub - Python Dependencies
+# These are for the Flask scaffolding (potential future admin features)
+
+Flask==3.0.0
+gunicorn==21.2.0
+python-dotenv==1.0.0

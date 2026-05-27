@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Reference - Best Practices</title>
+    <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header class="page-header">
+        <nav aria-label="Language switch">
+            <a href="../../fr/best-practices/quick-reference.html" class="lang-switch" aria-label="Switch to French">FR</a>
+        </nav>
+            <a href="../glossary.html" class="glossary-link" aria-label="View glossary of terms"><span class="glossary-link__icon" aria-hidden="true">📖</span> Glossary</a>
+        <span class="difficulty-badge beginner" aria-label="Difficulty: Beginner">Beginner</span>
+    </header>
+
+    <main class="content-area" id="main-content">
+        <article>
+            <header>
+                <h1>Quick Reference</h1>
+                <p class="lesson-intro">One-page summary cards for each section of the OPCP training. Use these as a handy reminder during customer conversations.</p>
+            </header>
+
+            <section aria-labelledby="ref-introduction" class="reference-card">
+                <h2 id="ref-introduction">Introduction</h2>
+                <h3>Main Topics</h3>
+                <ul>
+                    <li>What OPCP is and how it works (dedicated cloud infrastructure managed by OVHcloud)</li>
+                    <li>Business benefits: cost predictability, security, scalability, sovereignty</li>
+                    <li>Target audiences: mid-to-large enterprises, regulated industries, growing businesses</li>
+                    <li>Key features: dedicated resources, VMware-based virtualisation, network isolation, API access</li>
+                </ul>
+                <h3>Key Terminology</h3>
+                <ul>
+                    <li><a href="../glossary.html#term-opcp" class="glossary-term"><strong>OPCP</strong></a> — OVHcloud Hosted Private Cloud: a dedicated cloud environment hosted and managed by OVHcloud</li>
+                    <li><strong>Hosted Private Cloud</strong> — Infrastructure reserved exclusively for one customer, not shared with others</li>
+                    <li><strong>Hypervisor</strong> — Software that creates and runs virtual machines on physical hardware</li>
+                </ul>
+                <h3>Customer Talking Points</h3>
+                <ul>
+                    <li>"Your own dedicated infrastructure without the cost of building a data centre."</li>
+                    <li>"European data sovereignty with ISO 27001 and SOC 2 certifications."</li>
+                    <li>"Scale resources up or down without long-term hardware commitments."</li>
+                </ul>
+            </section>
+
+            <section aria-labelledby="ref-getting-started" class="reference-card">
+                <h2 id="ref-getting-started">Getting Started</h2>
+                <h3>Main Topics</h3>
+                <ul>
+                    <li>Account creation and initial setup process</li>
+                    <li>Accessing the OPCP management dashboard</li>
+                    <li>Navigating the control panel interface</li>
+                    <li>Initial configuration steps for a new environment</li>
+                </ul>
+                <h3>Key Terminology</h3>
+                <ul>
+                    <li><strong>Control Panel</strong> — The web interface where customers manage their OVHcloud services</li>
+                    <li><strong>Dashboard</strong> — The main overview screen showing resource status at a glance</li>
+                    <li><a href="../glossary.html#term-credentials" class="glossary-term"><strong>NIC Handle</strong></a> — The unique customer identifier used to log in to OVHcloud services</li>
+                </ul>
+                <h3>Customer Talking Points</h3>
+                <ul>
+                    <li>"You can be up and running within hours, not weeks."</li>
+                    <li>"The dashboard gives you a single view of all your resources and their status."</li>
+                    <li>"No command-line expertise needed — everything is manageable through the web interface."</li>
+                </ul>
+            </section>
+
+            <section aria-labelledby="ref-core-concepts" class="reference-card">
+                <h2 id="ref-core-concepts">Core Concepts</h2>
+                <h3>Main Topics</h3>
+                <ul>
+                    <li>Node lifecycle: provisioning → configuration → operation → decommissioning</li>
+                    <li>Node types and their workload suitability (compute-optimised, memory-optimised, storage-optimised)</li>
+                    <li>Resource allocation: how CPU, RAM, and storage are assigned</li>
+                    <li>Network architecture: public vs. private networks, bandwidth, isolation</li>
+                </ul>
+                <h3>Key Terminology</h3>
+                <ul>
+                    <li><a href="../glossary.html#term-node" class="glossary-term"><strong>Node</strong></a> — A physical server dedicated to your Private Cloud environment</li>
+                    <li><strong>vCPU</strong> — Virtual CPU: a share of processing power allocated to a virtual machine</li>
+                    <li><strong>VLAN</strong> — Virtual Local Area Network: an isolated network segment for security and organisation</li>
+                    <li><a href="../glossary.html#term-datastore" class="glossary-term"><strong>Datastore</strong></a> — A storage volume attached to your Private Cloud for virtual machine disks</li>
+                </ul>
+                <h3>Customer Talking Points</h3>
+                <ul>
+                    <li>"Choose the node type that matches your workload — no paying for power you do not need."</li>
+                    <li>"Resources can be added or removed without downtime."</li>
+                    <li>"Private networks keep your internal traffic completely isolated from the public internet."</li>
+                </ul>
+            </section>
+
+            <section aria-labelledby="ref-technical-ops" class="reference-card">
+                <h2 id="ref-technical-ops">Technical Operations</h2>
+                <h3>Main Topics</h3>
+                <ul>
+                    <li>Instance setup workflow (request → provision → configure → validate)</li>
+                    <li>API credentials: what they enable, how they are managed</li>
+                    <li>Node configuration options and their business impact</li>
+                    <li>Advanced networking: LACP (link aggregation), Trunk (VLAN tagging), Software RAID (disk redundancy)</li>
+                </ul>
+                <h3>Key Terminology</h3>
+                <ul>
+                    <li><a href="../glossary.html#term-api" class="glossary-term"><strong>API</strong></a> — Application Programming Interface: allows software to interact with OPCP programmatically</li>
+                    <li><a href="../glossary.html#term-lacp" class="glossary-term"><strong>LACP</strong></a> — Link Aggregation: combining multiple network connections for speed and reliability</li>
+                    <li><a href="../glossary.html#term-trunk" class="glossary-term"><strong>Trunk</strong></a> — A single connection carrying traffic for multiple VLANs</li>
+                    <li><a href="../glossary.html#term-raid" class="glossary-term"><strong>RAID</strong></a> — Redundant Array of Independent Disks: protects data by spreading it across multiple drives</li>
+                </ul>
+                <h3>Customer Talking Points</h3>
+                <ul>
+                    <li>"Automation via API means repetitive tasks can be handled without manual intervention."</li>
+                    <li>"Link aggregation provides both faster speeds and automatic failover if a connection drops."</li>
+                    <li>"RAID ensures that a single disk failure does not result in data loss."</li>
+                </ul>
+            </section>
+
+            <section aria-labelledby="ref-storage" class="reference-card">
+                <h2 id="ref-storage">Storage Solutions</h2>
+                <h3>Main Topics</h3>
+                <ul>
+                    <li>CloudStore overview: object storage for unstructured data</li>
+                    <li>Storage capabilities: scalability, redundancy, access methods, capacity tiers</li>
+                    <li>Data management: organisation, lifecycle policies, retention</li>
+                    <li>Backup and recovery: automated backups, restore procedures, disaster recovery</li>
+                </ul>
+                <h3>Key Terminology</h3>
+                <ul>
+                    <li><a href="../glossary.html#term-cloudstore" class="glossary-term"><strong>CloudStore</strong></a> — OVHcloud's scalable object storage service</li>
+                    <li><strong>Object Storage</strong> — A method of storing data as discrete objects (files) rather than in a traditional file system hierarchy</li>
+                    <li><strong>Redundancy</strong> — Storing multiple copies of data across different locations to prevent loss</li>
+                    <li><strong>RPO/RTO</strong> — Recovery Point Objective (how much data you can afford to lose) / Recovery Time Objective (how quickly you need to be back online)</li>
+                </ul>
+                <h3>Customer Talking Points</h3>
+                <ul>
+                    <li>"Storage scales automatically — you only pay for what you use."</li>
+                    <li>"Built-in redundancy means your data is protected even if hardware fails."</li>
+                    <li>"Automated backups run on schedule so you never forget to protect critical data."</li>
+                </ul>
+            </section>
+
+            <section aria-labelledby="ref-best-practices" class="reference-card">
+                <h2 id="ref-best-practices">Best Practices</h2>
+                <h3>Main Topics</h3>
+                <ul>
+                    <li>Operations: resource monitoring, scaling strategies, maintenance schedules</li>
+                    <li>Security: access control (least privilege), encryption, compliance (ISO 27001, SOC 2)</li>
+                    <li>Performance: right-sizing, caching, load balancing</li>
+                    <li>Troubleshooting: common issues (slow response, connectivity, storage), escalation paths</li>
+                </ul>
+                <h3>Key Terminology</h3>
+                <ul>
+                    <li><a href="../glossary.html#term-least-privilege" class="glossary-term"><strong>Least Privilege</strong></a> — Giving users only the minimum access they need to do their job</li>
+                    <li><strong>Right-Sizing</strong> — Matching resource allocation to actual workload requirements</li>
+                    <li><a href="../glossary.html#term-load-balancer" class="glossary-term"><strong>Load Balancer</strong></a> — A system that distributes incoming traffic across multiple servers</li>
+                    <li><strong>SLA</strong> — Service Level Agreement: the guaranteed uptime and performance commitments</li>
+                </ul>
+                <h3>Customer Talking Points</h3>
+                <ul>
+                    <li>"Regular monitoring prevents surprises — you will see issues before your users do."</li>
+                    <li>"OVHcloud's certifications mean your compliance requirements are already covered at the infrastructure level."</li>
+                    <li>"Multiple support channels ensure you can always get help when you need it."</li>
+                </ul>
+            </section>
+        </article>
+    </main>
+
+    <footer class="page-footer">
+        <nav aria-label="Lesson navigation">
+            <a href="resources-support.html" class="nav-prev" aria-label="Previous lesson: Resources &amp; Support">← Previous</a>
+        </nav>
+    </footer>
+
+    <script src="../../assets/js/main.js"></script>
+</body>
+</html>

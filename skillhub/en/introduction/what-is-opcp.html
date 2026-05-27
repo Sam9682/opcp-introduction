@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn what OVHcloud Hosted Private Cloud (OPCP) is using simple, non-technical language and real-world analogies.">
+    <title>What is OPCP? - Introduction - OPCP Skillhub</title>
+    <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <div class="page-wrapper">
+        <nav class="nav-sidebar" aria-label="Main navigation">
+            <div class="search-container">
+                <input type="search" class="search-input" placeholder="Search lessons..." aria-label="Search lessons">
+            </div>
+            <div class="progress-display">
+                <span class="progress-display__label">Overall Progress</span>
+                <div class="progress-display__bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="Overall completion progress"><div class="progress-display__fill" style="width: 0%"></div></div>
+                <span class="progress-display__percentage" role="status" aria-live="polite">0%</span>
+            </div>
+            <a href="../glossary.html" class="glossary-link" aria-label="View glossary of terms"><span class="glossary-link__icon" aria-hidden="true">📖</span> Glossary</a>
+
+            <button class="nav-sidebar__close" aria-label="Close navigation">&times;</button>
+        </nav>
+
+        <button class="nav-hamburger" aria-label="Open navigation menu">
+            <span class="nav-hamburger__icon" aria-hidden="true">&#9776;</span>
+        </button>
+        <div class="nav-overlay" aria-hidden="true"></div>
+
+        <main class="content-area" id="main-content">
+            <article>
+                <header class="lesson-header">
+                    <h1>What is OPCP?</h1>
+                    <div class="lesson-meta">
+                        <span class="badge badge-beginner">Beginner</span>
+                        <a href="../../fr/introduction/what-is-opcp.html" class="language-switch" aria-label="Switch to French">
+                            <span>🇫🇷</span> <span>Français</span>
+                        </a>
+                    </div>
+                </header>
+
+                <section aria-labelledby="analogy-heading">
+                    <h2 id="analogy-heading">The Private Apartment Analogy</h2>
+                    <p>Imagine you need a place to live in a big city. You have three options:</p>
+                    <ul>
+                        <li><strong>A shared hostel</strong> — cheap, but you share everything with strangers. Noisy, unpredictable, and you have no control over who comes and goes.</li>
+                        <li><strong>Building your own house</strong> — total control, but incredibly expensive. You handle plumbing, electricity, security, and maintenance all by yourself.</li>
+                        <li><strong>A private apartment in a managed building</strong> — your own space with your own lock, but the building management handles security, maintenance, and utilities. You get privacy and control without the burden of running everything yourself.</li>
+                    </ul>
+
+                    <div class="info-box">
+                        <p><strong>OPCP is like that private apartment.</strong> It gives your business its own dedicated computing space inside OVHcloud's professionally managed infrastructure. You get the privacy and performance of owning your own equipment, without the cost and complexity of building and maintaining a data centre.</p>
+                    </div>
+                </section>
+
+                <section aria-labelledby="simple-explanation-heading">
+                    <h2 id="simple-explanation-heading">What Does "Hosted Private Cloud" Mean?</h2>
+                    <p>Let's break down the name into everyday language:</p>
+
+                    <h3>Hosted</h3>
+                    <p>Someone else provides and maintains the physical equipment. Just like a hotel provides the bed, towels, and room service — OVHcloud provides the servers, storage, and networking hardware. You don't need to buy, install, or repair anything physical.</p>
+
+                    <h3>Private</h3>
+                    <p>The resources are exclusively yours. Unlike shared hosting (the hostel), no other company's workloads run on your hardware. This means consistent performance, stronger security, and full control over your environment.</p>
+
+                    <h3>Cloud</h3>
+                    <p>You access and manage everything over the internet through a web dashboard. There's no need to visit a data centre or plug in cables. You can scale up or down, configure settings, and monitor performance from anywhere.</p>
+                </section>
+
+                <section aria-labelledby="diagram-heading">
+                    <h2 id="diagram-heading">How OPCP Fits In</h2>
+                    <figure class="diagram-scroll">
+                        <svg viewBox="0 0 700 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram comparing shared hosting, OPCP private cloud, and on-premise infrastructure">
+                            <!-- Shared Hosting -->
+                            <rect x="20" y="40" width="200" height="240" rx="10" fill="#f8d7da" stroke="#a71d2a" stroke-width="2"/>
+                            <text x="120" y="30" text-anchor="middle" font-size="14" font-weight="bold" fill="#a71d2a">Shared Hosting</text>
+                            <rect x="40" y="70" width="70" height="40" rx="5" fill="#ffffff" stroke="#a71d2a" stroke-width="1"/>
+                            <text x="75" y="95" text-anchor="middle" font-size="10" fill="#333">Company A</text>
+                            <rect x="130" y="70" width="70" height="40" rx="5" fill="#ffffff" stroke="#a71d2a" stroke-width="1"/>
+                            <text x="165" y="95" text-anchor="middle" font-size="10" fill="#333">Company B</text>
+                            <rect x="40" y="130" width="70" height="40" rx="5" fill="#ffffff" stroke="#a71d2a" stroke-width="1"/>
+                            <text x="75" y="155" text-anchor="middle" font-size="10" fill="#333">Company C</text>
+                            <rect x="130" y="130" width="70" height="40" rx="5" fill="#ffffff" stroke="#a71d2a" stroke-width="1"/>
+                            <text x="165" y="155" text-anchor="middle" font-size="10" fill="#333">Company D</text>
+                            <text x="120" y="210" text-anchor="middle" font-size="11" fill="#a71d2a">Shared resources</text>
+                            <text x="120" y="230" text-anchor="middle" font-size="11" fill="#a71d2a">Noisy neighbours</text>
+                            <text x="120" y="250" text-anchor="middle" font-size="11" fill="#a71d2a">Less control</text>
+
+                            <!-- OPCP -->
+                            <rect x="250" y="40" width="200" height="240" rx="10" fill="#d4edda" stroke="#1b7a3d" stroke-width="2"/>
+                            <text x="350" y="30" text-anchor="middle" font-size="14" font-weight="bold" fill="#1b7a3d">OPCP (Private Cloud)</text>
+                            <rect x="270" y="70" width="160" height="130" rx="5" fill="#ffffff" stroke="#1b7a3d" stroke-width="2"/>
+                            <text x="350" y="100" text-anchor="middle" font-size="12" font-weight="bold" fill="#000E9C">Your Company</text>
+                            <text x="350" y="125" text-anchor="middle" font-size="10" fill="#333">Dedicated CPU</text>
+                            <text x="350" y="145" text-anchor="middle" font-size="10" fill="#333">Dedicated RAM</text>
+                            <text x="350" y="165" text-anchor="middle" font-size="10" fill="#333">Dedicated Storage</text>
+                            <text x="350" y="185" text-anchor="middle" font-size="10" fill="#333">Private Network</text>
+                            <text x="350" y="230" text-anchor="middle" font-size="11" fill="#1b7a3d">Managed by OVHcloud</text>
+                            <text x="350" y="250" text-anchor="middle" font-size="11" fill="#1b7a3d">Full control for you</text>
+
+                            <!-- On-Premise -->
+                            <rect x="480" y="40" width="200" height="240" rx="10" fill="#fff3cd" stroke="#7a5c00" stroke-width="2"/>
+                            <text x="580" y="30" text-anchor="middle" font-size="14" font-weight="bold" fill="#7a5c00">On-Premise</text>
+                            <rect x="500" y="70" width="160" height="130" rx="5" fill="#ffffff" stroke="#7a5c00" stroke-width="2"/>
+                            <text x="580" y="100" text-anchor="middle" font-size="12" font-weight="bold" fill="#333">Your Company</text>
+                            <text x="580" y="125" text-anchor="middle" font-size="10" fill="#333">Your hardware</text>
+                            <text x="580" y="145" text-anchor="middle" font-size="10" fill="#333">Your maintenance</text>
+                            <text x="580" y="165" text-anchor="middle" font-size="10" fill="#333">Your security</text>
+                            <text x="580" y="185" text-anchor="middle" font-size="10" fill="#333">Your staff</text>
+                            <text x="580" y="230" text-anchor="middle" font-size="11" fill="#7a5c00">Full responsibility</text>
+                            <text x="580" y="250" text-anchor="middle" font-size="11" fill="#7a5c00">High cost</text>
+                        </svg>
+                        <figcaption>Comparison of hosting models: shared hosting, OPCP hosted private cloud, and on-premise infrastructure</figcaption>
+                    </figure>
+                </section>
+
+                <section aria-labelledby="summary-heading">
+                    <h2 id="summary-heading">Key Takeaways</h2>
+                    <ul>
+                        <li><a href="../glossary.html#term-opcp" class="glossary-term"><strong>OPCP</strong></a> stands for OVHcloud's Hosted Private Cloud — dedicated computing resources managed by OVHcloud on your behalf.</li>
+                        <li>It combines the <strong>security and performance</strong> of private infrastructure with the <strong>convenience</strong> of a managed service.</li>
+                        <li>You don't need technical expertise to understand or discuss OPCP — think of it as your company's private apartment in OVHcloud's building.</li>
+                        <li>Your data stays in <strong>European <a href="../glossary.html#term-datacentre" class="glossary-term">data centres</a></strong>, helping meet compliance and data sovereignty requirements.</li>
+                    </ul>
+                </section>
+
+                <nav class="nav-sequential" aria-label="Lesson navigation">
+                    <a href="benefits.html" class="nav-sequential__btn nav-sequential__btn--next">
+                        <span class="nav-sequential__label">Next: Benefits</span>
+                        <span class="nav-sequential__arrow" aria-hidden="true">&rarr;</span>
+                    </a>
+                </nav>
+            </article>
+        </main>
+    </div>
+
+    <footer class="site-footer" role="contentinfo">
+        <p>&copy; 2024 OVHcloud — OPCP Introduction Skillhub</p>
+    </footer>
+
+    <script src="../../assets/js/main.js"></script>
+</body>
+</html>

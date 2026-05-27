@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LACP, Trunk &amp; RAID - Opérations Techniques - OPCP Skillhub</title>
+    <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+
+    <header class="site-header">
+        <nav aria-label="Navigation du site" class="top-nav">
+            <a href="../../index.html" class="site-logo">OPCP Skillhub</a>
+            <a href="../../en/technical-operations/lacp-trunk-raid.html" class="lang-switch" aria-label="Passer en anglais">EN</a>
+        </nav>
+    </header>
+
+    <nav aria-label="Navigation latérale" class="sidebar" id="sidebar">
+        <ul class="nav-menu">
+            <li><a href="../introduction/what-is-opcp.html">Introduction</a></li>
+            <li><a href="../getting-started/account-setup.html">Premiers Pas</a></li>
+            <li><a href="../core-concepts/node-lifecycle.html">Concepts Fondamentaux</a></li>
+            <li class="active-section">
+                <a href="instance-setup.html">Opérations Techniques</a>
+                <ul>
+                    <li><a href="instance-setup.html">Configuration d'Instance</a></li>
+                    <li><a href="api-credentials.html">API &amp; Identifiants</a></li>
+                    <li><a href="node-configuration.html">Configuration des Nœuds</a></li>
+                    <li class="active"><a href="lacp-trunk-raid.html">LACP, Trunk &amp; RAID</a></li>
+                </ul>
+            </li>
+            <li><a href="../storage/cloudstore-overview.html">Solutions de Stockage</a></li>
+            <li><a href="../best-practices/operations-security.html">Bonnes Pratiques</a></li>
+        </ul>
+            <a href="../glossary.html" class="glossary-link" aria-label="Voir le glossaire des termes"><span class="glossary-link__icon" aria-hidden="true">📖</span> Glossaire</a>
+    </nav>
+
+    <main class="content-area" id="main-content">
+        <article>
+            <header class="lesson-header">
+                <h1>LACP, Trunk &amp; RAID</h1>
+                <span class="difficulty-badge intermediate" aria-label="Difficulté : Intermédiaire">Intermédiaire</span>
+            </header>
+
+            <section aria-labelledby="overview">
+                <h2 id="overview">Présentation</h2>
+                <p>Cette leçon explique trois concepts d'infrastructure que les clients peuvent rencontrer lorsqu'ils discutent de leur environnement OPCP. Chaque concept est présenté avec une définition en langage courant, une analogie du monde réel et des indications sur les situations où un client en bénéficierait.</p>
+                <p>Ce sont des technologies qui fonctionnent en coulisses pour rendre les services cloud plus rapides, mieux organisés et plus résilients. Vous n'avez pas besoin de comprendre leur fonctionnement technique — seulement ce qu'elles apportent au client.</p>
+            </section>
+
+            <section aria-labelledby="lacp-section">
+                <h2 id="lacp-section">LACP — Agrégation de Liens</h2>
+
+                <section aria-labelledby="lacp-definition">
+                    <h3 id="lacp-definition">Ce que C'est</h3>
+                    <p><a href="../glossary.html#term-lacp" class="glossary-term">LACP</a> (Link Aggregation Control Protocol) est une méthode qui combine plusieurs câbles réseau en une seule connexion plus rapide et plus fiable. Au lieu de dépendre d'un seul câble pour transporter tout le trafic réseau, plusieurs câbles travaillent ensemble en équipe.</p>
+                    <p class="one-sentence-summary"><strong>En une phrase :</strong> LACP combine plusieurs connexions réseau en un seul lien plus rapide et plus fiable — comme ajouter des voies supplémentaires à une autoroute.</p>
+                </section>
+
+                <section aria-labelledby="lacp-analogy">
+                    <h3 id="lacp-analogy">Analogie du Monde Réel</h3>
+                    <p><strong>Plusieurs voies sur une autoroute :</strong> Une route à voie unique ne peut gérer qu'un nombre limité de voitures à la fois. Si cette voie est bloquée, tout le trafic s'arrête. Une autoroute à plusieurs voies transporte plus de trafic simultanément, et si une voie est fermée pour maintenance, les autres continuent de fonctionner. LACP fait la même chose pour les connexions réseau — plus de capacité et une sauvegarde intégrée si une connexion tombe en panne.</p>
+                </section>
+
+                <section aria-labelledby="lacp-benefits">
+                    <h3 id="lacp-benefits">Bénéfices Client</h3>
+                    <ul>
+                        <li><strong>Vitesse accrue</strong> — Plus de données peuvent circuler en même temps, réduisant les goulots d'étranglement pendant les pics d'utilisation</li>
+                        <li><strong>Résilience intégrée</strong> — Si un câble tombe en panne, les autres continuent de fonctionner sans interruption</li>
+                        <li><strong>Pas de point unique de défaillance</strong> — La connexion reste active même en cas de problèmes matériels partiels</li>
+                    </ul>
+                </section>
+
+                <section aria-labelledby="lacp-when">
+                    <h3 id="lacp-when">Quand un Client en a Besoin</h3>
+                    <p>Un client bénéficie du LACP lorsque sa charge de travail nécessite un débit réseau élevé (transferts de fichiers volumineux, streaming, nombreux utilisateurs simultanés) ou lorsque la fiabilité du réseau est critique pour ses opérations métier (e-commerce, services en temps réel, transactions financières).</p>
+                </section>
+            </section>
+
+            <section aria-labelledby="trunk-section">
+                <h2 id="trunk-section">Trunk — Organisation du Trafic Réseau</h2>
+
+                <section aria-labelledby="trunk-definition">
+                    <h3 id="trunk-definition">Ce que C'est</h3>
+                    <p>Un <a href="../glossary.html#term-trunk" class="glossary-term">trunk</a> réseau est une méthode d'organisation des différents types de trafic réseau en canaux séparés sur une seule connexion physique. Il permet à plusieurs réseaux distincts de partager le même câble sans interférer les uns avec les autres.</p>
+                    <p class="one-sentence-summary"><strong>En une phrase :</strong> Le trunking organise le trafic réseau en canaux séparés sur une seule connexion — comme trier le courrier dans différentes boîtes aux lettres à la même adresse.</p>
+                </section>
+
+                <section aria-labelledby="trunk-analogy">
+                    <h3 id="trunk-analogy">Analogie du Monde Réel</h3>
+                    <p><strong>Trier le courrier dans différentes boîtes aux lettres :</strong> Imaginez un immeuble d'appartements avec une seule porte d'entrée mais des boîtes aux lettres individuelles pour chaque résident. Tout le courrier arrive par la même entrée, mais il est trié pour que chaque résident ne reçoive que ses propres lettres. Un trunk réseau fonctionne de la même manière — tout le trafic circule sur une seule connexion, mais il est étiqueté et trié pour que chaque réseau ne voie que ses propres données.</p>
+                </section>
+
+                <section aria-labelledby="trunk-benefits">
+                    <h3 id="trunk-benefits">Bénéfices Client</h3>
+                    <ul>
+                        <li><strong>Séparation nette</strong> — Différents départements, projets ou zones de sécurité peuvent partager l'infrastructure sans voir le trafic des autres</li>
+                        <li><strong>Câblage simplifié</strong> — Une seule connexion physique transporte plusieurs réseaux logiques, réduisant la complexité</li>
+                        <li><strong>Frontières de sécurité</strong> — Le trafic sensible (comme le traitement des paiements) reste isolé du trafic général (comme les e-mails)</li>
+                        <li><strong>Utilisation efficace des ressources</strong> — Pas besoin de câbles physiques séparés pour chaque segment de réseau</li>
+                    </ul>
+                </section>
+
+                <section aria-labelledby="trunk-when">
+                    <h3 id="trunk-when">Quand un Client en a Besoin</h3>
+                    <p>Un client bénéficie du trunking lorsqu'il a besoin de séparer différents types de trafic pour des raisons de sécurité ou d'organisation — par exemple, isoler les systèmes de production des environnements de développement, séparer le Wi-Fi invité du réseau interne, ou respecter des exigences de conformité qui imposent la ségrégation des données.</p>
+                </section>
+            </section>
+
+            <section aria-labelledby="raid-section">
+                <h2 id="raid-section">RAID Logiciel — Protection des Données</h2>
+
+                <section aria-labelledby="raid-definition">
+                    <h3 id="raid-definition">Ce que C'est</h3>
+                    <p><a href="../glossary.html#term-raid" class="glossary-term">RAID</a> (Redundant Array of Independent Disks — Ensemble Redondant de Disques Indépendants) est une méthode de protection des données en stockant des copies sur plusieurs disques de stockage. Si un disque tombe en panne, les données restent en sécurité sur les disques restants, et le système continue de fonctionner sans interruption.</p>
+                    <p class="one-sentence-summary"><strong>En une phrase :</strong> Le RAID protège les données en stockant des copies sur plusieurs disques — comme conserver des copies de sauvegarde de documents importants dans des classeurs séparés.</p>
+                </section>
+
+                <section aria-labelledby="raid-analogy">
+                    <h3 id="raid-analogy">Analogie du Monde Réel</h3>
+                    <p><strong>Copies de sauvegarde dans des classeurs séparés :</strong> Imaginez que vous avez un contrat important. Plutôt que de n'en garder qu'une seule copie dans un seul classeur (où un incendie ou une inondation pourrait le détruire), vous conservez des copies identiques dans trois classeurs différents dans des pièces différentes. Si un classeur est endommagé, vous avez toujours le document complet dans les autres. Le RAID logiciel fait cela automatiquement avec les données numériques — des copies sont maintenues sur plusieurs disques pour qu'aucune panne de disque unique ne cause de perte de données.</p>
+                </section>
+
+                <section aria-labelledby="raid-benefits">
+                    <h3 id="raid-benefits">Bénéfices Client</h3>
+                    <ul>
+                        <li><strong>Sécurité des données</strong> — Les informations survivent aux pannes matérielles sans aucune perte</li>
+                        <li><strong>Fonctionnement continu</strong> — Le système continue de fonctionner même lorsqu'un disque tombe en panne ; le disque défectueux peut être remplacé sans temps d'arrêt</li>
+                        <li><strong>Tranquillité d'esprit</strong> — Les données métier critiques sont protégées contre le type de panne matérielle le plus courant</li>
+                        <li><strong>Récupération automatique</strong> — Lorsqu'un disque défaillant est remplacé, le système reconstruit automatiquement la copie manquante</li>
+                    </ul>
+                </section>
+
+                <section aria-labelledby="raid-when">
+                    <h3 id="raid-when">Quand un Client en a Besoin</h3>
+                    <p>Un client bénéficie du RAID lorsqu'il stocke des données qui ne peuvent pas être facilement recréées ou dont la perte aurait des conséquences métier significatives — bases de données clients, registres financiers, propriété intellectuelle, ou tout système où l'intégrité des données est non négociable.</p>
+                </section>
+            </section>
+
+            <section aria-labelledby="summary-table">
+                <h2 id="summary-table">Comparaison Rapide</h2>
+
+                <figure class="diagram-scroll">
+                    <svg viewBox="0 0 650 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Comparaison visuelle de LACP, Trunk et RAID montrant leur objectif : vitesse et fiabilité, organisation du trafic et protection des données">
+                        <text x="325" y="20" text-anchor="middle" font-size="13" font-weight="bold" fill="#000E9C">Concepts d'Infrastructure</text>
+                        <rect x="20" y="40" width="190" height="140" rx="10" fill="#d4edda" stroke="#1b7a3d" stroke-width="2"/>
+                        <text x="115" y="65" text-anchor="middle" font-size="12" font-weight="bold" fill="#1b7a3d">LACP</text>
+                        <text x="115" y="85" text-anchor="middle" font-size="10" fill="#333">Plusieurs câbles → une</text>
+                        <text x="115" y="100" text-anchor="middle" font-size="10" fill="#333">connexion rapide</text>
+                        <line x1="50" y1="115" x2="180" y2="115" stroke="#1b7a3d" stroke-width="1"/>
+                        <text x="115" y="135" text-anchor="middle" font-size="9" fill="#333">🛣️ Voies d'autoroute</text>
+                        <text x="115" y="155" text-anchor="middle" font-size="9" fill="#1b7a3d">Vitesse + Fiabilité</text>
+                        <rect x="230" y="40" width="190" height="140" rx="10" fill="#fff3cd" stroke="#7a5c00" stroke-width="2"/>
+                        <text x="325" y="65" text-anchor="middle" font-size="12" font-weight="bold" fill="#7a5c00">Trunk</text>
+                        <text x="325" y="85" text-anchor="middle" font-size="10" fill="#333">Un câble → canaux</text>
+                        <text x="325" y="100" text-anchor="middle" font-size="10" fill="#333">de trafic séparés</text>
+                        <line x1="260" y1="115" x2="390" y2="115" stroke="#7a5c00" stroke-width="1"/>
+                        <text x="325" y="135" text-anchor="middle" font-size="9" fill="#333">📬 Boîtes aux lettres triées</text>
+                        <text x="325" y="155" text-anchor="middle" font-size="9" fill="#7a5c00">Organisation + Sécurité</text>
+                        <rect x="440" y="40" width="190" height="140" rx="10" fill="#e8eaff" stroke="#000E9C" stroke-width="2"/>
+                        <text x="535" y="65" text-anchor="middle" font-size="12" font-weight="bold" fill="#000E9C">RAID</text>
+                        <text x="535" y="85" text-anchor="middle" font-size="10" fill="#333">Plusieurs disques → copies</text>
+                        <text x="535" y="100" text-anchor="middle" font-size="10" fill="#333">des données partout</text>
+                        <line x1="470" y1="115" x2="600" y2="115" stroke="#000E9C" stroke-width="1"/>
+                        <text x="535" y="135" text-anchor="middle" font-size="9" fill="#333">🗄️ Copies dans des classeurs</text>
+                        <text x="535" y="155" text-anchor="middle" font-size="9" fill="#000E9C">Protection des Données</text>
+                    </svg>
+                    <figcaption>Trois concepts d'infrastructure en un coup d'œil : LACP pour la vitesse, Trunk pour l'organisation, RAID pour la sécurité des données</figcaption>
+                </figure>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Concept</th>
+                                <th>Ce que Cela Fait</th>
+                                <th>Analogie</th>
+                                <th>Bénéfice Clé</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>LACP</strong></td>
+                                <td>Combine plusieurs câbles réseau en une connexion plus rapide</td>
+                                <td>Plusieurs voies sur une autoroute</td>
+                                <td>Réseau plus rapide et plus fiable</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Trunk</strong></td>
+                                <td>Organise différents types de trafic en canaux séparés</td>
+                                <td>Trier le courrier dans différentes boîtes aux lettres</td>
+                                <td>Séparation nette et sécurité</td>
+                            </tr>
+                            <tr>
+                                <td><strong>RAID</strong></td>
+                                <td>Stocke des copies de données sur plusieurs disques</td>
+                                <td>Copies de sauvegarde dans des classeurs séparés</td>
+                                <td>Les données survivent aux pannes matérielles</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section aria-labelledby="what-to-tell-customers">
+                <h2 id="what-to-tell-customers">Ce qu'il Faut Dire aux Clients</h2>
+                <ul>
+                    <li>Ces technologies fonctionnent en coulisses pour rendre leur service plus rapide, mieux organisé et plus résilient</li>
+                    <li>LACP garantit que leur connexion réseau est à la fois rapide et tolérante aux pannes — aucune défaillance de câble unique ne provoque d'interruption</li>
+                    <li>Le trunking maintient leurs différentes charges de travail séparées de manière sécurisée sans nécessiter d'infrastructure physique séparée</li>
+                    <li>Le RAID signifie que leurs données sont protégées contre le type de panne matérielle le plus courant — la défaillance d'un seul disque</li>
+                    <li>Les trois sont gérés par la plateforme — les clients en bénéficient sans avoir besoin de configurer quoi que ce soit eux-mêmes</li>
+                </ul>
+            </section>
+
+            <footer class="lesson-footer">
+                <nav aria-label="Navigation de la leçon" class="lesson-nav">
+                    <a href="node-configuration.html" class="btn-previous" aria-label="Leçon précédente">← Précédent : Configuration des Nœuds</a>
+                    <a href="../storage/cloudstore-overview.html" class="btn-next" aria-label="Leçon suivante">Suivant : Présentation CloudStore →</a>
+                </nav>
+            </footer>
+        </article>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2024 OVHcloud — OPCP Introduction Skillhub</p>
+    </footer>
+
+    <script src="../../assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation - Premiers Pas - OPCP Skillhub</title>
+    <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+
+    <header class="site-header">
+        <nav class="top-nav" aria-label="Navigation du site">
+            <a href="../../index.html" class="logo">OPCP Skillhub</a>
+            <a href="../../en/getting-started/navigation.html" class="lang-switch" aria-label="Passer en anglais">EN</a>
+        </nav>
+    </header>
+
+    <nav class="sidebar" aria-label="Navigation des leçons">
+        <!-- Sidebar populated by navigation.js -->
+            <a href="../glossary.html" class="glossary-link" aria-label="Voir le glossaire des termes"><span class="glossary-link__icon" aria-hidden="true">📖</span> Glossaire</a>
+    </nav>
+
+    <main class="content-area" id="main-content">
+        <article>
+            <header class="lesson-header">
+                <h1>Naviguer dans l'interface OPCP</h1>
+                <span class="difficulty-badge beginner" aria-label="Difficulté : Débutant">Débutant</span>
+            </header>
+
+            <section aria-labelledby="overview">
+                <h2 id="overview">Présentation</h2>
+                <p>Une fois connecté à l'<dfn class="glossary-term" title="Espace Client OVHcloud — le panneau de contrôle web où vous gérez tous vos services OVHcloud, la facturation et les paramètres de votre compte">Espace Client OVHcloud</dfn>, vous devez savoir comment vous repérer. Imaginez l'interface comme un immeuble de bureaux bien organisé : le menu principal est le répertoire dans le hall, chaque section est un étage différent, et vous pouvez toujours prendre l'ascenseur pour revenir au rez-de-chaussée (le tableau de bord).</p>
+                <p>Cette leçon couvre les sections du menu principal, comment naviguer entre elles, et comment revenir au tableau de bord à tout moment.</p>
+            </section>
+
+            <section aria-labelledby="main-menu">
+                <h2 id="main-menu">Le Menu Principal</h2>
+                <p>Le menu de navigation latéral gauche est votre moyen principal d'accéder aux différentes parties de l'interface OPCP. Il est toujours visible sur les écrans de bureau et organise les services en catégories logiques.</p>
+                <figure>
+                    <img src="../../assets/images/navigation-main-menu.png" alt="Menu de navigation latéral gauche montrant les sections Calcul, Stockage, Réseau et Paramètres avec des icônes à côté de chaque libellé">
+                    <figcaption>Le menu de navigation principal sur le côté gauche de l'écran. Chaque section a une icône et un libellé : Calcul (icône serveur), Stockage (icône disque), Réseau (icône globe), et Paramètres (icône engrenage).</figcaption>
+                </figure>
+            </section>
+
+            <section aria-labelledby="compute-section">
+                <h2 id="compute-section">Section Calcul</h2>
+                <p>La section <strong>Calcul</strong> est l'endroit où vous gérez votre puissance de traitement — les machines virtuelles et les <dfn class="glossary-term" title="Nœud — une unité de ressource de calcul au sein de l'infrastructure OPCP. Considérez-le comme un ordinateur puissant dédié entièrement à l'exécution de vos applications.">nœuds</dfn> qui exécutent vos applications. C'est comme la salle des machines de votre cloud privé.</p>
+                <p>Dans cette section, vous pouvez consulter :</p>
+                <ul>
+                    <li>Les nœuds actifs et leur état actuel</li>
+                    <li>L'utilisation des ressources (quelle puissance de calcul est utilisée)</li>
+                    <li>Les options pour ajouter ou modifier les ressources de calcul</li>
+                </ul>
+            </section>
+
+            <section aria-labelledby="storage-section">
+                <h2 id="storage-section">Section Stockage</h2>
+                <p>La section <strong>Stockage</strong> gère l'emplacement de vos données. Imaginez-la comme votre armoire de classement — c'est là que les fichiers, bases de données et sauvegardes sont conservés en sécurité.</p>
+                <p>Vous y trouverez :</p>
+                <ul>
+                    <li>Vos volumes <dfn class="glossary-term" title="CloudStore — la solution de stockage d'OVHcloud qui fournit un espace évolutif et sécurisé pour vos données, semblable à un entrepôt numérique qui s'agrandit selon vos besoins.">CloudStore</dfn> et leur capacité</li>
+                    <li>Les planifications de sauvegarde et les options de récupération</li>
+                    <li>Les statistiques d'utilisation des données</li>
+                </ul>
+            </section>
+
+            <section aria-labelledby="network-section">
+                <h2 id="network-section">Section Réseau</h2>
+                <p>La section <strong>Réseau</strong> contrôle la façon dont vos services se connectent entre eux et au monde extérieur. Imaginez-la comme le réseau routier reliant différents bâtiments dans un parc d'activités.</p>
+                <p>Cette section comprend :</p>
+                <ul>
+                    <li>La configuration du réseau privé <dfn class="glossary-term" title="vRack — la technologie de réseau privé d'OVHcloud qui connecte vos services entre eux de manière sécurisée, comme un couloir privé entre des bureaux que seule votre équipe peut emprunter.">vRack</dfn></li>
+                    <li>La gestion des adresses IP publiques</li>
+                    <li>Les paramètres de pare-feu et groupes de sécurité</li>
+                    <li>La surveillance de la bande passante</li>
+                </ul>
+            </section>
+
+            <section aria-labelledby="settings-section">
+                <h2 id="settings-section">Section Paramètres</h2>
+                <p>La section <strong>Paramètres</strong> est l'endroit où vous gérez les préférences de votre compte, les informations de facturation et les contrôles d'accès. Imaginez-la comme le bureau administratif où vous gérez la paperasse et les autorisations.</p>
+                <p>Éléments clés dans Paramètres :</p>
+                <ul>
+                    <li>Détails du compte et informations de contact</li>
+                    <li>Facturation et moyens de paiement</li>
+                    <li>Gestion des utilisateurs (ajout de membres d'équipe)</li>
+                    <li>Paramètres de sécurité (mots de passe, authentification à deux facteurs)</li>
+                    <li>Identifiants API et jetons d'accès</li>
+                </ul>
+            </section>
+
+            <section aria-labelledby="moving-between">
+                <h2 id="moving-between">Naviguer entre les sections</h2>
+                <p>Passer d'une section à l'autre est simple :</p>
+                <ol>
+                    <li>Cliquez sur le nom d'une section dans le menu de gauche pour la déplier</li>
+                    <li>Cliquez sur un sous-élément pour ouvrir cette page spécifique</li>
+                    <li>La section actuellement active est mise en évidence pour que vous sachiez toujours où vous êtes</li>
+                </ol>
+                <figure>
+                    <img src="../../assets/images/navigation-section-switching.png" alt="Menu de navigation montrant la section Calcul dépliée avec les sous-éléments visibles, et la section Stockage repliée">
+                    <figcaption>Cliquer sur le nom d'une section la déplie pour afficher les sous-éléments (ici avec Calcul déplié). La page active est mise en évidence avec un fond coloré.</figcaption>
+                </figure>
+                <p>Vous ne pouvez avoir qu'une seule section dépliée à la fois. Cliquer sur une autre section replie la section actuelle et déplie la nouvelle sélection.</p>
+            </section>
+
+            <section aria-labelledby="return-dashboard">
+                <h2 id="return-dashboard">Revenir au tableau de bord</h2>
+                <p>Où que vous soyez dans l'interface, vous pouvez toujours revenir au tableau de bord principal de deux façons :</p>
+                <ol>
+                    <li><strong>Cliquer sur le logo OVHcloud</strong> — Situé dans le coin supérieur gauche, cliquer sur le logo vous ramène toujours à l'accueil du tableau de bord</li>
+                    <li><strong>Cliquer sur « Tableau de bord »</strong> — Le premier élément du menu de gauche est toujours un lien vers la vue d'ensemble du tableau de bord</li>
+                </ol>
+                <figure>
+                    <img src="../../assets/images/navigation-return-dashboard.png" alt="Coin supérieur gauche de l'interface montrant le logo OVHcloud et le lien Tableau de bord, tous deux entourés comme options de retour à l'accueil">
+                    <figcaption>Deux façons de revenir au tableau de bord : (1) Cliquer sur le logo OVHcloud dans le coin supérieur gauche, ou (2) Cliquer sur le lien « Tableau de bord » en haut du menu de gauche. Les deux sont entourés ci-dessus.</figcaption>
+                </figure>
+            </section>
+
+            <section aria-labelledby="tips">
+                <h2 id="tips">Conseils de navigation</h2>
+                <ul>
+                    <li><strong>Fil d'Ariane</strong> — En haut de chaque page, un fil d'Ariane indique votre position actuelle (ex. : Tableau de bord &gt; Calcul &gt; Nœuds). Cliquez sur n'importe quelle partie du fil pour revenir à ce niveau.</li>
+                    <li><strong>Barre de recherche</strong> — Utilisez la barre de recherche en haut de la page pour trouver rapidement un service ou un paramètre spécifique par son nom.</li>
+                    <li><strong>Raccourci clavier</strong> — Appuyez sur la touche Accueil ou utilisez le bouton retour de votre navigateur pour revenir aux pages précédentes.</li>
+                </ul>
+            </section>
+
+            <footer class="lesson-footer">
+                <nav class="sequential-nav" aria-label="Navigation des leçons">
+                    <a href="dashboard-access.html" class="nav-prev">Précédent : Accès au Tableau de Bord</a>
+                    <a href="initial-configuration.html" class="nav-next">Suivant : Configuration Initiale</a>
+                </nav>
+            </footer>
+        </article>
+    </main>
+
+    <footer class="site-footer" role="contentinfo">
+        <p>&copy; OVHcloud — OPCP Skillhub</p>
+    </footer>
+
+    <script src="../../assets/js/main.js"></script>
+</body>
+</html>

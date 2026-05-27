@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Network Architecture - Core Concepts - OPCP Training</title>
+    <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header class="site-header">
+        <nav class="top-nav" aria-label="Top navigation">
+            <a href="../../index.html" class="logo-link" aria-label="OPCP Training Home">OPCP Training</a>
+            <a href="../../fr/core-concepts/network-architecture.html" class="lang-switch" aria-label="Switch to French">FR</a>
+        </nav>
+    </header>
+
+    <div class="page-layout">
+        <nav class="sidebar" id="sidebar-nav" aria-label="Lesson navigation">
+            <!-- Navigation rendered by navigation.js -->
+                <a href="../glossary.html" class="glossary-link" aria-label="View glossary of terms"><span class="glossary-link__icon" aria-hidden="true">📖</span> Glossary</a>
+    </nav>
+
+        <main class="content-area" id="main-content">
+            <article>
+                <header class="lesson-header">
+                    <h1>Network Architecture</h1>
+                    <span class="difficulty-badge intermediate" aria-label="Difficulty: Intermediate">Intermediate</span>
+                </header>
+
+                <section aria-labelledby="overview-heading">
+                    <h2 id="overview-heading">Understanding Network Architecture</h2>
+                    <p>In OPCP, <span class="glossary-term" data-term="node">nodes</span> don't operate in isolation — they need to communicate with each other and with the outside world. <span class="glossary-term" data-term="network-architecture">Network architecture</span> defines how these connections are organized, secured, and optimized.</p>
+
+                    <p>Think of it like <strong>a city's road system</strong>. There are main highways (public network) that connect the city to the rest of the world, and internal streets (private network) that link buildings to each other. Some roads are wider and faster than others, and security barriers control who can access what.</p>
+                </section>
+
+                <section aria-labelledby="diagram-heading">
+                    <h2 id="diagram-heading">OPCP Network Topology</h2>
+
+                    <figure class="diagram-container" role="img" aria-label="Network topology diagram showing the separation between public and private networks, with nodes connected via an internal private network and internet access via the public network">
+                        <svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg" class="network-diagram" aria-hidden="true">
+                            <!-- Title -->
+                            <text x="400" y="25" text-anchor="middle" font-size="16" font-weight="bold" fill="#000E9C">Network Architecture — Like a City's Road System</text>
+
+                            <!-- Internet (cloud) -->
+                            <ellipse cx="400" cy="75" rx="120" ry="35" fill="#F0F1FF" stroke="#000E9C" stroke-width="2"/>
+                            <text x="400" y="80" text-anchor="middle" font-size="14" font-weight="bold" fill="#000E9C">🌐 Internet</text>
+
+                            <!-- Line to firewall -->
+                            <line x1="400" y1="110" x2="400" y2="140" stroke="#000E9C" stroke-width="2" stroke-dasharray="5,3"/>
+
+                            <!-- Firewall -->
+                            <rect x="340" y="140" width="120" height="40" rx="6" fill="#FFE8E8" stroke="#CC0000" stroke-width="2"/>
+                            <text x="400" y="165" text-anchor="middle" font-size="12" font-weight="bold" fill="#CC0000">🛡️ Firewall</text>
+
+                            <!-- Line to public network -->
+                            <line x1="400" y1="180" x2="400" y2="210" stroke="#000E9C" stroke-width="2"/>
+
+                            <!-- Public Network Zone -->
+                            <rect x="200" y="210" width="400" height="60" rx="10" fill="#E8EAFF" stroke="#000E9C" stroke-width="2"/>
+                            <text x="400" y="235" text-anchor="middle" font-size="13" font-weight="bold" fill="#000E9C">Public Network</text>
+                            <text x="400" y="255" text-anchor="middle" font-size="11" fill="#555">Main highway — Access from the outside world</text>
+
+                            <!-- Lines to private network -->
+                            <line x1="300" y1="270" x2="300" y2="310" stroke="#4949FF" stroke-width="2"/>
+                            <line x1="400" y1="270" x2="400" y2="310" stroke="#4949FF" stroke-width="2"/>
+                            <line x1="500" y1="270" x2="500" y2="310" stroke="#4949FF" stroke-width="2"/>
+
+                            <!-- Private Network Zone -->
+                            <rect x="100" y="310" width="600" height="120" rx="10" fill="#F0FFF0" stroke="#4949FF" stroke-width="2" stroke-dasharray="8,4"/>
+                            <text x="400" y="335" text-anchor="middle" font-size="13" font-weight="bold" fill="#4949FF">Private Network</text>
+                            <text x="400" y="352" text-anchor="middle" font-size="11" fill="#555">Internal streets — Node-to-node communication only</text>
+
+                            <!-- Nodes -->
+                            <rect x="140" y="365" width="120" height="50" rx="8" fill="#fff" stroke="#4949FF" stroke-width="2"/>
+                            <text x="200" y="385" text-anchor="middle" font-size="11" font-weight="bold" fill="#4949FF">Node A</text>
+                            <text x="200" y="402" text-anchor="middle" font-size="10" fill="#555">Web App</text>
+
+                            <rect x="340" y="365" width="120" height="50" rx="8" fill="#fff" stroke="#4949FF" stroke-width="2"/>
+                            <text x="400" y="385" text-anchor="middle" font-size="11" font-weight="bold" fill="#4949FF">Node B</text>
+                            <text x="400" y="402" text-anchor="middle" font-size="10" fill="#555">Database</text>
+
+                            <rect x="540" y="365" width="120" height="50" rx="8" fill="#fff" stroke="#4949FF" stroke-width="2"/>
+                            <text x="600" y="385" text-anchor="middle" font-size="11" font-weight="bold" fill="#4949FF">Node C</text>
+                            <text x="600" y="402" text-anchor="middle" font-size="10" fill="#555">Storage</text>
+
+                            <!-- Connections between nodes (private network) -->
+                            <line x1="260" y1="390" x2="340" y2="390" stroke="#4949FF" stroke-width="1.5" stroke-dasharray="3,2"/>
+                            <line x1="460" y1="390" x2="540" y2="390" stroke="#4949FF" stroke-width="1.5" stroke-dasharray="3,2"/>
+
+                            <!-- Legend -->
+                            <rect x="50" y="440" width="12" height="3" fill="#000E9C"/>
+                            <text x="68" y="444" font-size="10" fill="#333">Public network</text>
+                            <line x1="180" y1="442" x2="200" y2="442" stroke="#4949FF" stroke-width="2" stroke-dasharray="3,2"/>
+                            <text x="208" y="444" font-size="10" fill="#333">Private network</text>
+                            <line x1="320" y1="442" x2="340" y2="442" stroke="#000E9C" stroke-width="2" stroke-dasharray="5,3"/>
+                            <text x="348" y="444" font-size="10" fill="#333">Internet access</text>
+                        </svg>
+                        <figcaption>OPCP network topology showing the separation between public network (external access) and private network (internal node-to-node communication).</figcaption>
+                    </figure>
+                </section>
+
+                <section aria-labelledby="public-heading">
+                    <h2 id="public-heading">Public Network — The Main Highway</h2>
+                    <h3>The City Analogy: Highways</h3>
+                    <p>The public network is like the highway that connects your city to the rest of the world. This is where visitors (users, customers) arrive to access your services.</p>
+
+                    <h3>What This Means in OPCP</h3>
+                    <p>The <span class="glossary-term" data-term="public-network">public network</span> allows your nodes to be accessible from the internet:</p>
+                    <ul>
+                        <li>End users access your applications via the public network</li>
+                        <li>Each node can receive a public IP address (like a visible street address)</li>
+                        <li>Traffic is protected by firewalls and security rules</li>
+                        <li>Bandwidth determines how many visitors can access simultaneously</li>
+                    </ul>
+                    <p><strong>For customers:</strong> The public network is what makes their applications accessible to their own clients and users.</p>
+                </section>
+
+                <section aria-labelledby="private-heading">
+                    <h2 id="private-heading">Private Network — The Internal Streets</h2>
+                    <h3>The City Analogy: Residential Streets</h3>
+                    <p>The private network is like the internal streets of a residential neighborhood. Only residents (your nodes) can travel on them. Outside visitors don't have direct access.</p>
+
+                    <h3>What This Means in OPCP</h3>
+                    <p>The <span class="glossary-term" data-term="private-network">private network</span> allows your nodes to communicate with each other securely:</p>
+                    <ul>
+                        <li>Nodes exchange data without going through the internet (faster and more secure)</li>
+                        <li>The database communicates with the web application without external exposure</li>
+                        <li>Internal traffic is isolated from public traffic (like a gated community)</li>
+                        <li>No bandwidth charges for internal communications</li>
+                    </ul>
+                    <p><strong>For customers:</strong> The private network ensures that sensitive data (like database information) never travels over the public internet.</p>
+                </section>
+
+                <section aria-labelledby="bandwidth-heading">
+                    <h2 id="bandwidth-heading">Bandwidth — The Width of the Road</h2>
+                    <h3>The City Analogy: Number of Lanes</h3>
+                    <p><span class="glossary-term" data-term="bandwidth">Bandwidth</span> is like the number of lanes on a road. A two-lane road can handle a certain volume of traffic, but during rush hour, it becomes congested. A six-lane highway handles many more vehicles simultaneously.</p>
+
+                    <h3>What This Means for Customers</h3>
+                    <ul>
+                        <li><strong>More bandwidth</strong> = more users can access services at the same time</li>
+                        <li><strong>Less bandwidth</strong> = sufficient for low-traffic applications</li>
+                        <li>E-commerce sites during sales events need more bandwidth</li>
+                        <li>An internal tool used by 10 people needs little bandwidth</li>
+                    </ul>
+                </section>
+
+                <section aria-labelledby="security-heading">
+                    <h2 id="security-heading">Network Security — Barriers and Controls</h2>
+                    <h3>The City Analogy: Checkpoints</h3>
+                    <p>Just as a city has checkpoints at entrances and surveillance cameras, the OPCP network has security mechanisms to protect your nodes:</p>
+                    <ul>
+                        <li><strong>Firewalls</strong> — Like guards at the entrance who check who can enter</li>
+                        <li><strong>Filtering rules</strong> — Like "no entry" signs on certain roads</li>
+                        <li><strong>Network isolation</strong> — Like walls between neighboring properties</li>
+                        <li><strong>Encryption</strong> — Like sending messages in sealed envelopes</li>
+                    </ul>
+                </section>
+
+                <section aria-labelledby="summary-heading">
+                    <h2 id="summary-heading">Key Takeaways</h2>
+                    <ul>
+                        <li>The public network connects your nodes to the internet — it's the main highway to the outside world</li>
+                        <li>The private network lets nodes communicate with each other securely — these are the internal streets</li>
+                        <li>Bandwidth determines how much traffic can flow — it's the width of the road</li>
+                        <li>Network security protects your nodes with firewalls and filtering rules</li>
+                        <li>The public/private separation is essential for protecting sensitive data</li>
+                    </ul>
+                </section>
+
+                <footer class="lesson-footer">
+                    <nav class="lesson-nav" aria-label="Lesson navigation">
+                        <a href="resource-allocation.html" class="btn-prev" aria-label="Previous lesson: Resource Allocation">← Previous</a>
+                        <a href="../technical-operations/instance-setup.html" class="btn-next" aria-label="Next lesson: Instance Setup">Next →</a>
+                    </nav>
+                </footer>
+            </article>
+        </main>
+    </div>
+
+    <footer class="site-footer" role="contentinfo">
+        <p>&copy; 2024 OVHcloud — OPCP Training Skillhub</p>
+    </footer>
+
+    <script src="../../assets/js/main.js"></script>
+</body>
+</html>

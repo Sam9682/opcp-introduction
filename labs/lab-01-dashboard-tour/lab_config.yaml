@@ -1,0 +1,8 @@
+title: "Dashboard Tour"
+description: "Explore the OPCP dashboard interface"
+duration_minutes: 15
+prerequisites: []
+exercises:
+  - file: "exercises/01-explore-dashboard.py"
+    title: "Navigating the Dashboard"
+    steps: 8

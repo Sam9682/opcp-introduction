@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instance Setup - Technical Operations - OPCP Skillhub</title>
+    <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header class="site-header">
+        <nav aria-label="Site navigation" class="top-nav">
+            <a href="../../index.html" class="site-logo">OPCP Skillhub</a>
+            <a href="../../fr/technical-operations/instance-setup.html" class="lang-switch" aria-label="Switch to French">FR</a>
+        </nav>
+    </header>
+
+    <nav aria-label="Sidebar navigation" class="sidebar" id="sidebar">
+        <ul class="nav-menu">
+            <li><a href="../introduction/what-is-opcp.html">Introduction</a></li>
+            <li><a href="../getting-started/account-setup.html">Getting Started</a></li>
+            <li><a href="../core-concepts/node-lifecycle.html">Core Concepts</a></li>
+            <li class="active-section">
+                <a href="instance-setup.html">Technical Operations</a>
+                <ul>
+                    <li class="active"><a href="instance-setup.html">Instance Setup</a></li>
+                    <li><a href="api-credentials.html">API &amp; Credentials</a></li>
+                    <li><a href="node-configuration.html">Node Configuration</a></li>
+                    <li><a href="lacp-trunk-raid.html">LACP, Trunk &amp; RAID</a></li>
+                </ul>
+            </li>
+            <li><a href="../storage/cloudstore-overview.html">Storage Solutions</a></li>
+            <li><a href="../best-practices/operations-security.html">Best Practices</a></li>
+        </ul>
+            <a href="../glossary.html" class="glossary-link" aria-label="View glossary of terms"><span class="glossary-link__icon" aria-hidden="true">📖</span> Glossary</a>
+    </nav>
+
+    <main class="content-area" id="main-content">
+        <article>
+            <header class="lesson-header">
+                <h1>Instance Setup</h1>
+                <span class="difficulty-badge intermediate" aria-label="Difficulty: Intermediate">Intermediate</span>
+            </header>
+
+            <section aria-labelledby="overview">
+                <h2 id="overview">Overview</h2>
+                <p>Setting up a new <a href="../glossary.html#term-node" class="glossary-term">instance</a> in <a href="../glossary.html#term-opcp" class="glossary-term">OPCP</a> is similar to moving into a new office space. You choose the size and layout you need, confirm the details, and then the space is prepared for you. This page walks you through the end-to-end workflow at a conceptual level — no technical commands required.</p>
+                <p><strong>Real-world analogy:</strong> Think of instance setup like ordering a custom-built computer from a catalogue. You select the specifications you need, confirm your order, and the system is assembled and delivered ready to use.</p>
+            </section>
+
+            <section aria-labelledby="workflow-steps">
+                <h2 id="workflow-steps">The Setup Workflow</h2>
+                <p>Creating a new instance follows a clear, step-by-step process through the management interface. Here is what each stage involves:</p>
+
+                <figure class="diagram-scroll">
+                    <svg viewBox="0 0 750 160" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Workflow diagram showing the 5 steps of instance setup: Choose Template, Configure Resources, Name and Organise, Review and Confirm, Deployment">
+                        <rect x="10" y="40" width="130" height="80" rx="8" fill="#e8eaff" stroke="#000E9C" stroke-width="2"/>
+                        <text x="75" y="70" text-anchor="middle" font-size="11" font-weight="bold" fill="#000E9C">1. Template</text>
+                        <text x="75" y="90" text-anchor="middle" font-size="9" fill="#333">Choose workload</text>
+                        <text x="75" y="105" text-anchor="middle" font-size="9" fill="#333">type</text>
+                        <polygon points="145,80 160,72 160,88" fill="#4949FF"/>
+                        <rect x="165" y="40" width="130" height="80" rx="8" fill="#e8eaff" stroke="#000E9C" stroke-width="2"/>
+                        <text x="230" y="70" text-anchor="middle" font-size="11" font-weight="bold" fill="#000E9C">2. Resources</text>
+                        <text x="230" y="90" text-anchor="middle" font-size="9" fill="#333">CPU, RAM,</text>
+                        <text x="230" y="105" text-anchor="middle" font-size="9" fill="#333">Storage</text>
+                        <polygon points="300,80 315,72 315,88" fill="#4949FF"/>
+                        <rect x="320" y="40" width="130" height="80" rx="8" fill="#e8eaff" stroke="#000E9C" stroke-width="2"/>
+                        <text x="385" y="70" text-anchor="middle" font-size="11" font-weight="bold" fill="#000E9C">3. Naming</text>
+                        <text x="385" y="90" text-anchor="middle" font-size="9" fill="#333">Label and</text>
+                        <text x="385" y="105" text-anchor="middle" font-size="9" fill="#333">organise</text>
+                        <polygon points="455,80 470,72 470,88" fill="#4949FF"/>
+                        <rect x="475" y="40" width="130" height="80" rx="8" fill="#e8eaff" stroke="#000E9C" stroke-width="2"/>
+                        <text x="540" y="70" text-anchor="middle" font-size="11" font-weight="bold" fill="#000E9C">4. Review</text>
+                        <text x="540" y="90" text-anchor="middle" font-size="9" fill="#333">Confirm and</text>
+                        <text x="540" y="105" text-anchor="middle" font-size="9" fill="#333">approve</text>
+                        <polygon points="610,80 625,72 625,88" fill="#4949FF"/>
+                        <rect x="630" y="40" width="110" height="80" rx="8" fill="#d4edda" stroke="#1b7a3d" stroke-width="2"/>
+                        <text x="685" y="70" text-anchor="middle" font-size="11" font-weight="bold" fill="#1b7a3d">5. Deploy</text>
+                        <text x="685" y="90" text-anchor="middle" font-size="9" fill="#333">Instance</text>
+                        <text x="685" y="105" text-anchor="middle" font-size="9" fill="#333">ready ✓</text>
+                    </svg>
+                    <figcaption>The instance setup workflow: five guided steps from template selection to a running instance</figcaption>
+                </figure>
+
+                <section aria-labelledby="step1">
+                    <h3 id="step1">Step 1: Choose a Template</h3>
+                    <p>Begin by selecting a pre-configured template that matches your workload needs. Templates are like floor plans for an apartment — each one comes with a recommended combination of processing power, memory, and storage suited to a particular type of work.</p>
+                    <ul>
+                        <li><strong>General Purpose</strong> — Balanced resources for everyday business applications</li>
+                        <li><strong>Compute-Optimised</strong> — Extra processing power for data-intensive tasks</li>
+                        <li><strong>Memory-Optimised</strong> — Additional memory for applications that handle large datasets simultaneously</li>
+                        <li><strong>Storage-Optimised</strong> — Expanded storage capacity for archiving or media-heavy workloads</li>
+                    </ul>
+                </section>
+
+                <section aria-labelledby="step2">
+                    <h3 id="step2">Step 2: Configure Resources</h3>
+                    <p>After selecting a template, you fine-tune the <a href="../glossary.html#term-resource-allocation" class="glossary-term">resource allocation</a>. This is like adjusting the furniture layout after choosing your apartment — you decide exactly how much of each resource you need.</p>
+                    <ul>
+                        <li><strong>Processing capacity</strong> — How much <a href="../glossary.html#term-cpu" class="glossary-term">CPU</a> power is dedicated to your instance</li>
+                        <li><strong>Memory allocation</strong> — How much <a href="../glossary.html#term-ram" class="glossary-term">RAM</a> is available for active tasks</li>
+                        <li><strong>Storage volume</strong> — How much <a href="../glossary.html#term-storage" class="glossary-term">storage</a> space is assigned for your data</li>
+                        <li><strong>Network connectivity</strong> — Which networks your instance can communicate with</li>
+                    </ul>
+                </section>
+
+                <section aria-labelledby="step3">
+                    <h3 id="step3">Step 3: Set Naming and Organisation</h3>
+                    <p>Give your instance a meaningful name and assign it to a project or department. This is like labelling rooms in a building — it helps everyone find and manage resources efficiently.</p>
+                    <ul>
+                        <li>Choose a descriptive name that identifies the purpose (e.g., "Marketing Analytics" or "Customer Portal")</li>
+                        <li>Assign to the appropriate organisational group for billing and access control</li>
+                        <li>Add optional tags for easier searching and filtering later</li>
+                    </ul>
+                </section>
+
+                <section aria-labelledby="step4">
+                    <h3 id="step4">Step 4: Review and Confirm</h3>
+                    <p>Before the instance is created, you see a summary of all your choices — template, resources, naming, and estimated costs. This is your chance to double-check everything, much like reviewing an order before clicking "Purchase".</p>
+                    <ul>
+                        <li>Verify the selected template and resource levels</li>
+                        <li>Confirm the naming and organisational assignment</li>
+                        <li>Review the estimated monthly cost</li>
+                        <li>Approve the setup to begin provisioning</li>
+                    </ul>
+                </section>
+
+                <section aria-labelledby="step5">
+                    <h3 id="step5">Step 5: Deployment</h3>
+                    <p>Once confirmed, the platform automatically <a href="../glossary.html#term-provisioning" class="glossary-term">provisions</a> your instance. This typically takes a few minutes — similar to waiting for a new phone to finish its initial setup. You will receive a notification when the instance is ready for use.</p>
+                    <ul>
+                        <li>The system allocates the requested resources from available capacity</li>
+                        <li>Network connections are established automatically</li>
+                        <li>The instance appears in your dashboard with a "Ready" status</li>
+                        <li>You can begin using it immediately or hand it off to your technical team</li>
+                    </ul>
+                </section>
+            </section>
+
+            <section aria-labelledby="what-to-tell-customers">
+                <h2 id="what-to-tell-customers">What to Tell Customers</h2>
+                <ul>
+                    <li>Instance setup is a guided, visual process — no technical expertise required to initiate</li>
+                    <li>Templates simplify decision-making by offering pre-validated configurations</li>
+                    <li>The entire process from selection to a running instance typically takes under 10 minutes</li>
+                    <li>Costs are transparent and visible before any commitment is made</li>
+                    <li>Instances can be modified after creation if needs change</li>
+                </ul>
+            </section>
+
+            <footer class="lesson-footer">
+                <nav aria-label="Lesson navigation" class="lesson-nav">
+                    <a href="../core-concepts/network-architecture.html" class="btn-previous" aria-label="Previous lesson">← Previous: Network Architecture</a>
+                    <a href="api-credentials.html" class="btn-next" aria-label="Next lesson">Next: API &amp; Credentials →</a>
+                </nav>
+            </footer>
+        </article>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2024 OVHcloud — OPCP Introduction Skillhub</p>
+    </footer>
+
+    <script src="../../assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation - Getting Started - OPCP Skillhub</title>
+    <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header class="site-header">
+        <nav class="top-nav" aria-label="Site navigation">
+            <a href="../../index.html" class="logo">OPCP Skillhub</a>
+            <a href="../../fr/getting-started/navigation.html" class="lang-switch" aria-label="Switch to French">FR</a>
+        </nav>
+    </header>
+
+    <nav class="sidebar" aria-label="Lesson navigation">
+        <!-- Sidebar populated by navigation.js -->
+            <a href="../glossary.html" class="glossary-link" aria-label="View glossary of terms"><span class="glossary-link__icon" aria-hidden="true">📖</span> Glossary</a>
+    </nav>
+
+    <main class="content-area" id="main-content">
+        <article>
+            <header class="lesson-header">
+                <h1>Navigating the OPCP Interface</h1>
+                <span class="difficulty-badge beginner" aria-label="Difficulty: Beginner">Beginner</span>
+            </header>
+
+            <section aria-labelledby="overview">
+                <h2 id="overview">Overview</h2>
+                <p>Once you are logged in to the <dfn class="glossary-term" title="OVHcloud Manager — the web-based control panel where you manage all your OVHcloud services, billing, and account settings">OVHcloud Manager</dfn>, you need to know how to find your way around. Think of the interface like a well-organised office building: the main menu is the directory in the lobby, each section is a different floor, and you can always take the lift back to the ground floor (the dashboard).</p>
+                <p>This lesson covers the main menu sections, how to move between them, and how to return to the dashboard at any time.</p>
+            </section>
+
+            <section aria-labelledby="main-menu">
+                <h2 id="main-menu">The Main Menu</h2>
+                <p>The left-side navigation menu is your primary way to access different parts of the OPCP interface. It is always visible on desktop screens and organises services into logical categories.</p>
+                <figure>
+                    <img src="../../assets/images/navigation-main-menu.png" alt="Left-side navigation menu showing Compute, Storage, Network, and Settings sections with icons next to each label">
+                    <figcaption>The main navigation menu on the left side of the screen. Each section has an icon and label: Compute (server icon), Storage (disk icon), Network (globe icon), and Settings (gear icon).</figcaption>
+                </figure>
+            </section>
+
+            <section aria-labelledby="compute-section">
+                <h2 id="compute-section">Compute Section</h2>
+                <p>The <strong>Compute</strong> section is where you manage your processing power — the virtual machines and <dfn class="glossary-term" title="Node — a compute resource unit within the OPCP infrastructure. Think of it as a single powerful computer dedicated to running your applications.">nodes</dfn> that run your applications. This is like the engine room of your private cloud.</p>
+                <p>In this section you can view:</p>
+                <ul>
+                    <li>Active nodes and their current status</li>
+                    <li>Resource usage (how much computing power is being used)</li>
+                    <li>Options to add or modify compute resources</li>
+                </ul>
+            </section>
+
+            <section aria-labelledby="storage-section">
+                <h2 id="storage-section">Storage Section</h2>
+                <p>The <strong>Storage</strong> section manages where your data lives. Think of it as your filing cabinet — this is where files, databases, and backups are kept safe.</p>
+                <p>Here you will find:</p>
+                <ul>
+                    <li>Your <dfn class="glossary-term" title="CloudStore — OVHcloud's storage solution that provides scalable, secure space for your data, similar to a digital warehouse that grows as you need more room.">CloudStore</dfn> volumes and their capacity</li>
+                    <li>Backup schedules and recovery options</li>
+                    <li>Data usage statistics</li>
+                </ul>
+            </section>
+
+            <section aria-labelledby="network-section">
+                <h2 id="network-section">Network Section</h2>
+                <p>The <strong>Network</strong> section controls how your services connect to each other and to the outside world. Think of it as the road system connecting different buildings in a business park.</p>
+                <p>This section includes:</p>
+                <ul>
+                    <li><dfn class="glossary-term" title="vRack — OVHcloud's private network technology that connects your services together securely, like a private corridor between offices that only your team can use.">vRack</dfn> private network configuration</li>
+                    <li>Public IP address management</li>
+                    <li>Firewall and security group settings</li>
+                    <li>Bandwidth monitoring</li>
+                </ul>
+            </section>
+
+            <section aria-labelledby="settings-section">
+                <h2 id="settings-section">Settings Section</h2>
+                <p>The <strong>Settings</strong> section is where you manage your account preferences, billing information, and access controls. Think of it as the admin office where you handle paperwork and permissions.</p>
+                <p>Key items in Settings:</p>
+                <ul>
+                    <li>Account details and contact information</li>
+                    <li>Billing and payment methods</li>
+                    <li>User management (adding team members)</li>
+                    <li>Security settings (passwords, two-factor authentication)</li>
+                    <li>API credentials and access tokens</li>
+                </ul>
+            </section>
+
+            <section aria-labelledby="moving-between">
+                <h2 id="moving-between">Moving Between Sections</h2>
+                <p>Switching between sections is straightforward:</p>
+                <ol>
+                    <li>Click any section name in the left menu to expand it</li>
+                    <li>Click a sub-item to open that specific page</li>
+                    <li>The currently active section is highlighted so you always know where you are</li>
+                </ol>
+                <figure>
+                    <img src="../../assets/images/navigation-section-switching.png" alt="Navigation menu showing the Compute section expanded with sub-items visible, and the Storage section collapsed">
+                    <figcaption>Clicking a section name expands it to show sub-items (shown here with Compute expanded). The active page is highlighted with a coloured background.</figcaption>
+                </figure>
+                <p>You can have only one section expanded at a time. Clicking a different section collapses the current one and expands the new selection.</p>
+            </section>
+
+            <section aria-labelledby="return-dashboard">
+                <h2 id="return-dashboard">Returning to the Dashboard</h2>
+                <p>No matter where you are in the interface, you can always return to the main dashboard in two ways:</p>
+                <ol>
+                    <li><strong>Click the OVHcloud logo</strong> — Located in the top-left corner, clicking the logo always takes you back to the dashboard home</li>
+                    <li><strong>Click "Dashboard"</strong> — The first item in the left menu is always a link back to the dashboard overview</li>
+                </ol>
+                <figure>
+                    <img src="../../assets/images/navigation-return-dashboard.png" alt="Top-left corner of the interface showing the OVHcloud logo and Dashboard link, both circled as return-to-home options">
+                    <figcaption>Two ways to return to the dashboard: (1) Click the OVHcloud logo in the top-left corner, or (2) Click the "Dashboard" link at the top of the left menu. Both are circled above.</figcaption>
+                </figure>
+            </section>
+
+            <section aria-labelledby="tips">
+                <h2 id="tips">Navigation Tips</h2>
+                <ul>
+                    <li><strong>Breadcrumbs</strong> — At the top of each page, a breadcrumb trail shows your current location (e.g., Dashboard &gt; Compute &gt; Nodes). Click any part of the trail to jump back to that level.</li>
+                    <li><strong>Search bar</strong> — Use the search bar at the top of the page to quickly find a specific service or setting by name.</li>
+                    <li><strong>Keyboard shortcut</strong> — Press the Home key or use your browser's back button to return to previous pages.</li>
+                </ul>
+            </section>
+
+            <footer class="lesson-footer">
+                <nav class="sequential-nav" aria-label="Lesson navigation">
+                    <a href="dashboard-access.html" class="nav-prev">Previous: Dashboard Access</a>
+                    <a href="initial-configuration.html" class="nav-next">Next: Initial Configuration</a>
+                </nav>
+            </footer>
+        </article>
+    </main>
+
+    <footer class="site-footer" role="contentinfo">
+        <p>&copy; OVHcloud — OPCP Skillhub</p>
+    </footer>
+
+    <script src="../../assets/js/main.js"></script>
+</body>
+</html>

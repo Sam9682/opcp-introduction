@@ -1,0 +1,948 @@
+[
+  {
+    "id": "en/best-practices/operations-security",
+    "title": "Operations & Security - Best Practices",
+    "headings": [
+      "Think of It Like Managing a Building",
+      "Resource Management",
+      "Monitoring Usage",
+      "Scaling",
+      "Maintenance Practices",
+      "Regular Updates",
+      "Health Checks",
+      "Security",
+      "Access Control",
+      "Data Protection",
+      "Compliance Awareness",
+      "Key Takeaways"
+    ],
+    "body": "Operations & Security Learn how to keep your OPCP environment running smoothly and securely — explained through the analogy of managing a building. Think of It Like Managing a Building Imagine you own a large office building. You need to keep the lights on, the elevators running, and the doors locked. Managing your OPCP environment works the same way: Resource management is like monitoring electricity and water usage — you track what is being consumed and plan for peak demand. Maintenance is lik",
+    "path": "en/best-practices/operations-security.html"
+  },
+  {
+    "id": "en/best-practices/performance-troubleshooting",
+    "title": "Performance & Troubleshooting - Best Practices",
+    "headings": [
+      "Performance Optimization",
+      "Right-Sizing Resources",
+      "Caching — The Express Lane",
+      "Load Balancing — Sharing the Work",
+      "Common Issues and Solutions",
+      "Slow Response Times",
+      "Connectivity Issues",
+      "Storage Running Low",
+      "Service Unavailable Errors",
+      "When to Escalate",
+      "Key Takeaways"
+    ],
+    "body": "Performance & Troubleshooting Understand how to keep your OPCP services running at peak efficiency and what to do when something goes wrong — no technical expertise required. Performance Optimization Think of your cloud environment like a car engine. A well-tuned engine runs smoothly, uses fuel efficiently, and lasts longer. Here is how to keep your OPCP \"engine\" in top shape. Right-Sizing Resources Imagine buying a delivery truck to carry a single envelope — that is wasted capacity. Conversely,",
+    "path": "en/best-practices/performance-troubleshooting.html"
+  },
+  {
+    "id": "en/best-practices/quick-reference",
+    "title": "Quick Reference - Best Practices",
+    "headings": [
+      "Introduction",
+      "Main Topics",
+      "Key Terminology",
+      "Customer Talking Points",
+      "Getting Started",
+      "Main Topics",
+      "Key Terminology",
+      "Customer Talking Points",
+      "Core Concepts",
+      "Main Topics",
+      "Key Terminology",
+      "Customer Talking Points",
+      "Technical Operations",
+      "Main Topics",
+      "Key Terminology",
+      "Customer Talking Points",
+      "Storage Solutions",
+      "Main Topics",
+      "Key Terminology",
+      "Customer Talking Points",
+      "Best Practices",
+      "Main Topics",
+      "Key Terminology",
+      "Customer Talking Points"
+    ],
+    "body": "Quick Reference One-page summary cards for each section of the OPCP training. Use these as a handy reminder during customer conversations. Introduction Main Topics What OPCP is and how it works (dedicated cloud infrastructure managed by OVHcloud) Business benefits: cost predictability, security, scalability, sovereignty Target audiences: mid-to-large enterprises, regulated industries, growing businesses Key features: dedicated resources, VMware-based virtualisation, network isolation, API access",
+    "path": "en/best-practices/quick-reference.html"
+  },
+  {
+    "id": "en/best-practices/resources-support",
+    "title": "Resources & Support - Best Practices",
+    "headings": [
+      "Documentation",
+      "OVHcloud Hosted Private Cloud Documentation",
+      "OVHcloud API Reference",
+      "OVHcloud Guides & Tutorials",
+      "OVHcloud Status Page",
+      "Support Channels",
+      "Support Ticket System",
+      "Phone Support",
+      "Live Chat",
+      "Community Resources",
+      "OVHcloud Community Forum",
+      "OVHcloud Discord Server",
+      "OVHcloud Blog",
+      "Tips for Getting Help Effectively"
+    ],
+    "body": "Resources & Support A curated list of documentation, support channels, and community resources to help you and your customers get the most out of OPCP. Documentation Official documentation is your first stop for detailed information about OPCP features, configuration, and best practices. OVHcloud Hosted Private Cloud Documentation The main documentation hub covering all aspects of the Hosted Private Cloud service — from getting started guides to advanced configuration. Ideal for understanding pr",
+    "path": "en/best-practices/resources-support.html"
+  },
+  {
+    "id": "en/core-concepts/network-architecture",
+    "title": "Network Architecture - Core Concepts - OPCP Training",
+    "headings": [
+      "Understanding Network Architecture",
+      "OPCP Network Topology",
+      "Public Network — The Main Highway",
+      "The City Analogy: Highways",
+      "What This Means in OPCP",
+      "Private Network — The Internal Streets",
+      "The City Analogy: Residential Streets",
+      "What This Means in OPCP",
+      "Bandwidth — The Width of the Road",
+      "The City Analogy: Number of Lanes",
+      "What This Means for Customers",
+      "Network Security — Barriers and Controls",
+      "The City Analogy: Checkpoints",
+      "Key Takeaways"
+    ],
+    "body": "Network Architecture Intermediate Understanding Network Architecture In OPCP, nodes don't operate in isolation — they need to communicate with each other and with the outside world. Network architecture defines how these connections are organized, secured, and optimized. Think of it like a city's road system . There are main highways (public network) that connect the city to the rest of the world, and internal streets (private network) that link buildings to each other. Some roads are wider and ",
+    "path": "en/core-concepts/network-architecture.html"
+  },
+  {
+    "id": "en/core-concepts/node-lifecycle",
+    "title": "Node Lifecycle - Core Concepts - OPCP Training",
+    "headings": [
+      "Understanding the Node Lifecycle",
+      "Lifecycle Stages at a Glance",
+      "Stage 1: Provisioning",
+      "The Office Analogy: Signing the Lease",
+      "What Happens in OPCP",
+      "Stage 2: Configuration",
+      "The Office Analogy: Setting Up Furniture",
+      "What Happens in OPCP",
+      "Stage 3: Operation",
+      "The Office Analogy: Daily Work",
+      "What Happens in OPCP",
+      "Stage 4: Decommissioning",
+      "The Office Analogy: Moving Out",
+      "What Happens in OPCP",
+      "Key Takeaways"
+    ],
+    "body": "Node Lifecycle Intermediate Understanding the Node Lifecycle Every node in OPCP goes through a series of stages during its existence — from the moment you request it to the moment it is retired. Understanding these stages helps you plan projects, set expectations with customers, and anticipate what happens at each step. Think of it like renting and furnishing an office space . You don't just walk in and start working — there's a process of signing the lease, setting up furniture, using the space",
+    "path": "en/core-concepts/node-lifecycle.html"
+  },
+  {
+    "id": "en/core-concepts/node-types",
+    "title": "Node Types - Core Concepts - OPCP Training",
+    "headings": [
+      "Choosing the Right Node",
+      "Node Types Comparison",
+      "Standard Nodes — The Compact Car",
+      "Best Suited For",
+      "Customer Conversation Tip",
+      "Performance Nodes — The SUV",
+      "Best Suited For",
+      "Customer Conversation Tip",
+      "High-Memory Nodes — The Truck",
+      "Best Suited For",
+      "Customer Conversation Tip",
+      "How to Help Customers Choose",
+      "Key Takeaways"
+    ],
+    "body": "Node Types Intermediate Choosing the Right Node Not every job requires the same tool. You wouldn't use a delivery truck to commute to work, and you wouldn't try to move furniture in a compact car. The same principle applies to nodes in OPCP — different workloads need different types of computing power. Think of node types like choosing a vehicle . Each type is designed for specific tasks, and picking the right one means better performance and better value for your customer. Node Types Comparison",
+    "path": "en/core-concepts/node-types.html"
+  },
+  {
+    "id": "en/core-concepts/resource-allocation",
+    "title": "Resource Allocation - Core Concepts - OPCP Training",
+    "headings": [
+      "What is Resource Allocation?",
+      "The Three Core Resources",
+      "CPU — Your Processing Power",
+      "The Budget Analogy: Number of Employees",
+      "What It Means for Customers",
+      "RAM — Your Working Memory",
+      "The Budget Analogy: Desk Size",
+      "What It Means for Customers",
+      "Storage — Your Filing Space",
+      "The Budget Analogy: Filing Cabinet Size",
+      "What It Means for Customers",
+      "Balancing Resources — Getting It Right",
+      "Key Takeaways"
+    ],
+    "body": "Resource Allocation Intermediate What is Resource Allocation? When you set up a node in OPCP, you need to decide how much computing power to assign to it. This is called resource allocation — the process of dividing available resources among your workloads. Think of it like dividing a department budget . You have a total amount to work with, and you need to distribute it wisely across salaries, equipment, travel, and supplies. Give too much to one area and others suffer. Give too little everywhe",
+    "path": "en/core-concepts/resource-allocation.html"
+  },
+  {
+    "id": "en/getting-started/account-setup",
+    "title": "Account Setup - Getting Started - OPCP Skillhub",
+    "headings": [
+      "Overview",
+      "What You Need Before Starting",
+      "Step 1: Visit the OVHcloud Sign-Up Page",
+      "Step 2: Choose Your Account Type",
+      "Step 3: Fill In Your Company Details",
+      "Step 4: Verify Your Email",
+      "Step 5: Set Up Your Password",
+      "Step 6: Add a Payment Method",
+      "What Happens Next"
+    ],
+    "body": "Account Setup Beginner 🇫🇷 Français Overview Setting up your OPCP account is the first step to accessing OVHcloud's private cloud services. Think of it like opening a bank account: you provide your details, verify your identity, and then you receive access to your own secure space. This guide walks you through each step of the process with clear visual references so you know exactly where to click. What You Need Before Starting A valid business email address Your company name and registration d",
+    "path": "en/getting-started/account-setup.html"
+  },
+  {
+    "id": "en/getting-started/dashboard-access",
+    "title": "Dashboard Access - Getting Started - OPCP Skillhub",
+    "headings": [
+      "Overview",
+      "Entry Point URL",
+      "Login Prerequisites",
+      "Step 1: Navigate to the Login Page",
+      "Step 2: Enter Your Credentials",
+      "Step 3: Arrive at the Dashboard",
+      "What You See on the Dashboard",
+      "Common Access Issues"
+    ],
+    "body": "Dashboard Access Beginner Overview The OVHcloud Manager is your central control panel for all OPCP services. Think of it as the reception desk of a building — it is the single entry point where you check in and get directed to everything you need. This lesson shows you how to reach the dashboard, what you need to log in, and what you will see when you arrive. Entry Point URL The OPCP dashboard is accessed through the OVHcloud Manager at: https://www.ovh.com/manager Bookmark this address in your ",
+    "path": "en/getting-started/dashboard-access.html"
+  },
+  {
+    "id": "en/getting-started/initial-configuration",
+    "title": "Initial Configuration - Getting Started - OPCP Skillhub",
+    "headings": [
+      "Overview",
+      "Step 1: Select Your Datacentre Location",
+      "Step 2: Set Up Your Private Network",
+      "Step 3: Configure Your First Host",
+      "Step 4: Add Storage",
+      "Step 5: Set Up User Access",
+      "Configuration Complete"
+    ],
+    "body": "Initial Configuration Beginner Overview After logging in for the first time, there are a few setup steps to complete before your OPCP environment is ready to use. Think of this like moving into a new office: the building is ready, but you still need to set up your desk, connect the phone, and get your security badge configured. This lesson walks you through the essential first-time configuration steps using plain, non-technical language. Step 1: Select Your Datacentre Location Your first decisio",
+    "path": "en/getting-started/initial-configuration.html"
+  },
+  {
+    "id": "en/getting-started/navigation",
+    "title": "Navigation - Getting Started - OPCP Skillhub",
+    "headings": [
+      "Overview",
+      "The Main Menu",
+      "Compute Section",
+      "Storage Section",
+      "Network Section",
+      "Settings Section",
+      "Moving Between Sections",
+      "Returning to the Dashboard",
+      "Navigation Tips"
+    ],
+    "body": "Navigating the OPCP Interface Beginner Overview Once you are logged in to the OVHcloud Manager , you need to know how to find your way around. Think of the interface like a well-organised office building: the main menu is the directory in the lobby, each section is a different floor, and you can always take the lift back to the ground floor (the dashboard). This lesson covers the main menu sections, how to move between them, and how to return to the dashboard at any time. The Main Menu The left-",
+    "path": "en/getting-started/navigation.html"
+  },
+  {
+    "id": "en/introduction/benefits",
+    "title": "Benefits of OPCP - Introduction - OPCP Skillhub",
+    "headings": [
+      "Why Businesses Choose OPCP",
+      "1. Cost Predictability",
+      "The Benefit",
+      "Use Case: The Growing E-Commerce Company",
+      "2. Enhanced Security and Compliance",
+      "The Benefit",
+      "Use Case: The Healthcare Provider",
+      "3. Guaranteed Performance",
+      "The Benefit",
+      "Use Case: The Financial Services Firm",
+      "4. Data Sovereignty",
+      "The Benefit",
+      "Use Case: The Government Contractor",
+      "Benefits at a Glance",
+      "Summary"
+    ],
+    "body": "Benefits of OPCP Beginner 🇫🇷 Français Why Businesses Choose OPCP OVHcloud's Hosted Private Cloud delivers real business value. Think of it like upgrading from renting a desk in a co-working space to having your own private office — same building, same amenities, but now you control who enters, how it's arranged, and when you use it. Here are the key benefits that matter most to businesses: 1. Cost Predictability The Benefit With OPCP, you pay a fixed monthly fee for dedicated resources. No sur",
+    "path": "en/introduction/benefits.html"
+  },
+  {
+    "id": "en/introduction/key-features",
+    "title": "Key Features - Introduction - OPCP Skillhub",
+    "headings": [
+      "What Makes OPCP Stand Out",
+      "1. Dedicated Resources",
+      "2. On-Demand Scalability",
+      "3. Network Isolation",
+      "4. API-Driven Management",
+      "5. European Data Sovereignty",
+      "Feature Summary"
+    ],
+    "body": "Key Features Beginner 🇫🇷 Français What Makes OPCP Stand Out OPCP (OVHcloud Hosted Private Cloud) offers a set of features designed to give businesses the power of dedicated infrastructure with the convenience of a managed service. Each feature below is explained with a visual diagram to help you understand how it works. 1. Dedicated Resources Every node in your OPCP environment is exclusively yours. No other customer shares your CPU , RAM , or storage . Think of it like having your own private",
+    "path": "en/introduction/key-features.html"
+  },
+  {
+    "id": "en/introduction/target-audience",
+    "title": "Target Audience - Introduction - OPCP Skillhub",
+    "headings": [
+      "Understanding Your Customer",
+      "Key Audience Roles",
+      "IT Managers",
+      "Chief Technology Officers (CTOs)",
+      "Compliance Officers / Data Protection Officers",
+      "Chief Financial Officers (CFOs)",
+      "Project Managers",
+      "Industry Scenarios",
+      "Conversation Starters by Role"
+    ],
+    "body": "Who is OPCP For? Beginner 🇫🇷 Français Understanding Your Customer OPCP isn't a one-size-fits-all product. Different people in an organisation care about different things. A CTO thinks about technology strategy, while a compliance officer worries about regulations. Knowing who you're talking to helps you highlight the benefits that matter most to them. Think of it like selling a car: a parent cares about safety features, a business executive cares about fuel efficiency and image, and a teenager",
+    "path": "en/introduction/target-audience.html"
+  },
+  {
+    "id": "en/introduction/what-is-opcp",
+    "title": "What is OPCP? - Introduction - OPCP Skillhub",
+    "headings": [
+      "The Private Apartment Analogy",
+      "What Does \"Hosted Private Cloud\" Mean?",
+      "Hosted",
+      "Private",
+      "Cloud",
+      "How OPCP Fits In",
+      "Key Takeaways"
+    ],
+    "body": "What is OPCP? Beginner 🇫🇷 Français The Private Apartment Analogy Imagine you need a place to live in a big city. You have three options: A shared hostel — cheap, but you share everything with strangers. Noisy, unpredictable, and you have no control over who comes and goes. Building your own house — total control, but incredibly expensive. You handle plumbing, electricity, security, and maintenance all by yourself. A private apartment in a managed building — your own space with your own lock, b",
+    "path": "en/introduction/what-is-opcp.html"
+  },
+  {
+    "id": "en/storage/backup-recovery",
+    "title": "Backup and Recovery - Storage Solutions - OPCP Skillhub",
+    "headings": [
+      "Why Back Up Your Data?",
+      "Essential Terms",
+      "The Backup Process",
+      "What happens at each step",
+      "The Recovery Process",
+      "What happens at each step",
+      "Backup Best Practices",
+      "Tips for customer conversations",
+      "Key Takeaways"
+    ],
+    "body": "Backup and Recovery Intermediate 🇫🇷 Français Why Back Up Your Data? Imagine all the files in your office disappearing overnight — client contracts, financial reports, ongoing projects. A backup is your safety net: a copy of your data stored separately, ready to be restored when something goes wrong. Real-world analogy: Backups work like photocopies of your important documents kept in a safe at the bank. If a fire destroys your office, you can rebuild your files from the copies stored in a secu",
+    "path": "en/storage/backup-recovery.html"
+  },
+  {
+    "id": "en/storage/cloudstore-overview",
+    "title": "CloudStore Overview - Storage Solutions - OPCP Skillhub",
+    "headings": [
+      "The Secure Warehouse Analogy",
+      "How CloudStore Works",
+      "Common Use Cases",
+      "Document Storage",
+      "Media Archives",
+      "Application Data",
+      "Backups",
+      "Why Customers Choose CloudStore",
+      "Key Takeaways"
+    ],
+    "body": "CloudStore Overview Intermediate 🇫🇷 Français The Secure Warehouse Analogy Imagine your business generates mountains of documents, photos, videos, and data files every day. Where do you keep all of it? Think of CloudStore as a secure, expandable warehouse for your digital assets . Just like a professional storage facility: It grows with you — need more space? Simply request additional room. No construction required. It's always accessible — authorised staff can retrieve items anytime, from anyw",
+    "path": "en/storage/cloudstore-overview.html"
+  },
+  {
+    "id": "en/storage/data-management",
+    "title": "Data Management - Storage Solutions - OPCP Skillhub",
+    "headings": [
+      "Organising Your Digital Data",
+      "The Data Lifecycle",
+      "Essential Terms",
+      "Organising Your Data",
+      "Structure by project or department",
+      "Consistent naming",
+      "Tagging",
+      "Retention Policies",
+      "File Versioning",
+      "When to use versioning",
+      "Key Takeaways"
+    ],
+    "body": "Data Management Intermediate 🇫🇷 Français Organising Your Digital Data Storing data is only the first step. To get the most out of it, you need to organise it, protect it, and know when to keep or delete it . Data management is like running a well-organised library: every book has its place, old volumes are archived, and important documents are kept safe. Data management refers to the set of practices for collecting, storing, organising, maintaining, and using data effectively and securely thro",
+    "path": "en/storage/data-management.html"
+  },
+  {
+    "id": "en/storage/storage-capabilities",
+    "title": "Storage Capabilities - Storage Solutions - OPCP Skillhub",
+    "headings": [
+      "What Can CloudStore Do?",
+      "Capability 1: Scalability",
+      "What this means for customers",
+      "Capability 2: Redundancy",
+      "What this means for customers",
+      "Capability 3: Access Methods",
+      "Available access methods",
+      "Capability 4: Encryption",
+      "What this means for customers",
+      "Capabilities at a Glance",
+      "Capacity Tiers",
+      "Key Takeaways"
+    ],
+    "body": "Storage Capabilities Intermediate 🇫🇷 Français What Can CloudStore Do? CloudStore isn't just a place to dump files. It's a sophisticated storage platform with capabilities designed to keep your data safe, accessible, and ready to grow with your business. Think of it as a warehouse that can automatically expand, has multiple backup locations, and offers different doors for different types of deliveries. Capability 1: Scalability Scalability means the ability to grow (or shrink) your storage spac",
+    "path": "en/storage/storage-capabilities.html"
+  },
+  {
+    "id": "en/technical-operations/api-credentials",
+    "title": "API & Credentials - Technical Operations - OPCP Skillhub",
+    "headings": [
+      "Overview",
+      "What APIs Enable",
+      "Automation",
+      "Integration with Existing Tools",
+      "Self-Service Capabilities",
+      "How Credentials Are Obtained",
+      "The Credential Request Process",
+      "Types of Credentials",
+      "Credential Rotation",
+      "Why Rotation Matters",
+      "The Rotation Process",
+      "Recommended Rotation Frequency",
+      "What to Tell Customers"
+    ],
+    "body": "API Usage & Credential Management Intermediate Overview APIs (Application Programming Interfaces) allow different software systems to communicate with each other automatically. In the context of OPCP , APIs enable your organisation's tools and workflows to interact with the cloud platform without manual intervention. Real-world analogy: Think of an API as a universal remote control. Instead of walking up to each device and pressing buttons manually, you use the remote to send instructions from a",
+    "path": "en/technical-operations/api-credentials.html"
+  },
+  {
+    "id": "en/technical-operations/instance-setup",
+    "title": "Instance Setup - Technical Operations - OPCP Skillhub",
+    "headings": [
+      "Overview",
+      "The Setup Workflow",
+      "Step 1: Choose a Template",
+      "Step 2: Configure Resources",
+      "Step 3: Set Naming and Organisation",
+      "Step 4: Review and Confirm",
+      "Step 5: Deployment",
+      "What to Tell Customers"
+    ],
+    "body": "Instance Setup Intermediate Overview Setting up a new instance in OPCP is similar to moving into a new office space. You choose the size and layout you need, confirm the details, and then the space is prepared for you. This page walks you through the end-to-end workflow at a conceptual level — no technical commands required. Real-world analogy: Think of instance setup like ordering a custom-built computer from a catalogue. You select the specifications you need, confirm your order, and the syste",
+    "path": "en/technical-operations/instance-setup.html"
+  },
+  {
+    "id": "en/technical-operations/lacp-trunk-raid",
+    "title": "LACP, Trunk & RAID - Technical Operations - OPCP Skillhub",
+    "headings": [
+      "Overview",
+      "LACP — Link Aggregation",
+      "What It Is",
+      "Real-World Analogy",
+      "Customer Benefits",
+      "When a Customer Needs This",
+      "Trunk — Network Traffic Organisation",
+      "What It Is",
+      "Real-World Analogy",
+      "Customer Benefits",
+      "When a Customer Needs This",
+      "Software RAID — Data Protection",
+      "What It Is",
+      "Real-World Analogy",
+      "Customer Benefits",
+      "When a Customer Needs This",
+      "Quick Comparison",
+      "What to Tell Customers"
+    ],
+    "body": "LACP, Trunk & RAID Intermediate Overview This lesson explains three infrastructure concepts that customers may encounter when discussing their OPCP environment. Each concept is presented with a plain-language definition, a real-world analogy, and guidance on when a customer would benefit from it. These are behind-the-scenes technologies that make cloud services faster, more organised, and more resilient. You do not need to understand how they work technically — only what they achieve for the cus",
+    "path": "en/technical-operations/lacp-trunk-raid.html"
+  },
+  {
+    "id": "en/technical-operations/node-configuration",
+    "title": "Node Configuration - Technical Operations - OPCP Skillhub",
+    "headings": [
+      "Overview",
+      "Availability Configuration",
+      "High Availability",
+      "Maintenance Window Scheduling",
+      "Performance Configuration",
+      "Resource Scaling",
+      "Storage Performance Tiers",
+      "Network Configuration",
+      "Bandwidth Allocation",
+      "Network Isolation",
+      "Cost-Related Configuration",
+      "Resource Limits",
+      "Reserved vs. On-Demand Resources",
+      "What to Tell Customers"
+    ],
+    "body": "Node Configuration Intermediate Overview Node configuration determines how your cloud resources behave and perform. Each configuration option directly affects what your customers experience — from how fast their applications respond to whether their service stays online during maintenance. Real-world analogy: Configuring a node is like setting up a new retail store. You decide the opening hours (availability), how many checkout lanes to open (performance), whether to have a backup generator (res",
+    "path": "en/technical-operations/node-configuration.html"
+  },
+  {
+    "id": "fr/best-practices/operations-security",
+    "title": "Opérations et Sécurité - Bonnes Pratiques",
+    "headings": [
+      "Imaginez la gestion d'un immeuble",
+      "Gestion des ressources",
+      "Surveillance de l'utilisation",
+      "Mise à l'échelle",
+      "Pratiques de maintenance",
+      "Mises à jour régulières",
+      "Contrôles de santé",
+      "Sécurité",
+      "Contrôle d'accès",
+      "Protection des données",
+      "Sensibilisation à la conformité",
+      "Points clés à retenir"
+    ],
+    "body": "Opérations et Sécurité Apprenez à maintenir votre environnement OPCP en bon état de fonctionnement et en toute sécurité — expliqué à travers l'analogie de la gestion d'un immeuble. Imaginez la gestion d'un immeuble Imaginez que vous êtes propriétaire d'un grand immeuble de bureaux. Vous devez maintenir l'éclairage, faire fonctionner les ascenseurs et verrouiller les portes. La gestion de votre environnement OPCP fonctionne de la même manière : La gestion des ressources revient à surveiller la co",
+    "path": "fr/best-practices/operations-security.html"
+  },
+  {
+    "id": "fr/best-practices/performance-troubleshooting",
+    "title": "Performance et Dépannage - Bonnes Pratiques",
+    "headings": [
+      "Optimisation des performances",
+      "Dimensionnement adapté",
+      "Mise en cache — La voie express",
+      "Répartition de charge — Partager le travail",
+      "Problèmes courants et solutions",
+      "Temps de réponse lents",
+      "Problèmes de connectivité",
+      "Stockage insuffisant",
+      "Erreurs de service indisponible",
+      "Quand escalader",
+      "Points clés à retenir"
+    ],
+    "body": "Performance et Dépannage Comprenez comment maintenir vos services OPCP à leur efficacité maximale et que faire quand quelque chose ne va pas — aucune expertise technique requise. Optimisation des performances Pensez à votre environnement cloud comme à un moteur de voiture. Un moteur bien réglé tourne en douceur, consomme le carburant efficacement et dure plus longtemps. Voici comment garder votre « moteur » OPCP en pleine forme. Dimensionnement adapté Imaginez acheter un camion de livraison pour",
+    "path": "fr/best-practices/performance-troubleshooting.html"
+  },
+  {
+    "id": "fr/best-practices/quick-reference",
+    "title": "Référence Rapide - Bonnes Pratiques",
+    "headings": [
+      "Introduction",
+      "Sujets principaux",
+      "Terminologie clé",
+      "Arguments pour les clients",
+      "Premiers pas",
+      "Sujets principaux",
+      "Terminologie clé",
+      "Arguments pour les clients",
+      "Concepts fondamentaux",
+      "Sujets principaux",
+      "Terminologie clé",
+      "Arguments pour les clients",
+      "Opérations techniques",
+      "Sujets principaux",
+      "Terminologie clé",
+      "Arguments pour les clients",
+      "Solutions de stockage",
+      "Sujets principaux",
+      "Terminologie clé",
+      "Arguments pour les clients",
+      "Bonnes pratiques",
+      "Sujets principaux",
+      "Terminologie clé",
+      "Arguments pour les clients"
+    ],
+    "body": "Référence Rapide Fiches récapitulatives pour chaque section de la formation OPCP. Utilisez-les comme aide-mémoire lors de vos conversations avec les clients. Introduction Sujets principaux Ce qu'est OPCP et comment il fonctionne (infrastructure cloud dédiée gérée par OVHcloud) Avantages métier : prévisibilité des coûts, sécurité, évolutivité, souveraineté Publics cibles : moyennes et grandes entreprises, industries réglementées, entreprises en croissance Fonctionnalités clés : ressources dédiées",
+    "path": "fr/best-practices/quick-reference.html"
+  },
+  {
+    "id": "fr/best-practices/resources-support",
+    "title": "Ressources et Support - Bonnes Pratiques",
+    "headings": [
+      "Documentation",
+      "Documentation OVHcloud Hosted Private Cloud",
+      "Référence API OVHcloud",
+      "Guides et Tutoriels OVHcloud",
+      "Page de statut OVHcloud",
+      "Canaux de support",
+      "Système de tickets de support",
+      "Support téléphonique",
+      "Chat en direct",
+      "Ressources communautaires",
+      "Forum communautaire OVHcloud",
+      "Serveur Discord OVHcloud",
+      "Blog OVHcloud",
+      "Conseils pour obtenir de l'aide efficacement"
+    ],
+    "body": "Ressources et Support Une liste organisée de documentation, canaux de support et ressources communautaires pour vous aider, vous et vos clients, à tirer le meilleur parti d'OPCP. Documentation La documentation officielle est votre premier recours pour obtenir des informations détaillées sur les fonctionnalités, la configuration et les bonnes pratiques d' OPCP . Documentation OVHcloud Hosted Private Cloud Le portail principal de documentation couvrant tous les aspects du service Hosted Private Cl",
+    "path": "fr/best-practices/resources-support.html"
+  },
+  {
+    "id": "fr/core-concepts/network-architecture",
+    "title": "Architecture Réseau - Concepts Fondamentaux - Formation OPCP",
+    "headings": [
+      "Comprendre l'Architecture Réseau",
+      "Topologie Réseau OPCP",
+      "Réseau Public — La Route Principale",
+      "L'analogie de la ville : Les autoroutes",
+      "Ce que cela signifie dans OPCP",
+      "Réseau Privé — Les Rues Internes",
+      "L'analogie de la ville : Les rues résidentielles",
+      "Ce que cela signifie dans OPCP",
+      "Bande Passante — La Largeur de la Route",
+      "L'analogie de la ville : Le nombre de voies",
+      "Ce que cela signifie pour les clients",
+      "Sécurité Réseau — Les Barrières et Contrôles",
+      "L'analogie de la ville : Les postes de contrôle",
+      "Points Clés à Retenir"
+    ],
+    "body": "Architecture Réseau Intermédiaire Comprendre l'Architecture Réseau Dans OPCP, les nœuds ne fonctionnent pas de manière isolée — ils doivent communiquer entre eux et avec le monde extérieur. L' architecture réseau définit comment ces connexions sont organisées, sécurisées et optimisées. Pensez-y comme le système routier d'une ville . Il y a des routes principales (réseau public) qui connectent la ville au reste du monde, et des rues internes (réseau privé) qui relient les bâtiments entre eux. Cer",
+    "path": "fr/core-concepts/network-architecture.html"
+  },
+  {
+    "id": "fr/core-concepts/node-lifecycle",
+    "title": "Cycle de Vie des Nœuds - Concepts Fondamentaux - Formation OPCP",
+    "headings": [
+      "Comprendre le Cycle de Vie d'un Nœud",
+      "Les Étapes du Cycle de Vie en un Coup d'Œil",
+      "Étape 1 : Provisionnement",
+      "L'analogie du bureau : Signer le bail",
+      "Ce qui se passe dans OPCP",
+      "Étape 2 : Configuration",
+      "L'analogie du bureau : Installer le mobilier",
+      "Ce qui se passe dans OPCP",
+      "Étape 3 : Exploitation",
+      "L'analogie du bureau : Le travail quotidien",
+      "Ce qui se passe dans OPCP",
+      "Étape 4 : Décommissionnement",
+      "L'analogie du bureau : Le déménagement",
+      "Ce qui se passe dans OPCP",
+      "Points Clés à Retenir"
+    ],
+    "body": "Cycle de Vie des Nœuds Intermédiaire Comprendre le Cycle de Vie d'un Nœud Chaque nœud dans OPCP traverse une série d'étapes au cours de son existence — depuis le moment où vous le demandez jusqu'au moment où il est retiré. Comprendre ces étapes vous aide à planifier des projets, à définir les attentes avec les clients et à anticiper ce qui se passe à chaque étape. Pensez-y comme louer et aménager un espace de bureau . Vous n'entrez pas simplement et ne commencez pas à travailler — il y a un proc",
+    "path": "fr/core-concepts/node-lifecycle.html"
+  },
+  {
+    "id": "fr/core-concepts/node-types",
+    "title": "Types de Nœuds - Concepts Fondamentaux - Formation OPCP",
+    "headings": [
+      "Choisir le Bon Nœud",
+      "Comparaison des Types de Nœuds",
+      "Nœuds Standard — La Voiture Compacte",
+      "Idéal Pour",
+      "Conseil pour la Conversation Client",
+      "Nœuds Performance — Le SUV",
+      "Idéal Pour",
+      "Conseil pour la Conversation Client",
+      "Nœuds Haute-Mémoire — Le Camion",
+      "Idéal Pour",
+      "Conseil pour la Conversation Client",
+      "Comment Aider les Clients à Choisir",
+      "Points Clés à Retenir"
+    ],
+    "body": "Types de Nœuds Intermédiaire Choisir le Bon Nœud Chaque tâche ne nécessite pas le même outil. Vous n'utiliseriez pas un camion de livraison pour aller au travail, et vous n'essaieriez pas de déménager des meubles dans une voiture compacte. Le même principe s'applique aux nœuds dans OPCP — différentes charges de travail nécessitent différents types de puissance de calcul. Pensez aux types de nœuds comme choisir un véhicule . Chaque type est conçu pour des tâches spécifiques, et choisir le bon sig",
+    "path": "fr/core-concepts/node-types.html"
+  },
+  {
+    "id": "fr/core-concepts/resource-allocation",
+    "title": "Allocation des Ressources - Concepts Fondamentaux - Formation OPCP",
+    "headings": [
+      "Qu'est-ce que l'Allocation des Ressources ?",
+      "Les Trois Ressources Fondamentales",
+      "CPU — Votre Puissance de Traitement",
+      "L'analogie du budget : Le nombre d'employés",
+      "Ce que cela signifie pour les clients",
+      "RAM — Votre Mémoire de Travail",
+      "L'analogie du budget : La taille du bureau",
+      "Ce que cela signifie pour les clients",
+      "Stockage — Votre Espace de Classement",
+      "L'analogie du budget : La taille de l'armoire",
+      "Ce que cela signifie pour les clients",
+      "Équilibrer les Ressources — Trouver le Bon Dosage",
+      "Points Clés à Retenir"
+    ],
+    "body": "Allocation des Ressources Intermédiaire Qu'est-ce que l'Allocation des Ressources ? Lorsque vous configurez un nœud dans OPCP, vous devez décider quelle puissance de calcul lui attribuer. C'est ce qu'on appelle l' allocation des ressources — le processus de répartition des ressources disponibles entre vos charges de travail. Pensez-y comme répartir un budget de département . Vous avez un montant total à disposition, et vous devez le distribuer judicieusement entre les salaires, l'équipement, les",
+    "path": "fr/core-concepts/resource-allocation.html"
+  },
+  {
+    "id": "fr/getting-started/account-setup",
+    "title": "Configuration du Compte - Premiers Pas - OPCP Skillhub",
+    "headings": [
+      "Présentation",
+      "Ce dont vous avez besoin avant de commencer",
+      "Étape 1 : Accéder à la page d'inscription OVHcloud",
+      "Étape 2 : Choisir votre type de compte",
+      "Étape 3 : Renseigner les informations de votre entreprise",
+      "Étape 4 : Vérifier votre e-mail",
+      "Étape 5 : Créer votre mot de passe",
+      "Étape 6 : Ajouter un moyen de paiement",
+      "Et ensuite"
+    ],
+    "body": "Configuration du Compte Débutant Présentation La configuration de votre compte OPCP est la première étape pour accéder aux services de cloud privé d'OVHcloud. C'est un peu comme ouvrir un compte bancaire : vous fournissez vos informations, vérifiez votre identité, puis vous recevez l'accès à votre propre espace sécurisé. Ce guide vous accompagne à chaque étape du processus avec des repères visuels clairs pour que vous sachiez exactement où cliquer. Ce dont vous avez besoin avant de commencer Une",
+    "path": "fr/getting-started/account-setup.html"
+  },
+  {
+    "id": "fr/getting-started/dashboard-access",
+    "title": "Accès au Tableau de Bord - Premiers Pas - OPCP Skillhub",
+    "headings": [
+      "Présentation",
+      "URL du Point d'Accès",
+      "Prérequis de Connexion",
+      "Étape 1 : Accéder à la page de connexion",
+      "Étape 2 : Saisir vos identifiants",
+      "Étape 3 : Arriver sur le tableau de bord",
+      "Ce que vous voyez sur le tableau de bord",
+      "Problèmes d'accès courants"
+    ],
+    "body": "Accès au Tableau de Bord Débutant Présentation L' Espace Client OVHcloud est votre panneau de contrôle central pour tous les services OPCP. Imaginez-le comme l'accueil d'un immeuble — c'est le point d'entrée unique où vous vous identifiez et êtes dirigé vers tout ce dont vous avez besoin. Cette leçon vous montre comment accéder au tableau de bord, ce dont vous avez besoin pour vous connecter, et ce que vous verrez à votre arrivée. URL du Point d'Accès Le tableau de bord OPCP est accessible via l",
+    "path": "fr/getting-started/dashboard-access.html"
+  },
+  {
+    "id": "fr/getting-started/initial-configuration",
+    "title": "Configuration Initiale - Premiers Pas - OPCP Skillhub",
+    "headings": [
+      "Présentation",
+      "Étape 1 : Sélectionner l'emplacement de votre centre de données",
+      "Étape 2 : Configurer votre réseau privé",
+      "Étape 3 : Configurer votre premier hôte",
+      "Étape 4 : Ajouter du stockage",
+      "Étape 5 : Configurer les accès utilisateurs",
+      "Configuration terminée"
+    ],
+    "body": "Configuration Initiale Débutant Présentation Après votre première connexion, quelques étapes de configuration sont nécessaires avant que votre environnement OPCP soit prêt à l'emploi. C'est comme emménager dans un nouveau bureau : le bâtiment est prêt, mais vous devez encore installer votre poste de travail, brancher le téléphone et faire configurer votre badge de sécurité. Cette leçon vous guide à travers les étapes essentielles de configuration initiale en utilisant un langage simple et non te",
+    "path": "fr/getting-started/initial-configuration.html"
+  },
+  {
+    "id": "fr/getting-started/navigation",
+    "title": "Navigation - Premiers Pas - OPCP Skillhub",
+    "headings": [
+      "Présentation",
+      "Le Menu Principal",
+      "Section Calcul",
+      "Section Stockage",
+      "Section Réseau",
+      "Section Paramètres",
+      "Naviguer entre les sections",
+      "Revenir au tableau de bord",
+      "Conseils de navigation"
+    ],
+    "body": "Naviguer dans l'interface OPCP Débutant Présentation Une fois connecté à l' Espace Client OVHcloud , vous devez savoir comment vous repérer. Imaginez l'interface comme un immeuble de bureaux bien organisé : le menu principal est le répertoire dans le hall, chaque section est un étage différent, et vous pouvez toujours prendre l'ascenseur pour revenir au rez-de-chaussée (le tableau de bord). Cette leçon couvre les sections du menu principal, comment naviguer entre elles, et comment revenir au tab",
+    "path": "fr/getting-started/navigation.html"
+  },
+  {
+    "id": "fr/introduction/benefits",
+    "title": "Avantages de l'OPCP - Introduction - OPCP Skillhub",
+    "headings": [
+      "Pourquoi les entreprises choisissent l'OPCP",
+      "1. Prévisibilité des coûts",
+      "L'avantage",
+      "Cas d'usage : L'entreprise e-commerce en croissance",
+      "2. Sécurité et conformité renforcées",
+      "L'avantage",
+      "Cas d'usage : Le prestataire de santé",
+      "3. Performances garanties",
+      "L'avantage",
+      "Cas d'usage : La société de services financiers",
+      "4. Souveraineté des données",
+      "L'avantage",
+      "Cas d'usage : Le prestataire gouvernemental",
+      "Les avantages en un coup d'œil",
+      "Résumé"
+    ],
+    "body": "Avantages de l'OPCP Débutant 🇬🇧 English Pourquoi les entreprises choisissent l'OPCP Le Cloud Privé Hébergé d'OVHcloud apporte une réelle valeur ajoutée aux entreprises. Imaginez que vous passez de la location d'un bureau dans un espace de coworking à votre propre bureau privé — même immeuble, mêmes équipements, mais désormais vous contrôlez qui entre, comment il est aménagé et quand vous l'utilisez. Voici les avantages clés qui comptent le plus pour les entreprises : 1. Prévisibilité des coûts",
+    "path": "fr/introduction/benefits.html"
+  },
+  {
+    "id": "fr/introduction/key-features",
+    "title": "Fonctionnalités clés - Introduction - OPCP Skillhub",
+    "headings": [
+      "Ce que l'OPCP offre à votre entreprise",
+      "1. Ressources dédiées",
+      "2. Gestion simplifiée via tableau de bord",
+      "3. Sécurité de niveau entreprise",
+      "4. Scalabilité flexible",
+      "5. Réseau haute performance",
+      "Résumé des fonctionnalités"
+    ],
+    "body": "Fonctionnalités clés de l'OPCP Débutant 🇬🇧 English Ce que l'OPCP offre à votre entreprise L' OPCP n'est pas qu'un simple hébergement — c'est une plateforme complète conçue pour répondre aux besoins des entreprises modernes. Voici les fonctionnalités principales qui distinguent l'OPCP et comment chacune apporte de la valeur à votre organisation. 1. Ressources dédiées Chaque client OPCP dispose de son propre matériel physique — processeurs , mémoire et stockage qui ne sont partagés avec personne",
+    "path": "fr/introduction/key-features.html"
+  },
+  {
+    "id": "fr/introduction/target-audience",
+    "title": "Public cible - Introduction - OPCP Skillhub",
+    "headings": [
+      "Comprendre votre client",
+      "Rôles clés du public cible",
+      "Responsables IT",
+      "Directeurs Techniques (CTO)",
+      "Responsables conformité / Délégués à la protection des données",
+      "Directeurs Financiers (CFO)",
+      "Chefs de projet",
+      "Scénarios par secteur d'activité",
+      "Amorces de conversation par rôle"
+    ],
+    "body": "À qui s'adresse l'OPCP ? Débutant 🇬🇧 English Comprendre votre client L' OPCP n'est pas un produit universel. Différentes personnes dans une organisation se soucient de choses différentes. Un directeur technique pense à la stratégie technologique, tandis qu'un responsable conformité s'inquiète des réglementations. Savoir à qui vous parlez vous aide à mettre en avant les avantages qui comptent le plus pour eux. C'est comme vendre une voiture : un parent se soucie des dispositifs de sécurité, un ",
+    "path": "fr/introduction/target-audience.html"
+  },
+  {
+    "id": "fr/introduction/what-is-opcp",
+    "title": "Qu'est-ce que l'OPCP ? - Introduction - OPCP Skillhub",
+    "headings": [
+      "L'analogie de l'appartement privé",
+      "Que signifie « Cloud Privé Hébergé » ?",
+      "Hébergé",
+      "Privé",
+      "Cloud",
+      "Comment l'OPCP se positionne",
+      "Points clés à retenir"
+    ],
+    "body": "Qu'est-ce que l'OPCP ? Débutant 🇬🇧 English L'analogie de l'appartement privé Imaginez que vous avez besoin d'un logement dans une grande ville. Vous avez trois options : Une auberge de jeunesse — bon marché, mais vous partagez tout avec des inconnus. Bruyant, imprévisible, et vous n'avez aucun contrôle sur les allées et venues. Construire votre propre maison — contrôle total, mais incroyablement coûteux. Vous gérez la plomberie, l'électricité, la sécurité et l'entretien tout seul. Un apparteme",
+    "path": "fr/introduction/what-is-opcp.html"
+  },
+  {
+    "id": "fr/storage/backup-recovery",
+    "title": "Sauvegarde et Récupération - Solutions de Stockage - OPCP Skillhub",
+    "headings": [
+      "Pourquoi sauvegarder vos données ?",
+      "Termes essentiels",
+      "Processus de sauvegarde",
+      "Ce qui se passe à chaque étape",
+      "Processus de récupération",
+      "Ce qui se passe à chaque étape",
+      "Bonnes pratiques de sauvegarde",
+      "Conseils pour les conversations clients",
+      "Points clés à retenir"
+    ],
+    "body": "Sauvegarde et Récupération Intermédiaire 🇬🇧 English Pourquoi sauvegarder vos données ? Imaginez que tous les dossiers de votre bureau disparaissent du jour au lendemain — contrats clients, rapports financiers, projets en cours. La sauvegarde est votre filet de sécurité : une copie de vos données stockée séparément, prête à être restaurée en cas de problème. Analogie du monde réel : La sauvegarde fonctionne comme une photocopie de vos documents importants rangée dans un coffre-fort à la banque.",
+    "path": "fr/storage/backup-recovery.html"
+  },
+  {
+    "id": "fr/storage/cloudstore-overview",
+    "title": "Présentation de CloudStore - Solutions de Stockage - OPCP Skillhub",
+    "headings": [
+      "L'analogie de l'entrepôt sécurisé",
+      "Comment fonctionne CloudStore",
+      "Cas d'utilisation courants",
+      "Stockage de documents",
+      "Archives multimédia",
+      "Données applicatives",
+      "Sauvegardes",
+      "Pourquoi les clients choisissent CloudStore",
+      "Points clés à retenir"
+    ],
+    "body": "Présentation de CloudStore Intermédiaire 🇬🇧 English L'analogie de l'entrepôt sécurisé Imaginez que votre entreprise génère des montagnes de documents, photos, vidéos et fichiers de données chaque jour. Où stockez-vous tout cela ? Pensez à CloudStore comme un entrepôt sécurisé et extensible pour vos actifs numériques . Tout comme un centre de stockage professionnel : Il grandit avec vous — besoin de plus d'espace ? Il suffit de demander de la place supplémentaire. Aucune construction nécessaire",
+    "path": "fr/storage/cloudstore-overview.html"
+  },
+  {
+    "id": "fr/storage/data-management",
+    "title": "Gestion des Données - Solutions de Stockage - OPCP Skillhub",
+    "headings": [
+      "Organiser vos données numériques",
+      "Le cycle de vie des données",
+      "Termes essentiels",
+      "Organiser vos données",
+      "Structure par projet ou département",
+      "Nommage cohérent",
+      "Étiquetage (tags)",
+      "Politiques de rétention",
+      "Versionnement des fichiers",
+      "Quand utiliser le versionnement",
+      "Points clés à retenir"
+    ],
+    "body": "Gestion des Données Intermédiaire 🇬🇧 English Organiser vos données numériques Stocker des données n'est que la première étape. Pour en tirer le meilleur parti, vous devez les organiser , les protéger et savoir quand les conserver ou les supprimer . La gestion des données, c'est comme gérer une bibliothèque bien organisée : chaque livre a sa place, les ouvrages anciens sont archivés et les documents importants sont conservés en lieu sûr. La gestion des données désigne l'ensemble des pratiques p",
+    "path": "fr/storage/data-management.html"
+  },
+  {
+    "id": "fr/storage/storage-capabilities",
+    "title": "Capacités de Stockage - Solutions de Stockage - OPCP Skillhub",
+    "headings": [
+      "Que peut faire CloudStore ?",
+      "Capacité 1 : Évolutivité",
+      "Ce que cela signifie pour les clients",
+      "Capacité 2 : Redondance",
+      "Ce que cela signifie pour les clients",
+      "Capacité 3 : Méthodes d'accès",
+      "Méthodes d'accès disponibles",
+      "Capacité 4 : Chiffrement",
+      "Ce que cela signifie pour les clients",
+      "Capacités en un coup d'œil",
+      "Niveaux de capacité",
+      "Points clés à retenir"
+    ],
+    "body": "Capacités de Stockage Intermédiaire 🇬🇧 English Que peut faire CloudStore ? CloudStore n'est pas simplement un endroit où déposer des fichiers. C'est une plateforme de stockage sophistiquée dotée de capacités conçues pour garder vos données en sécurité, accessibles et prêtes à évoluer avec votre entreprise. Pensez-y comme un entrepôt qui peut s'agrandir automatiquement, dispose de plusieurs emplacements de sauvegarde et offre différentes portes pour différents types de livraisons. Capacité 1 : ",
+    "path": "fr/storage/storage-capabilities.html"
+  },
+  {
+    "id": "fr/technical-operations/api-credentials",
+    "title": "API & Identifiants - Opérations Techniques - OPCP Skillhub",
+    "headings": [
+      "Présentation",
+      "Ce que Permettent les API",
+      "Automatisation",
+      "Intégration avec les Outils Existants",
+      "Capacités en Libre-Service",
+      "Comment Obtenir des Identifiants",
+      "Le Processus de Demande d'Identifiants",
+      "Types d'Identifiants",
+      "Rotation des Identifiants",
+      "Pourquoi la Rotation est Importante",
+      "Le Processus de Rotation",
+      "Fréquence de Rotation Recommandée",
+      "Ce qu'il Faut Dire aux Clients"
+    ],
+    "body": "Utilisation des API & Gestion des Identifiants Intermédiaire Présentation Les API (Interfaces de Programmation d'Applications) permettent à différents systèmes logiciels de communiquer entre eux automatiquement. Dans le contexte d' OPCP , les API permettent aux outils et flux de travail de votre organisation d'interagir avec la plateforme cloud sans intervention manuelle. Analogie : Pensez à une API comme à une télécommande universelle. Au lieu de vous déplacer jusqu'à chaque appareil pour appuy",
+    "path": "fr/technical-operations/api-credentials.html"
+  },
+  {
+    "id": "fr/technical-operations/instance-setup",
+    "title": "Configuration d'Instance - Opérations Techniques - OPCP Skillhub",
+    "headings": [
+      "Présentation",
+      "Le Processus de Configuration",
+      "Étape 1 : Choisir un Modèle",
+      "Étape 2 : Configurer les Ressources",
+      "Étape 3 : Nommage et Organisation",
+      "Étape 4 : Vérification et Confirmation",
+      "Étape 5 : Déploiement",
+      "Ce qu'il Faut Dire aux Clients"
+    ],
+    "body": "Configuration d'Instance Intermédiaire Présentation Configurer une nouvelle instance dans OPCP est similaire à l'emménagement dans un nouveau bureau. Vous choisissez la taille et l'agencement dont vous avez besoin, confirmez les détails, puis l'espace est préparé pour vous. Cette page vous guide à travers le processus complet à un niveau conceptuel — aucune commande technique n'est requise. Analogie : Pensez à la configuration d'instance comme à la commande d'un ordinateur sur mesure dans un cat",
+    "path": "fr/technical-operations/instance-setup.html"
+  },
+  {
+    "id": "fr/technical-operations/lacp-trunk-raid",
+    "title": "LACP, Trunk & RAID - Opérations Techniques - OPCP Skillhub",
+    "headings": [
+      "Présentation",
+      "LACP — Agrégation de Liens",
+      "Ce que C'est",
+      "Analogie du Monde Réel",
+      "Bénéfices Client",
+      "Quand un Client en a Besoin",
+      "Trunk — Organisation du Trafic Réseau",
+      "Ce que C'est",
+      "Analogie du Monde Réel",
+      "Bénéfices Client",
+      "Quand un Client en a Besoin",
+      "RAID Logiciel — Protection des Données",
+      "Ce que C'est",
+      "Analogie du Monde Réel",
+      "Bénéfices Client",
+      "Quand un Client en a Besoin",
+      "Comparaison Rapide",
+      "Ce qu'il Faut Dire aux Clients"
+    ],
+    "body": "LACP, Trunk & RAID Intermédiaire Présentation Cette leçon explique trois concepts d'infrastructure que les clients peuvent rencontrer lorsqu'ils discutent de leur environnement OPCP. Chaque concept est présenté avec une définition en langage courant, une analogie du monde réel et des indications sur les situations où un client en bénéficierait. Ce sont des technologies qui fonctionnent en coulisses pour rendre les services cloud plus rapides, mieux organisés et plus résilients. Vous n'avez pas b",
+    "path": "fr/technical-operations/lacp-trunk-raid.html"
+  },
+  {
+    "id": "fr/technical-operations/node-configuration",
+    "title": "Configuration des Nœuds - Opérations Techniques - OPCP Skillhub",
+    "headings": [
+      "Présentation",
+      "Configuration de la Disponibilité",
+      "Haute Disponibilité",
+      "Planification des Fenêtres de Maintenance",
+      "Configuration des Performances",
+      "Mise à l'Échelle des Ressources",
+      "Niveaux de Performance du Stockage",
+      "Configuration Réseau",
+      "Allocation de Bande Passante",
+      "Isolation Réseau",
+      "Configuration Liée aux Coûts",
+      "Limites de Ressources",
+      "Ressources Réservées vs. À la Demande",
+      "Ce qu'il Faut Dire aux Clients"
+    ],
+    "body": "Configuration des Nœuds Intermédiaire Présentation La configuration des nœuds détermine le comportement et les performances de vos ressources cloud. Chaque option de configuration affecte directement l'expérience de vos clients — de la rapidité de réponse de leurs applications au maintien en ligne de leur service pendant les opérations de maintenance. Analogie : Configurer un nœud est comme aménager un nouveau magasin. Vous décidez des horaires d'ouverture (disponibilité), du nombre de caisses à",
+    "path": "fr/technical-operations/node-configuration.html"
+  }
+]

@@ -1,82 +1,93 @@
-// OPCP Introduction Skillhub - Progress Tracking
-// Handles lesson completion tracking via localStorage
+/**
+ * SkillHub — Progress Tracking Module
+ *
+ * Handles lesson completion tracking via localStorage.
+ * Also defines the lesson catalog data.
+ * Shared via the window.SkillHub namespace (no build tools).
+ * Also exports functions for testing.
+ */
 
-const STORAGE_KEY = 'opcp-progress';
-const DEFAULT_TOTAL_LESSONS = 24;
+var STORAGE_KEY = 'opcp-progress';
+var DEFAULT_TOTAL_LESSONS = 24;
+
+var SECTIONS = [
+  { id: 'introduction', titleEN: 'Introduction', titleFR: 'Introduction' },
+  { id: 'getting-started', titleEN: 'Getting Started', titleFR: 'Premiers Pas' },
+  { id: 'core-concepts', titleEN: 'Core Concepts', titleFR: 'Concepts Clés' },
+  { id: 'technical-operations', titleEN: 'Technical Operations', titleFR: 'Opérations Techniques' },
+  { id: 'storage', titleEN: 'Storage Solutions', titleFR: 'Solutions de Stockage' },
+  { id: 'best-practices', titleEN: 'Best Practices', titleFR: 'Bonnes Pratiques' }
+];
+
+var LESSONS = [
+  { id: 'introduction/what-is-opcp', section: 'introduction', slug: 'introduction/what-is-opcp', titleEN: 'What is OPCP?', titleFR: "Qu'est-ce que l'OPCP ?", difficulty: 'beginner', estimatedMinutes: 10 },
+  { id: 'introduction/benefits', section: 'introduction', slug: 'introduction/benefits', titleEN: 'Benefits', titleFR: 'Avantages', difficulty: 'beginner', estimatedMinutes: 10 },
+  { id: 'introduction/target-audience', section: 'introduction', slug: 'introduction/target-audience', titleEN: 'Target Audience', titleFR: 'Public Cible', difficulty: 'beginner', estimatedMinutes: 5 },
+  { id: 'introduction/key-features', section: 'introduction', slug: 'introduction/key-features', titleEN: 'Key Features', titleFR: 'Fonctionnalités Clés', difficulty: 'beginner', estimatedMinutes: 10 },
+  { id: 'getting-started/account-setup', section: 'getting-started', slug: 'getting-started/account-setup', titleEN: 'Account Setup', titleFR: 'Configuration du Compte', difficulty: 'beginner', estimatedMinutes: 15 },
+  { id: 'getting-started/dashboard-access', section: 'getting-started', slug: 'getting-started/dashboard-access', titleEN: 'Dashboard Access', titleFR: 'Accès au Tableau de Bord', difficulty: 'beginner', estimatedMinutes: 10 },
+  { id: 'getting-started/navigation', section: 'getting-started', slug: 'getting-started/navigation', titleEN: 'Navigation', titleFR: 'Navigation', difficulty: 'beginner', estimatedMinutes: 10 },
+  { id: 'getting-started/initial-configuration', section: 'getting-started', slug: 'getting-started/initial-configuration', titleEN: 'Initial Configuration', titleFR: 'Configuration Initiale', difficulty: 'beginner', estimatedMinutes: 15 },
+  { id: 'core-concepts/node-lifecycle', section: 'core-concepts', slug: 'core-concepts/node-lifecycle', titleEN: 'Node Lifecycle', titleFR: 'Cycle de Vie des Nœuds', difficulty: 'intermediate', estimatedMinutes: 15 },
+  { id: 'core-concepts/node-types', section: 'core-concepts', slug: 'core-concepts/node-types', titleEN: 'Node Types', titleFR: 'Types de Nœuds', difficulty: 'intermediate', estimatedMinutes: 10 },
+  { id: 'core-concepts/resource-allocation', section: 'core-concepts', slug: 'core-concepts/resource-allocation', titleEN: 'Resource Allocation', titleFR: 'Allocation de Ressources', difficulty: 'intermediate', estimatedMinutes: 15 },
+  { id: 'core-concepts/network-architecture', section: 'core-concepts', slug: 'core-concepts/network-architecture', titleEN: 'Network Architecture', titleFR: 'Architecture Réseau', difficulty: 'intermediate', estimatedMinutes: 15 },
+  { id: 'technical-operations/instance-setup', section: 'technical-operations', slug: 'technical-operations/instance-setup', titleEN: 'Instance Setup', titleFR: "Configuration d'Instance", difficulty: 'intermediate', estimatedMinutes: 20 },
+  { id: 'technical-operations/api-credentials', section: 'technical-operations', slug: 'technical-operations/api-credentials', titleEN: 'API Credentials', titleFR: 'Identifiants API', difficulty: 'intermediate', estimatedMinutes: 15 },
+  { id: 'technical-operations/node-configuration', section: 'technical-operations', slug: 'technical-operations/node-configuration', titleEN: 'Node Configuration', titleFR: 'Configuration des Nœuds', difficulty: 'advanced', estimatedMinutes: 20 },
+  { id: 'technical-operations/lacp-trunk-raid', section: 'technical-operations', slug: 'technical-operations/lacp-trunk-raid', titleEN: 'LACP, Trunk & RAID', titleFR: 'LACP, Trunk & RAID', difficulty: 'advanced', estimatedMinutes: 25 },
+  { id: 'storage/cloudstore-overview', section: 'storage', slug: 'storage/cloudstore-overview', titleEN: 'CloudStore Overview', titleFR: 'Présentation CloudStore', difficulty: 'beginner', estimatedMinutes: 10 },
+  { id: 'storage/storage-capabilities', section: 'storage', slug: 'storage/storage-capabilities', titleEN: 'Storage Capabilities', titleFR: 'Capacités de Stockage', difficulty: 'intermediate', estimatedMinutes: 15 },
+  { id: 'storage/data-management', section: 'storage', slug: 'storage/data-management', titleEN: 'Data Management', titleFR: 'Gestion des Données', difficulty: 'intermediate', estimatedMinutes: 15 },
+  { id: 'storage/backup-recovery', section: 'storage', slug: 'storage/backup-recovery', titleEN: 'Backup & Recovery', titleFR: 'Sauvegarde & Récupération', difficulty: 'intermediate', estimatedMinutes: 15 },
+  { id: 'best-practices/operations-security', section: 'best-practices', slug: 'best-practices/operations-security', titleEN: 'Operations & Security', titleFR: 'Opérations & Sécurité', difficulty: 'intermediate', estimatedMinutes: 15 },
+  { id: 'best-practices/performance-troubleshooting', section: 'best-practices', slug: 'best-practices/performance-troubleshooting', titleEN: 'Performance & Troubleshooting', titleFR: 'Performance & Dépannage', difficulty: 'intermediate', estimatedMinutes: 15 },
+  { id: 'best-practices/resources-support', section: 'best-practices', slug: 'best-practices/resources-support', titleEN: 'Resources & Support', titleFR: 'Ressources & Support', difficulty: 'beginner', estimatedMinutes: 10 },
+  { id: 'best-practices/quick-reference', section: 'best-practices', slug: 'best-practices/quick-reference', titleEN: 'Quick Reference', titleFR: 'Aide-Mémoire', difficulty: 'beginner', estimatedMinutes: 5 }
+];
 
 /**
  * Safely access localStorage. Returns null if unavailable.
- * @returns {Storage|null}
  */
 function getStorage() {
   try {
-    if (typeof localStorage === 'undefined') {
-      return null;
-    }
-    // Test that localStorage is actually usable
-    const testKey = '__opcp_storage_test__';
+    if (typeof localStorage === 'undefined') { return null; }
+    var testKey = '__opcp_storage_test__';
     localStorage.setItem(testKey, '1');
     localStorage.removeItem(testKey);
     return localStorage;
-  } catch {
-    return null;
-  }
+  } catch (e) { return null; }
 }
 
 /**
  * Reads and parses progress data from localStorage.
- * Returns null if storage is unavailable or data is corrupted.
- * @returns {ProgressData|null}
  */
 function readProgressData() {
-  const storage = getStorage();
-  if (!storage) {
-    return null;
-  }
-
+  var storage = getStorage();
+  if (!storage) { return null; }
   try {
-    const raw = storage.getItem(STORAGE_KEY);
-    if (!raw) {
-      return null;
-    }
-
-    const data = JSON.parse(raw);
-
-    // Validate structure
-    if (
-      !data ||
-      typeof data !== 'object' ||
-      data.version !== 1 ||
-      !Array.isArray(data.completedLessons)
-    ) {
+    var raw = storage.getItem(STORAGE_KEY);
+    if (!raw) { return null; }
+    var data = JSON.parse(raw);
+    if (!data || typeof data !== 'object' || data.version !== 1 || !Array.isArray(data.completedLessons)) {
       console.warn('[ProgressTracker] Corrupted progress data detected, resetting to empty state.');
       storage.removeItem(STORAGE_KEY);
       return null;
     }
-
     return data;
-  } catch {
+  } catch (e) {
     console.warn('[ProgressTracker] Corrupted progress data detected, resetting to empty state.');
-    try {
-      storage.removeItem(STORAGE_KEY);
-    } catch {
-      // Ignore removal failure
-    }
+    try { storage.removeItem(STORAGE_KEY); } catch (e2) { /* noop */ }
     return null;
   }
 }
 
 /**
  * Writes progress data to localStorage.
- * Handles QuotaExceededError gracefully.
- * @param {ProgressData} data
  */
 function writeProgressData(data) {
-  const storage = getStorage();
-  if (!storage) {
-    return;
-  }
-
+  var storage = getStorage();
+  if (!storage) { return; }
   try {
     storage.setItem(STORAGE_KEY, JSON.stringify(data));
   } catch (e) {
@@ -88,10 +99,6 @@ function writeProgressData(data) {
   }
 }
 
-/**
- * Creates a default empty ProgressData object.
- * @returns {ProgressData}
- */
 function createEmptyProgressData() {
   return {
     version: 1,
@@ -103,149 +110,49 @@ function createEmptyProgressData() {
 }
 
 /**
- * Initializes progress tracking for the current page.
- * Sets up IntersectionObserver on the last content element to detect lesson completion.
- */
-export function init() {
-  if (typeof document === 'undefined' || typeof window === 'undefined') {
-    return;
-  }
-
-  // Find the last content element within the main content area
-  const contentArea = document.querySelector('main') || document.querySelector('article') || document.body;
-  const contentElements = contentArea.querySelectorAll('p, h1, h2, h3, h4, h5, h6, ul, ol, table, pre, blockquote, figure, .content-block');
-
-  if (contentElements.length === 0) {
-    return;
-  }
-
-  const lastElement = contentElements[contentElements.length - 1];
-
-  // Determine current lesson ID from the page path
-  const currentPath = window.location.pathname;
-  const lessonId = extractLessonId(currentPath);
-
-  if (!lessonId) {
-    return;
-  }
-
-  // Update lastVisited
-  const data = readProgressData() || createEmptyProgressData();
-  data.lastVisited = lessonId;
-  data.lastUpdated = new Date().toISOString();
-  writeProgressData(data);
-
-  // Set up IntersectionObserver on the last content element
-  if (typeof IntersectionObserver === 'undefined') {
-    return;
-  }
-
-  const observer = new IntersectionObserver((entries) => {
-    for (const entry of entries) {
-      if (entry.isIntersecting) {
-        markCompleted(lessonId);
-        observer.disconnect();
-      }
-    }
-  }, {
-    threshold: 0.1
-  });
-
-  observer.observe(lastElement);
-}
-
-/**
- * Extracts a lesson ID from a URL path.
- * Lesson ID format: 'en/section/page' or 'fr/section/page'
- * @param {string} path - URL pathname
- * @returns {string|null}
- */
-function extractLessonId(path) {
-  // Remove leading slash and .html extension
-  let cleaned = path.replace(/^\//, '').replace(/\.html$/, '');
-
-  // Match pattern: lang/section/page
-  const match = cleaned.match(/^((?:.*\/)?)(en|fr)\/([\w-]+)\/([\w-]+)$/);
-  if (match) {
-    return `${match[2]}/${match[3]}/${match[4]}`;
-  }
-
-  return null;
-}
-
-/**
  * Marks a specific lesson as completed.
- * @param {string} lessonId - Unique lesson identifier (e.g., 'en/introduction/what-is-opcp')
  */
 export function markCompleted(lessonId) {
-  if (!lessonId) {
-    return;
-  }
-
-  const data = readProgressData() || createEmptyProgressData();
-
-  // Extract language from lessonId
-  const langMatch = lessonId.match(/^(en|fr)\//);
-  if (langMatch) {
-    data.lang = langMatch[1];
-  }
-
-  // Add to completedLessons if not already present
+  if (!lessonId) { return; }
+  var data = readProgressData() || createEmptyProgressData();
+  var langMatch = lessonId.match(/^(en|fr)\//);
+  if (langMatch) { data.lang = langMatch[1]; }
   if (!data.completedLessons.includes(lessonId)) {
     data.completedLessons.push(lessonId);
   }
-
   data.lastUpdated = new Date().toISOString();
   writeProgressData(data);
 }
 
 /**
  * Checks if a lesson has been completed.
- * @param {string} lessonId - Lesson identifier
- * @returns {boolean}
  */
 export function isCompleted(lessonId) {
-  const data = readProgressData();
-  if (!data) {
-    return false;
-  }
-
+  var data = readProgressData();
+  if (!data) { return false; }
   return data.completedLessons.includes(lessonId);
 }
 
 /**
  * Calculates overall completion percentage for a given language.
- * @param {string} lang - Current language ('en' or 'fr')
- * @param {number} [totalLessons=24] - Total number of lessons (default 24)
- * @returns {number} - Percentage 0-100, rounded to nearest integer
  */
-export function getCompletionPercentage(lang, totalLessons = DEFAULT_TOTAL_LESSONS) {
-  if (totalLessons <= 0) {
-    return 0;
-  }
-
-  const data = readProgressData();
-  if (!data) {
-    return 0;
-  }
-
-  // Count completed lessons for the specified language
-  const completedForLang = data.completedLessons.filter(
-    (id) => id.startsWith(lang + '/')
-  );
-
+export function getCompletionPercentage(lang, totalLessons) {
+  if (totalLessons === undefined) { totalLessons = DEFAULT_TOTAL_LESSONS; }
+  if (totalLessons <= 0) { return 0; }
+  var data = readProgressData();
+  if (!data) { return 0; }
+  var completedForLang = data.completedLessons.filter(function (id) {
+    return id.startsWith(lang + '/');
+  });
   return Math.round((completedForLang.length / totalLessons) * 100);
 }
 
 /**
  * Returns all completion data from localStorage.
- * @returns {ProgressData} - Full progress data object
  */
 export function getProgressData() {
-  const data = readProgressData();
-  if (!data) {
-    return createEmptyProgressData();
-  }
+  var data = readProgressData();
+  if (!data) { return createEmptyProgressData(); }
   return data;
 }
 
@@ -253,25 +160,21 @@ export function getProgressData() {
  * Resets all progress data.
  */
 export function reset() {
-  const storage = getStorage();
-  if (!storage) {
-    return;
-  }
-
-  try {
-    storage.removeItem(STORAGE_KEY);
-  } catch {
-    // Silently ignore removal failure
-  }
+  var storage = getStorage();
+  if (!storage) { return; }
+  try { storage.removeItem(STORAGE_KEY); } catch (e) { /* noop */ }
 }
 
-const ProgressTracker = {
-  init,
-  markCompleted,
-  isCompleted,
-  getCompletionPercentage,
-  getProgressData,
-  reset
-};
+/**
+ * Initializes progress tracking (no-op in non-browser environments).
+ */
+export function init() {
+  // Progress tracking initialization is handled by main.js in the browser
+}
 
-export default ProgressTracker;
+// Browser global namespace
+if (typeof window !== 'undefined') {
+  window.SkillHub = window.SkillHub || {};
+  window.SkillHub.lessons = LESSONS;
+  window.SkillHub.sections = SECTIONS;
+}

@@ -1,44 +1,34 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LACP, Trunk &amp; RAID - Opérations Techniques - OPCP Skillhub</title>
-    <link rel="stylesheet" href="../../assets/css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LACP, Trunk &amp; RAID - Opérations Techniques - OPCP Skillhub</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
 </head>
 <body>
-    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+  <a href="#main-content" class="skip-link">Aller au contenu principal</a>
 
-    <header class="site-header">
-        <nav aria-label="Navigation du site" class="top-nav">
-            <a href="../../index.html" class="site-logo">OPCP Skillhub</a>
-            <a href="../../en/technical-operations/lacp-trunk-raid.html" class="lang-switch" aria-label="Passer en anglais">EN</a>
-        </nav>
-    </header>
+  <header class="site-header" role="banner">
+    <div class="logo"><a href="../introduction/what-is-opcp.html" aria-label="Accueil SkillHub">SkillHub</a></div>
+    <div class="header-right">
+      <div class="lang-toggle" aria-label="Language selector"></div>
+      <div class="progress-bar-container" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="Learning progress">
+        <div class="progress-bar-fill"></div>
+      </div>
+      <span class="progress-text">0%</span>
+      <button class="hamburger-btn" aria-label="Open navigation menu" aria-expanded="false">☰</button>
+    </div>
+  </header>
+  <div class="sidebar-overlay" aria-hidden="true"></div>
+  <div class="site-wrapper">
+    <aside class="sidebar" role="navigation" aria-label="Lesson navigation">
+      <nav id="sidebar-nav"></nav>
+    </aside>
+    <main class="main-content" role="main" id="main-content">
+      <div class="breadcrumbs" aria-label="Breadcrumb"></div>
 
-    <nav aria-label="Navigation latérale" class="sidebar" id="sidebar">
-        <ul class="nav-menu">
-            <li><a href="../introduction/what-is-opcp.html">Introduction</a></li>
-            <li><a href="../getting-started/account-setup.html">Premiers Pas</a></li>
-            <li><a href="../core-concepts/node-lifecycle.html">Concepts Fondamentaux</a></li>
-            <li class="active-section">
-                <a href="instance-setup.html">Opérations Techniques</a>
-                <ul>
-                    <li><a href="instance-setup.html">Configuration d'Instance</a></li>
-                    <li><a href="api-credentials.html">API &amp; Identifiants</a></li>
-                    <li><a href="node-configuration.html">Configuration des Nœuds</a></li>
-                    <li class="active"><a href="lacp-trunk-raid.html">LACP, Trunk &amp; RAID</a></li>
-                </ul>
-            </li>
-            <li><a href="../storage/cloudstore-overview.html">Solutions de Stockage</a></li>
-            <li><a href="../best-practices/operations-security.html">Bonnes Pratiques</a></li>
-        </ul>
-            <a href="../glossary.html" class="glossary-link" aria-label="Voir le glossaire des termes"><span class="glossary-link__icon" aria-hidden="true">📖</span> Glossaire</a>
-    </nav>
-
-    <main class="content-area" id="main-content">
-        <article>
-            <header class="lesson-header">
+      <header class="lesson-header">
                 <h1>LACP, Trunk &amp; RAID</h1>
                 <span class="difficulty-badge intermediate" aria-label="Difficulté : Intermédiaire">Intermédiaire</span>
             </header>
@@ -213,19 +203,19 @@
                 </ul>
             </section>
 
-            <footer class="lesson-footer">
-                <nav aria-label="Navigation de la leçon" class="lesson-nav">
-                    <a href="node-configuration.html" class="btn-previous" aria-label="Leçon précédente">← Précédent : Configuration des Nœuds</a>
-                    <a href="../storage/cloudstore-overview.html" class="btn-next" aria-label="Leçon suivante">Suivant : Présentation CloudStore →</a>
-                </nav>
-            </footer>
-        </article>
+      <button class="mark-complete-btn" type="button" aria-label="✓ Marquer comme terminé">
+        ✓ Marquer comme terminé
+      </button>
+      <div class="prev-next-nav" aria-label="Lesson navigation"></div>
     </main>
-
-    <footer class="site-footer">
-        <p>&copy; 2024 OVHcloud — OPCP Introduction Skillhub</p>
-    </footer>
-
-    <script src="../../assets/js/main.js"></script>
+  </div>
+  <footer class="site-footer" role="contentinfo">
+    SkillHub Training — OVHcloud
+  </footer>
+  <script src="../../assets/js/lessons.js"></script>
+  <script src="../../assets/js/i18n.js"></script>
+  <script src="../../assets/js/navigation.js"></script>
+  <script src="../../assets/js/code-highlight.js"></script>
+  <script src="../../assets/js/main.js"></script>
 </body>
 </html>

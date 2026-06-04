@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Understand backup and recovery concepts in CloudStore with workflow diagrams illustrating the backup and restoration processes.">
+    <meta name="description" content="Understand backup and recovery on OPCP: CloudStore workflows, Ceph RBD instant snapshots, CoW cloning, and RBD mirroring for disaster recovery.">
   <title>Backup and Recovery - Storage Solutions - OPCP Skillhub</title>
   <link rel="stylesheet" href="../../assets/css/style.css">
 </head>
@@ -61,6 +61,7 @@
                     <ul>
                         <li><strong class="term">Full backup</strong> — a complete copy of all your data. Like photocopying every single file in your cabinets.</li>
                         <li><strong class="term">Incremental backup</strong> — a copy of only the data that has changed since the last backup. Like photocopying only the new pages that were added.</li>
+                        <li><strong class="term">Snapshot</strong> — a point-in-time image of a volume's state. On OPCP, Ceph RBD snapshots are instantaneous using Copy-on-Write technology.</li>
                         <li><strong class="term">Restore point</strong> — a specific moment in time you can return to. Like a bookmark in time that marks the state of your data at a given moment.</li>
                         <li><strong class="term">RPO (Recovery Point Objective)</strong> — the maximum amount of data you can accept losing, measured in time. An RPO of 1 hour means you could lose at most 1 hour of work.</li>
                         <li><strong class="term">RTO (Recovery Time Objective)</strong> — the maximum acceptable time to restore your data after an incident. An RTO of 4 hours means your systems must be operational within 4 hours.</li>
@@ -109,9 +110,9 @@
                             <!-- Step 4: Storage -->
                             <rect x="530" y="60" width="140" height="90" rx="10" fill="#f0e6ff" stroke="#4949FF" stroke-width="2"/>
                             <text x="600" y="85" text-anchor="middle" font-size="11" font-weight="bold" fill="#4949FF">4. Storage</text>
-                            <text x="600" y="105" text-anchor="middle" font-size="9" fill="#333">Copy replicated</text>
-                            <text x="600" y="120" text-anchor="middle" font-size="9" fill="#333">across multiple</text>
-                            <text x="600" y="135" text-anchor="middle" font-size="9" fill="#333">locations</text>
+                            <text x="600" y="105" text-anchor="middle" font-size="9" fill="#333">Copy stored</text>
+                            <text x="600" y="120" text-anchor="middle" font-size="9" fill="#333">on-premise on</text>
+                            <text x="600" y="135" text-anchor="middle" font-size="9" fill="#333">your OPCP rack</text>
 
                             <!-- Arrow 4→5 (downward) -->
                             <line x1="600" y1="150" x2="600" y2="200" stroke="#4949FF" stroke-width="2" marker-end="url(#arrowhead)"/>
@@ -146,7 +147,7 @@
                         <li><strong>Scheduling</strong> — You define when backups should occur (e.g., every night at 2 AM).</li>
                         <li><strong>Selection</strong> — The system identifies which data has changed since the last backup.</li>
                         <li><strong>Transfer</strong> — Data is encrypted then sent to CloudStore via a secure channel.</li>
-                        <li><strong>Storage</strong> — The backup is replicated across multiple geographic locations for added safety.</li>
+                        <li><strong>Storage</strong> — The backup is stored on-premise on your OPCP rack.</li>
                         <li><strong>Verification</strong> — CloudStore verifies the copy is intact and sends you a confirmation.</li>
                     </ul>
                 </section>
@@ -230,24 +231,75 @@
                     <ul>
                         <li><strong>Detection</strong> — An incident is identified (deleted file, corrupted data, system failure).</li>
                         <li><strong>Point selection</strong> — You choose which point in time you want to return to (e.g., "yesterday at 6 PM").</li>
-                        <li><strong>Extraction</strong> — CloudStore retrieves the corresponding backup from its secure locations.</li>
+                        <li><strong>Extraction</strong> — CloudStore retrieves the corresponding backup from its secure local storage.</li>
                         <li><strong>Restoration</strong> — Data is placed back into your working environment.</li>
                         <li><strong>Validation</strong> — You verify that the restored data is complete and functional.</li>
                     </ul>
+                </section>
+
+                <section aria-labelledby="rbd-snapshots-heading">
+                    <h2 id="rbd-snapshots-heading">Ceph RBD Snapshots and Recovery</h2>
+                    <p>In addition to traditional backup workflows, OPCP's <strong class="term">Ceph RBD</strong> block storage provides powerful snapshot and recovery capabilities built directly into the storage layer:</p>
+
+                    <h3>Instant Snapshots (Copy-on-Write)</h3>
+                    <p>Ceph RBD snapshots use <strong class="term">Copy-on-Write (CoW)</strong> technology, which means:</p>
+                    <ul>
+                        <li><strong>Zero initial copy time</strong> — snapshot creation is instantaneous, regardless of volume size. A 16 TB volume snapshots just as fast as a 1 GB volume.</li>
+                        <li><strong>Space-efficient</strong> — only blocks that change after the snapshot consume additional space.</li>
+                        <li><strong>No performance impact</strong> — taking a snapshot doesn't interrupt or slow down the running workload.</li>
+                    </ul>
+
+                    <h3>Using Snapshots as Restore Points</h3>
+                    <p>Each snapshot represents the exact state of a volume at a specific moment. You can:</p>
+                    <ul>
+                        <li>Roll back a volume to any previous snapshot state</li>
+                        <li>Maintain multiple snapshots for different points in time</li>
+                        <li>Create pre-update snapshots before risky changes (database migrations, OS updates)</li>
+                    </ul>
+
+                    <h3>CoW Cloning</h3>
+                    <p><strong class="term">Copy-on-Write cloning</strong> creates new volumes from existing snapshots instantly:</p>
+                    <ul>
+                        <li>The clone is immediately usable — no waiting for data copy</li>
+                        <li>The new volume shares unchanged data with the parent snapshot</li>
+                        <li>Only modified blocks consume additional space</li>
+                        <li>Ideal for creating test environments from production data, or rapidly provisioning identical systems</li>
+                    </ul>
+
+                    <h3>RBD Mirroring for Disaster Recovery</h3>
+                    <p><strong class="term">RBD mirroring</strong> provides asynchronous replication between Ceph clusters:</p>
+                    <ul>
+                        <li>Replicate volumes between OPCP sites for geo-redundancy</li>
+                        <li>Asynchronous replication minimises impact on primary workload performance</li>
+                        <li>In case of a site-level disaster, failover to the replicated cluster</li>
+                        <li>Supports both one-way and bidirectional mirroring configurations</li>
+                    </ul>
+
+                    <div class="info-box">
+                        <p><strong>Official documentation:</strong> For detailed information about Ceph RBD snapshot and mirroring capabilities on OPCP, refer to the <a href="https://docs.ovhcloud.com/fr/guides/hosted-private-cloud/opcp/storage-ceph-rbd-overview" target="_blank" rel="noopener">Ceph RBD overview guide</a>.</p>
+                    </div>
                 </section>
 
                 <section aria-labelledby="best-practices-heading">
                     <h2 id="best-practices-heading">Backup Best Practices</h2>
 
                     <div class="info-box">
-                        <p><strong>The 3-2-1 rule:</strong> Keep <strong>3</strong> copies of your data, on <strong>2</strong> different types of media, with <strong>1</strong> copy offsite. CloudStore makes following this rule easy by automatically providing offsite storage and redundancy.</p>
+                        <p><strong>The 3-2-1 rule:</strong> Keep <strong>3</strong> copies of your data, on <strong>2</strong> different types of media, with <strong>1</strong> copy offsite. On OPCP, combine CloudStore backups with Ceph RBD snapshots and RBD mirroring to achieve comprehensive protection.</p>
                     </div>
+
+                    <h3>Combining strategies on OPCP</h3>
+                    <ul>
+                        <li><strong>Ceph RBD snapshots</strong> for fast, frequent restore points — ideal for short-term recovery (hours to days).</li>
+                        <li><strong>CloudStore (S3) backups</strong> for longer-term data archival and compliance retention.</li>
+                        <li><strong>RBD mirroring</strong> for cross-site disaster recovery when multiple OPCP installations exist.</li>
+                    </ul>
 
                     <h3>Tips for customer conversations</h3>
                     <ul>
                         <li><strong>Test regularly</strong> — A backup that has never been tested is not reliable. Recommend quarterly restoration tests.</li>
                         <li><strong>Match frequency to change rate</strong> — The more often data changes, the more frequent backups should be.</li>
-                        <li><strong>Set priorities</strong> — Not all data is equally important. Critical data deserves more frequent backups.</li>
+                        <li><strong>Use RBD snapshots before risky operations</strong> — Always snapshot before database migrations, OS updates, or major configuration changes.</li>
+                        <li><strong>Set priorities</strong> — Not all data is equally important. Critical data deserves more frequent backups and snapshots.</li>
                         <li><strong>Document the plan</strong> — In an emergency, everyone needs to know who does what and in what order.</li>
                     </ul>
                 </section>
@@ -259,7 +311,10 @@
                         <li><strong>Recovery</strong> restores your data from those copies when an incident occurs.</li>
                         <li>The backup process is <strong>automated</strong>: scheduling, selection, transfer, storage, and verification.</li>
                         <li>The recovery process is <strong>guided</strong>: detection, point selection, extraction, restoration, and validation.</li>
-                        <li>Follow the <strong>3-2-1 rule</strong> and test your restorations regularly.</li>
+                        <li><strong>Ceph RBD snapshots</strong> provide instant, zero-copy-time restore points using Copy-on-Write technology.</li>
+                        <li><strong>CoW cloning</strong> creates new volumes from snapshots instantly for testing or rapid provisioning.</li>
+                        <li><strong>RBD mirroring</strong> enables cross-site disaster recovery through async replication between Ceph clusters.</li>
+                        <li>Combine RBD snapshots, CloudStore backups, and RBD mirroring for a comprehensive protection strategy.</li>
                     </ul>
                 </section>
 

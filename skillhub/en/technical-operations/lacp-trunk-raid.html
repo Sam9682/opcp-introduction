@@ -35,8 +35,8 @@
 
             <section aria-labelledby="overview">
                 <h2 id="overview">Overview</h2>
-                <p>This lesson explains three infrastructure concepts that customers may encounter when discussing their OPCP environment. Each concept is presented with a plain-language definition, a real-world analogy, and guidance on when a customer would benefit from it.</p>
-                <p>These are behind-the-scenes technologies that make cloud services faster, more organised, and more resilient. You do not need to understand how they work technically — only what they achieve for the customer.</p>
+                <p>This lesson covers three infrastructure capabilities available in OPCP and how they are configured using the platform's tools. In OPCP, these features are managed through <strong>OpenStack APIs</strong> and the <strong>opcp-cli</strong> tool — network switches are automatically configured based on your OpenStack settings.</p>
+                <p class="info-box"><strong>Key principle:</strong> Network configuration in OPCP is driven by Horizon/API (Neutron). Physical switches are automatically configured from the information set in OpenStack — no manual switch access is needed.</p>
             </section>
 
             <section aria-labelledby="lacp-section">
@@ -44,27 +44,30 @@
 
                 <section aria-labelledby="lacp-definition">
                     <h3 id="lacp-definition">What It Is</h3>
-                    <p><a href="../glossary.html#term-lacp" class="glossary-term">LACP</a> (Link Aggregation Control Protocol) is a method of combining multiple network cables into a single, faster, and more reliable connection. Instead of relying on one cable to carry all network traffic, several cables work together as a team.</p>
+                    <p><a href="../glossary.html#term-lacp" class="glossary-term">LACP</a> (Link Aggregation Control Protocol) combines multiple network interfaces into a single logical bond, providing increased bandwidth and failover protection.</p>
                     <p class="one-sentence-summary"><strong>In one sentence:</strong> LACP combines multiple network connections into one faster, more reliable link — like adding extra lanes to a motorway.</p>
                 </section>
 
-                <section aria-labelledby="lacp-analogy">
-                    <h3 id="lacp-analogy">Real-World Analogy</h3>
-                    <p><strong>Multiple lanes on a motorway:</strong> A single-lane road can only handle a limited number of cars at once. If that lane is blocked, all traffic stops. A multi-lane motorway carries more traffic simultaneously, and if one lane is closed for maintenance, the others keep flowing. LACP does the same thing for network connections — more capacity and built-in backup if one connection fails.</p>
+                <section aria-labelledby="lacp-opcp">
+                    <h3 id="lacp-opcp">How It Works in OPCP</h3>
+                    <p>LACP configuration in OPCP is managed via the <code>opcp-cli</code> tool or the OpenStack API:</p>
+                    <ul>
+                        <li>Bond interfaces are configured at the node level during provisioning</li>
+                        <li>The switch-side LACP configuration is applied automatically by the platform</li>
+                        <li>No manual switch configuration is required</li>
+                    </ul>
+                    <pre><code># LACP bond configuration is managed via opcp-cli
+# The platform handles both host-side and switch-side configuration</code></pre>
                 </section>
 
                 <section aria-labelledby="lacp-benefits">
-                    <h3 id="lacp-benefits">Customer Benefits</h3>
+                    <h3 id="lacp-benefits">Benefits</h3>
                     <ul>
-                        <li><strong>Increased speed</strong> — More data can flow at the same time, reducing bottlenecks during peak usage</li>
-                        <li><strong>Built-in resilience</strong> — If one cable fails, the others continue working without interruption</li>
-                        <li><strong>No single point of failure</strong> — The connection remains active even during partial hardware issues</li>
+                        <li><strong>Increased bandwidth</strong> — Multiple links aggregated into a single logical connection</li>
+                        <li><strong>High availability</strong> — If one link fails, traffic continues on remaining links</li>
+                        <li><strong>No single point of failure</strong> — Redundancy at the network interface level</li>
+                        <li><strong>Automatic switch configuration</strong> — The platform configures switches to match</li>
                     </ul>
-                </section>
-
-                <section aria-labelledby="lacp-when">
-                    <h3 id="lacp-when">When a Customer Needs This</h3>
-                    <p>A customer benefits from LACP when their workload requires high network throughput (large file transfers, streaming, many simultaneous users) or when network reliability is critical to their business operations (e-commerce, real-time services, financial transactions).</p>
                 </section>
             </section>
 
@@ -73,28 +76,36 @@
 
                 <section aria-labelledby="trunk-definition">
                     <h3 id="trunk-definition">What It Is</h3>
-                    <p>A network <a href="../glossary.html#term-trunk" class="glossary-term">trunk</a> is a method of organising different types of network traffic into separate channels over a single physical connection. It allows multiple distinct networks to share the same cable without interfering with each other.</p>
+                    <p>A network <a href="../glossary.html#term-trunk" class="glossary-term">trunk</a> allows a single physical port to carry traffic for multiple networks (VLANs) simultaneously. In OPCP, trunking is managed through <strong>OpenStack Neutron</strong>.</p>
                     <p class="one-sentence-summary"><strong>In one sentence:</strong> Trunking organises network traffic into separate channels on one connection — like sorting mail into different mailboxes at the same address.</p>
                 </section>
 
-                <section aria-labelledby="trunk-analogy">
-                    <h3 id="trunk-analogy">Real-World Analogy</h3>
-                    <p><strong>Sorting mail into different mailboxes:</strong> Imagine an apartment building with one front door but individual mailboxes for each resident. All mail arrives through the same entrance, but it is sorted so each resident only receives their own letters. A network trunk works the same way — all traffic travels over one connection, but it is tagged and sorted so each network only sees its own data.</p>
+                <section aria-labelledby="trunk-opcp">
+                    <h3 id="trunk-opcp">How It Works in OPCP</h3>
+                    <p>Trunk port configuration is handled via the <strong>Neutron API</strong> or Horizon dashboard:</p>
+                    <ul>
+                        <li>Create trunk ports in Neutron to carry multiple VLANs on a single physical port</li>
+                        <li>Add sub-ports to the trunk for each network/VLAN</li>
+                        <li>Physical switch trunk configuration is applied automatically from the OpenStack settings</li>
+                    </ul>
+                    <pre><code># Create a trunk port via OpenStack CLI
+openstack network trunk create --parent-port $PARENT_PORT my-trunk
+
+# Add a sub-port to the trunk
+openstack network trunk set --subport port=$SUB_PORT,segmentation-type=vlan,segmentation-id=100 my-trunk
+
+# List trunks
+openstack network trunk list</code></pre>
                 </section>
 
                 <section aria-labelledby="trunk-benefits">
-                    <h3 id="trunk-benefits">Customer Benefits</h3>
+                    <h3 id="trunk-benefits">Benefits</h3>
                     <ul>
-                        <li><strong>Clean separation</strong> — Different departments, projects, or security zones can share infrastructure without seeing each other's traffic</li>
-                        <li><strong>Simplified cabling</strong> — One physical connection carries multiple logical networks, reducing complexity</li>
-                        <li><strong>Security boundaries</strong> — Sensitive traffic (like payment processing) stays isolated from general traffic (like email)</li>
-                        <li><strong>Efficient resource use</strong> — No need for separate physical cables for each network segment</li>
+                        <li><strong>Network isolation</strong> — Different workloads or tenants on separate VLANs</li>
+                        <li><strong>Efficient use of ports</strong> — Multiple networks over a single physical connection</li>
+                        <li><strong>Security boundaries</strong> — Sensitive traffic isolated from general traffic</li>
+                        <li><strong>Automatic switch config</strong> — Neutron drives the physical switch trunk setup</li>
                     </ul>
-                </section>
-
-                <section aria-labelledby="trunk-when">
-                    <h3 id="trunk-when">When a Customer Needs This</h3>
-                    <p>A customer benefits from trunking when they need to keep different types of traffic separated for security or organisational reasons — for example, isolating production systems from development environments, separating guest Wi-Fi from internal networks, or meeting compliance requirements that mandate data segregation.</p>
                 </section>
             </section>
 
@@ -103,92 +114,70 @@
 
                 <section aria-labelledby="raid-definition">
                     <h3 id="raid-definition">What It Is</h3>
-                    <p><a href="../glossary.html#term-raid" class="glossary-term">RAID</a> (Redundant Array of Independent Disks) is a method of protecting data by storing copies across multiple storage drives. If one drive fails, the data is still safe on the remaining drives, and the system continues operating without interruption.</p>
+                    <p><a href="../glossary.html#term-raid" class="glossary-term">Software RAID</a> (Redundant Array of Independent Disks) distributes data across multiple drives for protection against disk failures. In OPCP, software RAID is configured <strong>during node provisioning</strong>.</p>
                     <p class="one-sentence-summary"><strong>In one sentence:</strong> RAID protects data by storing copies across multiple drives — like keeping backup copies of important documents in separate filing cabinets.</p>
                 </section>
 
-                <section aria-labelledby="raid-analogy">
-                    <h3 id="raid-analogy">Real-World Analogy</h3>
-                    <p><strong>Backup copies in separate filing cabinets:</strong> Imagine you have an important contract. Rather than keeping only one copy in one cabinet (where a fire or flood could destroy it), you keep identical copies in three different cabinets in different rooms. If one cabinet is damaged, you still have the complete document in the others. Software RAID does this automatically with digital data — copies are maintained across multiple drives so that no single drive failure causes data loss.</p>
+                <section aria-labelledby="raid-opcp">
+                    <h3 id="raid-opcp">How It Works in OPCP</h3>
+                    <p>Software RAID configuration is part of the instance deployment process:</p>
+                    <ul>
+                        <li>RAID level is selected during node provisioning (via deploy templates or instance metadata)</li>
+                        <li>Configuration is applied by Ironic during the deployment phase</li>
+                        <li>Common configurations: RAID 1 (mirroring), RAID 5 (striping with parity), RAID 10 (mirrored stripes)</li>
+                    </ul>
+                    <pre><code># RAID configuration is defined in the node's deploy template
+# or via Ironic's RAID interface during provisioning
+openstack baremetal node set $NODE_ID \
+  --target-raid-config '{"logical_disks": [{"size_gb": "MAX", "raid_level": "1", "is_root_volume": true}]}'
+
+# Trigger RAID configuration (in clean step)
+openstack baremetal node clean $NODE_ID \
+  --clean-steps '[{"interface": "raid", "step": "create_configuration"}]'</code></pre>
                 </section>
 
                 <section aria-labelledby="raid-benefits">
-                    <h3 id="raid-benefits">Customer Benefits</h3>
+                    <h3 id="raid-benefits">Benefits</h3>
                     <ul>
-                        <li><strong>Data safety</strong> — Information survives hardware failures without any loss</li>
-                        <li><strong>Continuous operation</strong> — The system keeps running even when a drive fails; the faulty drive can be replaced without downtime</li>
-                        <li><strong>Peace of mind</strong> — Critical business data is protected against the most common type of hardware failure</li>
-                        <li><strong>Automatic recovery</strong> — When a failed drive is replaced, the system rebuilds the missing copy automatically</li>
+                        <li><strong>Data safety</strong> — Data survives individual disk failures</li>
+                        <li><strong>Continuous operation</strong> — System keeps running even when a drive fails</li>
+                        <li><strong>Configurable at provisioning</strong> — Choose the right RAID level for each workload</li>
+                        <li><strong>Automatic rebuild</strong> — When a failed drive is replaced, data is reconstructed automatically</li>
                     </ul>
-                </section>
-
-                <section aria-labelledby="raid-when">
-                    <h3 id="raid-when">When a Customer Needs This</h3>
-                    <p>A customer benefits from RAID when they store data that cannot be easily recreated or where loss would have significant business consequences — customer databases, financial records, intellectual property, or any system where data integrity is non-negotiable.</p>
                 </section>
             </section>
 
             <section aria-labelledby="summary-table">
                 <h2 id="summary-table">Quick Comparison</h2>
 
-                <figure class="diagram-scroll">
-                    <svg viewBox="0 0 650 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Visual comparison of LACP, Trunk, and RAID showing their purpose: speed and reliability, traffic organisation, and data protection">
-                        <text x="325" y="20" text-anchor="middle" font-size="13" font-weight="bold" fill="#000E9C">Infrastructure Concepts Overview</text>
-                        <!-- LACP -->
-                        <rect x="20" y="40" width="190" height="140" rx="10" fill="#d4edda" stroke="#1b7a3d" stroke-width="2"/>
-                        <text x="115" y="65" text-anchor="middle" font-size="12" font-weight="bold" fill="#1b7a3d">LACP</text>
-                        <text x="115" y="85" text-anchor="middle" font-size="10" fill="#333">Multiple cables → one</text>
-                        <text x="115" y="100" text-anchor="middle" font-size="10" fill="#333">fast connection</text>
-                        <line x1="50" y1="115" x2="180" y2="115" stroke="#1b7a3d" stroke-width="1"/>
-                        <text x="115" y="135" text-anchor="middle" font-size="9" fill="#333">🛣️ Motorway lanes</text>
-                        <text x="115" y="155" text-anchor="middle" font-size="9" fill="#1b7a3d">Speed + Reliability</text>
-                        <!-- Trunk -->
-                        <rect x="230" y="40" width="190" height="140" rx="10" fill="#fff3cd" stroke="#7a5c00" stroke-width="2"/>
-                        <text x="325" y="65" text-anchor="middle" font-size="12" font-weight="bold" fill="#7a5c00">Trunk</text>
-                        <text x="325" y="85" text-anchor="middle" font-size="10" fill="#333">One cable → separate</text>
-                        <text x="325" y="100" text-anchor="middle" font-size="10" fill="#333">traffic channels</text>
-                        <line x1="260" y1="115" x2="390" y2="115" stroke="#7a5c00" stroke-width="1"/>
-                        <text x="325" y="135" text-anchor="middle" font-size="9" fill="#333">📬 Sorted mailboxes</text>
-                        <text x="325" y="155" text-anchor="middle" font-size="9" fill="#7a5c00">Organisation + Security</text>
-                        <!-- RAID -->
-                        <rect x="440" y="40" width="190" height="140" rx="10" fill="#e8eaff" stroke="#000E9C" stroke-width="2"/>
-                        <text x="535" y="65" text-anchor="middle" font-size="12" font-weight="bold" fill="#000E9C">RAID</text>
-                        <text x="535" y="85" text-anchor="middle" font-size="10" fill="#333">Multiple drives → data</text>
-                        <text x="535" y="100" text-anchor="middle" font-size="10" fill="#333">copies everywhere</text>
-                        <line x1="470" y1="115" x2="600" y2="115" stroke="#000E9C" stroke-width="1"/>
-                        <text x="535" y="135" text-anchor="middle" font-size="9" fill="#333">🗄️ Filing cabinet copies</text>
-                        <text x="535" y="155" text-anchor="middle" font-size="9" fill="#000E9C">Data Protection</text>
-                    </svg>
-                    <figcaption>Three infrastructure concepts at a glance: LACP for speed, Trunk for organisation, RAID for data safety</figcaption>
-                </figure>
                 <div class="table-responsive">
                     <table>
                         <thead>
                             <tr>
-                                <th>Concept</th>
-                                <th>What It Does</th>
-                                <th>Analogy</th>
+                                <th>Feature</th>
+                                <th>Configuration Method</th>
+                                <th>Tool</th>
                                 <th>Key Benefit</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td><strong>LACP</strong></td>
-                                <td>Combines multiple network cables into one faster connection</td>
-                                <td>Multiple lanes on a motorway</td>
-                                <td>Faster, more reliable network</td>
+                                <td>Bond configuration at node level</td>
+                                <td><code>opcp-cli</code> / API</td>
+                                <td>Bandwidth + redundancy</td>
                             </tr>
                             <tr>
                                 <td><strong>Trunk</strong></td>
-                                <td>Organises different traffic types into separate channels</td>
-                                <td>Sorting mail into different mailboxes</td>
-                                <td>Clean separation and security</td>
+                                <td>Trunk ports with sub-ports per VLAN</td>
+                                <td>Neutron API / Horizon</td>
+                                <td>Network isolation + efficiency</td>
                             </tr>
                             <tr>
-                                <td><strong>RAID</strong></td>
-                                <td>Stores data copies across multiple drives</td>
-                                <td>Backup copies in separate filing cabinets</td>
-                                <td>Data survives hardware failures</td>
+                                <td><strong>Software RAID</strong></td>
+                                <td>Defined during node provisioning</td>
+                                <td>Ironic (deploy templates)</td>
+                                <td>Data protection + availability</td>
                             </tr>
                         </tbody>
                     </table>
@@ -196,13 +185,13 @@
             </section>
 
             <section aria-labelledby="what-to-tell-customers">
-                <h2 id="what-to-tell-customers">What to Tell Customers</h2>
+                <h2 id="what-to-tell-customers">Key Takeaways</h2>
                 <ul>
-                    <li>These technologies work behind the scenes to make their service faster, more organised, and more resilient</li>
-                    <li>LACP ensures their network connection is both fast and fault-tolerant — no single cable failure causes an outage</li>
-                    <li>Trunking keeps their different workloads securely separated without needing separate physical infrastructure</li>
-                    <li>RAID means their data is protected against the most common type of hardware failure — a single drive breaking</li>
-                    <li>All three are managed by the platform — customers benefit from them without needing to configure anything themselves</li>
+                    <li>LACP is configured via <code>opcp-cli</code> or API — switches are auto-configured by the platform</li>
+                    <li>Trunk ports are managed through OpenStack Neutron — no manual switch access needed</li>
+                    <li>Software RAID is configured during node provisioning via Ironic</li>
+                    <li>All network configuration is driven by OpenStack — physical switches follow automatically</li>
+                    <li>The platform eliminates the need for manual switch configuration</li>
                 </ul>
             </section>
 

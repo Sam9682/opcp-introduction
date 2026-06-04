@@ -34,144 +34,229 @@
                 </header>
 
                 <section aria-labelledby="overview-heading">
-                    <h2 id="overview-heading">Comprendre l'Architecture Réseau</h2>
-                    <p>Dans OPCP, les <span class="glossary-term" data-term="node">nœuds</span> ne fonctionnent pas de manière isolée — ils doivent communiquer entre eux et avec le monde extérieur. L'<span class="glossary-term" data-term="network-architecture">architecture réseau</span> définit comment ces connexions sont organisées, sécurisées et optimisées.</p>
+                    <h2 id="overview-heading">Comprendre l'Architecture Réseau d'OPCP</h2>
+                    <p>On Premise Cloud Platform (OPCP) est livré sous forme d'une pile intégrée (serveurs, commutateurs, automatisation, plan de contrôle) installée directement dans vos locaux. Avant et pendant le déploiement, votre équipe doit comprendre comment OPCP s'interconnecte avec votre réseau d'entreprise : par où il communique, quels flux il émet, et quels services il consomme de votre infrastructure.</p>
 
-                    <p>Pensez-y comme <strong>le système routier d'une ville</strong>. Il y a des routes principales (réseau public) qui connectent la ville au reste du monde, et des rues internes (réseau privé) qui relient les bâtiments entre eux. Certaines routes sont plus larges et rapides que d'autres, et des barrières de sécurité contrôlent qui peut accéder à quoi.</p>
+                    <p>OPCP repose sur une <strong>séparation stricte entre deux réseaux</strong> ayant des rôles, des équipements et des usages très différents :</p>
+                    <ul>
+                        <li><strong>Le réseau de données (data plane)</strong> — transporte le trafic de vos charges de travail</li>
+                        <li><strong>Le réseau d'administration (Out-of-Band, OOB)</strong> — utilisé pour piloter la plateforme elle-même</li>
+                    </ul>
+                    <p>Cette séparation est structurante : elle conditionne la sécurité, la résilience et la qualité de service de la plateforme.</p>
+
+                    <div class="info-box">
+                        <p><strong>Mode air-gap :</strong> OPCP est conçu pour fonctionner sans aucun accès Internet. Les seules destinations attendues sont les services de votre propre système d'information.</p>
+                    </div>
                 </section>
 
-                <section aria-labelledby="diagram-heading">
-                    <h2 id="diagram-heading">Topologie Réseau OPCP</h2>
+                <section aria-labelledby="management-levels-heading">
+                    <h2 id="management-levels-heading">Niveaux de gestion</h2>
+                    <p>OPCP est proposé selon deux niveaux de délégation. Le niveau choisi détermine qui opère le plan de contrôle et donc quels flux d'interconnexion doivent être ouverts vers OVHcloud.</p>
 
-                    <figure class="diagram-container" role="img" aria-label="Diagramme de topologie réseau montrant la séparation entre réseau public et réseau privé, avec des nœuds connectés via un réseau privé interne et un accès internet via le réseau public">
-                        <svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg" class="network-diagram" aria-hidden="true">
-                            <!-- Titre -->
-                            <text x="400" y="25" text-anchor="middle" font-size="16" font-weight="bold" fill="#000E9C">Architecture Réseau — Comme le Système Routier d'une Ville</text>
+                    <table class="data-table" aria-label="Comparaison des niveaux de gestion OPCP">
+                        <thead>
+                            <tr>
+                                <th>Mode</th>
+                                <th>Administration plateforme</th>
+                                <th>Opérations courantes</th>
+                                <th>Lien IPsec vers OVHcloud</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Self-managed</strong></td>
+                                <td>Client</td>
+                                <td>Client</td>
+                                <td>Non</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Fully managed by OVHcloud</strong></td>
+                                <td>OVHcloud</td>
+                                <td>OVHcloud</td>
+                                <td>Oui (IPsec)</td>
+                            </tr>
+                        </tbody>
+                    </table>
 
-                            <!-- Internet (nuage) -->
-                            <ellipse cx="400" cy="75" rx="120" ry="35" fill="#F0F1FF" stroke="#000E9C" stroke-width="2"/>
-                            <text x="400" y="80" text-anchor="middle" font-size="14" font-weight="bold" fill="#000E9C">🌐 Internet</text>
+                    <p>Quel que soit le mode, vous restez responsable de tout ce que vous déployez au-dessus des services OPCP : machines virtuelles, conteneurs, instances bare-metal, applications, données métier et sauvegardes applicatives.</p>
+                </section>
 
-                            <!-- Ligne vers le pare-feu -->
-                            <line x1="400" y1="110" x2="400" y2="140" stroke="#000E9C" stroke-width="2" stroke-dasharray="5,3"/>
+                <section aria-labelledby="data-plane-heading">
+                    <h2 id="data-plane-heading">Le réseau de données (Data Plane)</h2>
+                    <p>Le réseau de données est emprunté par les charges de travail hébergées sur les serveurs OPCP (machines virtuelles, conteneurs, instances bare-metal exposées via OpenStack). Il transporte :</p>
+                    <ul>
+                        <li>Le trafic applicatif entrant et sortant des instances</li>
+                        <li>Les communications entre instances au sein de l'OPCP</li>
+                        <li>Les flux entre OPCP et le reste de votre SI (bases de données, services internes, utilisateurs finaux)</li>
+                    </ul>
 
-                            <!-- Pare-feu -->
-                            <rect x="340" y="140" width="120" height="40" rx="6" fill="#FFE8E8" stroke="#CC0000" stroke-width="2"/>
-                            <text x="400" y="165" text-anchor="middle" font-size="12" font-weight="bold" fill="#CC0000">🛡️ Pare-feu</text>
+                    <h3>Composants matériels</h3>
+                    <ul>
+                        <li><strong>Interfaces data des serveurs</strong> — connectées aux commutateurs Top-of-Rack</li>
+                        <li><strong>Commutateurs Top-of-Rack (ToR)</strong> — paire redondée par baie (Arista DCS-7050CX3-32S)</li>
+                        <li><strong>Commutateurs edge</strong> (déploiements multi-baies) — jonction entre le réseau interne OPCP et votre réseau amont</li>
+                        <li><strong>Commutateurs spine</strong> (mode FABRIC) — interconnectent les ToR de plusieurs baies</li>
+                        <li><strong>Liens uplink fibre</strong> — 40 GbE ou 100 GbE vers votre Customer Upstream Data Network</li>
+                    </ul>
 
-                            <!-- Ligne vers le réseau public -->
-                            <line x1="400" y1="180" x2="400" y2="210" stroke="#000E9C" stroke-width="2"/>
+                    <p>Le réseau de données est piloté de bout en bout par OPCP via <strong>OpenStack Neutron</strong> : la création d'un réseau, d'un sous-réseau ou d'une règle de sécurité depuis Horizon ou l'API se propage automatiquement aux commutateurs sous-jacents.</p>
+                </section>
 
-                            <!-- Zone Réseau Public -->
-                            <rect x="200" y="210" width="400" height="60" rx="10" fill="#E8EAFF" stroke="#000E9C" stroke-width="2"/>
-                            <text x="400" y="235" text-anchor="middle" font-size="13" font-weight="bold" fill="#000E9C">Réseau Public</text>
-                            <text x="400" y="255" text-anchor="middle" font-size="11" fill="#555">Route principale — Accès depuis l'extérieur</text>
+                <section aria-labelledby="oob-heading">
+                    <h2 id="oob-heading">Le réseau d'administration (Out-of-Band, OOB)</h2>
+                    <p>Le réseau OOB est le réseau par lequel OPCP s'administre lui-même et par lequel vous (et, en mode Fully managed, les équipes OVHcloud) accédez aux interfaces de gestion. Il est physiquement et logiquement séparé du réseau de données. Il porte :</p>
+                    <ul>
+                        <li>L'accès aux API OpenStack, à l'interface Horizon et aux outils de gestion OPCP (HTTPS)</li>
+                        <li>L'accès SSH aux OPCP Core Controllers (commandes <code>opcp-cli</code>, <code>opcp-diag</code>)</li>
+                        <li>Les échanges inter-contrôleurs pour la résilience du plan de contrôle (synchronisation d'état, élection de quorum, bascule de la VIP)</li>
+                        <li>La collecte de logs et de métriques émise depuis OPCP vers vos services internes</li>
+                        <li>Les flux sortants vers vos services d'infrastructure (NTP, DNS, S3 de sauvegarde, LDAP, syslog)</li>
+                    </ul>
 
-                            <!-- Lignes vers le réseau privé -->
-                            <line x1="300" y1="270" x2="300" y2="310" stroke="#4949FF" stroke-width="2"/>
-                            <line x1="400" y1="270" x2="400" y2="310" stroke="#4949FF" stroke-width="2"/>
-                            <line x1="500" y1="270" x2="500" y2="310" stroke="#4949FF" stroke-width="2"/>
+                    <div class="info-box">
+                        <p><strong>Pas de communication transverse :</strong> Aucune communication directe n'est possible entre le réseau de données et le réseau OOB depuis l'intérieur d'OPCP. Toute communication transverse passe obligatoirement par votre réseau amont, ce qui vous laisse la maîtrise des règles de sécurité entre les deux périmètres.</p>
+                    </div>
+                </section>
 
-                            <!-- Zone Réseau Privé -->
-                            <rect x="100" y="310" width="600" height="120" rx="10" fill="#F0FFF0" stroke="#4949FF" stroke-width="2" stroke-dasharray="8,4"/>
-                            <text x="400" y="335" text-anchor="middle" font-size="13" font-weight="bold" fill="#4949FF">Réseau Privé</text>
-                            <text x="400" y="352" text-anchor="middle" font-size="11" fill="#555">Rues internes — Communication entre nœuds uniquement</text>
+                <section aria-labelledby="topologies-heading">
+                    <h2 id="topologies-heading">Topologies de déploiement</h2>
+                    <p>OPCP est livré selon trois modes de déploiement, dimensionnés en fonction du contexte d'usage. Ils diffèrent principalement par le nombre de baies supportées et la résilience du plan de contrôle.</p>
 
-                            <!-- Nœuds -->
-                            <rect x="140" y="365" width="120" height="50" rx="8" fill="#fff" stroke="#4949FF" stroke-width="2"/>
-                            <text x="200" y="385" text-anchor="middle" font-size="11" font-weight="bold" fill="#4949FF">Nœud A</text>
-                            <text x="200" y="402" text-anchor="middle" font-size="10" fill="#555">App Web</text>
+                    <table class="data-table" aria-label="Comparaison des topologies de déploiement OPCP">
+                        <thead>
+                            <tr>
+                                <th>Mode</th>
+                                <th>Cas d'usage</th>
+                                <th>Plan de contrôle</th>
+                                <th>Baies</th>
+                                <th>Spine/Edge</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>NANOPOD</strong></td>
+                                <td>Démo, sites distants, bureaux, edge</td>
+                                <td>Non résilient (1 contrôleur)</td>
+                                <td>1</td>
+                                <td>Non</td>
+                            </tr>
+                            <tr>
+                                <td><strong>MINIPOD</strong></td>
+                                <td>Infrastructure résiliente compacte</td>
+                                <td>Résilient (3 contrôleurs)</td>
+                                <td>2–3</td>
+                                <td>Edges uniquement</td>
+                            </tr>
+                            <tr>
+                                <td><strong>FABRIC</strong></td>
+                                <td>Déploiement datacenter complet</td>
+                                <td>Résilient (3 contrôleurs)</td>
+                                <td>3–10+</td>
+                                <td>Spine + Edges</td>
+                            </tr>
+                        </tbody>
+                    </table>
 
-                            <rect x="340" y="365" width="120" height="50" rx="8" fill="#fff" stroke="#4949FF" stroke-width="2"/>
-                            <text x="400" y="385" text-anchor="middle" font-size="11" font-weight="bold" fill="#4949FF">Nœud B</text>
-                            <text x="400" y="402" text-anchor="middle" font-size="10" fill="#555">Base de données</text>
-
-                            <rect x="540" y="365" width="120" height="50" rx="8" fill="#fff" stroke="#4949FF" stroke-width="2"/>
-                            <text x="600" y="385" text-anchor="middle" font-size="11" font-weight="bold" fill="#4949FF">Nœud C</text>
-                            <text x="600" y="402" text-anchor="middle" font-size="10" fill="#555">Stockage</text>
-
-                            <!-- Connexions entre nœuds (réseau privé) -->
-                            <line x1="260" y1="390" x2="340" y2="390" stroke="#4949FF" stroke-width="1.5" stroke-dasharray="3,2"/>
-                            <line x1="460" y1="390" x2="540" y2="390" stroke="#4949FF" stroke-width="1.5" stroke-dasharray="3,2"/>
-
-                            <!-- Légende -->
-                            <rect x="50" y="440" width="12" height="3" fill="#000E9C"/>
-                            <text x="68" y="444" font-size="10" fill="#333">Réseau public</text>
-                            <line x1="180" y1="442" x2="200" y2="442" stroke="#4949FF" stroke-width="2" stroke-dasharray="3,2"/>
-                            <text x="208" y="444" font-size="10" fill="#333">Réseau privé</text>
-                            <line x1="320" y1="442" x2="340" y2="442" stroke="#000E9C" stroke-width="2" stroke-dasharray="5,3"/>
-                            <text x="348" y="444" font-size="10" fill="#333">Accès internet</text>
-                        </svg>
-                        <figcaption>Topologie réseau OPCP montrant la séparation entre réseau public (accès externe) et réseau privé (communication interne entre nœuds).</figcaption>
+                    <h3>NANOPOD — Configuration à 1 contrôleur</h3>
+                    <figure>
+                        <img src="../../assets/images/opcp-1controller-setup.png" alt="Topologie OPCP NANOPOD avec un seul contrôleur connecté à deux commutateurs Top-of-Rack redondés, un switch de management et des serveurs clients">
+                        <figcaption>Topologie NANOPOD : 1 OPCP Core Controller, 2 ToR redondés, un switch de management et des serveurs. Source : <a href="https://docs.ovhcloud.com/fr/guides/hosted-private-cloud/opcp/opcp-network-architecture">Documentation OVHcloud</a></figcaption>
                     </figure>
-                </section>
-
-                <section aria-labelledby="public-heading">
-                    <h2 id="public-heading">Réseau Public — La Route Principale</h2>
-                    <h3>L'analogie de la ville : Les autoroutes</h3>
-                    <p>Le réseau public est comme l'autoroute qui connecte votre ville au reste du monde. C'est par là que les visiteurs (utilisateurs, clients) arrivent pour accéder à vos services.</p>
-
-                    <h3>Ce que cela signifie dans OPCP</h3>
-                    <p>Le <span class="glossary-term" data-term="public-network">réseau public</span> permet à vos nœuds d'être accessibles depuis internet :</p>
+                    <p>Éléments clés :</p>
                     <ul>
-                        <li>Les utilisateurs finaux accèdent à vos applications via le réseau public</li>
-                        <li>Chaque nœud peut recevoir une adresse IP publique (comme une adresse postale visible)</li>
-                        <li>Le trafic est protégé par des pare-feux et des règles de sécurité</li>
-                        <li>La bande passante détermine combien de visiteurs peuvent accéder simultanément</li>
+                        <li><strong>Serveurs</strong> — interfaces data connectées aux deux ToR ; BMC rattaché au switch de management</li>
+                        <li><strong>ToR A / ToR B</strong> — commutateurs Top-of-Rack redondés portant le réseau de données et remontant vers votre réseau amont (fibre 40/100 GbE)</li>
+                        <li><strong>Switch de management (mgmt)</strong> — agrège les BMC des serveurs et les ports de management des ToR</li>
+                        <li><strong>OPCP Core Controller</strong> — raccordé via un uplink OOB (25/10 GbE) vers votre réseau OOB amont, plus un port 1 GbE BMC</li>
                     </ul>
-                    <p><strong>Pour les clients :</strong> Le réseau public est ce qui rend leurs applications accessibles à leurs propres clients et utilisateurs.</p>
-                </section>
 
-                <section aria-labelledby="private-heading">
-                    <h2 id="private-heading">Réseau Privé — Les Rues Internes</h2>
-                    <h3>L'analogie de la ville : Les rues résidentielles</h3>
-                    <p>Le réseau privé est comme les rues internes d'un quartier résidentiel. Seuls les résidents (vos nœuds) peuvent y circuler. Les visiteurs extérieurs n'y ont pas accès directement.</p>
+                    <div class="info-box">
+                        <p><strong>Note :</strong> Avec un seul contrôleur, il n'y a pas de redondance du plan de contrôle. Une panne matérielle interrompt l'administration de la plateforme (les charges de travail déjà déployées continuent de s'exécuter). Pour la production exigeant la haute disponibilité, retenez MINIPOD ou FABRIC.</p>
+                    </div>
 
-                    <h3>Ce que cela signifie dans OPCP</h3>
-                    <p>Le <span class="glossary-term" data-term="private-network">réseau privé</span> permet à vos nœuds de communiquer entre eux en toute sécurité :</p>
+                    <h3>MINIPOD / FABRIC — Configuration à 3 contrôleurs</h3>
+                    <figure>
+                        <img src="../../assets/images/opcp-3controllers-setup.png" alt="Topologie OPCP MINIPOD/FABRIC avec trois contrôleurs partageant une VIP, des commutateurs edge et plusieurs baies de serveurs">
+                        <figcaption>Topologie MINIPOD/FABRIC : 3 OPCP Core Controllers avec VIP partagée, commutateurs edge entre les ToR et le réseau amont. Source : <a href="https://docs.ovhcloud.com/fr/guides/hosted-private-cloud/opcp/opcp-network-architecture">Documentation OVHcloud</a></figcaption>
+                    </figure>
+                    <p>Différences par rapport au NANOPOD :</p>
                     <ul>
-                        <li>Les nœuds échangent des données sans passer par internet (plus rapide et plus sûr)</li>
-                        <li>La base de données communique avec l'application web sans exposition externe</li>
-                        <li>Le trafic interne est isolé du trafic public (comme un quartier fermé)</li>
-                        <li>Pas de frais de bande passante pour les communications internes</li>
-                    </ul>
-                    <p><strong>Pour les clients :</strong> Le réseau privé garantit que les données sensibles (comme les informations de base de données) ne transitent jamais sur internet public.</p>
-                </section>
-
-                <section aria-labelledby="bandwidth-heading">
-                    <h2 id="bandwidth-heading">Bande Passante — La Largeur de la Route</h2>
-                    <h3>L'analogie de la ville : Le nombre de voies</h3>
-                    <p>La <span class="glossary-term" data-term="bandwidth">bande passante</span> est comme le nombre de voies sur une route. Une route à deux voies peut gérer un certain volume de trafic, mais aux heures de pointe, elle devient congestionnée. Une autoroute à six voies gère beaucoup plus de véhicules simultanément.</p>
-
-                    <h3>Ce que cela signifie pour les clients</h3>
-                    <ul>
-                        <li><strong>Plus de bande passante</strong> = plus d'utilisateurs peuvent accéder aux services en même temps</li>
-                        <li><strong>Moins de bande passante</strong> = suffisant pour des applications à faible trafic</li>
-                        <li>Les sites e-commerce pendant les soldes ont besoin de plus de bande passante</li>
-                        <li>Un outil interne utilisé par 10 personnes nécessite peu de bande passante</li>
+                        <li><strong>3 OPCP Core Controllers</strong> — chacun avec un uplink OOB 25/10 GbE et un lien BMC 1 GbE. Une <strong>IP virtuelle (VIP)</strong> partagée est utilisée pour atteindre les API OpenStack et Horizon</li>
+                        <li><strong>Commutateurs edge</strong> — s'intercalent entre les ToR et votre réseau amont. Le réseau de données est configuré sur les edges (pas sur les ToR)</li>
+                        <li><strong>Commutateurs spine</strong> (FABRIC uniquement) — interconnectent plusieurs baies ; couche megaspine au-delà de 10 baies</li>
                     </ul>
                 </section>
 
-                <section aria-labelledby="security-heading">
-                    <h2 id="security-heading">Sécurité Réseau — Les Barrières et Contrôles</h2>
-                    <h3>L'analogie de la ville : Les postes de contrôle</h3>
-                    <p>Comme une ville a des postes de contrôle aux entrées et des caméras de surveillance, le réseau OPCP dispose de mécanismes de sécurité pour protéger vos nœuds :</p>
+                <section aria-labelledby="integration-heading">
+                    <h2 id="integration-heading">Intégration à votre environnement</h2>
+                    <p>L'intégration d'OPCP repose sur deux périmètres réseau que vous fournissez et gardez sous votre contrôle :</p>
+
+                    <h3>Customer Upstream Data Network</h3>
+                    <p>Votre réseau de production. OPCP s'y raccorde via les liens fibre des ToR (NANOPOD) ou des edges (MINIPOD/FABRIC) à 40 ou 100 GbE. La configuration des uplinks est pilotée par OPCP via une API exposée. Le contenu et la segmentation du réseau de données sont entièrement gérés par OpenStack Neutron.</p>
+
+                    <h3>Customer Upstream OOB Network</h3>
+                    <p>Le périmètre depuis lequel OPCP est administré. Vous devez y prévoir :</p>
                     <ul>
-                        <li><strong>Pare-feux</strong> — Comme des gardes à l'entrée qui vérifient qui peut entrer</li>
-                        <li><strong>Règles de filtrage</strong> — Comme des panneaux « accès interdit » sur certaines routes</li>
-                        <li><strong>Isolation réseau</strong> — Comme des murs entre les propriétés voisines</li>
-                        <li><strong>Chiffrement</strong> — Comme envoyer des messages dans des enveloppes scellées</li>
+                        <li>Un sous-réseau dédié à OPCP avec une passerelle par défaut</li>
+                        <li>Une résolution DNS : un nom de domaine délégué à OPCP (ex : <code>*.opcp01.exemple.com</code>)</li>
+                        <li>Des règles de filtrage autorisant les flux décrits dans la matrice</li>
+                        <li>Un accès à au moins une source NTP (obligatoire)</li>
                     </ul>
+                </section>
+
+                <section aria-labelledby="flows-heading">
+                    <h2 id="flows-heading">Matrice des flux réseau</h2>
+                    <p>Tous les flux suivants utilisent le réseau OOB (administration). Aucun n'utilise le réseau de données.</p>
+
+                    <h3>Flux entrants (Vous → OPCP)</h3>
+                    <table class="data-table" aria-label="Flux réseau entrants vers OPCP">
+                        <thead>
+                            <tr><th>Source</th><th>Destination</th><th>Usage</th><th>Port</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Postes d'administration</td><td>VIP contrôleurs</td><td>API OpenStack, Horizon</td><td>TCP/443</td></tr>
+                            <tr><td>Administrateurs (Self-managed)</td><td>Contrôleurs</td><td>SSH (opcp-cli, opcp-diag)</td><td>TCP/22</td></tr>
+                        </tbody>
+                    </table>
+
+                    <h3>Flux sortants (OPCP → Vous)</h3>
+                    <table class="data-table" aria-label="Flux réseau sortants depuis OPCP">
+                        <thead>
+                            <tr><th>Source</th><th>Destination</th><th>Usage</th><th>Port</th><th>Requis ?</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>OPCP OOB</td><td>Vos serveurs NTP</td><td>Synchronisation horaire</td><td>UDP/123</td><td>Obligatoire</td></tr>
+                            <tr><td>OPCP OOB</td><td>Vos résolveurs DNS</td><td>Résolution de noms</td><td>UDP/53</td><td>Optionnel</td></tr>
+                            <tr><td>OPCP OOB</td><td>Vos serveurs Syslog</td><td>Centralisation des logs</td><td>UDP ou TCP/514</td><td>Recommandé</td></tr>
+                            <tr><td>OPCP OOB</td><td>Votre endpoint S3</td><td>Backup infrastructure</td><td>TCP/443</td><td>Recommandé</td></tr>
+                            <tr><td>OPCP OOB</td><td>Votre Active Directory / IdP</td><td>Fédération d'identité LDAP</td><td>TCP/636 (LDAPS)</td><td>Optionnel</td></tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <section aria-labelledby="ipsec-heading">
+                    <h2 id="ipsec-heading">Interconnexion OVHcloud (mode Fully Managed)</h2>
+                    <p>En mode Fully managed by OVHcloud, OVHcloud doit pouvoir atteindre votre réseau d'administration OPCP pour l'exploitation et le support à distance. Cette interconnexion repose sur un <strong>tunnel IPsec site-à-site</strong> avec les paramètres par défaut suivants :</p>
+                    <ul>
+                        <li>IKEv2 uniquement (IKEv1 non supporté)</li>
+                        <li>Authentification : Pre-Shared Key (PSK)</li>
+                        <li>Chiffrement : AES-256</li>
+                        <li>Hash : SHA-256</li>
+                        <li>Groupe Diffie-Hellman 14</li>
+                        <li>Perfect Forward Secrecy (PFS) activé</li>
+                    </ul>
+                    <p>Une fois le tunnel établi, les équipes OVHcloud accèdent à votre OPCP uniquement via cette interconnexion — aucun accès direct depuis Internet n'est ouvert sur votre plateforme.</p>
                 </section>
 
                 <section aria-labelledby="summary-heading">
                     <h2 id="summary-heading">Points Clés à Retenir</h2>
                     <ul>
-                        <li>Le réseau public connecte vos nœuds à internet — c'est la route principale vers le monde extérieur</li>
-                        <li>Le réseau privé permet aux nœuds de communiquer entre eux en toute sécurité — ce sont les rues internes</li>
-                        <li>La bande passante détermine combien de trafic peut circuler — c'est la largeur de la route</li>
-                        <li>La sécurité réseau protège vos nœuds avec des pare-feux et des règles de filtrage</li>
-                        <li>La séparation public/privé est essentielle pour protéger les données sensibles</li>
+                        <li>OPCP dispose de deux réseaux strictement séparés : <strong>Réseau de données</strong> (trafic des charges de travail) et <strong>Réseau OOB</strong> (administration)</li>
+                        <li>Aucune communication directe n'est possible entre les deux réseaux depuis OPCP — votre réseau amont contrôle tout trafic transverse</li>
+                        <li>Trois topologies de déploiement : <strong>NANOPOD</strong> (1 baie, 1 contrôleur), <strong>MINIPOD</strong> (2–3 baies, 3 contrôleurs), <strong>FABRIC</strong> (3–10+ baies, 3 contrôleurs avec spine)</li>
+                        <li>Le réseau de données est piloté par <strong>OpenStack Neutron</strong> et supporte les modes access, trunk (802.1Q) et QinQ (802.1ad)</li>
+                        <li>OPCP est conçu pour fonctionner en <strong>mode air-gap</strong> — aucun accès Internet n'est requis</li>
+                        <li>En mode Fully managed, OVHcloud se connecte via un <strong>tunnel IPsec</strong> (IKEv2, AES-256) à votre réseau OOB</li>
                     </ul>
                 </section>
 

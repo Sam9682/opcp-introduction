@@ -34,140 +34,98 @@
                 </header>
 
                 <section aria-labelledby="overview-heading">
-                    <h2 id="overview-heading">Choisir le Bon Nœud</h2>
-                    <p>Chaque tâche ne nécessite pas le même outil. Vous n'utiliseriez pas un camion de livraison pour aller au travail, et vous n'essaieriez pas de déménager des meubles dans une voiture compacte. Le même principe s'applique aux <span class="glossary-term" data-term="node">nœuds</span> dans OPCP — différentes charges de travail nécessitent différents types de puissance de calcul.</p>
+                    <h2 id="overview-heading">Comprendre les Nœuds dans OPCP</h2>
+                    <p>Dans OPCP, un <span class="glossary-term" data-term="node">nœud</span> représente un <strong>serveur physique (bare metal)</strong> géré via <strong>OpenStack Ironic</strong>. Contrairement aux machines virtuelles des environnements cloud traditionnels, les nœuds OPCP sont du matériel physique dédié — toute la puissance du serveur est disponible pour vos charges de travail sans surcoût de virtualisation.</p>
 
-                    <p>Pensez aux types de nœuds comme <strong>choisir un véhicule</strong>. Chaque type est conçu pour des tâches spécifiques, et choisir le bon signifie de meilleures performances et une meilleure valeur pour votre client.</p>
+                    <p>Différentes configurations matérielles (ou « profils ») sont disponibles dans la baie. Lorsqu'un serveur démarre, le plan de contrôle OPCP <strong>détecte automatiquement</strong> ses propriétés matérielles — modèle de CPU, capacité RAM, disques de stockage, interfaces réseau — et les enregistre comme traits dans l'inventaire Ironic.</p>
+
+                    <p class="info-box"><strong>Concept clé :</strong> Un nœud est la configuration du serveur physique. Une instance est l'OS qui s'exécute sur ce nœud. Ils sont gérés séparément dans OPCP.</p>
                 </section>
 
-                <section aria-labelledby="diagram-heading">
-                    <h2 id="diagram-heading">Comparaison des Types de Nœuds</h2>
-
-                    <figure class="diagram-container" role="img" aria-label="Diagramme comparant trois types de nœuds : les nœuds Standard représentés par une voiture compacte pour les tâches quotidiennes, les nœuds Performance représentés par un SUV pour les charges exigeantes, et les nœuds Haute-Mémoire représentés par un camion pour le traitement intensif de données">
-                        <svg viewBox="0 0 800 350" xmlns="http://www.w3.org/2000/svg" class="node-types-diagram" aria-hidden="true">
-                            <!-- Nœud Standard -->
-                            <rect x="30" y="30" width="220" height="290" rx="12" fill="#F0F1FF" stroke="#000E9C" stroke-width="2"/>
-                            <rect x="30" y="30" width="220" height="50" rx="12" fill="#000E9C"/>
-                            <rect x="30" y="68" width="220" height="12" fill="#000E9C"/>
-                            <text x="140" y="62" text-anchor="middle" font-size="16" font-weight="bold" fill="#fff">Standard</text>
-
-                            <!-- Icône voiture -->
-                            <text x="140" y="120" text-anchor="middle" font-size="36">🚗</text>
-                            <text x="140" y="150" text-anchor="middle" font-size="12" fill="#333" font-style="italic">« La Voiture Compacte »</text>
-
-                            <text x="50" y="180" font-size="12" fill="#333">✓ Charges quotidiennes</text>
-                            <text x="50" y="200" font-size="12" fill="#333">✓ Applications web</text>
-                            <text x="50" y="220" font-size="12" fill="#333">✓ Petites bases de données</text>
-                            <text x="50" y="240" font-size="12" fill="#333">✓ Environnements de dev</text>
-                            <text x="50" y="270" font-size="11" fill="#666">Idéal pour : Équipes débutantes</text>
-                            <text x="50" y="290" font-size="11" fill="#666">ou applications légères</text>
-
-                            <!-- Nœud Performance -->
-                            <rect x="290" y="30" width="220" height="290" rx="12" fill="#F0F1FF" stroke="#4949FF" stroke-width="2"/>
-                            <rect x="290" y="30" width="220" height="50" rx="12" fill="#4949FF"/>
-                            <rect x="290" y="68" width="220" height="12" fill="#4949FF"/>
-                            <text x="400" y="62" text-anchor="middle" font-size="16" font-weight="bold" fill="#fff">Performance</text>
-
-                            <!-- Icône SUV -->
-                            <text x="400" y="120" text-anchor="middle" font-size="36">🚙</text>
-                            <text x="400" y="150" text-anchor="middle" font-size="12" fill="#333" font-style="italic">« Le SUV »</text>
-
-                            <text x="310" y="180" font-size="12" fill="#333">✓ Applications exigeantes</text>
-                            <text x="310" y="200" font-size="12" fill="#333">✓ Bases de données moyennes</text>
-                            <text x="310" y="220" font-size="12" fill="#333">✓ Services critiques</text>
-                            <text x="310" y="240" font-size="12" fill="#333">✓ Plateformes multi-utilisateurs</text>
-                            <text x="310" y="270" font-size="11" fill="#666">Idéal pour : Entreprises en</text>
-                            <text x="310" y="290" font-size="11" fill="#666">croissance avec charges prod</text>
-
-                            <!-- Nœud Haute-Mémoire -->
-                            <rect x="550" y="30" width="220" height="290" rx="12" fill="#F0F1FF" stroke="#000E9C" stroke-width="2"/>
-                            <rect x="550" y="30" width="220" height="50" rx="12" fill="#000E9C"/>
-                            <rect x="550" y="68" width="220" height="12" fill="#000E9C"/>
-                            <text x="660" y="62" text-anchor="middle" font-size="16" font-weight="bold" fill="#fff">Haute-Mémoire</text>
-
-                            <!-- Icône camion -->
-                            <text x="660" y="120" text-anchor="middle" font-size="36">🚛</text>
-                            <text x="660" y="150" text-anchor="middle" font-size="12" fill="#333" font-style="italic">« Le Camion »</text>
-
-                            <text x="570" y="180" font-size="12" fill="#333">✓ Traitement de données massif</text>
-                            <text x="570" y="200" font-size="12" fill="#333">✓ Bases de données en mémoire</text>
-                            <text x="570" y="220" font-size="12" fill="#333">✓ Analytique et reporting</text>
-                            <text x="570" y="240" font-size="12" fill="#333">✓ Applications à fort trafic</text>
-                            <text x="570" y="270" font-size="11" fill="#666">Idéal pour : Grandes entreprises</text>
-                            <text x="570" y="290" font-size="11" fill="#666">avec besoins data importants</text>
-                        </svg>
-                        <figcaption>Les types de nœuds OPCP comparés à des véhicules — chacun conçu pour différentes tailles de charges de travail et exigences.</figcaption>
-                    </figure>
-                </section>
-
-                <section aria-labelledby="standard-heading">
-                    <h2 id="standard-heading">Nœuds Standard — La Voiture Compacte</h2>
-                    <p>Tout comme une voiture compacte est parfaite pour les trajets quotidiens et les courses, les <strong>nœuds Standard</strong> sont idéaux pour les tâches informatiques courantes qui ne nécessitent pas une puissance exceptionnelle.</p>
-
-                    <h3>Idéal Pour</h3>
+                <section aria-labelledby="discovery-heading">
+                    <h2 id="discovery-heading">Découverte Automatique du Matériel</h2>
+                    <p>Lorsqu'un serveur physique démarre dans la baie OPCP, la plateforme découvre automatiquement :</p>
                     <ul>
-                        <li><strong>Applications web</strong> — Sites d'entreprise, portails internes et services web légers</li>
-                        <li><strong>Développement et tests</strong> — Construire et tester des logiciels avant leur mise en production</li>
-                        <li><strong>Petites bases de données</strong> — Listes de clients, catalogues produits et registres internes</li>
-                        <li><strong>Outils de messagerie et collaboration</strong> — Support de la communication d'équipe</li>
+                        <li><strong>CPU</strong> — Modèle, nombre de cœurs, architecture</li>
+                        <li><strong>RAM</strong> — Capacité totale, type (DDR4/DDR5), vitesse</li>
+                        <li><strong>Stockage</strong> — Nombre et type de disques (SSD, NVMe, HDD), capacités</li>
+                        <li><strong>Réseau</strong> — Nombre d'interfaces, débit (10G, 25G, 100G), capacités</li>
+                        <li><strong>GPU</strong> — Si présent, modèle et VRAM (pour les profils à calcul accéléré)</li>
+                    </ul>
+                    <p>Ces propriétés sont enregistrées comme <strong>traits</strong> dans OpenStack et peuvent être utilisées pour le placement — garantissant que les charges de travail sont placées sur du matériel correspondant à leurs besoins.</p>
+                </section>
+
+                <section aria-labelledby="profiles-heading">
+                    <h2 id="profiles-heading">Profils Matériels</h2>
+                    <p>Bien que le matériel spécifique disponible dépende de ce qui est installé dans votre baie, les nœuds OPCP se répartissent typiquement dans ces catégories :</p>
+
+                    <h3>Optimisé Compute</h3>
+                    <ul>
+                        <li>CPUs à nombre élevé de cœurs</li>
+                        <li>Ratio RAM/CPU équilibré</li>
+                        <li>Adapté pour : serveurs d'applications, conteneurs, traitement parallèle</li>
                     </ul>
 
-                    <h3>Conseil pour la Conversation Client</h3>
-                    <p>Recommandez les nœuds Standard quand un client dit : « Nous devons héberger notre site web d'entreprise » ou « Nous voulons un environnement de développement pour notre équipe. »</p>
-                </section>
-
-                <section aria-labelledby="performance-heading">
-                    <h2 id="performance-heading">Nœuds Performance — Le SUV</h2>
-                    <p>Un SUV gère les terrains plus difficiles et transporte plus de passagers. Les <strong>nœuds Performance</strong> offrent plus de puissance de calcul pour les applications qui doivent gérer des charges plus lourdes ou répondre plus rapidement.</p>
-
-                    <h3>Idéal Pour</h3>
+                    <h3>Optimisé Mémoire</h3>
                     <ul>
-                        <li><strong>Applications critiques</strong> — Systèmes ERP, plateformes CRM et logiciels financiers</li>
-                        <li><strong>Bases de données de taille moyenne</strong> — Traitement de transactions, gestion de commandes</li>
-                        <li><strong>Plateformes multi-utilisateurs</strong> — Applications servant des centaines d'utilisateurs simultanés</li>
-                        <li><strong>Charges conteneurisées</strong> — Exécution de plusieurs services sur un seul nœud</li>
+                        <li>Grande capacité RAM</li>
+                        <li>Adapté pour : bases de données en mémoire, analytique, couches de cache</li>
                     </ul>
 
-                    <h3>Conseil pour la Conversation Client</h3>
-                    <p>Recommandez les nœuds Performance quand un client dit : « Notre application doit gérer les pics de trafic pendant les heures de bureau » ou « Nous exécutons notre logiciel métier principal. »</p>
-                </section>
-
-                <section aria-labelledby="highmem-heading">
-                    <h2 id="highmem-heading">Nœuds Haute-Mémoire — Le Camion</h2>
-                    <p>Un camion est conçu pour transporter des charges lourdes que les autres véhicules ne peuvent tout simplement pas gérer. Les <strong>nœuds Haute-Mémoire</strong> fournissent de grandes quantités de mémoire pour les charges de travail qui doivent traiter ou conserver des volumes massifs de données en même temps.</p>
-
-                    <h3>Idéal Pour</h3>
+                    <h3>Optimisé Stockage</h3>
                     <ul>
-                        <li><strong>Traitement de données massif</strong> — Analyser des millions d'enregistrements, générer des rapports complexes</li>
-                        <li><strong>Bases de données en mémoire</strong> — Applications qui conservent des jeux de données entiers en mémoire pour la rapidité</li>
-                        <li><strong>Plateformes analytiques</strong> — Outils de business intelligence traitant de grands volumes de données</li>
-                        <li><strong>Applications à fort trafic</strong> — Services gérant des milliers de connexions simultanées</li>
+                        <li>Multiples disques haute capacité (NVMe/SSD)</li>
+                        <li>Adapté pour : lacs de données, stockage objet, serveurs de bases de données</li>
                     </ul>
 
-                    <h3>Conseil pour la Conversation Client</h3>
-                    <p>Recommandez les nœuds Haute-Mémoire quand un client dit : « Nous devons exécuter des analyses en temps réel sur l'ensemble de notre base de données clients » ou « Notre application traite de gros fichiers en mémoire. »</p>
+                    <h3>Accéléré GPU</h3>
+                    <ul>
+                        <li>Cartes GPU dédiées</li>
+                        <li>Adapté pour : entraînement IA/ML, rendu, calcul scientifique</li>
+                    </ul>
+
+                    <p>Vous pouvez consulter les profils matériels disponibles via le tableau de bord Horizon ou en CLI :</p>
+                    <pre><code># Lister tous les nœuds avec leurs propriétés
+openstack baremetal node list --long
+
+# Voir les traits d'un nœud spécifique
+openstack baremetal node show $NODE_ID --fields properties</code></pre>
+                </section>
+
+                <section aria-labelledby="flavors-heading">
+                    <h2 id="flavors-heading">Flavors Nova et Placement</h2>
+                    <p>Dans OpenStack, les <strong>flavors</strong> définissent le template de ressources pour le déploiement d'instances. Dans le contexte bare metal d'OPCP :</p>
+                    <ul>
+                        <li>Les flavors correspondent à des profils matériels spécifiques</li>
+                        <li>Lorsque vous déployez une instance avec un flavor donné, Nova la place sur un nœud dont les traits correspondent</li>
+                        <li>Cela garantit que votre charge de travail atterrit sur le matériel approprié</li>
+                    </ul>
+                    <pre><code># Lister les flavors disponibles
+openstack flavor list
+
+# Afficher les détails d'un flavor incluant les traits requis
+openstack flavor show $FLAVOR_NAME</code></pre>
                 </section>
 
                 <section aria-labelledby="choosing-heading">
-                    <h2 id="choosing-heading">Comment Aider les Clients à Choisir</h2>
-                    <p>Lorsque vous discutez des types de nœuds avec les clients, concentrez-vous sur <strong>ce qu'ils doivent accomplir</strong> plutôt que sur les spécifications techniques. Posez des questions comme :</p>
+                    <h2 id="choosing-heading">Choisir le Bon Type de Nœud</h2>
+                    <p>Lors de la planification de vos déploiements, considérez :</p>
                     <ul>
-                        <li>« Combien de personnes utiliseront cette application en même temps ? »</li>
-                        <li>« Quel volume de données votre application traite-t-elle ? »</li>
-                        <li>« Est-ce pour du développement/test ou pour la production ? »</li>
-                        <li>« Votre application doit-elle répondre très rapidement, ou un certain délai est-il acceptable ? »</li>
+                        <li><strong>Besoins de la charge de travail</strong> — A-t-elle besoin de plus de CPU, RAM, stockage ou GPU ?</li>
+                        <li><strong>Caractéristiques de performance</strong> — Stockage NVMe pour les charges intensives en I/O, haute mémoire pour l'analytique</li>
+                        <li><strong>Disponibilité</strong> — Vérifier quels profils sont disponibles (certains peuvent déjà être en état Active)</li>
+                        <li><strong>Évolutivité</strong> — Planifier la croissance future en comprenant quel matériel est dans la baie</li>
                     </ul>
-                    <p>Leurs réponses orienteront naturellement vers le bon type de nœud. Et rappelez-vous — les clients peuvent toujours commencer avec un nœud Standard et évoluer plus tard à mesure que leurs besoins grandissent.</p>
                 </section>
 
                 <section aria-labelledby="summary-heading">
                     <h2 id="summary-heading">Points Clés à Retenir</h2>
                     <ul>
-                        <li>Les nœuds Standard sont pour les charges quotidiennes — comme une voiture compacte pour les trajets quotidiens</li>
-                        <li>Les nœuds Performance gèrent les applications exigeantes — comme un SUV pour les terrains difficiles</li>
-                        <li>Les nœuds Haute-Mémoire traitent de grands volumes de données — comme un camion pour les charges lourdes</li>
-                        <li>Concentrez-vous sur les besoins du client, pas sur les spécifications techniques, lors de la recommandation</li>
-                        <li>Les clients peuvent évoluer vers un type de nœud supérieur à mesure que leur activité se développe</li>
+                        <li>Les nœuds dans OPCP sont des serveurs physiques bare metal gérés par OpenStack Ironic</li>
+                        <li>Les propriétés matérielles sont automatiquement découvertes lorsque les serveurs démarrent dans la baie</li>
+                        <li>Différents profils matériels (compute, mémoire, stockage, GPU) servent différentes charges de travail</li>
+                        <li>Les traits et flavors garantissent que les charges de travail sont placées sur le matériel correspondant</li>
+                        <li>Pas de surcoût de virtualisation — vous disposez des ressources matérielles dédiées complètes</li>
                     </ul>
                 </section>
 

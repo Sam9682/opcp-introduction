@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Explorez les capacités de stockage de CloudStore : évolutivité, redondance et méthodes d'accès, ainsi que les niveaux de capacité pour différentes tailles d'entreprise.">
+    <meta name="description" content="Explorez les capacités de stockage OPCP : stockage objet S3 (CloudStore) et stockage bloc Ceph RBD avec niveaux de performance, snapshots et redimensionnement à chaud.">
   <title>Capacités de Stockage - Solutions de Stockage - OPCP Skillhub</title>
   <link rel="stylesheet" href="../../assets/css/style.css">
 </head>
@@ -40,8 +40,13 @@
                 </header>
 
                 <section aria-labelledby="intro-heading">
-                    <h2 id="intro-heading">Que peut faire CloudStore ?</h2>
-                    <p><a href="../glossary.html#term-cloudstore" class="glossary-term">CloudStore</a> n'est pas simplement un endroit où déposer des fichiers. C'est une plateforme de stockage sophistiquée dotée de capacités conçues pour garder vos données en sécurité, accessibles et prêtes à évoluer avec votre entreprise. Pensez-y comme un entrepôt qui peut s'agrandir automatiquement, dispose de plusieurs emplacements de sauvegarde et offre différentes portes pour différents types de livraisons.</p>
+                    <h2 id="intro-heading">Deux types de stockage sur OPCP</h2>
+                    <p>La plateforme OPCP fournit deux systèmes de stockage complémentaires, chacun répondant à des besoins différents :</p>
+                    <ul>
+                        <li><strong><a href="../glossary.html#term-cloudstore" class="glossary-term">CloudStore (S3)</a></strong> — Stockage objet S3-compatible pour les données non structurées (fichiers, médias, sauvegardes).</li>
+                        <li><strong class="term">Ceph RBD</strong> — Stockage bloc haute performance pour les charges de travail structurées (bases de données, volumes de boot, applications nécessitant des disques persistants).</li>
+                    </ul>
+                    <p>Pensez à CloudStore comme un vaste classeur pour des documents de toute taille, et à Ceph RBD comme des disques durs dédiés que vous attachez à vos serveurs — chacun optimisé pour son usage.</p>
                 </section>
 
                 <section aria-labelledby="scalability-heading">
@@ -49,30 +54,44 @@
                     <p><strong class="term">L'évolutivité</strong> (ou scalabilité) désigne la capacité d'augmenter (ou de réduire) votre espace de stockage à la demande, sans interruption ni perturbation.</p>
 
                     <div class="info-box">
-                        <p><strong>Analogie du monde réel :</strong> Imaginez un entrepôt dont les murs peuvent coulisser vers l'extérieur chaque fois que vous avez besoin de plus de place. Vous n'avez jamais à déménager dans un bâtiment plus grand — le vôtre s'agrandit simplement. Quand vous avez besoin de moins d'espace, les murs reculent et vous cessez de payer pour la surface inutilisée.</p>
+                        <p><strong>Analogie du monde réel :</strong> Imaginez un entrepôt dont les murs peuvent coulisser vers l'extérieur chaque fois que vous avez besoin de plus de place. Vous n'avez jamais à déménager dans un bâtiment plus grand — le vôtre s'agrandit simplement.</p>
                     </div>
 
-                    <h3>Ce que cela signifie pour les clients</h3>
+                    <h3>Évolutivité Ceph RBD</h3>
                     <ul>
-                        <li>Commencez petit et grandissez au fur et à mesure que vos besoins en données augmentent — pas de sur-provisionnement initial.</li>
-                        <li>Gérez les pics saisonniers (ex. : données de ventes pendant les fêtes) sans engagements de capacité permanents.</li>
-                        <li>Aucun casse-tête de migration — vos données restent en place tandis que la capacité s'ajuste autour d'elles.</li>
+                        <li><strong>Volumes de 1 Go à 16 To</strong> — provisionnez exactement ce dont vous avez besoin.</li>
+                        <li><strong>Redimensionnement à chaud</strong> — augmentez la taille d'un volume sans le démonter ni arrêter la charge de travail. Aucun temps d'arrêt requis.</li>
+                        <li>Les volumes restent attachés et opérationnels pendant les opérations de redimensionnement.</li>
+                    </ul>
+
+                    <h3>Évolutivité CloudStore (S3)</h3>
+                    <ul>
+                        <li>Le stockage objet évolue avec vos données — aucun pré-provisionnement requis.</li>
+                        <li>Gérez les pics saisonniers sans engagements de capacité permanents.</li>
+                        <li>Limité uniquement par la capacité physique de votre rack OPCP on-premise.</li>
                     </ul>
                 </section>
 
                 <section aria-labelledby="redundancy-heading">
                     <h2 id="redundancy-heading">Capacité 2 : Redondance</h2>
-                    <p><strong class="term">La redondance</strong> signifie que vos données sont automatiquement copiées dans plusieurs emplacements, de sorte que si une copie est perdue ou endommagée, les autres restent intactes.</p>
+                    <p><strong class="term">La redondance</strong> signifie que vos données sont automatiquement copiées pour vous protéger contre les pannes matérielles.</p>
 
                     <div class="info-box">
-                        <p><strong>Analogie du monde réel :</strong> Pensez-y comme garder des copies de vos documents les plus importants dans trois coffres-forts différents — un chez vous, un à la banque et un chez votre avocat. Si l'un des emplacements a un problème, vous avez toujours deux autres copies.</p>
+                        <p><strong>Analogie du monde réel :</strong> Pensez-y comme garder trois copies de vos documents les plus importants dans trois coffres-forts différents au sein du même bâtiment sécurisé. Si l'un des coffres a un problème, les autres contiennent toujours vos données.</p>
                     </div>
 
-                    <h3>Ce que cela signifie pour les clients</h3>
+                    <h3>Ceph RBD : Triple réplication</h3>
                     <ul>
-                        <li>Les données survivent aux pannes matérielles — un disque cassé ne signifie pas des fichiers perdus.</li>
-                        <li>Protection contre les incidents localisés (coupures de courant, problèmes réseau).</li>
-                        <li>Aucune copie de sauvegarde manuelle requise — la redondance se fait automatiquement en arrière-plan.</li>
+                        <li><strong>3 copies</strong> de chaque bloc de données sont maintenues à travers différents <strong class="term">OSDs</strong> (Object Storage Daemons) dans le cluster Ceph.</li>
+                        <li>Les données survivent aux pannes de disques ou de nœuds individuels — un disque cassé ne signifie pas des données perdues.</li>
+                        <li>La réplication se fait automatiquement en arrière-plan sans intervention manuelle.</li>
+                        <li>Toutes les données restent on-premise dans votre rack OPCP.</li>
+                    </ul>
+
+                    <h3>CloudStore (S3)</h3>
+                    <ul>
+                        <li>Configuration MonoAZ — les données sont stockées localement sur la plateforme OPCP.</li>
+                        <li>La redondance est gérée au niveau de l'infrastructure au sein du rack.</li>
                     </ul>
                 </section>
 
@@ -81,120 +100,146 @@
                     <p><strong class="term">Les méthodes d'accès</strong> sont les différentes façons dont vos applications et utilisateurs peuvent se connecter et interagir avec les données stockées.</p>
 
                     <div class="info-box">
-                        <p><strong>Analogie du monde réel :</strong> Un entrepôt bien conçu dispose de plusieurs entrées — un quai de chargement pour les grandes livraisons, un accueil pour les petits retraits et une porte de coffre-fort sécurisée pour les articles de grande valeur. Chaque entrée sert un objectif et un type de visiteur différent.</p>
+                        <p><strong>Analogie du monde réel :</strong> Un entrepôt bien conçu dispose de plusieurs entrées — un quai de chargement pour les grandes livraisons, un accueil pour les petits retraits et une porte de coffre-fort pour les articles de grande valeur. Chaque entrée sert un objectif différent.</p>
                     </div>
 
                     <h3>Méthodes d'accès disponibles</h3>
                     <ul>
-                        <li><strong>Tableau de bord web</strong> — parcourez et gérez vos fichiers via une interface visuelle, comme utiliser un explorateur de fichiers sur votre ordinateur.</li>
-                        <li><strong>Accès API</strong> — les applications se connectent directement pour lire et écrire des données automatiquement, sans interaction humaine.</li>
-                        <li><strong>Protocoles de transfert sécurisés</strong> — déplacez de grandes quantités de données efficacement en utilisant des canaux de transfert optimisés.</li>
+                        <li><strong>API S3</strong> — Pour le stockage objet (CloudStore). Utilisez n'importe quel SDK ou outil S3-compatible (AWS CLI, boto3, s3cmd, etc.) pour gérer les buckets et objets.</li>
+                        <li><strong>API OpenStack Cinder</strong> — Pour le stockage bloc (Ceph RBD). Gérez les volumes, snapshots et attachements de manière programmatique.</li>
+                        <li><strong>Dashboard Horizon</strong> — Interface web visuelle pour gérer les deux types de stockage via le dashboard OpenStack.</li>
+                        <li><strong>CLI OpenStack</strong> — Interface en ligne de commande pour le scripting et l'automatisation des opérations de stockage.</li>
                     </ul>
                 </section>
 
                 <section aria-labelledby="encryption-heading">
-                    <h2 id="encryption-heading">Capacité 4 : Chiffrement</h2>
-                    <p><strong class="term">Le chiffrement</strong> est le processus de brouillage des données de sorte que seules les parties autorisées disposant de la bonne clé puissent les lire.</p>
+                    <h2 id="encryption-heading">Capacité 4 : Protection des données</h2>
+                    <p>La protection des données sur OPCP varie entre les deux types de stockage :</p>
+
+                    <h3>CloudStore (S3) — Chiffrement SSE-C</h3>
+                    <ul>
+                        <li><strong class="term">SSE-C</strong> (Server-Side Encryption with Customer-provided keys) est supporté.</li>
+                        <li>Le client gère et fournit la clé de chiffrement à chaque requête.</li>
+                        <li><strong>Pas de chiffrement au repos par défaut</strong> — si vous avez besoin du chiffrement, vous devez implémenter SSE-C dans votre application.</li>
+                        <li>Les données en transit peuvent être protégées via HTTPS.</li>
+                    </ul>
+
+                    <h3>Ceph RBD — Intégrité des données</h3>
+                    <ul>
+                        <li>Ceph gère l'intégrité des données nativement via des mécanismes de checksumming et d'auto-réparation.</li>
+                        <li>La triple réplication assure la durabilité des données même en cas de panne matérielle.</li>
+                        <li>Le cluster Ceph vérifie continuellement la cohérence des données entre les réplicas.</li>
+                    </ul>
 
                     <div class="info-box">
-                        <p><strong>Analogie du monde réel :</strong> Imaginez écrire une lettre dans un code secret que seuls vous et le destinataire comprenez. Même si quelqu'un intercepte la lettre, il ne voit que des symboles sans signification. Le chiffrement fait la même chose pour vos données numériques.</p>
+                        <p><strong>Important :</strong> Contrairement à l'offre cloud public, OPCP ne fournit pas de chiffrement automatique au repos pour le stockage S3. Si le chiffrement est une exigence, implémentez SSE-C dans votre couche applicative ou utilisez le chiffrement côté client avant l'envoi.</p>
                     </div>
-
-                    <h3>Ce que cela signifie pour les clients</h3>
-                    <ul>
-                        <li>Les données sont protégées à la fois lorsqu'elles sont stockées (au repos) et lorsqu'elles sont transférées (en transit).</li>
-                        <li>Répond aux exigences de conformité pour les secteurs sensibles (santé, finance, juridique).</li>
-                        <li>Même dans le cas improbable d'un accès non autorisé au matériel, les données restent illisibles.</li>
-                    </ul>
-                </section>
-
-                <section aria-labelledby="diagram-heading">
-                    <h2 id="diagram-heading">Capacités en un coup d'œil</h2>
-                    <figure class="diagram-scroll">
-                        <svg viewBox="0 0 700 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagramme montrant les quatre capacités de CloudStore : évolutivité, redondance, méthodes d'accès et chiffrement disposées autour d'une icône centrale CloudStore">
-                            <!-- CloudStore central -->
-                            <rect x="270" y="110" width="160" height="100" rx="12" fill="#d4edda" stroke="#1b7a3d" stroke-width="2"/>
-                            <text x="350" y="150" text-anchor="middle" font-size="14" font-weight="bold" fill="#1b7a3d">CloudStore</text>
-                            <text x="350" y="175" text-anchor="middle" font-size="11" fill="#333">Votre plateforme données</text>
-
-                            <!-- Évolutivité (haut-gauche) -->
-                            <rect x="40" y="20" width="180" height="70" rx="8" fill="#e8f4fd" stroke="#000E9C" stroke-width="2"/>
-                            <text x="130" y="50" text-anchor="middle" font-size="12" font-weight="bold" fill="#000E9C">Évolutivité</text>
-                            <text x="130" y="70" text-anchor="middle" font-size="10" fill="#333">Croissance à la demande</text>
-                            <line x1="220" y1="70" x2="280" y2="115" stroke="#000E9C" stroke-width="1.5" stroke-dasharray="4"/>
-
-                            <!-- Redondance (haut-droite) -->
-                            <rect x="480" y="20" width="180" height="70" rx="8" fill="#e8f4fd" stroke="#000E9C" stroke-width="2"/>
-                            <text x="570" y="50" text-anchor="middle" font-size="12" font-weight="bold" fill="#000E9C">Redondance</text>
-                            <text x="570" y="70" text-anchor="middle" font-size="10" fill="#333">Copies multiples, toujours sûr</text>
-                            <line x1="480" y1="70" x2="420" y2="115" stroke="#000E9C" stroke-width="1.5" stroke-dasharray="4"/>
-
-                            <!-- Méthodes d'accès (bas-gauche) -->
-                            <rect x="40" y="230" width="180" height="70" rx="8" fill="#f0e6ff" stroke="#4949FF" stroke-width="2"/>
-                            <text x="130" y="260" text-anchor="middle" font-size="12" font-weight="bold" fill="#4949FF">Méthodes d'accès</text>
-                            <text x="130" y="280" text-anchor="middle" font-size="10" fill="#333">Plusieurs façons de se connecter</text>
-                            <line x1="220" y1="250" x2="280" y2="205" stroke="#4949FF" stroke-width="1.5" stroke-dasharray="4"/>
-
-                            <!-- Chiffrement (bas-droite) -->
-                            <rect x="480" y="230" width="180" height="70" rx="8" fill="#f0e6ff" stroke="#4949FF" stroke-width="2"/>
-                            <text x="570" y="260" text-anchor="middle" font-size="12" font-weight="bold" fill="#4949FF">Chiffrement</text>
-                            <text x="570" y="280" text-anchor="middle" font-size="10" fill="#333">Données toujours protégées</text>
-                            <line x1="480" y1="250" x2="420" y2="205" stroke="#4949FF" stroke-width="1.5" stroke-dasharray="4"/>
-                        </svg>
-                        <figcaption>Les quatre capacités principales de CloudStore fonctionnent ensemble pour fournir une solution de stockage complète</figcaption>
-                    </figure>
                 </section>
 
                 <section aria-labelledby="tiers-heading">
-                    <h2 id="tiers-heading">Niveaux de capacité</h2>
-                    <p>CloudStore propose différents niveaux de capacité adaptés à la taille et aux besoins de votre entreprise. Pensez-y comme différentes tailles d'entrepôt — vous choisissez celui qui convient aujourd'hui et passez au niveau supérieur quand vous le dépassez.</p>
+                    <h2 id="tiers-heading">Niveaux de performance Ceph RBD</h2>
+                    <p>Ceph RBD propose trois niveaux de performance pour s'adapter à différentes charges de travail. Choisissez le niveau en fonction de l'intensité I/O de votre application :</p>
 
                     <div class="table-scroll">
                         <table>
                             <thead>
                                 <tr>
                                     <th scope="col">Niveau</th>
+                                    <th scope="col">IOPS</th>
                                     <th scope="col">Idéal pour</th>
-                                    <th scope="col">Plage de capacité</th>
-                                    <th scope="col">Utilisation typique</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td><strong>Starter</strong></td>
-                                    <td>Petites équipes, startups</td>
-                                    <td>Jusqu'à 1 To</td>
-                                    <td>Stockage de documents, petites bases de données applicatives, partage de fichiers en équipe</td>
+                                    <td><strong>Standard</strong></td>
+                                    <td>1 000</td>
+                                    <td>Charges de travail générales, stockage de fichiers, environnements de développement</td>
                                 </tr>
                                 <tr>
-                                    <td><strong>Professionnel</strong></td>
-                                    <td>Entreprises en croissance, PME</td>
-                                    <td>1 To – 50 To</td>
-                                    <td>Archives multimédia, backends d'applications multiples, sauvegardes régulières</td>
+                                    <td><strong>High</strong></td>
+                                    <td>3 000</td>
+                                    <td>Bases de données, charges transactionnelles, serveurs d'applications</td>
                                 </tr>
                                 <tr>
-                                    <td><strong>Entreprise</strong></td>
-                                    <td>Grandes organisations, industries intensives en données</td>
-                                    <td>50 To et plus</td>
-                                    <td>Analyse de données massives, archives de conformité, réplication multi-régions</td>
+                                    <td><strong>Insane</strong></td>
+                                    <td>7 500</td>
+                                    <td>Calcul haute performance, I/O intensif, analytics temps réel</td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
 
                     <div class="info-box">
-                        <p><strong>Conseil pour les conversations clients :</strong> Commencez par comprendre le volume de données actuel du client et son taux de croissance. Une entreprise générant 100 Go par mois dépassera le niveau Starter en moins d'un an — recommandez le niveau Professionnel dès le départ pour éviter une migration précoce.</p>
+                        <p><strong>Conseil pour les conversations clients :</strong> Commencez par comprendre le type de charge de travail. Une application web standard peut convenir au niveau Standard, mais une base de données transactionnelle (PostgreSQL, MySQL) bénéficiera significativement du niveau High. Réservez Insane pour les charges avec des besoins I/O élevés avérés.</p>
                     </div>
+                </section>
+
+                <section aria-labelledby="rbd-features-heading">
+                    <h2 id="rbd-features-heading">Fonctionnalités avancées Ceph RBD</h2>
+                    <p>Au-delà du stockage bloc de base, Ceph RBD fournit des fonctionnalités puissantes pour une flexibilité opérationnelle :</p>
+
+                    <ul>
+                        <li><strong class="term">Snapshots instantanés</strong> — Créez des snapshots ponctuels grâce à la technologie Copy-on-Write (CoW). La création du snapshot a un temps de copie initial nul — c'est instantané quelle que soit la taille du volume.</li>
+                        <li><strong class="term">Clonage CoW</strong> — Créez de nouveaux volumes à partir de snapshots existants instantanément. Le clone partage les données avec le parent jusqu'à ce que des blocs soient modifiés, rendant l'opération extrêmement rapide et efficace en stockage.</li>
+                        <li><strong>Boot-from-volume</strong> — Démarrez les nœuds bare metal directement depuis des volumes Ceph RBD, permettant un déploiement OS flexible et un provisionnement rapide.</li>
+                        <li><strong>Redimensionnement à chaud</strong> — Augmentez la taille du volume pendant qu'il est monté et en cours d'utilisation. Aucun démontage ni temps d'arrêt requis.</li>
+                        <li><strong class="term">Mirroring RBD</strong> — Réplication asynchrone entre clusters Ceph pour la reprise après sinistre. Permet la réplication entre sites OPCP pour la géo-redondance.</li>
+                    </ul>
+
+                    <div class="info-box">
+                        <p><strong>Documentation officielle :</strong> Pour des informations détaillées sur le stockage Ceph RBD sur OPCP, consultez le <a href="https://docs.ovhcloud.com/fr/guides/hosted-private-cloud/opcp/storage-ceph-rbd-overview" target="_blank" rel="noopener">guide de présentation Ceph RBD</a>.</p>
+                    </div>
+                </section>
+
+                <section aria-labelledby="diagram-heading">
+                    <h2 id="diagram-heading">Capacités en un coup d'œil</h2>
+                    <figure class="diagram-scroll">
+                        <svg viewBox="0 0 700 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagramme montrant l'architecture de stockage OPCP avec CloudStore S3 pour le stockage objet et Ceph RBD pour le stockage bloc">
+                            <!-- Titre -->
+                            <text x="350" y="25" text-anchor="middle" font-size="14" font-weight="bold" fill="#333">Architecture de stockage OPCP</text>
+
+                            <!-- CloudStore S3 -->
+                            <rect x="40" y="50" width="280" height="140" rx="12" fill="#d4edda" stroke="#1b7a3d" stroke-width="2"/>
+                            <text x="180" y="75" text-anchor="middle" font-size="13" font-weight="bold" fill="#1b7a3d">CloudStore (Stockage objet S3)</text>
+                            <text x="180" y="100" text-anchor="middle" font-size="10" fill="#333">API S3-compatible</text>
+                            <text x="180" y="118" text-anchor="middle" font-size="10" fill="#333">Classe Standard uniquement</text>
+                            <text x="180" y="136" text-anchor="middle" font-size="10" fill="#333">Chiffrement SSE-C</text>
+                            <text x="180" y="154" text-anchor="middle" font-size="10" fill="#333">Versionnement via API</text>
+                            <text x="180" y="172" text-anchor="middle" font-size="10" fill="#333">MonoAZ, on-premise</text>
+
+                            <!-- Ceph RBD -->
+                            <rect x="380" y="50" width="280" height="140" rx="12" fill="#e8f4fd" stroke="#000E9C" stroke-width="2"/>
+                            <text x="520" y="75" text-anchor="middle" font-size="13" font-weight="bold" fill="#000E9C">Ceph RBD (Stockage bloc)</text>
+                            <text x="520" y="100" text-anchor="middle" font-size="10" fill="#333">3 niveaux (1K–7,5K IOPS)</text>
+                            <text x="520" y="118" text-anchor="middle" font-size="10" fill="#333">Volumes de 1 Go à 16 To</text>
+                            <text x="520" y="136" text-anchor="middle" font-size="10" fill="#333">Triple réplication</text>
+                            <text x="520" y="154" text-anchor="middle" font-size="10" fill="#333">Snapshots instantanés et clonage CoW</text>
+                            <text x="520" y="172" text-anchor="middle" font-size="10" fill="#333">Redimensionnement à chaud, boot-from-volume</text>
+
+                            <!-- Plateforme OPCP -->
+                            <rect x="150" y="240" width="400" height="100" rx="12" fill="#f0e6ff" stroke="#4949FF" stroke-width="2"/>
+                            <text x="350" y="270" text-anchor="middle" font-size="13" font-weight="bold" fill="#4949FF">Plateforme OPCP (On-Premise)</text>
+                            <text x="350" y="295" text-anchor="middle" font-size="10" fill="#333">Géré par OVHcloud • Données sur vos locaux</text>
+                            <text x="350" y="315" text-anchor="middle" font-size="10" fill="#333">APIs OpenStack • Dashboard Horizon • Souveraineté totale</text>
+
+                            <!-- Flèches -->
+                            <line x1="180" y1="190" x2="280" y2="240" stroke="#1b7a3d" stroke-width="1.5" stroke-dasharray="4"/>
+                            <line x1="520" y1="190" x2="420" y2="240" stroke="#000E9C" stroke-width="1.5" stroke-dasharray="4"/>
+                        </svg>
+                        <figcaption>OPCP fournit deux types de stockage complémentaires : stockage objet S3 et stockage bloc Ceph RBD, tous deux fonctionnant on-premise</figcaption>
+                    </figure>
                 </section>
 
                 <section aria-labelledby="summary-heading">
                     <h2 id="summary-heading">Points clés à retenir</h2>
                     <ul>
-                        <li><strong>L'évolutivité</strong> permet aux clients d'augmenter le stockage sans interruption ni migration.</li>
-                        <li><strong>La redondance</strong> protège automatiquement les données en maintenant plusieurs copies.</li>
-                        <li><strong>Les méthodes d'accès</strong> offrent des moyens flexibles d'interagir avec les données (tableau de bord, API, protocoles de transfert).</li>
-                        <li><strong>Le chiffrement</strong> garde les données sécurisées au repos comme en transit.</li>
-                        <li>Trois niveaux de capacité (Starter, Professionnel, Entreprise) correspondent à différentes tailles d'entreprise et budgets.</li>
+                        <li>OPCP offre <strong>deux types de stockage</strong> : CloudStore (stockage objet S3) et Ceph RBD (stockage bloc).</li>
+                        <li><strong>Évolutivité</strong> : les volumes Ceph RBD vont de 1 Go à 16 To avec redimensionnement à chaud ; CloudStore évolue automatiquement.</li>
+                        <li><strong>Redondance</strong> : Ceph RBD utilise la triple réplication à travers les OSDs ; toutes les données restent on-premise.</li>
+                        <li><strong>Accès</strong> : API S3 pour le stockage objet, API OpenStack Cinder pour le stockage bloc, plus dashboard et CLI.</li>
+                        <li><strong>Protection des données</strong> : SSE-C pour S3 (le client gère les clés, pas de chiffrement au repos par défaut) ; Ceph gère l'intégrité nativement.</li>
+                        <li><strong>Trois niveaux Ceph RBD</strong> : Standard (1 000 IOPS), High (3 000 IOPS), Insane (7 500 IOPS).</li>
+                        <li><strong>Fonctionnalités avancées</strong> : snapshots instantanés, clonage CoW, boot-from-volume, mirroring RBD pour la DR.</li>
                     </ul>
                 </section>
 

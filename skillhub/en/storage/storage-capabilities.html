@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Explore CloudStore's storage capabilities including scalability, redundancy, and access methods, plus capacity tiers for different business sizes.">
+    <meta name="description" content="Explore OPCP storage capabilities: S3 object storage (CloudStore) and Ceph RBD block storage with performance tiers, snapshots, and live resize.">
   <title>Storage Capabilities - Storage Solutions - OPCP Skillhub</title>
   <link rel="stylesheet" href="../../assets/css/style.css">
 </head>
@@ -40,8 +40,13 @@
                 </header>
 
                 <section aria-labelledby="intro-heading">
-                    <h2 id="intro-heading">What Can CloudStore Do?</h2>
-                    <p><a href="../glossary.html#term-cloudstore" class="glossary-term">CloudStore</a> isn't just a place to dump files. It's a sophisticated <a href="../glossary.html#term-storage" class="glossary-term">storage</a> platform with capabilities designed to keep your data safe, accessible, and ready to grow with your business. Think of it as a warehouse that can automatically expand, has multiple backup locations, and offers different doors for different types of deliveries.</p>
+                    <h2 id="intro-heading">Two Storage Types on OPCP</h2>
+                    <p>The OPCP platform provides two complementary storage systems, each serving different needs:</p>
+                    <ul>
+                        <li><strong><a href="../glossary.html#term-cloudstore" class="glossary-term">CloudStore (S3)</a></strong> — S3-compatible object storage for unstructured data (files, media, backups).</li>
+                        <li><strong class="term">Ceph RBD</strong> — High-performance block storage for structured workloads (databases, boot volumes, applications requiring persistent disks).</li>
+                    </ul>
+                    <p>Think of CloudStore as a vast filing cabinet for documents of any size, and Ceph RBD as dedicated hard drives that you attach to your servers — each optimised for its purpose.</p>
                 </section>
 
                 <section aria-labelledby="scalability-heading">
@@ -49,30 +54,44 @@
                     <p><strong class="term">Scalability</strong> means the ability to grow (or shrink) your storage space on demand, without downtime or disruption.</p>
 
                     <div class="info-box">
-                        <p><strong>Real-world analogy:</strong> Imagine a warehouse where walls can slide outward whenever you need more room. You never have to move to a bigger building — your current one simply expands. When you need less space, the walls slide back and you stop paying for the unused area.</p>
+                        <p><strong>Real-world analogy:</strong> Imagine a warehouse where walls can slide outward whenever you need more room. You never have to move to a bigger building — your current one simply expands.</p>
                     </div>
 
-                    <h3>What this means for customers</h3>
+                    <h3>Ceph RBD scalability</h3>
                     <ul>
-                        <li>Start small and grow as your data needs increase — no upfront over-provisioning.</li>
-                        <li>Handle seasonal spikes (e.g., holiday sales data) without permanent capacity commitments.</li>
-                        <li>No migration headaches — your data stays in place while capacity adjusts around it.</li>
+                        <li><strong>Volume sizes from 1 GB to 16 TB</strong> — provision exactly what you need.</li>
+                        <li><strong>Live resize</strong> — increase a volume's size without unmounting or stopping the workload. No downtime required.</li>
+                        <li>Volumes remain attached and operational during resize operations.</li>
+                    </ul>
+
+                    <h3>CloudStore (S3) scalability</h3>
+                    <ul>
+                        <li>Object storage scales with your data — no pre-provisioning required.</li>
+                        <li>Handle seasonal spikes without permanent capacity commitments.</li>
+                        <li>Limited only by the physical capacity of your on-premise OPCP rack.</li>
                     </ul>
                 </section>
 
                 <section aria-labelledby="redundancy-heading">
                     <h2 id="redundancy-heading">Capability 2: Redundancy</h2>
-                    <p><strong class="term">Redundancy</strong> means your data is automatically copied to multiple locations, so if one copy is lost or damaged, others remain intact.</p>
+                    <p><strong class="term">Redundancy</strong> means your data is automatically copied to protect against hardware failures.</p>
 
                     <div class="info-box">
-                        <p><strong>Real-world analogy:</strong> Think of it like keeping copies of your most important documents in three different safes — one at home, one at the bank, and one at your lawyer's office. If any one location has a problem, you still have two other copies.</p>
+                        <p><strong>Real-world analogy:</strong> Think of it like keeping three copies of your most important documents in three different safes within the same secure building. If one safe has a problem, the others still have your data.</p>
                     </div>
 
-                    <h3>What this means for customers</h3>
+                    <h3>Ceph RBD: Triple replication</h3>
                     <ul>
-                        <li>Data survives hardware failures — a broken disk doesn't mean lost files.</li>
-                        <li>Protection against localised incidents (power outages, network issues).</li>
-                        <li>No manual backup copying required — redundancy happens automatically in the background.</li>
+                        <li><strong>3 copies</strong> of every data block are maintained across different <strong class="term">OSDs</strong> (Object Storage Daemons) in the Ceph cluster.</li>
+                        <li>Data survives individual disk or node failures — a broken drive doesn't mean lost data.</li>
+                        <li>Replication happens automatically in the background with no manual intervention.</li>
+                        <li>All data remains on-premise within your OPCP rack.</li>
+                    </ul>
+
+                    <h3>CloudStore (S3)</h3>
+                    <ul>
+                        <li>MonoAZ configuration — data is stored locally on the OPCP platform.</li>
+                        <li>Redundancy is handled at the infrastructure level within the rack.</li>
                     </ul>
                 </section>
 
@@ -81,120 +100,146 @@
                     <p><strong class="term">Access methods</strong> are the different ways your applications and users can connect to and interact with stored data.</p>
 
                     <div class="info-box">
-                        <p><strong>Real-world analogy:</strong> A well-designed warehouse has multiple entrances — a loading dock for large deliveries, a front desk for small pickups, and a secure vault door for high-value items. Each entrance serves a different purpose and type of visitor.</p>
+                        <p><strong>Real-world analogy:</strong> A well-designed warehouse has multiple entrances — a loading dock for large deliveries, a front desk for small pickups, and a secure vault for high-value items. Each entrance serves a different purpose.</p>
                     </div>
 
                     <h3>Available access methods</h3>
                     <ul>
-                        <li><strong>Web dashboard</strong> — browse and manage files through a visual interface, like using a file explorer on your computer.</li>
-                        <li><strong>API access</strong> — applications connect directly to read and write data automatically, without human interaction.</li>
-                        <li><strong>Secure transfer protocols</strong> — move large amounts of data efficiently using optimised transfer channels.</li>
+                        <li><strong>S3 API</strong> — For object storage (CloudStore). Use any S3-compatible SDK or tool (AWS CLI, boto3, s3cmd, etc.) to manage buckets and objects.</li>
+                        <li><strong>OpenStack Cinder API</strong> — For block storage (Ceph RBD). Manage volumes, snapshots, and attachments programmatically.</li>
+                        <li><strong>Horizon Dashboard</strong> — Web-based visual interface for managing both storage types through the OpenStack dashboard.</li>
+                        <li><strong>OpenStack CLI</strong> — Command-line interface for scripting and automation of storage operations.</li>
                     </ul>
                 </section>
 
                 <section aria-labelledby="encryption-heading">
-                    <h2 id="encryption-heading">Capability 4: Encryption</h2>
-                    <p><strong class="term">Encryption</strong> is the process of scrambling data so that only authorised parties with the correct key can read it.</p>
+                    <h2 id="encryption-heading">Capability 4: Data Protection</h2>
+                    <p>Data protection on OPCP varies between the two storage types:</p>
+
+                    <h3>CloudStore (S3) — SSE-C encryption</h3>
+                    <ul>
+                        <li><strong class="term">SSE-C</strong> (Server-Side Encryption with Customer-provided keys) is supported.</li>
+                        <li>The client manages and provides the encryption key with each request.</li>
+                        <li><strong>No at-rest encryption by default</strong> — if you need encryption, you must implement SSE-C in your application.</li>
+                        <li>Data in transit can be protected via HTTPS.</li>
+                    </ul>
+
+                    <h3>Ceph RBD — Data integrity</h3>
+                    <ul>
+                        <li>Ceph handles data integrity natively through checksumming and self-healing mechanisms.</li>
+                        <li>Triple replication ensures data durability even when hardware fails.</li>
+                        <li>The Ceph cluster continuously verifies data consistency across replicas.</li>
+                    </ul>
 
                     <div class="info-box">
-                        <p><strong>Real-world analogy:</strong> Imagine writing a letter in a secret code that only you and the recipient understand. Even if someone intercepts the letter, they see only meaningless symbols. Encryption does the same for your digital data.</p>
+                        <p><strong>Important:</strong> Unlike the public cloud offering, OPCP does not provide automatic at-rest encryption for S3 storage. If encryption is a requirement, implement SSE-C in your application layer or use client-side encryption before uploading.</p>
                     </div>
-
-                    <h3>What this means for customers</h3>
-                    <ul>
-                        <li>Data is protected both while stored (at rest) and while being transferred (in transit).</li>
-                        <li>Meets compliance requirements for sensitive industries (healthcare, finance, legal).</li>
-                        <li>Even in the unlikely event of unauthorised access to hardware, data remains unreadable.</li>
-                    </ul>
-                </section>
-
-                <section aria-labelledby="diagram-heading">
-                    <h2 id="diagram-heading">Capabilities at a Glance</h2>
-                    <figure class="diagram-scroll">
-                        <svg viewBox="0 0 700 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram showing four CloudStore capabilities: scalability, redundancy, access methods, and encryption arranged around a central CloudStore icon">
-                            <!-- Central CloudStore -->
-                            <rect x="270" y="110" width="160" height="100" rx="12" fill="#d4edda" stroke="#1b7a3d" stroke-width="2"/>
-                            <text x="350" y="150" text-anchor="middle" font-size="14" font-weight="bold" fill="#1b7a3d">CloudStore</text>
-                            <text x="350" y="175" text-anchor="middle" font-size="11" fill="#333">Your Data Platform</text>
-
-                            <!-- Scalability (top-left) -->
-                            <rect x="40" y="20" width="180" height="70" rx="8" fill="#e8f4fd" stroke="#000E9C" stroke-width="2"/>
-                            <text x="130" y="50" text-anchor="middle" font-size="12" font-weight="bold" fill="#000E9C">Scalability</text>
-                            <text x="130" y="70" text-anchor="middle" font-size="10" fill="#333">Grow on demand</text>
-                            <line x1="220" y1="70" x2="280" y2="115" stroke="#000E9C" stroke-width="1.5" stroke-dasharray="4"/>
-
-                            <!-- Redundancy (top-right) -->
-                            <rect x="480" y="20" width="180" height="70" rx="8" fill="#e8f4fd" stroke="#000E9C" stroke-width="2"/>
-                            <text x="570" y="50" text-anchor="middle" font-size="12" font-weight="bold" fill="#000E9C">Redundancy</text>
-                            <text x="570" y="70" text-anchor="middle" font-size="10" fill="#333">Multiple copies, always safe</text>
-                            <line x1="480" y1="70" x2="420" y2="115" stroke="#000E9C" stroke-width="1.5" stroke-dasharray="4"/>
-
-                            <!-- Access Methods (bottom-left) -->
-                            <rect x="40" y="230" width="180" height="70" rx="8" fill="#f0e6ff" stroke="#4949FF" stroke-width="2"/>
-                            <text x="130" y="260" text-anchor="middle" font-size="12" font-weight="bold" fill="#4949FF">Access Methods</text>
-                            <text x="130" y="280" text-anchor="middle" font-size="10" fill="#333">Multiple ways to connect</text>
-                            <line x1="220" y1="250" x2="280" y2="205" stroke="#4949FF" stroke-width="1.5" stroke-dasharray="4"/>
-
-                            <!-- Encryption (bottom-right) -->
-                            <rect x="480" y="230" width="180" height="70" rx="8" fill="#f0e6ff" stroke="#4949FF" stroke-width="2"/>
-                            <text x="570" y="260" text-anchor="middle" font-size="12" font-weight="bold" fill="#4949FF">Encryption</text>
-                            <text x="570" y="280" text-anchor="middle" font-size="10" fill="#333">Data always protected</text>
-                            <line x1="480" y1="250" x2="420" y2="205" stroke="#4949FF" stroke-width="1.5" stroke-dasharray="4"/>
-                        </svg>
-                        <figcaption>CloudStore's four core capabilities work together to provide a complete storage solution</figcaption>
-                    </figure>
                 </section>
 
                 <section aria-labelledby="tiers-heading">
-                    <h2 id="tiers-heading">Capacity Tiers</h2>
-                    <p>CloudStore offers different capacity tiers to match your business size and needs. Think of these as different warehouse sizes — you pick the one that fits today and upgrade when you outgrow it.</p>
+                    <h2 id="tiers-heading">Ceph RBD Performance Tiers</h2>
+                    <p>Ceph RBD offers three performance tiers to match different workload requirements. Choose the tier based on the I/O intensity of your application:</p>
 
                     <div class="table-scroll">
                         <table>
                             <thead>
                                 <tr>
                                     <th scope="col">Tier</th>
+                                    <th scope="col">IOPS</th>
                                     <th scope="col">Best For</th>
-                                    <th scope="col">Capacity Range</th>
-                                    <th scope="col">Typical Use</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td><strong>Starter</strong></td>
-                                    <td>Small teams, startups</td>
-                                    <td>Up to 1 TB</td>
-                                    <td>Document storage, small application databases, team file sharing</td>
+                                    <td><strong>Standard</strong></td>
+                                    <td>1,000</td>
+                                    <td>General workloads, file storage, development environments</td>
                                 </tr>
                                 <tr>
-                                    <td><strong>Professional</strong></td>
-                                    <td>Growing businesses, mid-size companies</td>
-                                    <td>1 TB – 50 TB</td>
-                                    <td>Media archives, multiple application backends, regular backups</td>
+                                    <td><strong>High</strong></td>
+                                    <td>3,000</td>
+                                    <td>Databases, transactional workloads, application servers</td>
                                 </tr>
                                 <tr>
-                                    <td><strong>Enterprise</strong></td>
-                                    <td>Large organisations, data-intensive industries</td>
-                                    <td>50 TB and above</td>
-                                    <td>Big data analytics, compliance archives, multi-region replication</td>
+                                    <td><strong>Insane</strong></td>
+                                    <td>7,500</td>
+                                    <td>High-performance computing, intensive I/O, real-time analytics</td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
 
                     <div class="info-box">
-                        <p><strong>Tip for customer conversations:</strong> Start by understanding the customer's current data volume and growth rate. A business generating 100 GB per month will outgrow the Starter tier within a year — recommend Professional from the start to avoid an early migration.</p>
+                        <p><strong>Tip for customer conversations:</strong> Start by understanding the workload type. A standard web application might be fine on the Standard tier, but a transactional database (PostgreSQL, MySQL) will benefit significantly from the High tier. Reserve Insane for workloads with proven high I/O demands.</p>
                     </div>
+                </section>
+
+                <section aria-labelledby="rbd-features-heading">
+                    <h2 id="rbd-features-heading">Ceph RBD Advanced Features</h2>
+                    <p>Beyond basic block storage, Ceph RBD provides powerful features for operational flexibility:</p>
+
+                    <ul>
+                        <li><strong class="term">Instant snapshots</strong> — Create point-in-time snapshots using Copy-on-Write (CoW) technology. Snapshot creation has zero initial copy time — it's instantaneous regardless of volume size.</li>
+                        <li><strong class="term">CoW cloning</strong> — Create new volumes from existing snapshots instantly. The clone shares data with the parent until blocks are modified, making it extremely fast and storage-efficient.</li>
+                        <li><strong>Boot-from-volume</strong> — Boot bare metal nodes directly from Ceph RBD volumes, enabling flexible OS deployment and rapid provisioning.</li>
+                        <li><strong>Live resize</strong> — Increase volume size while the volume is mounted and in use. No unmounting or downtime required.</li>
+                        <li><strong class="term">RBD mirroring</strong> — Asynchronous replication between Ceph clusters for disaster recovery. Enables replication between OPCP sites for geo-redundancy.</li>
+                    </ul>
+
+                    <div class="info-box">
+                        <p><strong>Official documentation:</strong> For detailed information about Ceph RBD storage on OPCP, refer to the <a href="https://docs.ovhcloud.com/fr/guides/hosted-private-cloud/opcp/storage-ceph-rbd-overview" target="_blank" rel="noopener">Ceph RBD overview guide</a>.</p>
+                    </div>
+                </section>
+
+                <section aria-labelledby="diagram-heading">
+                    <h2 id="diagram-heading">Capabilities at a Glance</h2>
+                    <figure class="diagram-scroll">
+                        <svg viewBox="0 0 700 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram showing OPCP storage architecture with CloudStore S3 for object storage and Ceph RBD for block storage">
+                            <!-- Title -->
+                            <text x="350" y="25" text-anchor="middle" font-size="14" font-weight="bold" fill="#333">OPCP Storage Architecture</text>
+
+                            <!-- CloudStore S3 -->
+                            <rect x="40" y="50" width="280" height="140" rx="12" fill="#d4edda" stroke="#1b7a3d" stroke-width="2"/>
+                            <text x="180" y="75" text-anchor="middle" font-size="13" font-weight="bold" fill="#1b7a3d">CloudStore (S3 Object Storage)</text>
+                            <text x="180" y="100" text-anchor="middle" font-size="10" fill="#333">S3-compatible API</text>
+                            <text x="180" y="118" text-anchor="middle" font-size="10" fill="#333">Standard class only</text>
+                            <text x="180" y="136" text-anchor="middle" font-size="10" fill="#333">SSE-C encryption</text>
+                            <text x="180" y="154" text-anchor="middle" font-size="10" fill="#333">Versioning via API</text>
+                            <text x="180" y="172" text-anchor="middle" font-size="10" fill="#333">MonoAZ, on-premise</text>
+
+                            <!-- Ceph RBD -->
+                            <rect x="380" y="50" width="280" height="140" rx="12" fill="#e8f4fd" stroke="#000E9C" stroke-width="2"/>
+                            <text x="520" y="75" text-anchor="middle" font-size="13" font-weight="bold" fill="#000E9C">Ceph RBD (Block Storage)</text>
+                            <text x="520" y="100" text-anchor="middle" font-size="10" fill="#333">3 performance tiers (1K–7.5K IOPS)</text>
+                            <text x="520" y="118" text-anchor="middle" font-size="10" fill="#333">1 GB to 16 TB volumes</text>
+                            <text x="520" y="136" text-anchor="middle" font-size="10" fill="#333">Triple replication</text>
+                            <text x="520" y="154" text-anchor="middle" font-size="10" fill="#333">Instant snapshots &amp; CoW cloning</text>
+                            <text x="520" y="172" text-anchor="middle" font-size="10" fill="#333">Live resize, boot-from-volume</text>
+
+                            <!-- OPCP Platform -->
+                            <rect x="150" y="240" width="400" height="100" rx="12" fill="#f0e6ff" stroke="#4949FF" stroke-width="2"/>
+                            <text x="350" y="270" text-anchor="middle" font-size="13" font-weight="bold" fill="#4949FF">OPCP Platform (On-Premise)</text>
+                            <text x="350" y="295" text-anchor="middle" font-size="10" fill="#333">Managed by OVHcloud • Data stays on your premises</text>
+                            <text x="350" y="315" text-anchor="middle" font-size="10" fill="#333">OpenStack APIs • Horizon Dashboard • Full sovereignty</text>
+
+                            <!-- Arrows -->
+                            <line x1="180" y1="190" x2="280" y2="240" stroke="#1b7a3d" stroke-width="1.5" stroke-dasharray="4"/>
+                            <line x1="520" y1="190" x2="420" y2="240" stroke="#000E9C" stroke-width="1.5" stroke-dasharray="4"/>
+                        </svg>
+                        <figcaption>OPCP provides two complementary storage types: S3 object storage and Ceph RBD block storage, both running on-premise</figcaption>
+                    </figure>
                 </section>
 
                 <section aria-labelledby="summary-heading">
                     <h2 id="summary-heading">Key Takeaways</h2>
                     <ul>
-                        <li><strong>Scalability</strong> lets customers grow storage without disruption or migration.</li>
-                        <li><strong>Redundancy</strong> automatically protects data by maintaining multiple copies.</li>
-                        <li><strong>Access methods</strong> provide flexible ways to interact with data (dashboard, API, transfer protocols).</li>
-                        <li><strong>Encryption</strong> keeps data secure both at rest and in transit.</li>
-                        <li>Three capacity tiers (Starter, Professional, Enterprise) match different business sizes and budgets.</li>
+                        <li>OPCP offers <strong>two storage types</strong>: CloudStore (S3 object storage) and Ceph RBD (block storage).</li>
+                        <li><strong>Scalability</strong>: Ceph RBD volumes range from 1 GB to 16 TB with live resize; CloudStore scales automatically.</li>
+                        <li><strong>Redundancy</strong>: Ceph RBD uses triple replication across OSDs; all data stays on-premise.</li>
+                        <li><strong>Access</strong>: S3 API for object storage, OpenStack Cinder API for block storage, plus dashboard and CLI.</li>
+                        <li><strong>Data protection</strong>: SSE-C for S3 (client manages keys, no at-rest encryption by default); Ceph handles integrity natively.</li>
+                        <li><strong>Three Ceph RBD tiers</strong>: Standard (1,000 IOPS), High (3,000 IOPS), Insane (7,500 IOPS).</li>
+                        <li><strong>Advanced features</strong>: instant snapshots, CoW cloning, boot-from-volume, RBD mirroring for DR.</li>
                     </ul>
                 </section>
 

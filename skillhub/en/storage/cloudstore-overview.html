@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Learn what CloudStore is using a real-world warehouse analogy, and discover its key use cases for business.">
+    <meta name="description" content="Learn what CloudStore is on OPCP: an S3-compatible object storage service running on-premise on your rack, its limitations, and key use cases.">
   <title>CloudStore Overview - Storage Solutions - OPCP Skillhub</title>
   <link rel="stylesheet" href="../../assets/css/style.css">
 </head>
@@ -43,24 +43,24 @@
                     <h2 id="analogy-heading">The Secure Warehouse Analogy</h2>
                     <p>Imagine your business generates mountains of documents, photos, videos, and data files every day. Where do you keep all of it?</p>
 
-                    <p>Think of <a href="../glossary.html#term-cloudstore" class="glossary-term"><strong>CloudStore</strong></a> as <strong>a secure, expandable warehouse for your digital assets</strong>. Just like a professional storage facility:</p>
+                    <p>Think of <a href="../glossary.html#term-cloudstore" class="glossary-term"><strong>CloudStore</strong></a> as <strong>a secure, expandable warehouse for your digital assets — located right inside your own building</strong>. Just like a professional storage facility:</p>
 
                     <ul>
                         <li><strong>It grows with you</strong> — need more space? Simply request additional room. No construction required.</li>
-                        <li><strong>It's always accessible</strong> — authorised staff can retrieve items anytime, from anywhere, using a secure access pass.</li>
-                        <li><strong>It's professionally managed</strong> — the facility handles security, climate control, and maintenance. You focus on your business.</li>
-                        <li><strong>Your items are protected</strong> — multiple copies are stored in different locations, so even if one shelf is damaged, your belongings are safe.</li>
+                        <li><strong>It's always accessible</strong> — authorised staff can retrieve items anytime using standard S3-compatible tools.</li>
+                        <li><strong>It's professionally managed</strong> — the facility handles security, maintenance, and availability. You focus on your business.</li>
+                        <li><strong>Your items stay on-site</strong> — data never leaves your premises, ensuring full sovereignty.</li>
                     </ul>
 
                     <div class="info-box">
-                        <p><strong>CloudStore</strong> is OVHcloud's storage service within the OPCP platform. It lets you store, organise, and retrieve any type of digital data — from simple text files to large video archives — without managing physical hard drives or servers yourself.</p>
+                        <p><strong>CloudStore</strong> is OVHcloud's <strong class="term">S3-compatible object storage</strong> service within the OPCP platform. It runs locally on your on-premise OPCP rack, letting you store, organise, and retrieve any type of digital data using the standard S3 API (AWS SDK compatible) — without your data ever leaving your site.</p>
                     </div>
                 </section>
 
                 <section aria-labelledby="diagram-heading">
                     <h2 id="diagram-heading">How CloudStore Works</h2>
                     <figure class="diagram-scroll">
-                        <svg viewBox="0 0 700 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram showing how CloudStore connects your business to secure, redundant storage managed by OVHcloud">
+                        <svg viewBox="0 0 700 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram showing how CloudStore connects your business to secure, on-premise S3-compatible storage managed by OVHcloud on your OPCP rack">
                             <!-- Your Business -->
                             <rect x="20" y="100" width="160" height="100" rx="10" fill="#e8f4fd" stroke="#000E9C" stroke-width="2"/>
                             <text x="100" y="135" text-anchor="middle" font-size="13" font-weight="bold" fill="#000E9C">Your Business</text>
@@ -69,29 +69,29 @@
 
                             <!-- Arrow -->
                             <line x1="180" y1="150" x2="260" y2="150" stroke="#4949FF" stroke-width="2" marker-end="url(#arrowhead)"/>
-                            <text x="220" y="140" text-anchor="middle" font-size="9" fill="#4949FF">Upload / Access</text>
+                            <text x="220" y="140" text-anchor="middle" font-size="9" fill="#4949FF">S3 API</text>
 
                             <!-- CloudStore -->
                             <rect x="260" y="60" width="200" height="180" rx="10" fill="#d4edda" stroke="#1b7a3d" stroke-width="2"/>
-                            <text x="360" y="50" text-anchor="middle" font-size="14" font-weight="bold" fill="#1b7a3d">CloudStore</text>
+                            <text x="360" y="50" text-anchor="middle" font-size="14" font-weight="bold" fill="#1b7a3d">CloudStore (S3)</text>
                             <rect x="280" y="85" width="160" height="35" rx="5" fill="#ffffff" stroke="#1b7a3d" stroke-width="1"/>
-                            <text x="360" y="107" text-anchor="middle" font-size="11" fill="#333">Automatic Redundancy</text>
+                            <text x="360" y="107" text-anchor="middle" font-size="11" fill="#333">S3-Compatible API</text>
                             <rect x="280" y="130" width="160" height="35" rx="5" fill="#ffffff" stroke="#1b7a3d" stroke-width="1"/>
                             <text x="360" y="152" text-anchor="middle" font-size="11" fill="#333">Scalable Capacity</text>
                             <rect x="280" y="175" width="160" height="35" rx="5" fill="#ffffff" stroke="#1b7a3d" stroke-width="1"/>
-                            <text x="360" y="197" text-anchor="middle" font-size="11" fill="#333">Secure Access Control</text>
+                            <text x="360" y="197" text-anchor="middle" font-size="11" fill="#333">SSE-C Encryption</text>
 
-                            <!-- Arrow to OVHcloud -->
+                            <!-- Arrow to OPCP Rack -->
                             <line x1="460" y1="150" x2="520" y2="150" stroke="#4949FF" stroke-width="2" marker-end="url(#arrowhead)"/>
-                            <text x="490" y="140" text-anchor="middle" font-size="9" fill="#4949FF">Managed</text>
+                            <text x="490" y="140" text-anchor="middle" font-size="9" fill="#4949FF">Local</text>
 
-                            <!-- OVHcloud -->
+                            <!-- OPCP Rack -->
                             <rect x="520" y="80" width="160" height="140" rx="10" fill="#f0e6ff" stroke="#4949FF" stroke-width="2"/>
-                            <text x="600" y="115" text-anchor="middle" font-size="12" font-weight="bold" fill="#4949FF">OVHcloud</text>
-                            <text x="600" y="140" text-anchor="middle" font-size="10" fill="#333">Physical hardware</text>
+                            <text x="600" y="115" text-anchor="middle" font-size="12" font-weight="bold" fill="#4949FF">OPCP Rack</text>
+                            <text x="600" y="140" text-anchor="middle" font-size="10" fill="#333">On-premise hardware</text>
                             <text x="600" y="160" text-anchor="middle" font-size="10" fill="#333">Security &amp; monitoring</text>
-                            <text x="600" y="180" text-anchor="middle" font-size="10" fill="#333">Maintenance</text>
-                            <text x="600" y="200" text-anchor="middle" font-size="10" fill="#333">European data centres</text>
+                            <text x="600" y="180" text-anchor="middle" font-size="10" fill="#333">OVHcloud managed</text>
+                            <text x="600" y="200" text-anchor="middle" font-size="10" fill="#333">Your premises</text>
 
                             <!-- Arrowhead marker -->
                             <defs>
@@ -100,7 +100,7 @@
                                 </marker>
                             </defs>
                         </svg>
-                        <figcaption>CloudStore sits between your business and OVHcloud's managed infrastructure, providing secure and scalable storage</figcaption>
+                        <figcaption>CloudStore runs locally on your on-premise OPCP rack, providing S3-compatible object storage without data leaving your site</figcaption>
                     </figure>
                 </section>
 
@@ -109,36 +109,58 @@
                     <p>CloudStore is versatile enough to handle many different business needs. Here are the most common scenarios:</p>
 
                     <h3>Document Storage</h3>
-                    <p>Store contracts, reports, spreadsheets, and presentations in a central location accessible to your entire team. Think of it as a shared filing cabinet that never runs out of drawers and can be accessed from any office.</p>
+                    <p>Store contracts, reports, spreadsheets, and presentations in a central location accessible to your entire team. Think of it as a shared filing cabinet that never runs out of drawers and can be accessed using any S3-compatible tool.</p>
 
                     <h3>Media Archives</h3>
                     <p>Keep large collections of images, videos, and audio files safe and organised. Marketing teams, creative agencies, and media companies use CloudStore to maintain their growing libraries without worrying about running out of space.</p>
 
                     <h3>Application Data</h3>
-                    <p>Software applications generate data constantly — user records, transaction logs, configuration files. CloudStore provides a reliable home for this data, ensuring applications can read and write information quickly and safely.</p>
+                    <p>Software applications generate data constantly — user records, transaction logs, configuration files. CloudStore provides a reliable home for this data via the S3 API, ensuring applications can read and write information quickly and safely.</p>
 
                     <h3>Backups</h3>
-                    <p>Create safety copies of your critical business data. If something goes wrong with your primary systems — hardware failure, accidental deletion, or a security incident — your backups in CloudStore let you recover quickly.</p>
+                    <p>Create safety copies of your critical business data. If something goes wrong with your primary systems — hardware failure, accidental deletion, or a security incident — your backups in CloudStore let you recover quickly, all without data leaving your premises.</p>
+                </section>
+
+                <section aria-labelledby="opcp-specifics-heading">
+                    <h2 id="opcp-specifics-heading">OPCP-Specific Characteristics</h2>
+                    <p>CloudStore on OPCP has specific characteristics that differentiate it from the public cloud S3 offering. Understanding these helps you advise customers accurately:</p>
+
+                    <ul>
+                        <li><strong class="term">MonoAZ only</strong> — CloudStore operates in a single availability zone (your on-premise rack). There is no multi-AZ configuration.</li>
+                        <li><strong>Standard storage class only</strong> — Only the "Standard" class is available. There is no "High Performance" class on OPCP.</li>
+                        <li><strong class="term">SSE-C encryption</strong> — Server-Side Encryption with Customer-provided keys is supported. The client manages and provides the encryption key with each request. There is <strong>no at-rest encryption by default</strong>.</li>
+                        <li><strong>Versioning via API</strong> — Object versioning is supported and managed through the S3 API.</li>
+                        <li><strong>No user policies</strong> — All access keys can access all buckets. There are no per-user bucket restrictions available.</li>
+                        <li><strong>No metadata API endpoint</strong> — The metadata endpoint is not available on OPCP.</li>
+                        <li><strong>S3-compatible API</strong> — Fully compatible with AWS SDKs and standard S3 tools.</li>
+                        <li><strong>Local buckets</strong> — All buckets are local to the OPCP platform, stored on-premise at the customer site.</li>
+                    </ul>
+
+                    <div class="info-box">
+                        <p><strong>Official documentation:</strong> For a complete list of limitations and supported features, refer to the <a href="https://docs.ovhcloud.com/fr/guides/hosted-private-cloud/opcp/s3-opcp-limitations" target="_blank" rel="noopener">S3 OPCP limitations guide</a>.</p>
+                    </div>
                 </section>
 
                 <section aria-labelledby="benefits-heading">
                     <h2 id="benefits-heading">Why Customers Choose CloudStore</h2>
                     <ul>
-                        <li><strong>No hardware to manage</strong> — OVHcloud handles all physical infrastructure.</li>
-                        <li><strong>Pay for what you use</strong> — storage scales with your needs, no upfront investment in hard drives.</li>
-                        <li><strong>Data sovereignty</strong> — data stays in European data centres, meeting compliance requirements.</li>
-                        <li><strong>Built-in protection</strong> — automatic redundancy means your data is copied across multiple locations.</li>
-                        <li><strong>Access from anywhere</strong> — securely reach your data from any location with an internet connection.</li>
+                        <li><strong>Full data sovereignty</strong> — Data stays on YOUR premises, in your own rack. It never transits through external data centres.</li>
+                        <li><strong>S3 compatibility</strong> — Use existing tools, SDKs, and workflows built for S3 without modification.</li>
+                        <li><strong>On-premise performance</strong> — Local storage means low-latency access without internet dependency.</li>
+                        <li><strong>No hardware management</strong> — OVHcloud manages the infrastructure within your rack.</li>
+                        <li><strong>Compliance ready</strong> — Meet strict data residency requirements since data physically remains on-site.</li>
+                        <li><strong>Scalable capacity</strong> — Storage grows with your needs within the rack's physical capacity.</li>
                     </ul>
                 </section>
 
                 <section aria-labelledby="summary-heading">
                     <h2 id="summary-heading">Key Takeaways</h2>
                     <ul>
-                        <li><strong>CloudStore</strong> is OVHcloud's managed storage service — a secure, expandable warehouse for your digital assets.</li>
-                        <li>It handles documents, media, application data, and backups without requiring you to manage physical hardware.</li>
-                        <li>Data is automatically protected through redundancy and stored in European data centres.</li>
-                        <li>You pay only for the storage you actually use, and can scale up or down as your business needs change.</li>
+                        <li><strong>CloudStore</strong> is an S3-compatible object storage service running locally on your OPCP rack.</li>
+                        <li>It handles documents, media, application data, and backups using the standard S3 API.</li>
+                        <li>Data never leaves your premises — full sovereignty and compliance by design.</li>
+                        <li>Key limitations: MonoAZ, Standard class only, SSE-C encryption (no at-rest by default), no user policies.</li>
+                        <li>Compatible with AWS SDKs and any S3-compatible tooling.</li>
                     </ul>
                 </section>
 

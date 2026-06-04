@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Apprenez les pratiques de gestion des données dans CloudStore : cycle de vie des données, organisation, politiques de rétention et bonnes pratiques pour les audiences non techniques.">
+    <meta name="description" content="Apprenez les pratiques de gestion des données sur OPCP : cycle de vie, organisation, politiques de rétention, versionnement S3 et création d'images personnalisées avec diskimage-builder.">
   <title>Gestion des Données - Solutions de Stockage - OPCP Skillhub</title>
   <link rel="stylesheet" href="../../assets/css/style.css">
 </head>
@@ -124,7 +124,7 @@
 
                     <ul>
                         <li><strong class="term">Objet</strong> — une unité de données stockée dans CloudStore (un fichier, une image, un document). Pensez-y comme un livre individuel dans une bibliothèque.</li>
-                        <li><strong class="term">Conteneur</strong> (ou bucket) — un regroupement logique d'objets, comme une étagère dans la bibliothèque qui rassemble les livres d'un même sujet.</li>
+                        <li><strong class="term">Bucket</strong> (ou conteneur) — un regroupement logique d'objets, comme une étagère dans la bibliothèque qui rassemble les livres d'un même sujet.</li>
                         <li><strong class="term">Métadonnées</strong> — des informations décrivant vos données (date de création, taille, type). C'est l'équivalent de la fiche descriptive collée sur chaque livre.</li>
                         <li><strong class="term">Politique de rétention</strong> — une règle définissant combien de temps les données doivent être conservées avant suppression. Comme la durée légale de conservation des factures.</li>
                         <li><strong class="term">Versionnement</strong> — la conservation automatique des versions précédentes d'un fichier à chaque modification. Comme garder tous les brouillons d'un contrat.</li>
@@ -136,7 +136,7 @@
                     <p>Une bonne organisation facilite la recherche, le partage et la protection des données. Voici les bonnes pratiques :</p>
 
                     <h3>Structure par projet ou département</h3>
-                    <p>Créez des conteneurs séparés pour chaque projet ou département. C'est comme avoir des armoires distinctes pour la comptabilité, le marketing et les ressources humaines — chacun sait où chercher.</p>
+                    <p>Créez des buckets séparés pour chaque projet ou département. C'est comme avoir des armoires distinctes pour la comptabilité, le marketing et les ressources humaines — chacun sait où chercher.</p>
 
                     <h3>Nommage cohérent</h3>
                     <p>Utilisez des conventions de nommage claires et uniformes. Par exemple : <code>2024-01-rapport-ventes-Q1.pdf</code> est bien plus facile à retrouver que <code>doc_final_v2_FINAL.pdf</code>.</p>
@@ -164,22 +164,52 @@
                     <h2 id="versioning-heading">Versionnement des fichiers</h2>
                     <p>Le <strong class="term">versionnement</strong> conserve automatiquement un historique de chaque modification apportée à un fichier. Si quelqu'un écrase accidentellement un document important, vous pouvez revenir à une version antérieure en quelques clics.</p>
 
+                    <p>Sur OPCP, le versionnement est disponible via l'<strong>API S3</strong> dans CloudStore. Vous pouvez activer le versionnement sur un bucket et le système conservera chaque version de chaque objet, vous permettant de récupérer ou restaurer n'importe quel état antérieur.</p>
+
                     <h3>Quand utiliser le versionnement</h3>
                     <ul>
                         <li>Documents collaboratifs modifiés par plusieurs personnes</li>
                         <li>Fichiers de configuration critiques</li>
                         <li>Données contractuelles nécessitant un historique d'audit</li>
+                        <li>Tout objet où l'écrasement ou la suppression accidentelle doit être récupérable</li>
                     </ul>
+                </section>
+
+                <section aria-labelledby="custom-images-heading">
+                    <h2 id="custom-images-heading">Gestion des images personnalisées</h2>
+                    <p>Sur OPCP, vous pouvez créer et gérer des <strong class="term">images personnalisées</strong> — des images OS pré-configurées utilisées pour provisionner les nœuds bare metal. Cela permet de standardiser les déploiements et d'inclure votre stack logicielle spécifique.</p>
+
+                    <h3>Qu'est-ce qu'une image personnalisée ?</h3>
+                    <p>Les images personnalisées sont des images de systèmes d'exploitation adaptées pour vos nœuds bare metal sur OPCP. Elles contiennent l'OS, les drivers et tout logiciel pré-installé requis par vos charges de travail. Une fois construites, elles peuvent être déployées sur n'importe quel nœud compatible de votre plateforme.</p>
+
+                    <h3>Construction des images</h3>
+                    <p>Les images sont construites avec <strong class="term">diskimage-builder</strong> (DiB), un outil OpenStack conçu pour créer des images OS :</p>
+                    <ul>
+                        <li><strong>Formats de sortie :</strong> <code>qcow2</code> ou <code>raw</code></li>
+                        <li><strong>Partitionnement :</strong> GPT + EFI requis</li>
+                        <li><strong>Drivers :</strong> Les images doivent inclure des <strong>drivers bare metal</strong> (pas les drivers virtio qemu/kvm, puisque OPCP fonctionne sur du matériel physique)</li>
+                        <li><strong>Personnalisation :</strong> Des playbooks Ansible peuvent être utilisés pendant le processus de build pour installer des paquets, configurer des services et appliquer le durcissement de sécurité</li>
+                    </ul>
+
+                    <h3>Import des images</h3>
+                    <p>Une fois construites, les images sont importées dans la plateforme OPCP via la CLI OpenStack :</p>
+                    <pre><code>openstack image create --disk-format qcow2 --container-format bare --file mon-image.qcow2 "Mon Image Personnalisée"</code></pre>
+                    <p>Les images sont stockées localement sur la plateforme OPCP et disponibles pour le déploiement sur vos nœuds bare metal.</p>
+
+                    <div class="info-box">
+                        <p><strong>Documentation officielle :</strong> Pour un guide étape par étape de création d'images personnalisées pour OPCP, consultez le <a href="https://docs.ovhcloud.com/fr/guides/hosted-private-cloud/opcp/how-to-create-image" target="_blank" rel="noopener">guide de création d'images personnalisées</a>.</p>
+                    </div>
                 </section>
 
                 <section aria-labelledby="summary-heading">
                     <h2 id="summary-heading">Points clés à retenir</h2>
                     <ul>
                         <li>Les données suivent un <strong>cycle de vie</strong> : création, stockage actif, archivage, rétention et suppression.</li>
-                        <li>Une bonne <strong>organisation</strong> (conteneurs, nommage, tags) facilite la gestion au quotidien.</li>
+                        <li>Une bonne <strong>organisation</strong> (buckets, nommage, tags) facilite la gestion au quotidien.</li>
                         <li>Les <strong>politiques de rétention</strong> réduisent les coûts et assurent la conformité réglementaire.</li>
-                        <li>Le <strong>versionnement</strong> protège contre les modifications accidentelles en conservant l'historique des fichiers.</li>
-                        <li>CloudStore fournit les outils pour gérer chaque étape du cycle de vie sans expertise technique.</li>
+                        <li>Le <strong>versionnement</strong> est disponible via l'API S3 dans CloudStore, protégeant contre les modifications accidentelles.</li>
+                        <li>Les <strong>images personnalisées</strong> sont construites avec diskimage-builder (qcow2/raw, GPT+EFI, drivers bare metal) et importées via <code>openstack image create</code>.</li>
+                        <li>Toutes les données et images sont stockées localement sur la plateforme OPCP.</li>
                     </ul>
                 </section>
 

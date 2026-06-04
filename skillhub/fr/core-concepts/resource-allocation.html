@@ -34,174 +34,153 @@
                 </header>
 
                 <section aria-labelledby="overview-heading">
-                    <h2 id="overview-heading">Qu'est-ce que l'Allocation des Ressources ?</h2>
-                    <p>Lorsque vous configurez un <span class="glossary-term" data-term="node">nœud</span> dans OPCP, vous devez décider quelle puissance de calcul lui attribuer. C'est ce qu'on appelle l'<span class="glossary-term" data-term="resource-allocation">allocation des ressources</span> — le processus de répartition des ressources disponibles entre vos charges de travail.</p>
+                    <h2 id="overview-heading">Gestion des Ressources dans OPCP</h2>
+                    <p>L'allocation des ressources dans OPCP est gérée via les <strong>services OpenStack</strong>, chacun responsable d'un domaine de ressources spécifique. Puisque OPCP est une plateforme bare metal, les ressources correspondent au matériel physique plutôt qu'à des tranches virtuelles.</p>
 
-                    <p>Pensez-y comme <strong>répartir un budget de département</strong>. Vous avez un montant total à disposition, et vous devez le distribuer judicieusement entre les salaires, l'équipement, les déplacements et les fournitures. Donnez trop à un poste et les autres en souffrent. Donnez trop peu partout et rien ne fonctionne bien.</p>
+                    <p>La plateforme fournit une interface unifiée (tableau de bord Horizon + API) pour gérer les ressources de calcul, réseau et stockage de votre baie sur site.</p>
+
+                    <p class="info-box"><strong>Référence :</strong> <a href="https://docs.ovhcloud.com/fr/hosted-private-cloud/opcp/getting-started/" target="_blank" rel="noopener">Documentation OVHcloud OPCP — Premiers pas</a></p>
                 </section>
 
-                <section aria-labelledby="diagram-heading">
-                    <h2 id="diagram-heading">Les Trois Ressources Fondamentales</h2>
+                <section aria-labelledby="services-heading">
+                    <h2 id="services-heading">Services OpenStack pour la Gestion des Ressources</h2>
 
-                    <figure class="diagram-container" role="img" aria-label="Diagramme montrant les trois ressources fondamentales : le CPU représenté comme puissance de traitement, la RAM représentée comme mémoire de travail, et le Stockage représenté comme espace de classement, avec un diagramme circulaire montrant leur répartition">
-                        <svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg" class="resource-diagram" aria-hidden="true">
-                            <!-- Titre -->
-                            <text x="400" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#000E9C">Répartition des Ressources — Comme Diviser un Budget</text>
-
-                            <!-- Diagramme circulaire (centre) -->
-                            <circle cx="400" cy="200" r="100" fill="none" stroke="#E8EAFF" stroke-width="40"/>
-                            <!-- Part CPU -->
-                            <circle cx="400" cy="200" r="100" fill="none" stroke="#000E9C" stroke-width="40" stroke-dasharray="105 315" stroke-dashoffset="0" transform="rotate(-90 400 200)"/>
-                            <!-- Part RAM -->
-                            <circle cx="400" cy="200" r="100" fill="none" stroke="#4949FF" stroke-width="40" stroke-dasharray="125 295" stroke-dashoffset="-105" transform="rotate(-90 400 200)"/>
-                            <!-- Part Stockage -->
-                            <circle cx="400" cy="200" r="100" fill="none" stroke="#7B7BFF" stroke-width="40" stroke-dasharray="90 330" stroke-dashoffset="-230" transform="rotate(-90 400 200)"/>
-
-                            <!-- Étiquette centrale -->
-                            <circle cx="400" cy="200" r="60" fill="#fff"/>
-                            <text x="400" y="195" text-anchor="middle" font-size="13" font-weight="bold" fill="#333">Vos</text>
-                            <text x="400" y="215" text-anchor="middle" font-size="13" font-weight="bold" fill="#333">Ressources</text>
-
-                            <!-- Boîte CPU (gauche) -->
-                            <rect x="40" y="100" width="180" height="130" rx="10" fill="#F0F1FF" stroke="#000E9C" stroke-width="2"/>
-                            <text x="130" y="130" text-anchor="middle" font-size="14" font-weight="bold" fill="#000E9C">🧠 CPU</text>
-                            <text x="130" y="155" text-anchor="middle" font-size="11" fill="#333">Puissance de Traitement</text>
-                            <line x1="60" y1="168" x2="200" y2="168" stroke="#E8EAFF" stroke-width="1"/>
-                            <text x="130" y="188" text-anchor="middle" font-size="11" fill="#555">Comme : Le nombre</text>
-                            <text x="130" y="205" text-anchor="middle" font-size="11" fill="#555">d'employés travaillant</text>
-                            <text x="130" y="222" text-anchor="middle" font-size="11" fill="#555">simultanément</text>
-
-                            <!-- Boîte RAM (droite-haut) -->
-                            <rect x="580" y="70" width="180" height="130" rx="10" fill="#F0F1FF" stroke="#4949FF" stroke-width="2"/>
-                            <text x="670" y="100" text-anchor="middle" font-size="14" font-weight="bold" fill="#4949FF">💾 RAM</text>
-                            <text x="670" y="125" text-anchor="middle" font-size="11" fill="#333">Mémoire de Travail</text>
-                            <line x1="600" y1="138" x2="740" y2="138" stroke="#E8EAFF" stroke-width="1"/>
-                            <text x="670" y="158" text-anchor="middle" font-size="11" fill="#555">Comme : La taille de</text>
-                            <text x="670" y="175" text-anchor="middle" font-size="11" fill="#555">votre bureau — combien</text>
-                            <text x="670" y="192" text-anchor="middle" font-size="11" fill="#555">de documents ouverts</text>
-
-                            <!-- Boîte Stockage (droite-bas) -->
-                            <rect x="580" y="230" width="180" height="130" rx="10" fill="#F0F1FF" stroke="#7B7BFF" stroke-width="2"/>
-                            <text x="670" y="260" text-anchor="middle" font-size="14" font-weight="bold" fill="#7B7BFF">📁 Stockage</text>
-                            <text x="670" y="285" text-anchor="middle" font-size="11" fill="#333">Espace de Classement</text>
-                            <line x1="600" y1="298" x2="740" y2="298" stroke="#E8EAFF" stroke-width="1"/>
-                            <text x="670" y="318" text-anchor="middle" font-size="11" fill="#555">Comme : La taille de</text>
-                            <text x="670" y="335" text-anchor="middle" font-size="11" fill="#555">votre armoire — combien</text>
-                            <text x="670" y="352" text-anchor="middle" font-size="11" fill="#555">vous pouvez conserver</text>
-
-                            <!-- Légende -->
-                            <rect x="100" y="350" width="16" height="16" fill="#000E9C" rx="3"/>
-                            <text x="122" y="363" font-size="12" fill="#333">CPU</text>
-                            <rect x="200" y="350" width="16" height="16" fill="#4949FF" rx="3"/>
-                            <text x="222" y="363" font-size="12" fill="#333">RAM</text>
-                            <rect x="300" y="350" width="16" height="16" fill="#7B7BFF" rx="3"/>
-                            <text x="322" y="363" font-size="12" fill="#333">Stockage</text>
-                        </svg>
-                        <figcaption>Les trois ressources fondamentales dans OPCP — CPU, RAM et Stockage — réparties comme un budget entre vos charges de travail.</figcaption>
-                    </figure>
-                </section>
-
-                <section aria-labelledby="cpu-heading">
-                    <h2 id="cpu-heading">CPU — Votre Puissance de Traitement</h2>
-                    <h3>L'analogie du budget : Le nombre d'employés</h3>
-                    <p>Le <span class="glossary-term" data-term="cpu">CPU</span> (Central Processing Unit, ou processeur) est le cerveau de votre nœud. Il détermine combien de tâches peuvent être traitées en même temps. Pensez-y comme le nombre d'employés dans un département — plus d'employés signifie plus de travail accompli simultanément.</p>
-
-                    <h3>Ce que cela signifie pour les clients</h3>
-                    <ul>
-                        <li><strong>Plus de CPU</strong> = gère plus d'utilisateurs et de tâches simultanés</li>
-                        <li><strong>Moins de CPU</strong> = suffisant pour des applications simples à faible trafic</li>
-                        <li>Les applications qui font des calculs intensifs (rapports, analyse de données) nécessitent plus de CPU</li>
-                        <li>Les sites web simples ou le stockage de fichiers nécessitent moins de CPU</li>
-                    </ul>
-                </section>
-
-                <section aria-labelledby="ram-heading">
-                    <h2 id="ram-heading">RAM — Votre Mémoire de Travail</h2>
-                    <h3>L'analogie du budget : La taille du bureau</h3>
-                    <p>La <span class="glossary-term" data-term="ram">RAM</span> (Random Access Memory, ou mémoire vive) est l'espace de travail à court terme. C'est comme la taille de votre bureau — un bureau plus grand vous permet d'étaler plus de documents et de travailler sur plusieurs choses sans constamment aller à l'armoire de classement.</p>
-
-                    <h3>Ce que cela signifie pour les clients</h3>
-                    <ul>
-                        <li><strong>Plus de RAM</strong> = les applications fonctionnent plus vite, gèrent plus de données à la fois</li>
-                        <li><strong>Moins de RAM</strong> = les applications peuvent ralentir sous forte charge</li>
-                        <li>Les bases de données et outils analytiques bénéficient grandement de plus de RAM</li>
-                        <li>Les pages web simples et services basiques nécessitent moins de RAM</li>
-                    </ul>
-                </section>
-
-                <section aria-labelledby="storage-heading">
-                    <h2 id="storage-heading">Stockage — Votre Espace de Classement</h2>
-                    <h3>L'analogie du budget : La taille de l'armoire</h3>
-                    <p>Le <span class="glossary-term" data-term="storage">stockage</span> est l'endroit où toutes vos données résident de manière permanente. C'est comme une armoire de classement — plus elle est grande, plus vous pouvez conserver de documents, photos, registres et fichiers. Contrairement à la RAM (votre bureau), le stockage conserve les données même lorsque le nœud est éteint.</p>
-
-                    <h3>Ce que cela signifie pour les clients</h3>
-                    <ul>
-                        <li><strong>Plus de stockage</strong> = de la place pour plus de données, fichiers, sauvegardes et historique</li>
-                        <li><strong>Moins de stockage</strong> = adapté aux applications avec peu de données</li>
-                        <li>Les entreprises avec beaucoup de documents, images ou registres ont besoin de plus de stockage</li>
-                        <li>Le stockage peut souvent être étendu ultérieurement sans perturber les opérations</li>
-                    </ul>
-                </section>
-
-                <section aria-labelledby="balance-heading">
-                    <h2 id="balance-heading">Équilibrer les Ressources — Trouver le Bon Dosage</h2>
-                    <p>Comme pour un budget, la clé est l'équilibre. Voici des scénarios courants :</p>
-
-                    <div class="scrollable-container">
-                        <table class="resource-table" aria-label="Exemples d'allocation de ressources par type de charge de travail">
+                    <div class="table-responsive">
+                        <table>
                             <thead>
                                 <tr>
-                                    <th scope="col">Type de Charge</th>
-                                    <th scope="col">Priorité CPU</th>
-                                    <th scope="col">Priorité RAM</th>
-                                    <th scope="col">Priorité Stockage</th>
+                                    <th scope="col">Type de Ressource</th>
+                                    <th scope="col">Service OpenStack</th>
+                                    <th scope="col">Ce qu'il Gère</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>Site web d'entreprise</td>
-                                    <td>Faible</td>
-                                    <td>Faible</td>
-                                    <td>Faible</td>
+                                    <td><strong>Compute</strong></td>
+                                    <td>Nova + Ironic</td>
+                                    <td>Provisionnement de serveurs bare metal, cycle de vie des instances, placement</td>
                                 </tr>
                                 <tr>
-                                    <td>Plateforme e-commerce</td>
-                                    <td>Élevée</td>
-                                    <td>Élevée</td>
-                                    <td>Moyenne</td>
+                                    <td><strong>Réseau</strong></td>
+                                    <td>Neutron</td>
+                                    <td>Réseaux, sous-réseaux, ports, groupes de sécurité, IP flottantes, trunks</td>
                                 </tr>
                                 <tr>
-                                    <td>Analyse de données</td>
-                                    <td>Élevée</td>
-                                    <td>Très élevée</td>
-                                    <td>Élevée</td>
+                                    <td><strong>Stockage Bloc</strong></td>
+                                    <td>Ceph RBD</td>
+                                    <td>Volumes blocs persistants attachés aux instances</td>
                                 </tr>
                                 <tr>
-                                    <td>Service de stockage de fichiers</td>
-                                    <td>Faible</td>
-                                    <td>Faible</td>
-                                    <td>Très élevée</td>
+                                    <td><strong>Stockage Objet</strong></td>
+                                    <td>S3-compatible (CloudStore)</td>
+                                    <td>Données non structurées : sauvegardes, logs, fichiers médias</td>
                                 </tr>
                                 <tr>
-                                    <td>Serveur de messagerie</td>
-                                    <td>Moyenne</td>
-                                    <td>Moyenne</td>
-                                    <td>Élevée</td>
+                                    <td><strong>Image</strong></td>
+                                    <td>Glance</td>
+                                    <td>Images OS pour le déploiement bare metal</td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                 </section>
 
+                <section aria-labelledby="compute-heading">
+                    <h2 id="compute-heading">Ressources Compute (Nova + Ironic)</h2>
+                    <p>Le compute dans OPCP signifie des serveurs bare metal. Les ressources sont allouées en déployant des instances sur les nœuds disponibles :</p>
+                    <ul>
+                        <li><strong>Modèle d'allocation</strong> — Une instance par nœud physique (pas de surallocation puisque c'est du bare metal)</li>
+                        <li><strong>Placement</strong> — Nova place les instances sur les nœuds correspondant aux traits du flavor demandé</li>
+                        <li><strong>Quotas</strong> — Visibles dans Projet &gt; Vue d'ensemble : instances max, vCPUs et RAM</li>
+                    </ul>
+                    <pre><code># Vérifier l'utilisation actuelle des quotas compute
+openstack quota show
+
+# Lister les nœuds disponibles prêts pour le déploiement
+openstack baremetal node list --provision-state available</code></pre>
+                </section>
+
+                <section aria-labelledby="network-heading">
+                    <h2 id="network-heading">Ressources Réseau (Neutron)</h2>
+                    <p>Neutron gère tout le réseau dans OPCP, et les switchs physiques sont auto-configurés depuis l'état OpenStack :</p>
+                    <ul>
+                        <li><strong>Réseaux et sous-réseaux</strong> — Réseaux logiques mappés sur des VLANs physiques</li>
+                        <li><strong>Ports</strong> — Points d'attachement réseau pour les instances</li>
+                        <li><strong>Groupes de sécurité</strong> — Règles de pare-feu appliquées au niveau du port</li>
+                        <li><strong>IP flottantes</strong> — Adresses IP accessibles depuis l'extérieur</li>
+                        <li><strong>Trunks</strong> — Connectivité multi-VLAN pour un seul port</li>
+                    </ul>
+                    <pre><code># Lister les réseaux
+openstack network list
+
+# Créer un réseau
+openstack network create mon-reseau
+
+# Créer un sous-réseau
+openstack subnet create --network mon-reseau --subnet-range 192.168.1.0/24 mon-sous-reseau</code></pre>
+                </section>
+
+                <section aria-labelledby="storage-heading">
+                    <h2 id="storage-heading">Ressources de Stockage</h2>
+
+                    <h3>Stockage Bloc (Ceph RBD)</h3>
+                    <p>Volumes blocs persistants pour les instances, alimentés par Ceph :</p>
+                    <ul>
+                        <li>Les volumes peuvent être attachés/détachés des instances</li>
+                        <li>Les données persistent indépendamment du cycle de vie de l'instance</li>
+                        <li>Répliquées dans le cluster Ceph pour la durabilité</li>
+                    </ul>
+
+                    <h3>Stockage Objet (S3-compatible CloudStore)</h3>
+                    <p>Stockage compatible S3 pour les données non structurées :</p>
+                    <ul>
+                        <li><strong>Endpoint de sauvegarde</strong> (TCP/443) — Stockage des sauvegardes d'infrastructure</li>
+                        <li><strong>Endpoint de métriques</strong> (TCP/443) — Stockage long terme des métriques</li>
+                        <li>Accessible via les API et outils S3 standards</li>
+                    </ul>
+                </section>
+
+                <section aria-labelledby="quotas-heading">
+                    <h2 id="quotas-heading">Gestion des Quotas</h2>
+                    <p>Les quotas dans OPCP définissent les ressources maximales disponibles pour un projet. Consultez-les dans <strong>Projet &gt; Vue d'ensemble</strong> :</p>
+
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th scope="col">Catégorie</th>
+                                    <th scope="col">Éléments de Quota</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Compute</strong></td>
+                                    <td>Instances, vCPUs, RAM</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Réseau</strong></td>
+                                    <td>IP flottantes, Groupes de sécurité, Réseaux, Ports</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Stockage</strong></td>
+                                    <td>Volumes, stockage total (Go), snapshots</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <p>Puisque OPCP est sur site, les quotas représentent votre capacité matérielle physique. Contactez votre représentant OVHcloud pour discuter des ajustements de quotas.</p>
+                </section>
+
                 <section aria-labelledby="summary-heading">
                     <h2 id="summary-heading">Points Clés à Retenir</h2>
                     <ul>
-                        <li>L'allocation des ressources est comme répartir un budget — distribuez judicieusement selon les besoins</li>
-                        <li>CPU = puissance de traitement (nombre d'employés qui travaillent)</li>
-                        <li>RAM = mémoire de travail (taille de votre bureau)</li>
-                        <li>Stockage = espace de classement (taille de votre armoire)</li>
-                        <li>Différentes charges de travail nécessitent différents équilibres de ressources</li>
-                        <li>Les ressources peuvent être ajustées au fil du temps à mesure que les besoins évoluent</li>
+                        <li>L'allocation des ressources dans OPCP est gérée via les services OpenStack : Nova/Ironic (compute), Neutron (réseau), Ceph RBD (stockage bloc), CloudStore (stockage objet)</li>
+                        <li>L'allocation compute est bare metal — une instance par nœud physique, pas de surallocation</li>
+                        <li>La configuration réseau dans OpenStack pilote automatiquement la configuration des switchs physiques</li>
+                        <li>Le stockage bloc est fourni par Ceph RBD avec réplication pour la durabilité</li>
+                        <li>Le stockage objet compatible S3 est disponible pour les sauvegardes et les métriques</li>
+                        <li>Les quotas représentent la capacité physique et sont visibles dans Projet &gt; Vue d'ensemble</li>
                     </ul>
                 </section>
 

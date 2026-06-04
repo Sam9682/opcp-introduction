@@ -34,140 +34,98 @@
                 </header>
 
                 <section aria-labelledby="overview-heading">
-                    <h2 id="overview-heading">Choosing the Right Node</h2>
-                    <p>Not every job requires the same tool. You wouldn't use a delivery truck to commute to work, and you wouldn't try to move furniture in a compact car. The same principle applies to <span class="glossary-term" data-term="node">nodes</span> in OPCP — different workloads need different types of computing power.</p>
+                    <h2 id="overview-heading">Understanding Nodes in OPCP</h2>
+                    <p>In OPCP, a <span class="glossary-term" data-term="node">node</span> represents a <strong>physical server (bare metal)</strong> managed via <strong>OpenStack Ironic</strong>. Unlike virtual machines in traditional cloud environments, OPCP nodes are dedicated physical hardware — the full power of the server is available to your workloads without virtualisation overhead.</p>
 
-                    <p>Think of node types like <strong>choosing a vehicle</strong>. Each type is designed for specific tasks, and picking the right one means better performance and better value for your customer.</p>
+                    <p>Different hardware configurations (or "profiles") are available in the rack. When a server boots, the OPCP control plane <strong>automatically detects</strong> its hardware properties — CPU model, RAM capacity, storage drives, network interfaces — and registers these as traits in the Ironic inventory.</p>
+
+                    <p class="info-box"><strong>Key concept:</strong> A node is the physical server configuration. An instance is the OS running on that node. They are managed separately in OPCP.</p>
                 </section>
 
-                <section aria-labelledby="diagram-heading">
-                    <h2 id="diagram-heading">Node Types Comparison</h2>
-
-                    <figure class="diagram-container" role="img" aria-label="Diagram comparing three node types: Standard nodes shown as a compact car for everyday tasks, Performance nodes shown as an SUV for demanding workloads, and High-Memory nodes shown as a truck for heavy data processing">
-                        <svg viewBox="0 0 800 350" xmlns="http://www.w3.org/2000/svg" class="node-types-diagram" aria-hidden="true">
-                            <!-- Standard Node -->
-                            <rect x="30" y="30" width="220" height="290" rx="12" fill="#F0F1FF" stroke="#000E9C" stroke-width="2"/>
-                            <rect x="30" y="30" width="220" height="50" rx="12" fill="#000E9C"/>
-                            <rect x="30" y="68" width="220" height="12" fill="#000E9C"/>
-                            <text x="140" y="62" text-anchor="middle" font-size="16" font-weight="bold" fill="#fff">Standard</text>
-
-                            <!-- Car icon simplified -->
-                            <text x="140" y="120" text-anchor="middle" font-size="36">🚗</text>
-                            <text x="140" y="150" text-anchor="middle" font-size="12" fill="#333" font-style="italic">"The Compact Car"</text>
-
-                            <text x="50" y="180" font-size="12" fill="#333">✓ Everyday workloads</text>
-                            <text x="50" y="200" font-size="12" fill="#333">✓ Web applications</text>
-                            <text x="50" y="220" font-size="12" fill="#333">✓ Small databases</text>
-                            <text x="50" y="240" font-size="12" fill="#333">✓ Development environments</text>
-                            <text x="50" y="270" font-size="11" fill="#666">Best for: Teams starting out</text>
-                            <text x="50" y="290" font-size="11" fill="#666">or running light applications</text>
-
-                            <!-- Performance Node -->
-                            <rect x="290" y="30" width="220" height="290" rx="12" fill="#F0F1FF" stroke="#4949FF" stroke-width="2"/>
-                            <rect x="290" y="30" width="220" height="50" rx="12" fill="#4949FF"/>
-                            <rect x="290" y="68" width="220" height="12" fill="#4949FF"/>
-                            <text x="400" y="62" text-anchor="middle" font-size="16" font-weight="bold" fill="#fff">Performance</text>
-
-                            <!-- SUV icon -->
-                            <text x="400" y="120" text-anchor="middle" font-size="36">🚙</text>
-                            <text x="400" y="150" text-anchor="middle" font-size="12" fill="#333" font-style="italic">"The SUV"</text>
-
-                            <text x="310" y="180" font-size="12" fill="#333">✓ Demanding applications</text>
-                            <text x="310" y="200" font-size="12" fill="#333">✓ Medium databases</text>
-                            <text x="310" y="220" font-size="12" fill="#333">✓ Business-critical services</text>
-                            <text x="310" y="240" font-size="12" fill="#333">✓ Multi-user platforms</text>
-                            <text x="310" y="270" font-size="11" fill="#666">Best for: Growing businesses</text>
-                            <text x="310" y="290" font-size="11" fill="#666">with production workloads</text>
-
-                            <!-- High-Memory Node -->
-                            <rect x="550" y="30" width="220" height="290" rx="12" fill="#F0F1FF" stroke="#000E9C" stroke-width="2"/>
-                            <rect x="550" y="30" width="220" height="50" rx="12" fill="#000E9C"/>
-                            <rect x="550" y="68" width="220" height="12" fill="#000E9C"/>
-                            <text x="660" y="62" text-anchor="middle" font-size="16" font-weight="bold" fill="#fff">High-Memory</text>
-
-                            <!-- Truck icon -->
-                            <text x="660" y="120" text-anchor="middle" font-size="36">🚛</text>
-                            <text x="660" y="150" text-anchor="middle" font-size="12" fill="#333" font-style="italic">"The Truck"</text>
-
-                            <text x="570" y="180" font-size="12" fill="#333">✓ Large data processing</text>
-                            <text x="570" y="200" font-size="12" fill="#333">✓ In-memory databases</text>
-                            <text x="570" y="220" font-size="12" fill="#333">✓ Analytics and reporting</text>
-                            <text x="570" y="240" font-size="12" fill="#333">✓ High-traffic applications</text>
-                            <text x="570" y="270" font-size="11" fill="#666">Best for: Enterprises with</text>
-                            <text x="570" y="290" font-size="11" fill="#666">heavy data requirements</text>
-                        </svg>
-                        <figcaption>OPCP node types compared to vehicles — each designed for different workload sizes and demands.</figcaption>
-                    </figure>
-                </section>
-
-                <section aria-labelledby="standard-heading">
-                    <h2 id="standard-heading">Standard Nodes — The Compact Car</h2>
-                    <p>Just like a compact car is perfect for daily commuting and errands, <strong>Standard nodes</strong> are ideal for everyday computing tasks that don't require exceptional power.</p>
-
-                    <h3>Best Suited For</h3>
+                <section aria-labelledby="discovery-heading">
+                    <h2 id="discovery-heading">Automatic Hardware Discovery</h2>
+                    <p>When a physical server boots in the OPCP rack, the platform automatically discovers:</p>
                     <ul>
-                        <li><strong>Web applications</strong> — Company websites, internal portals, and lightweight web services</li>
-                        <li><strong>Development and testing</strong> — Building and testing software before it goes live</li>
-                        <li><strong>Small databases</strong> — Customer lists, product catalogs, and internal records</li>
-                        <li><strong>Email and collaboration tools</strong> — Supporting team communication</li>
+                        <li><strong>CPU</strong> — Model, number of cores, architecture</li>
+                        <li><strong>RAM</strong> — Total capacity, type (DDR4/DDR5), speed</li>
+                        <li><strong>Storage</strong> — Number and type of drives (SSD, NVMe, HDD), capacities</li>
+                        <li><strong>Network</strong> — Interface count, speed (10G, 25G, 100G), capabilities</li>
+                        <li><strong>GPU</strong> — If present, model and VRAM (for compute-accelerated profiles)</li>
+                    </ul>
+                    <p>These properties are registered as <strong>traits</strong> in OpenStack and can be used for scheduling — ensuring workloads are placed on hardware that matches their requirements.</p>
+                </section>
+
+                <section aria-labelledby="profiles-heading">
+                    <h2 id="profiles-heading">Hardware Profiles</h2>
+                    <p>While the specific hardware available depends on what is installed in your rack, OPCP nodes typically fall into these categories:</p>
+
+                    <h3>Compute-Optimised</h3>
+                    <ul>
+                        <li>High core-count CPUs</li>
+                        <li>Balanced RAM-to-CPU ratio</li>
+                        <li>Suited for: application servers, containers, parallel processing</li>
                     </ul>
 
-                    <h3>Customer Conversation Tip</h3>
-                    <p>Recommend Standard nodes when a customer says: "We need to host our company website" or "We want a development environment for our team."</p>
-                </section>
-
-                <section aria-labelledby="performance-heading">
-                    <h2 id="performance-heading">Performance Nodes — The SUV</h2>
-                    <p>An SUV handles rougher terrain and carries more passengers. <strong>Performance nodes</strong> deliver more computing power for applications that need to handle heavier loads or respond faster.</p>
-
-                    <h3>Best Suited For</h3>
+                    <h3>Memory-Optimised</h3>
                     <ul>
-                        <li><strong>Business-critical applications</strong> — ERP systems, CRM platforms, and financial software</li>
-                        <li><strong>Medium-scale databases</strong> — Transaction processing, order management</li>
-                        <li><strong>Multi-user platforms</strong> — Applications serving hundreds of simultaneous users</li>
-                        <li><strong>Containerized workloads</strong> — Running multiple services on a single node</li>
+                        <li>Large RAM capacity</li>
+                        <li>Suited for: in-memory databases, analytics, caching layers</li>
                     </ul>
 
-                    <h3>Customer Conversation Tip</h3>
-                    <p>Recommend Performance nodes when a customer says: "Our application needs to handle peak traffic during business hours" or "We're running our core business software."</p>
-                </section>
-
-                <section aria-labelledby="highmem-heading">
-                    <h2 id="highmem-heading">High-Memory Nodes — The Truck</h2>
-                    <p>A truck is built to carry heavy loads that other vehicles simply can't handle. <strong>High-Memory nodes</strong> provide large amounts of memory for workloads that need to process or hold massive amounts of data at once.</p>
-
-                    <h3>Best Suited For</h3>
+                    <h3>Storage-Optimised</h3>
                     <ul>
-                        <li><strong>Large data processing</strong> — Analyzing millions of records, generating complex reports</li>
-                        <li><strong>In-memory databases</strong> — Applications that keep entire datasets in memory for speed</li>
-                        <li><strong>Analytics platforms</strong> — Business intelligence tools processing large data sets</li>
-                        <li><strong>High-traffic applications</strong> — Services handling thousands of simultaneous connections</li>
+                        <li>Multiple high-capacity drives (NVMe/SSD)</li>
+                        <li>Suited for: data lakes, object storage, database servers</li>
                     </ul>
 
-                    <h3>Customer Conversation Tip</h3>
-                    <p>Recommend High-Memory nodes when a customer says: "We need to run real-time analytics on our entire customer database" or "Our application processes large files in memory."</p>
+                    <h3>GPU-Accelerated</h3>
+                    <ul>
+                        <li>Dedicated GPU cards</li>
+                        <li>Suited for: AI/ML training, rendering, scientific computing</li>
+                    </ul>
+
+                    <p>You can view available hardware profiles through the Horizon dashboard or via CLI:</p>
+                    <pre><code># List all nodes with their properties
+openstack baremetal node list --long
+
+# View traits of a specific node
+openstack baremetal node show $NODE_ID --fields properties</code></pre>
+                </section>
+
+                <section aria-labelledby="flavors-heading">
+                    <h2 id="flavors-heading">Nova Flavors and Scheduling</h2>
+                    <p>In OpenStack, <strong>flavors</strong> define the resource template for instance deployment. In OPCP's bare metal context:</p>
+                    <ul>
+                        <li>Flavors map to specific hardware profiles</li>
+                        <li>When you deploy an instance with a given flavor, Nova schedules it on a node whose traits match</li>
+                        <li>This ensures your workload lands on appropriate hardware</li>
+                    </ul>
+                    <pre><code># List available flavors
+openstack flavor list
+
+# Show flavor details including required traits
+openstack flavor show $FLAVOR_NAME</code></pre>
                 </section>
 
                 <section aria-labelledby="choosing-heading">
-                    <h2 id="choosing-heading">How to Help Customers Choose</h2>
-                    <p>When discussing node types with customers, focus on <strong>what they need to accomplish</strong> rather than technical specifications. Ask questions like:</p>
+                    <h2 id="choosing-heading">Choosing the Right Node Type</h2>
+                    <p>When planning your deployments, consider:</p>
                     <ul>
-                        <li>"How many people will use this application at the same time?"</li>
-                        <li>"How much data does your application work with?"</li>
-                        <li>"Is this for development/testing or for production use?"</li>
-                        <li>"Does your application need to respond very quickly, or is some delay acceptable?"</li>
+                        <li><strong>Workload requirements</strong> — Does it need more CPU, RAM, storage, or GPU?</li>
+                        <li><strong>Performance characteristics</strong> — NVMe storage for I/O-intensive workloads, high-memory for analytics</li>
+                        <li><strong>Availability</strong> — Check which profiles are available (some may already be in Active state)</li>
+                        <li><strong>Scalability</strong> — Plan for future growth by understanding what hardware is in the rack</li>
                     </ul>
-                    <p>Their answers will naturally point toward the right node type. And remember — customers can always start with a Standard node and upgrade later as their needs grow.</p>
                 </section>
 
                 <section aria-labelledby="summary-heading">
                     <h2 id="summary-heading">Key Takeaways</h2>
                     <ul>
-                        <li>Standard nodes are for everyday workloads — like a compact car for daily commuting</li>
-                        <li>Performance nodes handle demanding applications — like an SUV for tougher terrain</li>
-                        <li>High-Memory nodes process large data — like a truck for heavy loads</li>
-                        <li>Focus on customer needs, not technical specs, when recommending a type</li>
-                        <li>Customers can upgrade node types as their business grows</li>
+                        <li>Nodes in OPCP are physical bare metal servers managed by OpenStack Ironic</li>
+                        <li>Hardware properties are automatically discovered when servers boot in the rack</li>
+                        <li>Different hardware profiles (compute, memory, storage, GPU) serve different workloads</li>
+                        <li>Traits and flavors ensure workloads are scheduled on matching hardware</li>
+                        <li>No virtualisation overhead — you get the full dedicated hardware resources</li>
                     </ul>
                 </section>
 

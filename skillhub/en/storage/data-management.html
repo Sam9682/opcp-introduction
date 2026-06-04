@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Learn data management practices in CloudStore: data lifecycle, organisation, retention policies, and best practices for non-technical audiences.">
+    <meta name="description" content="Learn data management practices on OPCP: data lifecycle, organisation, retention policies, S3 versioning, and custom image creation with diskimage-builder.">
   <title>Data Management - Storage Solutions - OPCP Skillhub</title>
   <link rel="stylesheet" href="../../assets/css/style.css">
 </head>
@@ -124,7 +124,7 @@
 
                     <ul>
                         <li><strong class="term">Object</strong> — a unit of data stored in CloudStore (a file, an image, a document). Think of it as an individual book in a library.</li>
-                        <li><strong class="term">Container</strong> (or bucket) — a logical grouping of objects, like a shelf in the library that gathers books on the same subject.</li>
+                        <li><strong class="term">Bucket</strong> (or container) — a logical grouping of objects, like a shelf in the library that gathers books on the same subject.</li>
                         <li><strong class="term">Metadata</strong> — information describing your data (creation date, size, type). It's the equivalent of the catalogue card attached to each book.</li>
                         <li><strong class="term">Retention policy</strong> — a rule defining how long data must be kept before deletion. Like the legal requirement to keep invoices for a certain number of years.</li>
                         <li><strong class="term">Versioning</strong> — the automatic preservation of previous versions of a file each time it's modified. Like keeping all drafts of a contract.</li>
@@ -136,7 +136,7 @@
                     <p>Good organisation makes it easier to find, share, and protect data. Here are the best practices:</p>
 
                     <h3>Structure by project or department</h3>
-                    <p>Create separate containers for each project or department. It's like having distinct cabinets for accounting, marketing, and human resources — everyone knows where to look.</p>
+                    <p>Create separate buckets for each project or department. It's like having distinct cabinets for accounting, marketing, and human resources — everyone knows where to look.</p>
 
                     <h3>Consistent naming</h3>
                     <p>Use clear and uniform naming conventions. For example: <code>2024-01-sales-report-Q1.pdf</code> is much easier to find than <code>doc_final_v2_FINAL.pdf</code>.</p>
@@ -164,22 +164,52 @@
                     <h2 id="versioning-heading">File Versioning</h2>
                     <p><strong class="term">Versioning</strong> automatically keeps a history of every change made to a file. If someone accidentally overwrites an important document, you can revert to a previous version in just a few clicks.</p>
 
+                    <p>On OPCP, versioning is available through the <strong>S3 API</strong> in CloudStore. You can enable versioning on a bucket and the system will preserve every version of every object, allowing you to retrieve or restore any prior state.</p>
+
                     <h3>When to use versioning</h3>
                     <ul>
                         <li>Collaborative documents edited by multiple people</li>
                         <li>Critical configuration files</li>
                         <li>Contractual data requiring an audit trail</li>
+                        <li>Any object where accidental overwrite or deletion must be recoverable</li>
                     </ul>
+                </section>
+
+                <section aria-labelledby="custom-images-heading">
+                    <h2 id="custom-images-heading">Custom Image Management</h2>
+                    <p>On OPCP, you can create and manage <strong class="term">custom images</strong> — pre-configured OS images used to provision bare metal nodes. This allows you to standardise deployments and include your specific software stack.</p>
+
+                    <h3>What are custom images?</h3>
+                    <p>Custom images are operating system images tailored for your bare metal nodes on OPCP. They contain the OS, drivers, and any pre-installed software your workloads require. Once built, they can be deployed to any compatible node on your platform.</p>
+
+                    <h3>Building custom images</h3>
+                    <p>Images are built using <strong class="term">diskimage-builder</strong> (DiB), an OpenStack tool designed for creating OS images:</p>
+                    <ul>
+                        <li><strong>Output formats:</strong> <code>qcow2</code> or <code>raw</code></li>
+                        <li><strong>Partitioning:</strong> GPT + EFI partitioning is required</li>
+                        <li><strong>Drivers:</strong> Images must include <strong>bare metal drivers</strong> (not qemu/kvm virtio drivers, since OPCP runs on physical hardware)</li>
+                        <li><strong>Customisation:</strong> Ansible playbooks can be used during the build process to install packages, configure services, and apply security hardening</li>
+                    </ul>
+
+                    <h3>Importing images</h3>
+                    <p>Once built, images are imported into the OPCP platform using the OpenStack CLI:</p>
+                    <pre><code>openstack image create --disk-format qcow2 --container-format bare --file my-image.qcow2 "My Custom Image"</code></pre>
+                    <p>Images are stored locally on the OPCP platform and available for deployment to your bare metal nodes.</p>
+
+                    <div class="info-box">
+                        <p><strong>Official documentation:</strong> For a step-by-step guide on creating custom images for OPCP, refer to the <a href="https://docs.ovhcloud.com/fr/guides/hosted-private-cloud/opcp/how-to-create-image" target="_blank" rel="noopener">custom image creation guide</a>.</p>
+                    </div>
                 </section>
 
                 <section aria-labelledby="summary-heading">
                     <h2 id="summary-heading">Key Takeaways</h2>
                     <ul>
                         <li>Data follows a <strong>lifecycle</strong>: creation, active storage, archiving, retention, and deletion.</li>
-                        <li>Good <strong>organisation</strong> (containers, naming, tags) makes day-to-day management easier.</li>
+                        <li>Good <strong>organisation</strong> (buckets, naming, tags) makes day-to-day management easier.</li>
                         <li><strong>Retention policies</strong> reduce costs and ensure regulatory compliance.</li>
-                        <li><strong>Versioning</strong> protects against accidental changes by preserving file history.</li>
-                        <li>CloudStore provides the tools to manage every stage of the lifecycle without technical expertise.</li>
+                        <li><strong>Versioning</strong> is available via the S3 API in CloudStore, protecting against accidental changes.</li>
+                        <li><strong>Custom images</strong> are built with diskimage-builder (qcow2/raw, GPT+EFI, bare metal drivers) and imported via <code>openstack image create</code>.</li>
+                        <li>All data and images are stored locally on the OPCP platform.</li>
                     </ul>
                 </section>
 

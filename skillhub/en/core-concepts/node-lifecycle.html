@@ -35,137 +35,134 @@
 
                 <section aria-labelledby="overview-heading">
                     <h2 id="overview-heading">Understanding the Node Lifecycle</h2>
-                    <p>Every <span class="glossary-term" data-term="node">node</span> in OPCP goes through a series of stages during its existence — from the moment you request it to the moment it is retired. Understanding these stages helps you plan projects, set expectations with customers, and anticipate what happens at each step.</p>
+                    <p>In OPCP, a <span class="glossary-term" data-term="node">node</span> represents the configuration of a physical server (bare metal) in the OPCP rack, managed by <strong>OpenStack Ironic</strong>. Nodes are different from <em>instances</em> — an instance represents the operating system deployed on a node.</p>
 
-                    <p>Think of it like <strong>renting and furnishing an office space</strong>. You don't just walk in and start working — there's a process of signing the lease, setting up furniture, using the space daily, and eventually moving out when the lease ends.</p>
+                    <p>Node discovery is <strong>automatic</strong>: when a physical server boots in the rack, the OPCP control plane auto-discovers its hardware properties and traits. Understanding the node states helps you manage your bare metal infrastructure effectively.</p>
+
+                    <p class="info-box"><strong>Reference:</strong> <a href="https://docs.ovhcloud.com/en/hosted-private-cloud/opcp/node-lifecycle/" target="_blank" rel="noopener">OVHcloud OPCP Node Lifecycle Documentation</a></p>
                 </section>
 
                 <section aria-labelledby="diagram-heading">
-                    <h2 id="diagram-heading">Lifecycle Stages at a Glance</h2>
+                    <h2 id="diagram-heading">Lifecycle States at a Glance</h2>
 
-                    <figure class="diagram-container" role="img" aria-label="Node lifecycle diagram showing four stages: Provisioning, Configuration, Operation, and Decommissioning, connected by arrows in sequence">
-                        <svg viewBox="0 0 800 220" xmlns="http://www.w3.org/2000/svg" class="lifecycle-diagram" aria-hidden="true">
-                            <!-- Stage 1: Provisioning -->
-                            <rect x="20" y="60" width="160" height="100" rx="12" fill="#E8EAFF" stroke="#000E9C" stroke-width="2"/>
-                            <text x="100" y="95" text-anchor="middle" font-size="14" font-weight="bold" fill="#000E9C">Provisioning</text>
-                            <text x="100" y="115" text-anchor="middle" font-size="11" fill="#333">Sign the lease</text>
-                            <text x="100" y="135" text-anchor="middle" font-size="11" fill="#333">Get the keys</text>
-
-                            <!-- Arrow 1 -->
-                            <polygon points="190,110 210,100 210,120" fill="#4949FF"/>
-                            <line x1="180" y1="110" x2="210" y2="110" stroke="#4949FF" stroke-width="2"/>
-
-                            <!-- Stage 2: Configuration -->
-                            <rect x="220" y="60" width="160" height="100" rx="12" fill="#E8EAFF" stroke="#000E9C" stroke-width="2"/>
-                            <text x="300" y="95" text-anchor="middle" font-size="14" font-weight="bold" fill="#000E9C">Configuration</text>
-                            <text x="300" y="115" text-anchor="middle" font-size="11" fill="#333">Set up furniture</text>
-                            <text x="300" y="135" text-anchor="middle" font-size="11" fill="#333">Install equipment</text>
-
-                            <!-- Arrow 2 -->
-                            <polygon points="390,110 410,100 410,120" fill="#4949FF"/>
-                            <line x1="380" y1="110" x2="410" y2="110" stroke="#4949FF" stroke-width="2"/>
-
-                            <!-- Stage 3: Operation -->
-                            <rect x="420" y="60" width="160" height="100" rx="12" fill="#E8EAFF" stroke="#000E9C" stroke-width="2"/>
-                            <text x="500" y="95" text-anchor="middle" font-size="14" font-weight="bold" fill="#000E9C">Operation</text>
-                            <text x="500" y="115" text-anchor="middle" font-size="11" fill="#333">Daily work</text>
-                            <text x="500" y="135" text-anchor="middle" font-size="11" fill="#333">Ongoing use</text>
-
-                            <!-- Arrow 3 -->
-                            <polygon points="590,110 610,100 610,120" fill="#4949FF"/>
-                            <line x1="580" y1="110" x2="610" y2="110" stroke="#4949FF" stroke-width="2"/>
-
-                            <!-- Stage 4: Decommissioning -->
-                            <rect x="620" y="60" width="160" height="100" rx="12" fill="#E8EAFF" stroke="#000E9C" stroke-width="2"/>
-                            <text x="700" y="95" text-anchor="middle" font-size="14" font-weight="bold" fill="#000E9C">Decommissioning</text>
-                            <text x="700" y="115" text-anchor="middle" font-size="11" fill="#333">Pack up</text>
-                            <text x="700" y="135" text-anchor="middle" font-size="11" fill="#333">Return the keys</text>
-
-                            <!-- Stage numbers -->
-                            <circle cx="100" cy="45" r="14" fill="#000E9C"/>
-                            <text x="100" y="50" text-anchor="middle" font-size="12" fill="#fff" font-weight="bold">1</text>
-                            <circle cx="300" cy="45" r="14" fill="#000E9C"/>
-                            <text x="300" y="50" text-anchor="middle" font-size="12" fill="#fff" font-weight="bold">2</text>
-                            <circle cx="500" cy="45" r="14" fill="#000E9C"/>
-                            <text x="500" y="50" text-anchor="middle" font-size="12" fill="#fff" font-weight="bold">3</text>
-                            <circle cx="700" cy="45" r="14" fill="#000E9C"/>
-                            <text x="700" y="50" text-anchor="middle" font-size="12" fill="#fff" font-weight="bold">4</text>
-                        </svg>
-                        <figcaption>The four stages of a node's lifecycle in OPCP, from initial request to retirement.</figcaption>
+                    <figure class="diagram-container" role="img" aria-label="Node lifecycle diagram showing the different states: Enroll, Verifying, Manageable, Available, Deploying, Active, and Cleaning">
+                        <img src="../../assets/images/opcp-node-lifecycle.png" alt="OPCP Node Lifecycle state diagram showing transitions between Enroll, Verifying, Manageable, Available, Deploying, Active, and Cleaning states" style="max-width: 100%; height: auto;">
+                        <figcaption>The OPCP node lifecycle states managed by OpenStack Ironic. Source: <a href="https://docs.ovhcloud.com/en/hosted-private-cloud/opcp/node-lifecycle/" target="_blank" rel="noopener">OVHcloud Documentation</a></figcaption>
                     </figure>
                 </section>
 
-                <section aria-labelledby="provisioning-heading">
-                    <h2 id="provisioning-heading">Stage 1: Provisioning</h2>
-                    <h3>The Office Analogy: Signing the Lease</h3>
-                    <p>When you decide you need a new office, the first step is finding a space and signing the lease. You choose the size, location, and type of space that fits your needs. Once the paperwork is done, the landlord prepares the space for you.</p>
+                <section aria-labelledby="states-heading">
+                    <h2 id="states-heading">Node States</h2>
+                    <p>Each node passes through a series of states during its lifecycle. Here are the key states:</p>
 
-                    <h3>What Happens in OPCP</h3>
-                    <p><span class="glossary-term" data-term="provisioning">Provisioning</span> is the process of requesting and allocating a new node. During this stage:</p>
-                    <ul>
-                        <li>You select the type and size of node you need (like choosing an office size)</li>
-                        <li>The system reserves the physical resources — CPU, memory, and storage</li>
-                        <li>The base operating environment is prepared</li>
-                        <li>The node becomes available for the next stage</li>
-                    </ul>
-                    <p><strong>Typical duration:</strong> Minutes to a few hours, depending on the node type selected.</p>
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th scope="col">State</th>
+                                    <th scope="col">Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Enroll</strong></td>
+                                    <td>First state when a node is auto-discovered by OPCP. Not yet verified. Must be moved to Manageable manually.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Verifying</strong></td>
+                                    <td>Transitional state from Enroll to Manageable. Ironic verifies that it can manage the node.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Manageable</strong></td>
+                                    <td>Node is verified and managed by Ironic, but not yet ready for installation. Must be moved to Available.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Available</strong></td>
+                                    <td>Node is ready to be installed with an instance.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Deploying / Wait call-back</strong></td>
+                                    <td>Transitional state during the installation of an instance on the node.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Active</strong></td>
+                                    <td>Node has an active instance running. This is the normal operational state.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Cleaning / Clean-wait</strong></td>
+                                    <td>Transitional state when an instance is deleted or the node leaves Manageable. Disks are formatted during this phase.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </section>
 
-                <section aria-labelledby="configuration-heading">
-                    <h2 id="configuration-heading">Stage 2: Configuration</h2>
-                    <h3>The Office Analogy: Setting Up Furniture</h3>
-                    <p>Once you have the keys, you furnish the office. You bring in desks, chairs, computers, and set up the phone lines. You arrange everything to suit how your team works.</p>
+                <section aria-labelledby="transitions-heading">
+                    <h2 id="transitions-heading">State Transitions</h2>
+                    <p>Nodes progress through states via specific operations:</p>
 
-                    <h3>What Happens in OPCP</h3>
-                    <p><span class="glossary-term" data-term="configuration">Configuration</span> is where the node is customized for its intended workload:</p>
-                    <ul>
-                        <li>Network connections are established (like connecting phone and internet)</li>
-                        <li>Security settings are applied (like installing locks and access badges)</li>
-                        <li>Software and services are installed (like setting up computers and printers)</li>
-                        <li>The node is tested to ensure everything works correctly</li>
-                    </ul>
-                    <p><strong>Key point for customers:</strong> This stage is where specific business requirements are addressed. A node for a web application will be configured differently from one handling data analysis.</p>
+                    <h3>Enroll → Manageable</h3>
+                    <p>After a node is auto-discovered, an administrator must explicitly move it to Manageable state. During this transition, the node enters the <em>Verifying</em> state where Ironic confirms it can manage the hardware.</p>
+                    <pre><code>openstack baremetal node manage $NODE_ID</code></pre>
+
+                    <h3>Manageable → Available</h3>
+                    <p>Once verified, the node must be provided (made available) for installation. During this transition, a <em>Cleaning</em> phase may occur where disks are formatted.</p>
+                    <pre><code>openstack baremetal node provide $NODE_ID</code></pre>
+
+                    <h3>Available → Active</h3>
+                    <p>When an instance is deployed on the node, it transitions through <em>Deploying / Wait call-back</em> and then reaches the <em>Active</em> state.</p>
+
+                    <h3>Active → Available</h3>
+                    <p>When an instance is deleted, the node passes through the <em>Cleaning</em> state (disks are formatted) and returns to <em>Available</em>.</p>
                 </section>
 
-                <section aria-labelledby="operation-heading">
-                    <h2 id="operation-heading">Stage 3: Operation</h2>
-                    <h3>The Office Analogy: Daily Work</h3>
-                    <p>This is the longest phase — the day-to-day use of the office. People come in, do their work, and the space serves its purpose. Occasionally you might rearrange furniture or add new equipment, but the core function remains the same.</p>
+                <section aria-labelledby="maintenance-heading">
+                    <h2 id="maintenance-heading">Maintenance Mode</h2>
+                    <p>Any node can be placed in <strong>maintenance mode</strong> to prevent operations from being performed on it. This is useful for hardware troubleshooting or planned interventions.</p>
 
-                    <h3>What Happens in OPCP</h3>
-                    <p>During <span class="glossary-term" data-term="operation">operation</span>, the node is actively running workloads:</p>
-                    <ul>
-                        <li>Applications and services run continuously</li>
-                        <li>Performance is monitored (like checking that the office runs smoothly)</li>
-                        <li>Updates and patches are applied as needed (like routine maintenance)</li>
-                        <li>Resources can be adjusted if demands change (like adding more desks for new hires)</li>
-                    </ul>
-                    <p><strong>This is where value is delivered.</strong> The node is doing the work your customer needs — hosting their applications, processing their data, or running their services.</p>
+                    <h3>Set Maintenance Mode</h3>
+                    <pre><code>openstack baremetal node maintenance set $NODE_ID --reason "Hardware inspection required"</code></pre>
+
+                    <h3>Exit Maintenance Mode</h3>
+                    <pre><code>openstack baremetal node maintenance unset $NODE_ID</code></pre>
                 </section>
 
-                <section aria-labelledby="decommissioning-heading">
-                    <h2 id="decommissioning-heading">Stage 4: Decommissioning</h2>
-                    <h3>The Office Analogy: Moving Out</h3>
-                    <p>When the lease ends or you no longer need the space, you pack up your belongings, clean the office, and return the keys. The space is then available for someone else.</p>
+                <section aria-labelledby="monitoring-heading">
+                    <h2 id="monitoring-heading">Monitoring Node Status</h2>
+                    <p>You can check the status of your nodes through two methods:</p>
 
-                    <h3>What Happens in OPCP</h3>
-                    <p><span class="glossary-term" data-term="decommissioning">Decommissioning</span> is the orderly shutdown and removal of a node:</p>
+                    <h3>Via Horizon Dashboard</h3>
+                    <p>Navigate to <strong>Admin &gt; System &gt; Ironic Bare Metal Provisioning</strong> to view the current state of all nodes.</p>
+
+                    <h3>Via CLI</h3>
+                    <pre><code># List all nodes and their states
+openstack baremetal node list
+
+# Show detailed information about a specific node
+openstack baremetal node show $NODE_ID</code></pre>
+                </section>
+
+                <section aria-labelledby="discovery-heading">
+                    <h2 id="discovery-heading">Automatic Node Discovery</h2>
+                    <p>When a new physical server boots in the OPCP rack, the control plane automatically:</p>
                     <ul>
-                        <li>Data is backed up or migrated to another location (like packing your files)</li>
-                        <li>Services are gracefully stopped (like notifying clients of your new address)</li>
-                        <li>Security credentials are revoked (like returning access badges)</li>
-                        <li>Resources are released back to the pool (like handing back the keys)</li>
+                        <li>Detects the server via the OOB (Out-of-Band) management network</li>
+                        <li>Discovers hardware properties (CPU, RAM, storage, network interfaces)</li>
+                        <li>Identifies hardware traits and capabilities</li>
+                        <li>Registers the node in the <em>Enroll</em> state</li>
                     </ul>
-                    <p><strong>Important for customers:</strong> Decommissioning is planned and controlled. Data is never simply deleted without warning — there are safeguards to ensure nothing important is lost.</p>
+                    <p>No manual registration is required — the platform handles discovery automatically.</p>
                 </section>
 
                 <section aria-labelledby="summary-heading">
                     <h2 id="summary-heading">Key Takeaways</h2>
                     <ul>
-                        <li>Every node follows a predictable lifecycle: Provisioning → Configuration → Operation → Decommissioning</li>
-                        <li>Each stage has clear responsibilities and expected durations</li>
-                        <li>The process is designed to be safe and controlled at every step</li>
-                        <li>Customers can plan their projects around these stages with confidence</li>
+                        <li>A node represents a physical server configuration, distinct from the instance (OS) running on it</li>
+                        <li>Node discovery is automatic when hardware boots in the rack</li>
+                        <li>The lifecycle follows: Enroll → Verifying → Manageable → Available → Deploying → Active</li>
+                        <li>Cleaning occurs when instances are deleted (disks are formatted)</li>
+                        <li>Maintenance mode can be set on any node to prevent operations</li>
+                        <li>Status can be monitored via Horizon (Admin > System > Ironic) or CLI</li>
                     </ul>
                 </section>
 

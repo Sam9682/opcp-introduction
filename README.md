@@ -1,6 +1,6 @@
 # OPCP Introduction Skillhub
 
-A static training website designed to educate non-technical personnel (sales team, business stakeholders, project managers) on OVHcloud's Hosted Private Cloud (OPCP) service.
+A static training website designed to educate non-technical personnel (sales team, business stakeholders, project managers) on OVHcloud's On Prem Cloud Plateform (OPCP) service.
 
 ## Overview
 

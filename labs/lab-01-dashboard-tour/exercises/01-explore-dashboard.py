@@ -31,14 +31,14 @@ def display_steps():
         },
         {
             "step": 2,
-            "title": "Locate the Hosted Private Cloud section",
+            "title": "Locate the On Prem Cloud Plateform section",
             "action": (
                 "In the left-hand navigation menu, look for the 'Hosted "
                 "Private Cloud' section. Click on it to expand the menu."
             ),
             "expected_outcome": (
                 "You should see a submenu appear with options related to "
-                "your Hosted Private Cloud services, including your OPCP "
+                "your On Prem Cloud Plateform services, including your OPCP "
                 "infrastructure."
             ),
         },

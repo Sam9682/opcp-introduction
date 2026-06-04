@@ -4,7 +4,7 @@
 
 ### Overview
 
-The OPCP Introduction Skillhub is a static training website served via Docker/nginx. It provides bilingual (EN/FR) learning content for non-technical personnel about OVHcloud's Hosted Private Cloud (OPCP) service.
+The OPCP Introduction Skillhub is a static training website served via Docker/nginx. It provides bilingual (EN/FR) learning content for non-technical personnel about OVHcloud's On Prem Cloud Plateform (OPCP) service.
 
 ### Architecture Diagram
 

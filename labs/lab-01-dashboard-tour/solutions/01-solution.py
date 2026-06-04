@@ -30,14 +30,14 @@ def display_solutions():
         },
         {
             "step": 2,
-            "title": "Locate the Hosted Private Cloud section",
+            "title": "Locate the On Prem Cloud Plateform section",
             "verification": (
                 "The left navigation menu should show 'Hosted Private "
                 "Cloud' as a category. When expanded, you see your "
                 "service names listed underneath."
             ),
             "common_issues": (
-                "If you do not see 'Hosted Private Cloud' in the menu, "
+                "If you do not see 'On Prem Cloud Plateform' in the menu, "
                 "your account may not have OPCP services provisioned. "
                 "Contact your administrator to verify your access."
             ),

@@ -75,7 +75,7 @@
     "title": "Resources & Support - Best Practices",
     "headings": [
       "Documentation",
-      "OVHcloud Hosted Private Cloud Documentation",
+      "OVHcloud On Prem Cloud Plateform Documentation",
       "OVHcloud API Reference",
       "OVHcloud Guides & Tutorials",
       "OVHcloud Status Page",
@@ -89,7 +89,7 @@
       "OVHcloud Blog",
       "Tips for Getting Help Effectively"
     ],
-    "body": "Resources & Support A curated list of documentation, support channels, and community resources to help you and your customers get the most out of OPCP. Documentation Official documentation is your first stop for detailed information about OPCP features, configuration, and best practices. OVHcloud Hosted Private Cloud Documentation The main documentation hub covering all aspects of the Hosted Private Cloud service — from getting started guides to advanced configuration. Ideal for understanding pr",
+    "body": "Resources & Support A curated list of documentation, support channels, and community resources to help you and your customers get the most out of OPCP. Documentation Official documentation is your first stop for detailed information about OPCP features, configuration, and best practices. OVHcloud On Prem Cloud Plateform Documentation The main documentation hub covering all aspects of the On Prem Cloud Plateform service — from getting started guides to advanced configuration. Ideal for understanding pr",
     "path": "en/best-practices/resources-support.html"
   },
   {
@@ -264,7 +264,7 @@
       "Benefits at a Glance",
       "Summary"
     ],
-    "body": "Benefits of OPCP Beginner 🇫🇷 Français Why Businesses Choose OPCP OVHcloud's Hosted Private Cloud delivers real business value. Think of it like upgrading from renting a desk in a co-working space to having your own private office — same building, same amenities, but now you control who enters, how it's arranged, and when you use it. Here are the key benefits that matter most to businesses: 1. Cost Predictability The Benefit With OPCP, you pay a fixed monthly fee for dedicated resources. No sur",
+    "body": "Benefits of OPCP Beginner 🇫🇷 Français Why Businesses Choose OPCP OVHcloud's On Prem Cloud Plateform delivers real business value. Think of it like upgrading from renting a desk in a co-working space to having your own private office — same building, same amenities, but now you control who enters, how it's arranged, and when you use it. Here are the key benefits that matter most to businesses: 1. Cost Predictability The Benefit With OPCP, you pay a fixed monthly fee for dedicated resources. No sur",
     "path": "en/introduction/benefits.html"
   },
   {
@@ -279,7 +279,7 @@
       "5. European Data Sovereignty",
       "Feature Summary"
     ],
-    "body": "Key Features Beginner 🇫🇷 Français What Makes OPCP Stand Out OPCP (OVHcloud Hosted Private Cloud) offers a set of features designed to give businesses the power of dedicated infrastructure with the convenience of a managed service. Each feature below is explained with a visual diagram to help you understand how it works. 1. Dedicated Resources Every node in your OPCP environment is exclusively yours. No other customer shares your CPU , RAM , or storage . Think of it like having your own private",
+    "body": "Key Features Beginner 🇫🇷 Français What Makes OPCP Stand Out OPCP (OVHcloud On Prem Cloud Plateform) offers a set of features designed to give businesses the power of dedicated infrastructure with the convenience of a managed service. Each feature below is explained with a visual diagram to help you understand how it works. 1. Dedicated Resources Every node in your OPCP environment is exclusively yours. No other customer shares your CPU , RAM , or storage . Think of it like having your own private",
     "path": "en/introduction/key-features.html"
   },
   {
@@ -304,7 +304,7 @@
     "title": "What is OPCP? - Introduction - OPCP Skillhub",
     "headings": [
       "The Private Apartment Analogy",
-      "What Does \"Hosted Private Cloud\" Mean?",
+      "What Does \"On Prem Cloud Plateform\" Mean?",
       "Hosted",
       "Private",
       "Cloud",
@@ -548,7 +548,7 @@
     "title": "Ressources et Support - Bonnes Pratiques",
     "headings": [
       "Documentation",
-      "Documentation OVHcloud Hosted Private Cloud",
+      "Documentation OVHcloud On Prem Cloud Plateform",
       "Référence API OVHcloud",
       "Guides et Tutoriels OVHcloud",
       "Page de statut OVHcloud",
@@ -562,7 +562,7 @@
       "Blog OVHcloud",
       "Conseils pour obtenir de l'aide efficacement"
     ],
-    "body": "Ressources et Support Une liste organisée de documentation, canaux de support et ressources communautaires pour vous aider, vous et vos clients, à tirer le meilleur parti d'OPCP. Documentation La documentation officielle est votre premier recours pour obtenir des informations détaillées sur les fonctionnalités, la configuration et les bonnes pratiques d' OPCP . Documentation OVHcloud Hosted Private Cloud Le portail principal de documentation couvrant tous les aspects du service Hosted Private Cl",
+    "body": "Ressources et Support Une liste organisée de documentation, canaux de support et ressources communautaires pour vous aider, vous et vos clients, à tirer le meilleur parti d'OPCP. Documentation La documentation officielle est votre premier recours pour obtenir des informations détaillées sur les fonctionnalités, la configuration et les bonnes pratiques d' OPCP . Documentation OVHcloud On Prem Cloud Plateform Le portail principal de documentation couvrant tous les aspects du service Hosted Private Cl",
     "path": "fr/best-practices/resources-support.html"
   },
   {

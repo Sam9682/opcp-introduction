@@ -2,12 +2,12 @@
 
 ## Introduction
 
-This document defines the requirements for the OPCP Introduction training website — a static skillhub designed to educate non-technical personnel (sales team, business stakeholders, project managers) on OVHcloud's Hosted Private Cloud (OPCP) service. The website provides bilingual (EN/FR) learning content with simplified explanations, visual aids, and progress tracking, served via Docker/nginx following the established opcp-openstack-first-steps project structure.
+This document defines the requirements for the OPCP Introduction training website — a static skillhub designed to educate non-technical personnel (sales team, business stakeholders, project managers) on OVHcloud's On Prem Cloud Plateform (OPCP) service. The website provides bilingual (EN/FR) learning content with simplified explanations, visual aids, and progress tracking, served via Docker/nginx following the established opcp-openstack-first-steps project structure.
 
 ## Glossary
 
 - **Skillhub**: The static HTML/CSS/JS training website served by nginx, containing lesson pages organized by language
-- **OPCP**: OVHcloud's Hosted Private Cloud service (the subject matter being taught)
+- **OPCP**: OVHcloud's On Prem Cloud Plateform service (the subject matter being taught)
 - **Lesson_Page**: An individual HTML file representing a single learning topic within the skillhub
 - **Navigation_System**: The sidebar and menu components that allow users to browse and access lesson pages
 - **Progress_Tracker**: The localStorage-based system that records which lessons a user has completed

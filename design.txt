@@ -1,7 +1,7 @@
 # OPCP Training Website Design Document
 
 ## Overview
-Website for training non-technical personnel (sales team) on OVHcloud's Hosted Private Cloud (OPCP) service.
+Website for training non-technical personnel (sales team) on OVHcloud's On Prem Cloud Plateform (OPCP) service.
 
 ## Target Audience
 - Sales personnel

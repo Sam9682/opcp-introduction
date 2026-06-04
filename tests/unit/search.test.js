@@ -14,7 +14,7 @@ function createSampleIndex() {
       id: 'en/introduction/what-is-opcp',
       title: 'What is OPCP?',
       headings: ['Overview', 'Cloud Infrastructure Basics', 'Key Benefits'],
-      body: 'OPCP stands for OVHcloud Hosted Private Cloud. It provides dedicated compute resources for enterprise workloads.',
+      body: 'OPCP stands for OVHcloud On Prem Cloud Plateform. It provides dedicated compute resources for enterprise workloads.',
       path: 'en/introduction/what-is-opcp.html'
     },
     {

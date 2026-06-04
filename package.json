@@ -1,7 +1,7 @@
 {
   "name": "opcp-introduction",
   "version": "1.0.0",
-  "description": "OPCP Introduction Skillhub - Static training website for OVHcloud Hosted Private Cloud",
+  "description": "OPCP Introduction Skillhub - Static training website for OVHcloud On Prem Cloud Plateform",
   "private": true,
   "type": "module",
   "scripts": {

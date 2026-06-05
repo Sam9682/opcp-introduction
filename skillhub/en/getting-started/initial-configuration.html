@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Initial Configuration - Getting Started - OPCP Skillhub</title>
+  <title>Professional Services - Getting Started - OPCP Skillhub</title>
   <link rel="stylesheet" href="../../assets/css/style.css">
 </head>
 <body>
@@ -29,92 +29,169 @@
       <div class="breadcrumbs" aria-label="Breadcrumb"></div>
 
       <header class="lesson-header">
-                <h1>Initial Configuration</h1>
-                <span class="difficulty-badge beginner" aria-label="Difficulty: Beginner">Beginner</span>
-            </header>
+        <h1>OPCP Professional Services</h1>
+        <div class="lesson-meta">
+          <span class="badge badge-beginner">Beginner</span>
+          <a href="../../fr/getting-started/initial-configuration.html" class="language-switch" aria-label="Switch to French">
+            <span>🇫🇷</span> <span>Français</span>
+          </a>
+        </div>
+      </header>
 
-            <section aria-labelledby="overview">
-                <h2 id="overview">Overview</h2>
-                <p>After your <dfn class="glossary-term" title="On Premise Cloud Platform (OPCP) — an on-premise cloud platform where OVHcloud installs and manages a rack of servers directly at the customer's premises">OPCP</dfn> platform has been deployed on-premise and you have received your access credentials, there are a few configuration steps to complete before your environment is fully operational.</p>
-                <p>OPCP is an <strong>on-premise platform</strong> — it runs in your own facility. After deployment, you connect via the URL defined during delivery and log in through the Keycloak authentication page to access the dashboard.</p>
-                <p class="info-box"><strong>Reference:</strong> <a href="https://docs.ovhcloud.com/en/hosted-private-cloud/opcp/getting-started/" target="_blank" rel="noopener">OVHcloud OPCP Getting Started Documentation</a></p>
-            </section>
+      <section aria-labelledby="overview">
+        <h2 id="overview">Overview</h2>
+        <p>OVHcloud <strong>Professional Services (PS)</strong> provides expert guidance throughout the lifecycle of an <dfn class="glossary-term" title="On Premise Cloud Platform — an on-premise cloud platform where OVHcloud installs and manages a rack of servers directly at the customer's premises">OPCP</dfn> project. This lesson summarises the PS engagement model, delivery approach, project lifecycle activities, and key deliverables.</p>
+      </section>
 
-            <section aria-labelledby="step1">
-                <h2 id="step1">Step 1: Explore the Horizon Dashboard</h2>
-                <p>Once logged in via Keycloak, you access the <strong>OpenStack Horizon</strong> dashboard — the primary interface for managing your OPCP infrastructure. The dashboard provides access to your platform's services: IAM (Keycloak) for user management, and the OpenStack APIs (Keystone, Glance, Nova, Neutron, Ironic).</p>
-                <p>Key areas to explore:</p>
-                <ul>
-                    <li><strong>Project &gt; Overview</strong> — View your quota limits: Compute (instances, vCPUs, RAM), Network (floating IPs, security groups, networks, ports)</li>
-                    <li><strong>Project &gt; API Access</strong> — Lists the 10 available services with their endpoint URLs</li>
-                    <li><strong>Compute &gt; Instances</strong> — List and manage your dedicated bare metal servers</li>
-                    <li><strong>Compute &gt; Images</strong> — Available OS images for deployment</li>
-                    <li><strong>Network &gt; Networks</strong> — List of available networks</li>
-                    <li><strong>Network &gt; Topology</strong> — Visual representation of your network architecture</li>
-                </ul>
-                <p><strong>Important:</strong> OS images must match hardware drivers (bare metal drivers, not qemu/kvm virtual drivers).</p>
-            </section>
+      <section aria-labelledby="value-proposition">
+        <h2 id="value-proposition">Value Proposition</h2>
+        <p>OPCP's complexity requires a structured approach and deep expertise. Professional Services helps you meet business goals at every stage of transformation with services tailored to your unique needs:</p>
+        <ul>
+          <li><strong>Outcome-based services</strong> — focused on delivering measurable business value and maximising time-to-value from technology investments.</li>
+          <li><strong>Expert consultants</strong> — dedicated OPCP Solution Architects with deep knowledge of the platform.</li>
+          <li><strong>Best practices</strong> — leveraging application stack design experience and proven methodologies.</li>
+        </ul>
+        <p>The primary mission is <strong>BUILD</strong>: guiding you through designing and implementing use cases on your sovereign cloud, accelerating the secure delivery of your live operational environment.</p>
+      </section>
 
-            <section aria-labelledby="step2">
-                <h2 id="step2">Step 2: Understand Your Quotas</h2>
-                <p>Your OPCP platform has defined resource quotas visible in <strong>Project &gt; Overview</strong>. These set the boundaries for what you can deploy:</p>
-                <ul>
-                    <li><strong>Compute quotas</strong> — Maximum number of instances, vCPUs, and RAM allocation</li>
-                    <li><strong>Network quotas</strong> — Maximum floating IPs, security groups, networks, and ports</li>
-                </ul>
-                <p>These quotas represent the physical capacity of your on-premise rack. If you need to adjust them, contact your OVHcloud representative.</p>
-            </section>
+      <section aria-labelledby="engagement-model">
+        <h2 id="engagement-model">Engagement Model</h2>
 
-            <section aria-labelledby="step3">
-                <h2 id="step3">Step 3: Network Configuration</h2>
-                <p>Network configuration in OPCP is driven by <strong>Horizon/API (Neutron)</strong>. A key feature of the platform is that <strong>network switches are automatically configured</strong> based on the information you set in OpenStack.</p>
-                <p>This means:</p>
-                <ul>
-                    <li>You define networks and ports in Horizon or via the Neutron API</li>
-                    <li>The physical switch configuration is applied automatically — no manual switch configuration needed</li>
-                    <li>VLANs and trunk ports are managed through the OpenStack abstraction layer</li>
-                </ul>
-                <p>Navigate to <strong>Network &gt; Networks</strong> to see available networks, and <strong>Network &gt; Topology</strong> for a visual overview of your network architecture.</p>
-            </section>
+        <h3>Scope and Responsibilities</h3>
+        <ul>
+          <li>Primary focus is the <strong>Build phase</strong> of applications onto OPCP in a non-production environment.</li>
+          <li>Technical workshops for in-depth qualification.</li>
+          <li>Responsible for the Low-Level Architecture Design (LLD).</li>
+          <li>Cadenced execution of the LLD according to customer milestones.</li>
+          <li>Priming with OVHcloud partners (preferred) or side-by-side delivery.</li>
+          <li>Non-technical advisory services (People / Process / Tools) for better outcomes.</li>
+        </ul>
 
-            <section aria-labelledby="step4">
-                <h2 id="step4">Step 4: SSH Key Management</h2>
-                <p>Before deploying instances, set up your SSH keys for secure access to bare metal nodes:</p>
-                <ul>
-                    <li>Navigate to <strong>Compute &gt; Key Pairs</strong></li>
-                    <li>Import your existing public SSH key or create a new key pair</li>
-                    <li>Key pairs will be injected during instance provisioning for secure access</li>
-                </ul>
-            </section>
+        <h3>Engagement Framework</h3>
+        <ul>
+          <li>A <strong>Statement of Work (SoW)</strong> is mandatory before PS Solution Architects are engaged.</li>
+          <li>Outcome-based focus (value-oriented).</li>
+          <li>Deliverables approval required at each phase.</li>
+        </ul>
 
-            <section aria-labelledby="step5">
-                <h2 id="step5">Step 5: User Access via Keycloak</h2>
-                <p>User management in OPCP is handled by the embedded <strong>Keycloak</strong> identity service (IAM). Access Keycloak from the dashboard to:</p>
-                <ul>
-                    <li>Create user accounts for your team members</li>
-                    <li>Define roles and permissions</li>
-                    <li>Optionally integrate with LDAP/Active Directory (TCP/636 LDAPS) for centralised identity management</li>
-                </ul>
-                <p>Three levels of access are typically configured:</p>
-                <ul>
-                    <li><strong>Administrator</strong> — Full access to all settings and services</li>
-                    <li><strong>Operator</strong> — Can manage services and deploy instances</li>
-                    <li><strong>Read-only</strong> — Can view information but cannot make changes</li>
-                </ul>
-            </section>
+        <h3>Delivery Approach</h3>
+        <ul>
+          <li>Project-managed delivery: planning, coordination, and reporting.</li>
+          <li>Scrum/Agile, waterfall, or hybrid methods as needed. A Scrum master should be identified on the customer side for cadenced execution.</li>
+          <li>Ongoing project tracking: health, activities, risks, and budget consumption.</li>
+        </ul>
+      </section>
 
-            <section aria-labelledby="summary">
-                <h2 id="summary">Configuration Complete</h2>
-                <p>Once these steps are done, your OPCP environment is ready for deploying bare metal instances. Here is a quick recap:</p>
-                <ol>
-                    <li>Explored the Horizon dashboard and understood available services</li>
-                    <li>Reviewed your resource quotas (Compute and Network)</li>
-                    <li>Understood that network switches are auto-configured from OpenStack</li>
-                    <li>Set up SSH key pairs for secure instance access</li>
-                    <li>Configured user access via Keycloak IAM</li>
-                </ol>
-                <p>From here, you can explore the <a href="../core-concepts/node-lifecycle.html">Node Lifecycle</a> section to learn how bare metal nodes are managed, or jump to <a href="../technical-operations/instance-setup.html">Technical Operations</a> for deploying your first instance.</p>
-            </section>
+      <section aria-labelledby="lifecycle">
+        <h2 id="lifecycle">OPCP Project Lifecycle Activities</h2>
+        <p>Professional Services activities span the full project lifecycle, from initial goals through to business outcomes:</p>
+
+        <h3>1. Discover and Assess</h3>
+        <ul>
+          <li>Review solution requirements and desired outcomes.</li>
+          <li>Technically qualify customer use cases onto OPCP.</li>
+          <li>Ensure stakeholder alignment and executive sponsorship.</li>
+          <li>Evaluate current state and readiness (People, Process, Tools).</li>
+          <li>Assist with operating model and target organisation.</li>
+          <li>Develop the Statement of Work (SoW).</li>
+        </ul>
+
+        <h3>2. Plan and Design</h3>
+        <ul>
+          <li>Conduct use-case-specific architecture design workshops.</li>
+          <li>Design the target detailed architecture (LLD) and develop a custom Configuration Workbook for deployment via CloudApps and OPCP Core.</li>
+          <li>Build the Implementation Plan and establish the Work Breakdown Structure (WBS).</li>
+          <li>Build and launch the training plan for new skills.</li>
+        </ul>
+
+        <h3>3. Build and Deploy (Deliver)</h3>
+        <ul>
+          <li>Ensure hardware delivery and OPCP installation with initial setup — up to "Ready for Use" state.</li>
+          <li>Integrate the platform with the customer environment and implement secured connectivity.</li>
+          <li>Configure OPCP using the Configuration Workbook.</li>
+          <li>Test and validate — up to "Ready for Service" state.</li>
+          <li>Provide As-Built documentation at the end of implementation.</li>
+        </ul>
+
+        <h3>4. Migrate and Handover</h3>
+        <ul>
+          <li>Provide a migration and test plan by defining lots of migration.</li>
+          <li>Migrate or implement application workloads.</li>
+          <li>Execute user acceptance testing.</li>
+          <li>Develop custom run playbooks / runbooks.</li>
+          <li>Handover to the operations team at go-live.</li>
+        </ul>
+
+        <h3>5. Train, Scale and Optimise</h3>
+        <ul>
+          <li>Ensure upskill at all required levels of the customer organisation.</li>
+          <li>On-site learning and OPCP certification for trainees.</li>
+          <li>Post go-live hypercare.</li>
+          <li>Continuous improvement.</li>
+          <li>Steady-state operations (operated by OVHcloud support centre).</li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="deliverables">
+        <h2 id="deliverables">Key Deliverables</h2>
+
+        <h3>Low-Level Design (LLD)</h3>
+        <p>The LLD details the technical and functional architecture of the target solution, addressing both the "what" and "why" of the implementation. It covers scalability, functionality, integration, and operational requirements.</p>
+        <ul>
+          <li>Developed through design workshops led by PS Solution Architects with deep OPCP expertise.</li>
+          <li>Involves close collaboration with customer stakeholders (architecture, virtualisation, networking teams).</li>
+          <li>Contains physical and logical diagrams, configuration templates, scripts, and artefacts.</li>
+          <li>Self-explanatory — enables non-specialists to perform most configurations based on the document.</li>
+          <li>Living document that evolves throughout the project lifecycle.</li>
+        </ul>
+
+        <h3>Implementation Plan</h3>
+        <p>The Implementation Plan provides clear instructions, proven methodologies, and best practices for deploying and validating the OPCP platform tailored to solution requirements.</p>
+        <ul>
+          <li>Built upon the HLD, LLD, and Configuration Workbook from the design phase.</li>
+          <li>Focuses on aligning OPCP configuration to customer use cases, workload integration, legacy connectivity, and automation/operations requirements.</li>
+          <li>Reduces unforeseen issues and standardises deployments through a reproducible framework.</li>
+          <li>Enables seamless handover to operations teams and integration into existing playbooks/runbooks.</li>
+          <li>Minimises misconfiguration risks and accelerates platform adoption.</li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="budget">
+        <h2 id="budget">Budget Estimate</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Phase</th>
+              <th>Effort</th>
+              <th>Duration</th>
+              <th>Daily Rate</th>
+              <th>Estimated Price (excl. VAT)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Design</td>
+              <td>~30 man-days (~10 design workshops, LLD, Configuration Workbook)</td>
+              <td>6 months</td>
+              <td>1 700 €</td>
+              <td>~51 k€</td>
+            </tr>
+            <tr>
+              <td>Build Assistance</td>
+              <td>8 man-days/month (reactive service triggered by customer demands)</td>
+              <td>3–6 months</td>
+              <td>1 700 €</td>
+              <td>~40.8–81.6 k€</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>The exact scope and level of effort are defined in the SoW and depend on technical maturity, team mobilisation, and complexity of in-scope applications.</p>
+      </section>
+
+      <section aria-labelledby="next-steps">
+        <h2 id="next-steps">Next Steps</h2>
+        <p>To engage Professional Services, contact your OVHcloud sales representative to initiate the Statement of Work process and begin the Discover and Assess phase.</p>
+      </section>
 
       <button class="mark-complete-btn" type="button" aria-label="✓ Mark as complete">
         ✓ Mark as complete

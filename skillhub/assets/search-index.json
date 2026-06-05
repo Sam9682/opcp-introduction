@@ -180,7 +180,7 @@
     "path": "en/core-concepts/resource-allocation.html"
   },
   {
-    "id": "en/getting-started/account-setup",
+    "id": "en/getting-started/getting-started-with-OPCP",
     "title": "Account Setup - Getting Started - OPCP Skillhub",
     "headings": [
       "Overview",
@@ -194,7 +194,7 @@
       "What Happens Next"
     ],
     "body": "Account Setup Beginner 🇫🇷 Français Overview Setting up your OPCP account is the first step to accessing OVHcloud's private cloud services. Think of it like opening a bank account: you provide your details, verify your identity, and then you receive access to your own secure space. This guide walks you through each step of the process with clear visual references so you know exactly where to click. What You Need Before Starting A valid business email address Your company name and registration d",
-    "path": "en/getting-started/account-setup.html"
+    "path": "en/getting-started/getting-started-with-OPCP.html"
   },
   {
     "id": "en/getting-started/dashboard-access",
@@ -213,8 +213,8 @@
     "path": "en/getting-started/dashboard-access.html"
   },
   {
-    "id": "en/getting-started/initial-configuration",
-    "title": "Initial Configuration - Getting Started - OPCP Skillhub",
+    "id": "en/getting-started/professional-services-OPCP",
+    "title": "Professional Services - Getting Started - OPCP Skillhub",
     "headings": [
       "Overview",
       "Step 1: Select Your Datacentre Location",
@@ -225,7 +225,7 @@
       "Configuration Complete"
     ],
     "body": "Initial Configuration Beginner Overview After logging in for the first time, there are a few setup steps to complete before your OPCP environment is ready to use. Think of this like moving into a new office: the building is ready, but you still need to set up your desk, connect the phone, and get your security badge configured. This lesson walks you through the essential first-time configuration steps using plain, non-technical language. Step 1: Select Your Datacentre Location Your first decisio",
-    "path": "en/getting-started/initial-configuration.html"
+    "path": "en/getting-started/professional-services-OPCP.html"
   },
   {
     "id": "en/getting-started/navigation",
@@ -653,7 +653,7 @@
     "path": "fr/core-concepts/resource-allocation.html"
   },
   {
-    "id": "fr/getting-started/account-setup",
+    "id": "fr/getting-started/getting-started-with-OPCP",
     "title": "Configuration du Compte - Premiers Pas - OPCP Skillhub",
     "headings": [
       "Présentation",
@@ -667,7 +667,7 @@
       "Et ensuite"
     ],
     "body": "Configuration du Compte Débutant Présentation La configuration de votre compte OPCP est la première étape pour accéder aux services de cloud privé d'OVHcloud. C'est un peu comme ouvrir un compte bancaire : vous fournissez vos informations, vérifiez votre identité, puis vous recevez l'accès à votre propre espace sécurisé. Ce guide vous accompagne à chaque étape du processus avec des repères visuels clairs pour que vous sachiez exactement où cliquer. Ce dont vous avez besoin avant de commencer Une",
-    "path": "fr/getting-started/account-setup.html"
+    "path": "fr/getting-started/getting-started-with-OPCP.html"
   },
   {
     "id": "fr/getting-started/dashboard-access",
@@ -686,8 +686,8 @@
     "path": "fr/getting-started/dashboard-access.html"
   },
   {
-    "id": "fr/getting-started/initial-configuration",
-    "title": "Configuration Initiale - Premiers Pas - OPCP Skillhub",
+    "id": "fr/getting-started/professional-services-OPCP",
+    "title": "Services Professionnels OPCP - Premiers Pas - OPCP Skillhub",
     "headings": [
       "Présentation",
       "Étape 1 : Sélectionner l'emplacement de votre centre de données",
@@ -698,7 +698,7 @@
       "Configuration terminée"
     ],
     "body": "Configuration Initiale Débutant Présentation Après votre première connexion, quelques étapes de configuration sont nécessaires avant que votre environnement OPCP soit prêt à l'emploi. C'est comme emménager dans un nouveau bureau : le bâtiment est prêt, mais vous devez encore installer votre poste de travail, brancher le téléphone et faire configurer votre badge de sécurité. Cette leçon vous guide à travers les étapes essentielles de configuration initiale en utilisant un langage simple et non te",
-    "path": "fr/getting-started/initial-configuration.html"
+    "path": "fr/getting-started/professional-services-OPCP.html"
   },
   {
     "id": "fr/getting-started/navigation",

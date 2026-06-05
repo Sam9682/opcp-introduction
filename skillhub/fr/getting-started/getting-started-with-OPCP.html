@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Configuration du Compte - Premiers Pas - OPCP Skillhub</title>
+  <title>Premiers pas - OPCP Skillhub</title>
   <link rel="stylesheet" href="../../assets/css/style.css">
 </head>
 <body>
@@ -12,112 +12,112 @@
   <header class="site-header" role="banner">
     <div class="logo"><a href="../introduction/what-is-opcp.html" aria-label="Accueil SkillHub">SkillHub</a></div>
     <div class="header-right">
-      <div class="lang-toggle" aria-label="Language selector"></div>
-      <div class="progress-bar-container" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="Learning progress">
+      <div class="lang-toggle" aria-label="Sélecteur de langue"></div>
+      <div class="progress-bar-container" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="Progression de l'apprentissage">
         <div class="progress-bar-fill"></div>
       </div>
       <span class="progress-text">0%</span>
-      <button class="hamburger-btn" aria-label="Open navigation menu" aria-expanded="false">☰</button>
+      <button class="hamburger-btn" aria-label="Ouvrir le menu de navigation" aria-expanded="false">☰</button>
     </div>
   </header>
   <div class="sidebar-overlay" aria-hidden="true"></div>
   <div class="site-wrapper">
-    <aside class="sidebar" role="navigation" aria-label="Lesson navigation">
+    <aside class="sidebar" role="navigation" aria-label="Navigation des leçons">
       <nav id="sidebar-nav"></nav>
     </aside>
     <main class="main-content" role="main" id="main-content">
-      <div class="breadcrumbs" aria-label="Breadcrumb"></div>
+      <div class="breadcrumbs" aria-label="Fil d'Ariane"></div>
 
       <header class="lesson-header">
-                <h1>Configuration du Compte</h1>
-                <span class="difficulty-badge beginner" aria-label="Difficulté : Débutant">Débutant</span>
-            </header>
+        <h1>Premiers pas avec OPCP</h1>
+        <div class="lesson-meta">
+          <span class="badge badge-beginner">Débutant</span>
+          <a href="../../en/getting-started/getting-started-with-OPCP.html" class="language-switch" aria-label="Passer en anglais">
+            <span>🇬🇧</span> <span>English</span>
+          </a>
+        </div>
+      </header>
 
-            <section aria-labelledby="overview">
-                <h2 id="overview">Présentation</h2>
-                <p>La configuration de votre compte <dfn class="glossary-term" title="On Premise Cloud Platform — une plateforme cloud sur site où OVHcloud installe et gère une baie de serveurs directement dans les locaux du client">OPCP</dfn> est la première étape pour accéder aux services de cloud sur site d'OVHcloud. C'est un peu comme ouvrir un compte bancaire : vous fournissez vos informations, vérifiez votre identité, puis vous recevez l'accès à votre propre espace sécurisé.</p>
-                <p>Ce guide vous accompagne à chaque étape du processus avec des repères visuels clairs pour que vous sachiez exactement où cliquer.</p>
-            </section>
+      <section aria-labelledby="overview">
+        <h2 id="overview">Présentation</h2>
+        <p>Cette leçon résume les premières étapes nécessaires pour accéder et configurer votre environnement <dfn class="glossary-term" title="On Premise Cloud Platform — une plateforme cloud sur site où OVHcloud installe et gère un rack de serveurs directement dans les locaux du client">OPCP</dfn>. Elle couvre la connexion aux interfaces de gestion et l'installation du contrôleur qui constitue la base de la plateforme.</p>
+        <p>Le contenu ci-dessous s'appuie sur la documentation officielle OVHcloud : <a href="https://docs.ovhcloud.com/en/guides/hosted-private-cloud/opcp/getting-started">Getting started with your OPCP</a> et <a href="https://docs.ovhcloud.com/en/guides/hosted-private-cloud/opcp/install-controller">How to install a controller</a>.</p>
+      </section>
 
-            <section aria-labelledby="prerequisites">
-                <h2 id="prerequisites">Ce dont vous avez besoin avant de commencer</h2>
-                <ul>
-                    <li>Une adresse e-mail professionnelle valide</li>
-                    <li>Le nom et les coordonnées d'enregistrement de votre entreprise</li>
-                    <li>Un numéro de téléphone pour la vérification</li>
-                    <li>Un moyen de paiement (carte bancaire ou prélèvement SEPA)</li>
-                </ul>
-            </section>
+      <section aria-labelledby="part1">
+        <h2 id="part1">Partie 1 — Accéder aux interfaces OPCP</h2>
 
-            <section aria-labelledby="step1">
-                <h2 id="step1">Étape 1 : Accéder à la page d'inscription OVHcloud</h2>
-                <p>Ouvrez votre navigateur web et rendez-vous sur le site OVHcloud. Recherchez le bouton « Créer un compte » dans le coin supérieur droit de la page.</p>
-                <figure>
-                    <img src="../../assets/images/account-setup-step1-signup-page.png" alt="Page d'accueil OVHcloud avec le bouton Créer un compte mis en évidence dans le coin supérieur droit">
-                    <figcaption>La page d'accueil OVHcloud. Le bouton « Créer un compte » est entouré en rouge dans le coin supérieur droit de la page.</figcaption>
-                </figure>
-            </section>
+        <h3>Prérequis</h3>
+        <ul>
+          <li>L'URL de l'interface de gestion fournie lors de la livraison du service</li>
+          <li>Les identifiants de connexion livrés avec le service</li>
+        </ul>
 
-            <section aria-labelledby="step2">
-                <h2 id="step2">Étape 2 : Choisir votre type de compte</h2>
-                <p>Sélectionnez si vous créez un compte personnel ou professionnel. Pour les services OPCP, choisissez <strong>Compte Professionnel</strong> — cela vous donne accès aux fonctionnalités entreprise et au support dédié.</p>
-                <figure>
-                    <img src="../../assets/images/account-setup-step2-account-type.png" alt="Écran de sélection du type de compte montrant les options Personnel et Professionnel, avec Professionnel mis en évidence">
-                    <figcaption>L'écran de sélection du type de compte. Choisissez « Compte Professionnel » (indiqué par une flèche) pour accéder aux fonctionnalités entreprise OPCP.</figcaption>
-                </figure>
-            </section>
+        <h3>Connexion</h3>
+        <p>Utilisez l'URL fournie lors de la livraison pour accéder à la page de connexion OPCP, propulsée par <strong>Keycloak</strong>. Après authentification, vous arrivez sur le tableau de bord produit.</p>
 
-            <section aria-labelledby="step3">
-                <h2 id="step3">Étape 3 : Renseigner les informations de votre entreprise</h2>
-                <p>Saisissez les informations de votre entreprise dans le formulaire d'inscription. Les champs obligatoires incluent :</p>
-                <ul>
-                    <li><strong>Nom de l'entreprise</strong> — Votre raison sociale officielle</li>
-                    <li><strong>E-mail de contact</strong> — Cet e-mail deviendra votre identifiant de connexion</li>
-                    <li><strong>Numéro de téléphone</strong> — Utilisé pour la vérification du compte et les alertes de sécurité</li>
-                    <li><strong>Pays</strong> — Détermine les options de <dfn class="glossary-term" title="Centre de données — une installation physique hébergeant des serveurs et des équipements réseau. OVHcloud exploite des centres de données en Europe, en Amérique du Nord et en Asie-Pacifique.">centre de données</dfn> les plus proches</li>
-                </ul>
-                <figure>
-                    <img src="../../assets/images/account-setup-step3-company-details.png" alt="Formulaire d'inscription avec les champs nom d'entreprise, e-mail, téléphone et pays, chacun marqué d'un numéro">
-                    <figcaption>Le formulaire d'informations entreprise. Les numéros indiquent : (1) Champ nom d'entreprise, (2) E-mail de contact, (3) Numéro de téléphone, (4) Sélecteur de pays.</figcaption>
-                </figure>
-            </section>
+        <h3>Ce que le tableau de bord propose</h3>
+        <ul>
+          <li><strong>IAM (Keycloak)</strong> — gérez les utilisateurs et les paramètres d'authentification via le lien IAM sous votre identifiant.</li>
+          <li><strong>OpenStack Horizon</strong> — une interface web pour gérer l'ensemble de l'infrastructure OpenStack : créer et arrêter des instances, configurer les réseaux et gérer l'accessibilité.</li>
+          <li><strong>Points d'accès API</strong> — accès à Keystone (identité), Glance (images), Nova (calcul), Neutron (réseau) et Ironic (gestion bare-metal) pour l'automatisation.</li>
+        </ul>
 
-            <section aria-labelledby="step4">
-                <h2 id="step4">Étape 4 : Vérifier votre e-mail</h2>
-                <p>Après avoir soumis le formulaire, OVHcloud envoie un e-mail de vérification à l'adresse que vous avez fournie. Ouvrez l'e-mail et cliquez sur le lien de confirmation. Cette étape prouve que vous êtes bien propriétaire de l'adresse e-mail et active votre compte.</p>
-                <figure>
-                    <img src="../../assets/images/account-setup-step4-email-verification.png" alt="Boîte de réception montrant l'e-mail de vérification OVHcloud avec le bouton Confirmer mis en évidence">
-                    <figcaption>L'e-mail de vérification d'OVHcloud. Cliquez sur le bouton « Confirmer mon compte » (mis en évidence en bleu) pour activer votre compte.</figcaption>
-                </figure>
-            </section>
+        <h3>Sections clés d'Horizon</h3>
+        <ul>
+          <li><strong>Vue d'ensemble</strong> — affiche les quotas de ressources (calcul et réseau) et l'historique d'utilisation.</li>
+          <li><strong>Accès API</strong> — liste tous les points d'accès des services pour la communication API directe.</li>
+          <li><strong>Calcul &gt; Instances</strong> — lister et gérer les serveurs dédiés configurés en tant qu'instances.</li>
+          <li><strong>Calcul &gt; Images</strong> — gérer les images d'OS (personnalisées ou pré-construites) utilisées pour provisionner les instances. Les images doivent être compatibles avec les pilotes matériels de votre OPCP.</li>
+          <li><strong>Calcul &gt; Paires de clés</strong> — importer ou créer des paires de clés SSH pour l'authentification aux instances après installation.</li>
+          <li><strong>Réseau</strong> — créer et gérer des réseaux partagés ou isolés. La configuration est gérée via cette interface ou via l'API Neutron, et les commutateurs sont automatiquement configurés.</li>
+        </ul>
+      </section>
 
-            <section aria-labelledby="step5">
-                <h2 id="step5">Étape 5 : Créer votre mot de passe</h2>
-                <p>Créez un mot de passe robuste pour votre compte. OVHcloud exige que les mots de passe comportent au moins 12 caractères et incluent un mélange de lettres, chiffres et symboles. Considérez votre mot de passe comme la clé de votre plateforme OPCP — gardez-le sécurisé et unique.</p>
-                <figure>
-                    <img src="../../assets/images/account-setup-step5-password.png" alt="Écran de création de mot de passe montrant l'indicateur de robustesse et la liste des exigences">
-                    <figcaption>L'écran de création du mot de passe. L'indicateur de robustesse (indiqué par une flèche) devient vert lorsque votre mot de passe remplit toutes les exigences listées sous le champ.</figcaption>
-                </figure>
-            </section>
+      <section aria-labelledby="part2">
+        <h2 id="part2">Partie 2 — Installation du contrôleur OPCP</h2>
 
-            <section aria-labelledby="step6">
-                <h2 id="step6">Étape 6 : Ajouter un moyen de paiement</h2>
-                <p>Enfin, ajoutez un moyen de paiement à votre compte. Cela est nécessaire avant de pouvoir commander des services OPCP. Vous pouvez choisir entre une carte bancaire ou un prélèvement SEPA pour les paiements récurrents.</p>
-                <figure>
-                    <img src="../../assets/images/account-setup-step6-payment.png" alt="Écran des moyens de paiement montrant les options carte bancaire et SEPA avec le bouton Ajouter mis en évidence">
-                    <figcaption>L'écran des moyens de paiement. Sélectionnez votre option préférée et cliquez sur « Ajouter » (mis en évidence) pour enregistrer vos informations de paiement en toute sécurité.</figcaption>
-                </figure>
-            </section>
+        <h3>Objectif</h3>
+        <p>Le contrôleur est le nœud de gestion qui exécute les services OpenStack de votre OPCP. Il est installé à partir d'une image ISO basée sur Debian, fournie par OVHcloud via un bucket S3 en lecture seule.</p>
 
-            <section aria-labelledby="next-steps">
-                <h2 id="next-steps">Et ensuite</h2>
-                <p>Une fois votre compte configuré et vérifié, vous pouvez vous connecter à l'Espace Client OVHcloud et commencer à explorer les services OPCP. Votre prochaine étape est d'apprendre comment accéder au tableau de bord.</p>
-            </section>
+        <h3>Prérequis</h3>
+        <ul>
+          <li>Un serveur physique dédié à l'hébergement du contrôleur</li>
+          <li>Un accès en lecture seule au bucket S3 de livraison OPCP (endpoint, nom du bucket, région, version)</li>
+          <li>Une clé d'accès S3 et une clé secrète dédiées (lecture seule, limitées au préfixe de livraison)</li>
+          <li>Une clé USB bootable ou un périphérique de média virtuel</li>
+          <li>Un accès à la console de gestion à distance du serveur (IPMI, iDRAC, iLO)</li>
+          <li>Au moins 2 disques physiques de taille similaire pour le RAID 1</li>
+          <li>Un câble réseau connectant la première interface du serveur à votre réseau</li>
+          <li>Adresse IP, masque de sous-réseau, passerelle et serveurs DNS pour le réseau d'accès au contrôleur</li>
+        </ul>
+
+        <h3>Étapes d'installation</h3>
+        <ol>
+          <li><strong>Télécharger et vérifier l'image</strong> — récupérer l'ISO et sa somme de contrôle SHA-256 depuis le bucket S3 avec <code>s3cmd</code> ou des requêtes <code>curl</code> signées, puis vérifier la somme de contrôle et écrire l'ISO sur le support d'amorçage.</li>
+          <li><strong>Câbler le serveur</strong> — connecter uniquement la première interface réseau à votre réseau.</li>
+          <li><strong>Démarrer l'installateur</strong> — amorcer depuis le support et sélectionner « Auto Install » dans le menu GRUB.</li>
+          <li><strong>Sélectionner les disques</strong> — choisir au moins 2 disques (idéalement identiques) pour le RAID 1. L'installateur crée automatiquement la configuration RAID et la disposition LVM.</li>
+          <li><strong>Configurer le réseau</strong> — sélectionner l'interface connectée, choisir « Static », et saisir l'IP, le masque, la passerelle et les DNS.</li>
+          <li><strong>Vérifier l'accès</strong> — après le premier démarrage, confirmer la connectivité SSH vers l'IP du contrôleur et valider que le nœud peut atteindre les ressources réseau nécessaires.</li>
+          <li><strong>Ajuster les volumes LVM</strong> — redimensionner les volumes logiques (<code>spare</code>, <code>home</code>, <code>root</code>, <code>tmp</code>, <code>var</code>) en fonction de la capacité des disques et des besoins de la charge de travail.</li>
+        </ol>
+      </section>
+
+      <section aria-labelledby="next-steps">
+        <h2 id="next-steps">Étapes suivantes</h2>
+        <p>Une fois le contrôleur opérationnel et accessible, vous pouvez passer à la configuration des nœuds, à la mise en place des réseaux et au déploiement de vos premières instances via Horizon ou les API OpenStack.</p>
+        <p>Pour tous les détails, consultez les guides officiels :</p>
+        <ul>
+          <li><a href="https://docs.ovhcloud.com/en/guides/hosted-private-cloud/opcp/getting-started">Getting started with your OPCP</a></li>
+          <li><a href="https://docs.ovhcloud.com/en/guides/hosted-private-cloud/opcp/install-controller">OPCP - How to install a controller</a></li>
+        </ul>
+      </section>
 
       <button class="mark-complete-btn" type="button" aria-label="✓ Marquer comme terminé">
         ✓ Marquer comme terminé
       </button>
-      <div class="prev-next-nav" aria-label="Lesson navigation"></div>
+      <div class="prev-next-nav" aria-label="Navigation des leçons"></div>
     </main>
   </div>
   <footer class="site-footer" role="contentinfo">

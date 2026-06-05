@@ -12,114 +12,191 @@
   <header class="site-header" role="banner">
     <div class="logo"><a href="../introduction/what-is-opcp.html" aria-label="Accueil SkillHub">SkillHub</a></div>
     <div class="header-right">
-      <div class="lang-toggle" aria-label="Language selector"></div>
-      <div class="progress-bar-container" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="Learning progress">
+      <div class="lang-toggle" aria-label="Sélecteur de langue"></div>
+      <div class="progress-bar-container" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="Progression de l'apprentissage">
         <div class="progress-bar-fill"></div>
       </div>
       <span class="progress-text">0%</span>
-      <button class="hamburger-btn" aria-label="Open navigation menu" aria-expanded="false">☰</button>
+      <button class="hamburger-btn" aria-label="Ouvrir le menu de navigation" aria-expanded="false">☰</button>
     </div>
   </header>
   <div class="sidebar-overlay" aria-hidden="true"></div>
   <div class="site-wrapper">
-    <aside class="sidebar" role="navigation" aria-label="Lesson navigation">
+    <aside class="sidebar" role="navigation" aria-label="Navigation des leçons">
       <nav id="sidebar-nav"></nav>
     </aside>
     <main class="main-content" role="main" id="main-content">
-      <div class="breadcrumbs" aria-label="Breadcrumb"></div>
+      <div class="breadcrumbs" aria-label="Fil d'Ariane"></div>
 
       <header class="lesson-header">
-                <h1>Services Professionnels OPCP</h1>
-                <span class="difficulty-badge beginner" aria-label="Difficulté : Débutant">Débutant</span>
-            </header>
+        <h1>Services Professionnels OPCP</h1>
+        <div class="lesson-meta">
+          <span class="badge badge-beginner">Débutant</span>
+          <a href="../../en/getting-started/professional-services-OPCP.html" class="language-switch" aria-label="Passer en anglais">
+            <span>🇬🇧</span> <span>English</span>
+          </a>
+        </div>
+      </header>
 
-            <section aria-labelledby="overview">
-                <h2 id="overview">Présentation</h2>
-                <p>Après le déploiement de votre plateforme <dfn class="glossary-term" title="On Premise Cloud Platform (OPCP) — une plateforme cloud sur site où OVHcloud installe et gère une baie de serveurs directement dans les locaux du client">OPCP</dfn> sur site et la réception de vos identifiants d'accès, quelques étapes de configuration sont nécessaires avant que votre environnement soit pleinement opérationnel.</p>
-                <p>OPCP est une <strong>plateforme sur site (on-premise)</strong> — elle fonctionne dans vos propres locaux. Après le déploiement, vous vous connectez via l'URL définie lors de la livraison et vous authentifiez via la page Keycloak pour accéder au tableau de bord.</p>
-                <p class="info-box"><strong>Référence :</strong> <a href="https://docs.ovhcloud.com/fr/hosted-private-cloud/opcp/getting-started/" target="_blank" rel="noopener">Documentation OVHcloud OPCP — Premiers pas</a></p>
-            </section>
+      <section aria-labelledby="overview">
+        <h2 id="overview">Présentation</h2>
+        <p>Les <strong>Services Professionnels (PS)</strong> d'OVHcloud fournissent un accompagnement expert tout au long du cycle de vie d'un projet <dfn class="glossary-term" title="On Premise Cloud Platform — une plateforme cloud sur site où OVHcloud installe et gère un rack de serveurs directement dans les locaux du client">OPCP</dfn>. Cette leçon résume le modèle d'engagement PS, l'approche de livraison, les activités du cycle de vie du projet et les livrables clés.</p>
+      </section>
 
-            <section aria-labelledby="step1">
-                <h2 id="step1">Étape 1 : Explorer le Tableau de Bord Horizon</h2>
-                <p>Une fois connecté via Keycloak, vous accédez au tableau de bord <strong>OpenStack Horizon</strong> — l'interface principale pour gérer votre infrastructure OPCP. Le tableau de bord donne accès aux services de votre plateforme : IAM (Keycloak) pour la gestion des utilisateurs, et les API OpenStack (Keystone, Glance, Nova, Neutron, Ironic).</p>
-                <p>Sections clés à explorer :</p>
-                <ul>
-                    <li><strong>Projet &gt; Vue d'ensemble</strong> — Consultez vos limites de quotas : Compute (instances, vCPUs, RAM), Réseau (IP flottantes, groupes de sécurité, réseaux, ports)</li>
-                    <li><strong>Projet &gt; Accès API</strong> — Liste les 10 services disponibles avec leurs URLs de endpoints</li>
-                    <li><strong>Compute &gt; Instances</strong> — Lister et gérer vos serveurs bare metal dédiés</li>
-                    <li><strong>Compute &gt; Images</strong> — Images OS disponibles pour le déploiement</li>
-                    <li><strong>Réseau &gt; Réseaux</strong> — Liste des réseaux disponibles</li>
-                    <li><strong>Réseau &gt; Topologie</strong> — Représentation visuelle de votre architecture réseau</li>
-                </ul>
-                <p><strong>Important :</strong> Les images OS doivent correspondre aux pilotes matériels (pilotes bare metal, pas les pilotes virtuels qemu/kvm).</p>
-            </section>
+      <section aria-labelledby="value-proposition">
+        <h2 id="value-proposition">Proposition de valeur</h2>
+        <p>La complexité d'OPCP nécessite une approche structurée et une expertise approfondie. Les Services Professionnels vous aident à atteindre vos objectifs métier à chaque étape de la transformation, avec des services adaptés à vos besoins :</p>
+        <ul>
+          <li><strong>Services orientés résultats</strong> — axés sur la livraison de valeur métier mesurable et la maximisation du délai de rentabilité des investissements technologiques.</li>
+          <li><strong>Consultants experts</strong> — des Architectes Solutions OPCP dédiés avec une connaissance approfondie de la plateforme.</li>
+          <li><strong>Bonnes pratiques</strong> — tirant parti de l'expérience en conception de piles applicatives et de méthodologies éprouvées.</li>
+        </ul>
+        <p>La mission principale est le <strong>BUILD</strong> : vous guider dans la conception et l'implémentation de cas d'usage sur votre cloud souverain, en accélérant la livraison sécurisée de votre environnement opérationnel en production.</p>
+      </section>
 
-            <section aria-labelledby="step2">
-                <h2 id="step2">Étape 2 : Comprendre Vos Quotas</h2>
-                <p>Votre plateforme OPCP dispose de quotas de ressources définis, visibles dans <strong>Projet &gt; Vue d'ensemble</strong>. Ils définissent les limites de ce que vous pouvez déployer :</p>
-                <ul>
-                    <li><strong>Quotas Compute</strong> — Nombre maximum d'instances, de vCPUs et allocation RAM</li>
-                    <li><strong>Quotas Réseau</strong> — Maximum d'IP flottantes, groupes de sécurité, réseaux et ports</li>
-                </ul>
-                <p>Ces quotas représentent la capacité physique de votre baie sur site. Si vous devez les ajuster, contactez votre représentant OVHcloud.</p>
-            </section>
+      <section aria-labelledby="engagement-model">
+        <h2 id="engagement-model">Modèle d'engagement</h2>
 
-            <section aria-labelledby="step3">
-                <h2 id="step3">Étape 3 : Configuration Réseau</h2>
-                <p>La configuration réseau dans OPCP est pilotée par <strong>Horizon/API (Neutron)</strong>. Une caractéristique clé de la plateforme est que <strong>les switchs réseau sont automatiquement configurés</strong> à partir des informations que vous définissez dans OpenStack.</p>
-                <p>Cela signifie :</p>
-                <ul>
-                    <li>Vous définissez les réseaux et ports dans Horizon ou via l'API Neutron</li>
-                    <li>La configuration physique des switchs est appliquée automatiquement — pas de configuration manuelle des switchs nécessaire</li>
-                    <li>Les VLANs et ports trunk sont gérés via la couche d'abstraction OpenStack</li>
-                </ul>
-                <p>Naviguez vers <strong>Réseau &gt; Réseaux</strong> pour voir les réseaux disponibles, et <strong>Réseau &gt; Topologie</strong> pour une vue d'ensemble visuelle de votre architecture réseau.</p>
-            </section>
+        <h3>Périmètre et responsabilités</h3>
+        <ul>
+          <li>Le focus principal est la <strong>phase de Build</strong> des applications sur OPCP dans un environnement hors production.</li>
+          <li>Ateliers techniques pour une qualification approfondie.</li>
+          <li>Responsable de la conception d'architecture de bas niveau (LLD).</li>
+          <li>Exécution cadencée du LLD selon les jalons du client.</li>
+          <li>Mise en relation avec les partenaires OVHcloud (privilégiée) ou livraison côte à côte.</li>
+          <li>Services de conseil non techniques (People / Process / Tools) pour de meilleurs résultats.</li>
+        </ul>
 
-            <section aria-labelledby="step4">
-                <h2 id="step4">Étape 4 : Gestion des Clés SSH</h2>
-                <p>Avant de déployer des instances, configurez vos clés SSH pour un accès sécurisé aux nœuds bare metal :</p>
-                <ul>
-                    <li>Naviguez vers <strong>Compute &gt; Paires de clés</strong></li>
-                    <li>Importez votre clé publique SSH existante ou créez une nouvelle paire de clés</li>
-                    <li>Les paires de clés seront injectées lors du provisionnement des instances pour un accès sécurisé</li>
-                </ul>
-            </section>
+        <h3>Cadre d'engagement</h3>
+        <ul>
+          <li>Un <strong>Statement of Work (SoW)</strong> est obligatoire avant l'engagement des Architectes Solutions PS.</li>
+          <li>Focus orienté résultats (axé sur la valeur).</li>
+          <li>Approbation des livrables requise à chaque phase.</li>
+        </ul>
 
-            <section aria-labelledby="step5">
-                <h2 id="step5">Étape 5 : Accès Utilisateurs via Keycloak</h2>
-                <p>La gestion des utilisateurs dans OPCP est assurée par le service d'identité <strong>Keycloak</strong> embarqué (IAM). Accédez à Keycloak depuis le tableau de bord pour :</p>
-                <ul>
-                    <li>Créer des comptes utilisateurs pour les membres de votre équipe</li>
-                    <li>Définir des rôles et des permissions</li>
-                    <li>Optionnellement intégrer avec LDAP/Active Directory (TCP/636 LDAPS) pour une gestion centralisée des identités</li>
-                </ul>
-                <p>Trois niveaux d'accès sont typiquement configurés :</p>
-                <ul>
-                    <li><strong>Administrateur</strong> — Accès complet à tous les paramètres et services</li>
-                    <li><strong>Opérateur</strong> — Peut gérer les services et déployer des instances</li>
-                    <li><strong>Lecture seule</strong> — Peut consulter les informations mais ne peut pas effectuer de modifications</li>
-                </ul>
-            </section>
+        <h3>Approche de livraison</h3>
+        <ul>
+          <li>Livraison en mode projet : planification, coordination et reporting.</li>
+          <li>Méthodes Scrum/Agile, cascade ou hybrides selon les besoins. Un Scrum master doit être identifié côté client pour la phase d'exécution cadencée.</li>
+          <li>Suivi continu du projet : santé, activités, risques et consommation budgétaire.</li>
+        </ul>
+      </section>
 
-            <section aria-labelledby="summary">
-                <h2 id="summary">Configuration Terminée</h2>
-                <p>Une fois ces étapes accomplies, votre environnement OPCP est prêt pour le déploiement d'instances bare metal. Voici un récapitulatif rapide :</p>
-                <ol>
-                    <li>Exploration du tableau de bord Horizon et compréhension des services disponibles</li>
-                    <li>Vérification de vos quotas de ressources (Compute et Réseau)</li>
-                    <li>Compréhension de l'auto-configuration des switchs réseau depuis OpenStack</li>
-                    <li>Configuration des paires de clés SSH pour l'accès sécurisé aux instances</li>
-                    <li>Configuration des accès utilisateurs via Keycloak IAM</li>
-                </ol>
-                <p>À partir d'ici, vous pouvez explorer la section <a href="../core-concepts/node-lifecycle.html">Cycle de Vie des Nœuds</a> pour comprendre la gestion des nœuds bare metal, ou passer aux <a href="../technical-operations/instance-setup.html">Opérations Techniques</a> pour déployer votre première instance.</p>
-            </section>
+      <section aria-labelledby="lifecycle">
+        <h2 id="lifecycle">Activités du cycle de vie du projet OPCP</h2>
+        <p>Les activités des Services Professionnels couvrent l'ensemble du cycle de vie du projet, des objectifs initiaux aux résultats métier :</p>
+
+        <h3>1. Découverte et évaluation</h3>
+        <ul>
+          <li>Revue des exigences de la solution et des résultats souhaités.</li>
+          <li>Qualification technique des cas d'usage du client sur OPCP.</li>
+          <li>Alignement des parties prenantes et sponsoring exécutif.</li>
+          <li>Évaluation de l'état actuel et de la maturité (People, Process, Tools).</li>
+          <li>Assistance sur le modèle opérationnel et l'organisation cible.</li>
+          <li>Élaboration du Statement of Work (SoW).</li>
+        </ul>
+
+        <h3>2. Planification et conception</h3>
+        <ul>
+          <li>Animation d'ateliers de conception d'architecture spécifiques aux cas d'usage.</li>
+          <li>Conception de l'architecture détaillée cible (LLD) et développement d'un Workbook de Configuration personnalisé pour le déploiement via CloudApps et OPCP Core.</li>
+          <li>Construction du Plan d'Implémentation et établissement du Work Breakdown Structure (WBS).</li>
+          <li>Construction et lancement du plan de formation pour les nouvelles compétences.</li>
+        </ul>
+
+        <h3>3. Construction et déploiement (Livraison)</h3>
+        <ul>
+          <li>Assurer la livraison matérielle et l'installation d'OPCP avec la configuration initiale — jusqu'à l'état « Ready for Use ».</li>
+          <li>Intégrer la plateforme à l'environnement du client et implémenter la connectivité sécurisée.</li>
+          <li>Configurer OPCP à l'aide du Workbook de Configuration.</li>
+          <li>Tester et valider — jusqu'à l'état « Ready for Service ».</li>
+          <li>Fournir la documentation As-Built à la fin de l'implémentation.</li>
+        </ul>
+
+        <h3>4. Migration et transfert</h3>
+        <ul>
+          <li>Fournir un plan de migration et de test en définissant des lots de migration.</li>
+          <li>Migrer ou implémenter les charges de travail applicatives.</li>
+          <li>Exécuter les tests d'acceptation utilisateur.</li>
+          <li>Développer des playbooks / runbooks d'exploitation personnalisés.</li>
+          <li>Transfert à l'équipe d'exploitation lors de la mise en production.</li>
+        </ul>
+
+        <h3>5. Formation, montée en charge et optimisation</h3>
+        <ul>
+          <li>Assurer la montée en compétences à tous les niveaux requis de l'organisation du client.</li>
+          <li>Formation sur site et certification OPCP pour les apprenants.</li>
+          <li>Hypercare post mise en production.</li>
+          <li>Amélioration continue.</li>
+          <li>Opérations en régime permanent (opérées par le centre de support OVHcloud).</li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="deliverables">
+        <h2 id="deliverables">Livrables clés</h2>
+
+        <h3>Conception de bas niveau (LLD)</h3>
+        <p>Le LLD détaille l'architecture technique et fonctionnelle de la solution cible, en abordant le « quoi » et le « pourquoi » de l'implémentation. Il couvre la scalabilité, la fonctionnalité, l'intégration et les exigences opérationnelles.</p>
+        <ul>
+          <li>Développé au travers d'ateliers de conception animés par les Architectes Solutions PS avec une expertise OPCP approfondie.</li>
+          <li>Implique une collaboration étroite avec les parties prenantes du client (équipes architecture, virtualisation, réseau).</li>
+          <li>Contient des diagrammes physiques et logiques, des modèles de configuration, des scripts et des artefacts.</li>
+          <li>Auto-explicatif — permet aux non-spécialistes de réaliser la plupart des configurations à partir du document.</li>
+          <li>Document vivant qui évolue tout au long du cycle de vie du projet.</li>
+        </ul>
+
+        <h3>Plan d'implémentation</h3>
+        <p>Le Plan d'Implémentation fournit des instructions claires, des méthodologies éprouvées et des bonnes pratiques pour déployer et valider la plateforme OPCP adaptée aux exigences de la solution.</p>
+        <ul>
+          <li>Construit sur la base du HLD, du LLD et du Workbook de Configuration issus de la phase de conception.</li>
+          <li>Se concentre sur l'alignement de la configuration OPCP avec les cas d'usage du client, l'intégration des charges de travail, la connectivité legacy et les exigences d'automatisation/exploitation.</li>
+          <li>Réduit les imprévus et standardise les déploiements grâce à un cadre reproductible.</li>
+          <li>Permet un transfert fluide vers les équipes d'exploitation et l'intégration dans les playbooks/runbooks existants.</li>
+          <li>Minimise les risques de mauvaise configuration et accélère l'adoption de la plateforme.</li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="budget">
+        <h2 id="budget">Estimation budgétaire</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Phase</th>
+              <th>Effort</th>
+              <th>Durée</th>
+              <th>Taux journalier</th>
+              <th>Prix estimé (HT)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Conception</td>
+              <td>~30 jours-homme (~10 ateliers de conception, LLD, Workbook de Configuration)</td>
+              <td>6 mois</td>
+              <td>1 700 €</td>
+              <td>~51 k€</td>
+            </tr>
+            <tr>
+              <td>Assistance au Build</td>
+              <td>8 jours-homme/mois (service réactif déclenché par les demandes du client)</td>
+              <td>3–6 mois</td>
+              <td>1 700 €</td>
+              <td>~40,8–81,6 k€</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>Le périmètre exact et le niveau d'effort sont définis dans le SoW et dépendent de la maturité technique, de la mobilisation des équipes et de la complexité des applications concernées.</p>
+      </section>
+
+      <section aria-labelledby="next-steps">
+        <h2 id="next-steps">Étapes suivantes</h2>
+        <p>Pour engager les Services Professionnels, contactez votre responsable commercial OVHcloud afin d'initier le processus de Statement of Work et commencer la phase de Découverte et Évaluation.</p>
+      </section>
 
       <button class="mark-complete-btn" type="button" aria-label="✓ Marquer comme terminé">
         ✓ Marquer comme terminé
       </button>
-      <div class="prev-next-nav" aria-label="Lesson navigation"></div>
+      <div class="prev-next-nav" aria-label="Navigation des leçons"></div>
     </main>
   </div>
   <footer class="site-footer" role="contentinfo">

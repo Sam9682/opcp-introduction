@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Getting started with CloudStore on OPCP: login, key concepts, account creation, service deployment and marketplace platform management.">
+  <title>Getting Started with CloudStore - OPCP Skillhub</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-header" role="banner">
+    <div class="logo"><a href="../introduction/what-is-opcp.html" aria-label="SkillHub Home">SkillHub</a></div>
+    <div class="header-right">
+      <div class="lang-toggle" aria-label="Language selector"></div>
+      <div class="progress-bar-container" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="Learning progress">
+        <div class="progress-bar-fill"></div>
+      </div>
+      <span class="progress-text">0%</span>
+      <button class="hamburger-btn" aria-label="Open navigation menu" aria-expanded="false">☰</button>
+    </div>
+  </header>
+  <div class="sidebar-overlay" aria-hidden="true"></div>
+  <div class="site-wrapper">
+    <aside class="sidebar" role="navigation" aria-label="Lesson navigation">
+      <nav id="sidebar-nav"></nav>
+    </aside>
+    <main class="main-content" role="main" id="main-content">
+      <div class="breadcrumbs" aria-label="Breadcrumb"></div>
+
+      <header class="lesson-header">
+        <h1>Getting Started with CloudStore</h1>
+        <div class="lesson-meta">
+          <span class="badge badge-beginner">Beginner</span>
+          <a href="../../fr/getting-started/cloudstore-getting-started.html" class="language-switch" aria-label="Switch to French">
+            <span>🇫🇷</span> <span>Français</span>
+          </a>
+        </div>
+      </header>
+
+      <section aria-labelledby="objective-heading">
+        <h2 id="objective-heading">Objective</h2>
+        <p>This guide shows you how to log in to your CloudStore management interface, understand its key concepts, and perform initial operations such as creating accounts and deploying services.</p>
+
+        <div class="info-box">
+          <p><strong>CloudStore</strong> is a high-level infrastructure framework deployed on top of the <a href="../glossary.html#term-opcp" class="glossary-term">OPCP</a> (On-Premise Cloud Platform). It provides core services to help cloud providers deploy and manage cloud-native solutions for their customers through a <strong>marketplace-based platform</strong>.</p>
+        </div>
+
+        <p>The content below is based on the official OVHcloud documentation: <a href="https://docs.ovhcloud.com/en/guides/hosted-private-cloud/opcp/cloudstore-getting-started" target="_blank" rel="noopener">Getting started with your CloudStore</a>.</p>
+      </section>
+
+      <section aria-labelledby="prerequisites-heading">
+        <h2 id="prerequisites-heading">Prerequisites</h2>
+        <ul>
+          <li>The URL of your CloudStore management interface, provided during service delivery.</li>
+          <li>Login credentials (username and password) provided during service delivery. These credentials are managed through <strong>Keycloak</strong>, the identity and access management solution used by the platform.</li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="login-heading">
+        <h2 id="login-heading">Logging in to CloudStore</h2>
+        <p>Navigate to the URL provided for your CloudStore instance. You will be presented with a login page.</p>
+        <p>Click the login button to be redirected to the Keycloak authentication page. You have two options to authenticate:</p>
+        <ul>
+          <li><strong>Direct login</strong> — Enter your credentials directly in the Keycloak login form.</li>
+          <li><strong>OPCP-SSO</strong> — Authenticate through the federated OPCP Core Keycloak. This option allows users already registered in OPCP Core to log in without managing a separate set of credentials.</li>
+        </ul>
+        <p>Once authenticated, the interface obtains an OIDC access token that is used for all subsequent operations.</p>
+      </section>
+
+      <section aria-labelledby="dashboard-heading">
+        <h2 id="dashboard-heading">The CloudStore dashboard</h2>
+        <p>After logging in, you will be redirected to the CloudStore dashboard. From there, you can access the following key areas:</p>
+        <ul>
+          <li><strong>Service catalog</strong> — Browse and activate available services (e.g. VCF).</li>
+          <li><strong>Accounts</strong> — Create and manage tenant accounts for your customers or internal teams.</li>
+          <li><strong>Controllers and Apps</strong> — Deploy and manage the infrastructure components of each service.</li>
+          <li><strong>IAM management</strong> — Configure users and permissions within Keycloak.</li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="concepts-heading">
+        <h2 id="concepts-heading">Key concepts</h2>
+
+        <h3 id="personas-heading">Personas</h3>
+        <p>CloudStore distinguishes between two audiences:</p>
+        <ul>
+          <li><strong>Cloud providers</strong> (IT admins, Service admins) — OVHcloud customers who operate the platform. They provision infrastructure, deploy services, and manage accounts.</li>
+          <li><strong>Cloud users</strong> (Landing Zone Manager users) — Customers of cloud providers who consume the services deployed for them through the Landing Zone.</li>
+        </ul>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Role</th>
+              <th>Responsibilities</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>IT admin</td>
+              <td>Create accounts, activate services, deploy apps</td>
+            </tr>
+            <tr>
+              <td>Service admin</td>
+              <td>Manage a specific service, deploy its controller and apps</td>
+            </tr>
+            <tr>
+              <td>Account admin</td>
+              <td>Manage the configuration of their account</td>
+            </tr>
+            <tr>
+              <td>Landing Zone Manager user</td>
+              <td>Access apps through the Landing Zone</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3 id="controller-app-heading">The controller/app pattern</h3>
+        <p>Each service in CloudStore follows a <strong>controller/app</strong> architecture:</p>
+        <ul>
+          <li><strong>The controller</strong> (controlplane) is deployed first. It manages the lifecycle of apps and handles cross-tenant orchestration. A single controller can manage multiple apps across different accounts.</li>
+          <li><strong>Apps</strong> (dataplane) are workloads deployed for a specific account. Each app is isolated to one account and cannot be shared between accounts.</li>
+        </ul>
+        <p>This pattern allows cloud providers to offer the same service to multiple customers, each getting their own isolated app instance while sharing the same controller infrastructure.</p>
+
+        <figure class="diagram-scroll">
+          <svg viewBox="0 0 700 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram showing the CloudStore controller/app architecture: a single controller manages multiple apps isolated per account">
+            <!-- Controller -->
+            <rect x="230" y="20" width="240" height="80" rx="10" fill="#e8f4fd" stroke="#000E9C" stroke-width="2"/>
+            <text x="350" y="55" text-anchor="middle" font-size="14" font-weight="bold" fill="#000E9C">Controller (Controlplane)</text>
+            <text x="350" y="80" text-anchor="middle" font-size="11" fill="#333">Orchestration &amp; lifecycle</text>
+
+            <!-- Arrows to apps -->
+            <line x1="290" y1="100" x2="140" y2="160" stroke="#4949FF" stroke-width="2" marker-end="url(#arrowCSen)"/>
+            <line x1="350" y1="100" x2="350" y2="160" stroke="#4949FF" stroke-width="2" marker-end="url(#arrowCSen)"/>
+            <line x1="410" y1="100" x2="560" y2="160" stroke="#4949FF" stroke-width="2" marker-end="url(#arrowCSen)"/>
+
+            <!-- App Account A -->
+            <rect x="50" y="160" width="180" height="70" rx="8" fill="#d4edda" stroke="#1b7a3d" stroke-width="2"/>
+            <text x="140" y="190" text-anchor="middle" font-size="12" font-weight="bold" fill="#1b7a3d">App — Account A</text>
+            <text x="140" y="210" text-anchor="middle" font-size="10" fill="#333">Isolated workload</text>
+
+            <!-- App Account B -->
+            <rect x="260" y="160" width="180" height="70" rx="8" fill="#d4edda" stroke="#1b7a3d" stroke-width="2"/>
+            <text x="350" y="190" text-anchor="middle" font-size="12" font-weight="bold" fill="#1b7a3d">App — Account B</text>
+            <text x="350" y="210" text-anchor="middle" font-size="10" fill="#333">Isolated workload</text>
+
+            <!-- App Account C -->
+            <rect x="470" y="160" width="180" height="70" rx="8" fill="#d4edda" stroke="#1b7a3d" stroke-width="2"/>
+            <text x="560" y="190" text-anchor="middle" font-size="12" font-weight="bold" fill="#1b7a3d">App — Account C</text>
+            <text x="560" y="210" text-anchor="middle" font-size="10" fill="#333">Isolated workload</text>
+
+            <!-- Arrow marker -->
+            <defs>
+              <marker id="arrowCSen" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+                <polygon points="0 0, 10 3.5, 0 7" fill="#4949FF"/>
+              </marker>
+            </defs>
+          </svg>
+          <figcaption>Controller/app architecture: a single controller manages multiple apps, each isolated in a separate account</figcaption>
+        </figure>
+      </section>
+
+      <section aria-labelledby="create-account-heading">
+        <h2 id="create-account-heading">Creating an account</h2>
+        <p>An <strong>account</strong> represents a company or a department. Each account gets its own Keycloak realm, providing complete IAM isolation. Accounts must be created before deploying apps, as apps are always scoped to an account.</p>
+
+        <h3>Steps</h3>
+        <ol>
+          <li>From the CloudStore dashboard, navigate to the <strong>Accounts</strong> section.</li>
+          <li>Click on <strong>Create an account</strong>.</li>
+          <li>Fill in the required fields: account name, admin full name, and admin email address.</li>
+          <li>Submit the form.</li>
+        </ol>
+
+        <p>The platform automatically:</p>
+        <ul>
+          <li>Creates a dedicated Keycloak realm named <code>account-{name}</code>.</li>
+          <li>Creates an admin user with the <code>account-admin</code> role.</li>
+          <li>Sets up a temporary password (the account admin will be prompted to change it on first login).</li>
+          <li>Configures a <code>landing-zone</code> client for Landing Zone Manager user access.</li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="deploy-service-heading">
+        <h2 id="deploy-service-heading">Deploying a service</h2>
+        <p>Deploying a service is a two-step process: first deploy the controller, then deploy one or more apps for specific accounts.</p>
+
+        <h3>Step 1 — Deploy a controller</h3>
+        <ol>
+          <li>Navigate to the <strong>Service catalog</strong> from the dashboard.</li>
+          <li>Select the service you want to activate.</li>
+          <li>Click <strong>Activate the service</strong>.</li>
+          <li>Choose the version and configure the required properties.</li>
+          <li>Select the hosts on which the controller will be deployed.</li>
+          <li>Submit the form.</li>
+        </ol>
+
+        <div class="info-box">
+          <p><strong>Note:</strong> Controller deployment is <strong>asynchronous</strong>. The interface will confirm that the deployment has started, but provisioning happens in the background through Kubernetes and Terraform. You can monitor the deployment status from the controllers page.</p>
+        </div>
+
+        <h3>Step 2 — Deploy an app</h3>
+        <p>Once the controller is active and at least one account exists:</p>
+        <ol>
+          <li>Navigate to the controller page.</li>
+          <li>Click <strong>Deploy an app</strong>.</li>
+          <li>Select the target account.</li>
+          <li>Choose the version and configure the required properties.</li>
+          <li>Select the hosts for the app deployment.</li>
+          <li>Submit the form.</li>
+        </ol>
+
+        <p>During app deployment, the platform automatically creates the necessary Keycloak resources (client-id, roles, and groups) in the target account's realm, ensuring that only authorised users of that account can access the app.</p>
+      </section>
+
+      <section aria-labelledby="scaling-heading">
+        <h2 id="scaling-heading">Scaling capacity</h2>
+        <p>You can add or remove hosts from a deployed controller or app to adjust capacity:</p>
+        <ol>
+          <li>Navigate to the controller or app page.</li>
+          <li>Click <strong>Expand capacity</strong>.</li>
+          <li>Select the hosts to add.</li>
+          <li>Submit the form.</li>
+        </ol>
+        <p>The scaling operation is asynchronous. Kubernetes reconciles the configuration and provisions resources on the updated hosts.</p>
+      </section>
+
+      <section aria-labelledby="auth-heading">
+        <h2 id="auth-heading">Authentication and access levels</h2>
+        <p>CloudStore uses a layered Keycloak federation model that mirrors the platform architecture:</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Layer</th>
+              <th>Keycloak instance</th>
+              <th>Users</th>
+              <th>Purpose</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>L1</td>
+              <td>OPCP Core Keycloak</td>
+              <td>DC operators, Super admins</td>
+              <td>Infrastructure-level identity</td>
+            </tr>
+            <tr>
+              <td>L2</td>
+              <td>CloudStore Keycloak</td>
+              <td>IT admins, Service admins</td>
+              <td>Platform management</td>
+            </tr>
+            <tr>
+              <td>L3</td>
+              <td>Per-account Keycloak realms</td>
+              <td>Landing Zone Manager users</td>
+              <td>Application access</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <ul>
+          <li><strong>Keycloak L2</strong> is federated with L1 (OPCP Core). Rights granted on OpenStack projects at L1 are carried through to L2.</li>
+          <li><strong>Keycloak L3</strong> is an independent instance managed by the CloudStore API. Each account gets its own isolated realm.</li>
+        </ul>
+
+        <h3>Managing IAM on CloudStore Keycloak (L2)</h3>
+        <p>To manage users, roles, and groups on the CloudStore Keycloak (L2), first assign the <code>cloudstore-admins</code> role to your user in the OPCP Core Keycloak (L1):</p>
+        <ol>
+          <li>Log in to the OPCP Core Keycloak administration console (L1).</li>
+          <li>Navigate to the user you want to grant IAM management rights to.</li>
+          <li>In the <strong>Role mappings</strong> tab, assign the <code>cloudstore-admins</code> client role.</li>
+        </ol>
+      </section>
+
+      <section aria-labelledby="landing-zone-heading">
+        <h2 id="landing-zone-heading">The Landing Zone</h2>
+        <p>The <strong>Landing Zone</strong> is the interface for cloud users (Landing Zone Manager users). It provides a simplified view of the apps deployed for their account.</p>
+        <p>Users authenticate through their account-specific Keycloak realm (L3) and can only access apps deployed for their account. The Landing Zone retrieves the list of accessible apps and filters them based on user permissions.</p>
+      </section>
+
+      <section aria-labelledby="summary-heading">
+        <h2 id="summary-heading">Key takeaways</h2>
+        <ul>
+          <li><strong>CloudStore</strong> is a high-level infrastructure framework deployed on top of OPCP, enabling cloud providers to manage cloud-native solutions through a service catalog.</li>
+          <li>Authentication is handled via <strong>Keycloak</strong> with a 3-layer federated model (L1 infrastructure, L2 platform, L3 accounts).</li>
+          <li>The architecture relies on the <strong>controller/app</strong> pattern: a single controller orchestrates multiple apps isolated per account.</li>
+          <li><strong>Accounts</strong> represent isolated tenants with their own Keycloak realm for IAM.</li>
+          <li>Deployments (controllers and apps) are <strong>asynchronous</strong>, managed by Kubernetes and Terraform in the background.</li>
+          <li>The <strong>Landing Zone</strong> provides a simplified interface for end-users of cloud providers.</li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="further-heading">
+        <h2 id="further-heading">Go further</h2>
+        <ul>
+          <li><a href="https://docs.ovhcloud.com/en/guides/hosted-private-cloud/opcp/cloudstore-getting-started" target="_blank" rel="noopener">Official documentation: Getting started with your CloudStore</a></li>
+          <li><a href="https://docs.ovhcloud.com/en/guides/hosted-private-cloud/opcp/landing-zone-manager-create-user-account" target="_blank" rel="noopener">Landing Zone Manager — Creating a user account</a></li>
+          <li><a href="https://docs.ovhcloud.com/en/guides/hosted-private-cloud/opcp/getting-started" target="_blank" rel="noopener">Getting started with your OPCP</a></li>
+        </ul>
+      </section>
+
+      <button class="mark-complete-btn" type="button" aria-label="✓ Mark as complete">
+        ✓ Mark as complete
+      </button>
+      <div class="prev-next-nav" aria-label="Lesson navigation"></div>
+    </main>
+  </div>
+  <footer class="site-footer" role="contentinfo">
+    SkillHub Training — OVHcloud
+  </footer>
+  <script type="module" src="../../assets/js/lessons.js"></script>
+  <script type="module" src="../../assets/js/i18n.js"></script>
+  <script type="module" src="../../assets/js/navigation.js"></script>
+  <script type="module" src="../../assets/js/code-highlight.js"></script>
+  <script type="module" src="../../assets/js/main.js"></script>
+</body>
+</html>

@@ -39,11 +39,11 @@ function createSampleIndex() {
       path: 'en/getting-started/account-setup.html'
     },
     {
-      id: 'en/storage/cloudstore-overview',
+      id: 'en/getting-started/cloudstore-overview',
       title: 'CloudStore Overview',
       headings: ['What is CloudStore', 'Storage Tiers'],
       body: 'CloudStore is the storage solution integrated with OPCP providing scalable object and block storage.',
-      path: 'en/storage/cloudstore-overview.html'
+      path: 'en/getting-started/cloudstore-overview.html'
     }
   ];
 }

@@ -25,6 +25,7 @@ var LESSONS = [
   { id: 'introduction/target-audience', section: 'introduction', slug: 'introduction/target-audience', titleEN: 'Target Audience', titleFR: 'Public Cible', difficulty: 'beginner', estimatedMinutes: 5 },
   { id: 'introduction/key-features', section: 'introduction', slug: 'introduction/key-features', titleEN: 'Key Features', titleFR: 'Fonctionnalités Clés', difficulty: 'beginner', estimatedMinutes: 10 },
   { id: 'getting-started/getting-started-with-OPCP', section: 'getting-started', slug: 'getting-started/getting-started-with-OPCP', titleEN: 'Getting Started with OPCP', titleFR: 'Premiers pas avec OPCP', difficulty: 'beginner', estimatedMinutes: 15 },
+  { id: 'getting-started/cloudstore-overview', section: 'getting-started', slug: 'getting-started/cloudstore-overview', titleEN: 'CloudStore Overview', titleFR: 'Présentation CloudStore', difficulty: 'beginner', estimatedMinutes: 10 },
   { id: 'getting-started/dashboard-access', section: 'getting-started', slug: 'getting-started/dashboard-access', titleEN: 'Dashboard Access', titleFR: 'Accès au Tableau de Bord', difficulty: 'beginner', estimatedMinutes: 10 },
   { id: 'getting-started/navigation', section: 'getting-started', slug: 'getting-started/navigation', titleEN: 'Navigation', titleFR: 'Navigation', difficulty: 'beginner', estimatedMinutes: 10 },
   { id: 'getting-started/professional-services-OPCP', section: 'getting-started', slug: 'getting-started/professional-services-OPCP', titleEN: 'Professional Services', titleFR: 'Services Professionnels', difficulty: 'beginner', estimatedMinutes: 15 },
@@ -36,7 +37,7 @@ var LESSONS = [
   { id: 'technical-operations/api-credentials', section: 'technical-operations', slug: 'technical-operations/api-credentials', titleEN: 'API Credentials', titleFR: 'Identifiants API', difficulty: 'intermediate', estimatedMinutes: 15 },
   { id: 'technical-operations/node-configuration', section: 'technical-operations', slug: 'technical-operations/node-configuration', titleEN: 'Node Configuration', titleFR: 'Configuration des Nœuds', difficulty: 'advanced', estimatedMinutes: 20 },
   { id: 'technical-operations/lacp-trunk-raid', section: 'technical-operations', slug: 'technical-operations/lacp-trunk-raid', titleEN: 'LACP, Trunk & RAID', titleFR: 'LACP, Trunk & RAID', difficulty: 'advanced', estimatedMinutes: 25 },
-  { id: 'storage/cloudstore-overview', section: 'storage', slug: 'storage/cloudstore-overview', titleEN: 'CloudStore Overview', titleFR: 'Présentation CloudStore', difficulty: 'beginner', estimatedMinutes: 10 },
+
   { id: 'storage/storage-capabilities', section: 'storage', slug: 'storage/storage-capabilities', titleEN: 'Storage Capabilities', titleFR: 'Capacités de Stockage', difficulty: 'intermediate', estimatedMinutes: 15 },
   { id: 'storage/data-management', section: 'storage', slug: 'storage/data-management', titleEN: 'Data Management', titleFR: 'Gestion des Données', difficulty: 'intermediate', estimatedMinutes: 15 },
   { id: 'storage/backup-recovery', section: 'storage', slug: 'storage/backup-recovery', titleEN: 'Backup & Recovery', titleFR: 'Sauvegarde & Récupération', difficulty: 'intermediate', estimatedMinutes: 15 },

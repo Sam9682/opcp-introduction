@@ -332,8 +332,8 @@
     "path": "en/storage/backup-recovery.html"
   },
   {
-    "id": "en/storage/cloudstore-overview",
-    "title": "CloudStore Overview - Storage Solutions - OPCP Skillhub",
+    "id": "en/getting-started/cloudstore-overview",
+    "title": "CloudStore Overview - Getting Started - OPCP Skillhub",
     "headings": [
       "The Secure Warehouse Analogy",
       "How CloudStore Works",
@@ -346,7 +346,7 @@
       "Key Takeaways"
     ],
     "body": "CloudStore Overview Intermediate 🇫🇷 Français The Secure Warehouse Analogy Imagine your business generates mountains of documents, photos, videos, and data files every day. Where do you keep all of it? Think of CloudStore as a secure, expandable warehouse for your digital assets . Just like a professional storage facility: It grows with you — need more space? Simply request additional room. No construction required. It's always accessible — authorised staff can retrieve items anytime, from anyw",
-    "path": "en/storage/cloudstore-overview.html"
+    "path": "en/getting-started/cloudstore-overview.html"
   },
   {
     "id": "en/storage/data-management",
@@ -805,8 +805,8 @@
     "path": "fr/storage/backup-recovery.html"
   },
   {
-    "id": "fr/storage/cloudstore-overview",
-    "title": "Présentation de CloudStore - Solutions de Stockage - OPCP Skillhub",
+    "id": "fr/getting-started/cloudstore-overview",
+    "title": "Présentation de CloudStore - Premiers Pas - OPCP Skillhub",
     "headings": [
       "L'analogie de l'entrepôt sécurisé",
       "Comment fonctionne CloudStore",
@@ -819,7 +819,7 @@
       "Points clés à retenir"
     ],
     "body": "Présentation de CloudStore Intermédiaire 🇬🇧 English L'analogie de l'entrepôt sécurisé Imaginez que votre entreprise génère des montagnes de documents, photos, vidéos et fichiers de données chaque jour. Où stockez-vous tout cela ? Pensez à CloudStore comme un entrepôt sécurisé et extensible pour vos actifs numériques . Tout comme un centre de stockage professionnel : Il grandit avec vous — besoin de plus d'espace ? Il suffit de demander de la place supplémentaire. Aucune construction nécessaire",
-    "path": "fr/storage/cloudstore-overview.html"
+    "path": "fr/getting-started/cloudstore-overview.html"
   },
   {
     "id": "fr/storage/data-management",

@@ -8,7 +8,7 @@
  */
 
 var STORAGE_KEY = 'opcp-progress';
-var DEFAULT_TOTAL_LESSONS = 24;
+var DEFAULT_TOTAL_LESSONS = 26;
 
 var SECTIONS = [
   { id: 'introduction', titleEN: 'Introduction', titleFR: 'Introduction' },
@@ -24,6 +24,7 @@ var LESSONS = [
   { id: 'introduction/benefits', section: 'introduction', slug: 'introduction/benefits', titleEN: 'Benefits', titleFR: 'Avantages', difficulty: 'beginner', estimatedMinutes: 10 },
   { id: 'introduction/target-audience', section: 'introduction', slug: 'introduction/target-audience', titleEN: 'Target Audience', titleFR: 'Public Cible', difficulty: 'beginner', estimatedMinutes: 5 },
   { id: 'introduction/key-features', section: 'introduction', slug: 'introduction/key-features', titleEN: 'Key Features', titleFR: 'Fonctionnalités Clés', difficulty: 'beginner', estimatedMinutes: 10 },
+  { id: 'getting-started/opcp-overview', section: 'getting-started', slug: 'getting-started/opcp-overview', titleEN: 'OPCP Overview', titleFR: "Présentation d'OPCP", difficulty: 'beginner', estimatedMinutes: 15 },
   { id: 'getting-started/getting-started-with-OPCP', section: 'getting-started', slug: 'getting-started/getting-started-with-OPCP', titleEN: 'Getting Started with OPCP', titleFR: 'Premiers pas avec OPCP', difficulty: 'beginner', estimatedMinutes: 15 },
   { id: 'getting-started/cloudstore-overview', section: 'getting-started', slug: 'getting-started/cloudstore-overview', titleEN: 'CloudStore Overview', titleFR: 'Présentation CloudStore', difficulty: 'beginner', estimatedMinutes: 10 },
   { id: 'getting-started/landing-zone-manager', section: 'getting-started', slug: 'getting-started/landing-zone-manager', titleEN: 'Landing Zone Manager', titleFR: 'Landing Zone Manager', difficulty: 'intermediate', estimatedMinutes: 15 },
@@ -44,7 +45,6 @@ var LESSONS = [
   { id: 'storage/data-management', section: 'storage', slug: 'storage/data-management', titleEN: 'Data Management', titleFR: 'Gestion des Données', difficulty: 'intermediate', estimatedMinutes: 15 },
   { id: 'storage/backup-recovery', section: 'storage', slug: 'storage/backup-recovery', titleEN: 'Backup & Recovery', titleFR: 'Sauvegarde & Récupération', difficulty: 'intermediate', estimatedMinutes: 15 },
   { id: 'best-practices/operations-security', section: 'best-practices', slug: 'best-practices/operations-security', titleEN: 'Operations & Security', titleFR: 'Opérations & Sécurité', difficulty: 'intermediate', estimatedMinutes: 15 },
-  { id: 'best-practices/performance-troubleshooting', section: 'best-practices', slug: 'best-practices/performance-troubleshooting', titleEN: 'Performance & Troubleshooting', titleFR: 'Performance & Dépannage', difficulty: 'intermediate', estimatedMinutes: 15 },
   { id: 'best-practices/resources-support', section: 'best-practices', slug: 'best-practices/resources-support', titleEN: 'Resources & Support', titleFR: 'Ressources & Support', difficulty: 'beginner', estimatedMinutes: 10 },
   { id: 'best-practices/quick-reference', section: 'best-practices', slug: 'best-practices/quick-reference', titleEN: 'Quick Reference', titleFR: 'Aide-Mémoire', difficulty: 'beginner', estimatedMinutes: 5 }
 ];

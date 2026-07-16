@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Présentation OPCP - OPCP Skillhub</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+
+  <header class="site-header" role="banner">
+    <div class="logo"><a href="../introduction/what-is-opcp.html" aria-label="Accueil SkillHub">SkillHub</a></div>
+    <div class="header-right">
+      <div class="lang-toggle" aria-label="Language selector"></div>
+      <div class="progress-bar-container" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="Progression d'apprentissage">
+        <div class="progress-bar-fill"></div>
+      </div>
+      <span class="progress-text">0%</span>
+      <button class="hamburger-btn" aria-label="Ouvrir le menu de navigation" aria-expanded="false">☰</button>
+    </div>
+  </header>
+  <div class="sidebar-overlay" aria-hidden="true"></div>
+  <div class="site-wrapper">
+    <aside class="sidebar" role="navigation" aria-label="Navigation des leçons">
+      <nav id="sidebar-nav"></nav>
+    </aside>
+    <main class="main-content" role="main" id="main-content">
+      <div class="breadcrumbs" aria-label="Fil d'Ariane"></div>
+
+      <header class="lesson-header">
+        <h1>Présentation d'OPCP</h1>
+        <div class="lesson-meta">
+          <span class="badge badge-beginner">Débutant</span>
+          <a href="../../en/getting-started/opcp-overview.html" class="language-switch" aria-label="Switch to English">
+            <span>🇬🇧</span> <span>English</span>
+          </a>
+        </div>
+      </header>
+
+      <section aria-labelledby="what-is-opcp">
+        <h2 id="what-is-opcp">Qu'est-ce que l'On-Prem Cloud Platform (OPCP) ?</h2>
+        <p><dfn class="glossary-term" title="On Premise Cloud Platform — une plateforme cloud on-premise où OVHcloud installe et gère un rack de serveurs directement chez le client">OPCP</dfn> est une solution complète d'OVHcloud pour déployer, automatiser et maintenir des environnements de cloud computing sur site. Elle apporte la puissance d'un cloud flexible, innovant et sécurisé directement là où vous en avez besoin : sur site, en périphérie, ou dans des environnements isolés ou stratégiques.</p>
+        <p>Comme le résume OVHcloud : <em>« It's not just a box, it's a full cloud platform. »</em></p>
+      </section>
+
+      <section aria-labelledby="become-sovereign">
+        <h2 id="become-sovereign">Devenez fournisseur de cloud souverain</h2>
+        <p>Pour vos besoins internes ou pour vos clients, la plateforme OPCP apporte un environnement cloud moderne directement dans vos datacenters. Une stack complète permet de déployer, automatiser et maintenir votre propre cloud on-premises, faisant de vous votre propre fournisseur de cloud.</p>
+      </section>
+
+      <section aria-labelledby="cloud-anywhere">
+        <h2 id="cloud-anywhere">Amenez le cloud là où vous en avez besoin</h2>
+        <p>OPCP vous permet de déployer une infrastructure cloud granulaire sur chaque site stratégique, afin de traiter vos données en temps réel, exécuter vos applications critiques sans interruption et garantir la continuité de service — y compris en cas de coupure réseau.</p>
+      </section>
+
+      <section aria-labelledby="disconnected-mode">
+        <h2 id="disconnected-mode">Opérez en mode déconnecté</h2>
+        <p>OPCP offre une expérience cloud aux organisations qui requièrent une isolation complète pour répondre aux exigences de conformité et de souveraineté. La plateforme peut fonctionner en toute autonomie, en mode totalement déconnecté.</p>
+      </section>
+
+      <section aria-labelledby="business-challenges">
+        <h2 id="business-challenges">Répondre aux défis business du monde numérique</h2>
+        <p>OPCP est conçu pour répondre aux besoins de différents secteurs :</p>
+        <ul>
+          <li><strong>Banque et secteur financier</strong> — Conformité et souveraineté avec localisation des données, auditabilité et contrôle intégral des flux.</li>
+          <li><strong>Industrie et usine connectée</strong> — Latence ultra-faible et fiabilité, au plus près du terrain, sans tolérance aux interruptions.</li>
+          <li><strong>Environnements sensibles</strong> — Edge sécurisé avec un cloud embarqué, autonome et hautement sécurisé.</li>
+          <li><strong>Activités critiques et continuité de service</strong> — Haute disponibilité avec une infrastructure redondante pour assurer la continuité d'activité.</li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="architecture">
+        <h2 id="architecture">Architecture modulaire en trois couches</h2>
+        <p>OPCP repose sur une architecture modulaire en trois couches. Chaque couche a un rôle défini :</p>
+        <ol>
+          <li>
+            <strong>OPCP Core — L'automatisation industrielle de l'infrastructure</strong>
+            <p>OPCP Core automatise toute la gestion de l'infrastructure (détection des serveurs, configuration réseau, allocation des ressources) et assure une traçabilité complète, une sécurité intégrée ainsi qu'une observabilité native. Conçu pour les opérations industrielles à grande échelle, il exploite des outils d'orchestration et d'automatisation avancés.</p>
+          </li>
+          <li>
+            <strong>Cloud Store — Le déploiement et la maintenance simplifiés des services</strong>
+            <p>Cloud Store permet de déployer en quelques clics des services prêts à l'emploi : virtualisation, conteneurs, bases de données, IA, outils métier. Accessible depuis un catalogue local, automatisé et extensible, il inclut aussi bien vos stacks internes que celles de fournisseurs tiers. Il donne accès à des services comme Kubernetes, PostgreSQL, le stockage S3, les solutions IA d'OVHcloud, et bien plus.</p>
+          </li>
+          <li>
+            <strong>Landing Zone Manager — L'interface de déploiement et de gouvernance des workloads</strong>
+            <p>Landing Zone Manager fournit aux équipes de développement un espace dédié pour déployer, piloter et maintenir leurs charges de travail. Chaque environnement est isolé, traçable et conforme, avec une gestion fine des accès, des quotas et des cycles de vie. Il met en place un cadre cloud on-premises où les charges de travail sont protégées et organisées selon vos standards.</p>
+          </li>
+        </ol>
+      </section>
+
+      <section aria-labelledby="technologies">
+        <h2 id="technologies">Les meilleures technologies cloud</h2>
+        <p>OPCP intègre les meilleures technologies cloud pour couvrir un large éventail de cas d'usage :</p>
+        <ul>
+          <li>AI Training &amp; Inference</li>
+          <li>Approche Cloud Native</li>
+          <li>Tous types de computing</li>
+          <li>Modernisation</li>
+          <li>Platform Engineering</li>
+          <li>Data Analytics</li>
+          <li>Stockage de masse</li>
+          <li>Virtualisation</li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="delegation">
+        <h2 id="delegation">Choisissez votre niveau de délégation</h2>
+        <p>Managed by you or managed for you : en fonction des compétences dont vous disposez en interne, de vos priorités ou encore de la nécessité de fonctionner en mode déconnecté, vous choisissez votre niveau de délégation pour le management et le support de votre plateforme.</p>
+        <p>Dans tous les cas, vous bénéficiez du support OVHcloud sur les différentes couches, avec en option l'accompagnement sur les applications open source disponibles dans le catalogue Cloud Store.</p>
+      </section>
+
+      <section aria-labelledby="learn-more">
+        <h2 id="learn-more">En savoir plus</h2>
+        <p>Pour plus de détails sur OPCP, consultez la page officielle d'OVHcloud :</p>
+        <ul>
+          <li><a href="https://www.ovhcloud.com/fr/hosted-private-cloud/onprem-cloud-platform/">On-Prem Cloud Platform — OVHcloud</a></li>
+          <li><a href="https://www.ovhcloud.com/fr/hosted-private-cloud/onprem-cloud-platform/opcp-core/">OPCP Core</a></li>
+          <li><a href="https://www.ovhcloud.com/fr/hosted-private-cloud/onprem-cloud-platform/cloud-store/">Cloud Store</a></li>
+          <li><a href="https://www.ovhcloud.com/fr/hosted-private-cloud/onprem-cloud-platform/landing-zone-manager/">Landing Zone Manager</a></li>
+        </ul>
+      </section>
+
+      <button class="mark-complete-btn" type="button" aria-label="✓ Marquer comme terminé">
+        ✓ Marquer comme terminé
+      </button>
+      <div class="prev-next-nav" aria-label="Navigation des leçons"></div>
+    </main>
+  </div>
+  <footer class="site-footer" role="contentinfo">
+    SkillHub Training — OVHcloud
+  </footer>
+  <script type="module" src="../../assets/js/lessons.js"></script>
+  <script type="module" src="../../assets/js/i18n.js"></script>
+  <script type="module" src="../../assets/js/navigation.js"></script>
+  <script type="module" src="../../assets/js/code-highlight.js"></script>
+  <script type="module" src="../../assets/js/main.js"></script>
+</body>
+</html>

@@ -19,25 +19,7 @@
     "body": "Operations & Security Learn how to keep your OPCP environment running smoothly and securely — explained through the analogy of managing a building. Think of It Like Managing a Building Imagine you own a large office building. You need to keep the lights on, the elevators running, and the doors locked. Managing your OPCP environment works the same way: Resource management is like monitoring electricity and water usage — you track what is being consumed and plan for peak demand. Maintenance is lik",
     "path": "en/best-practices/operations-security.html"
   },
-  {
-    "id": "en/best-practices/performance-troubleshooting",
-    "title": "Performance & Troubleshooting - Best Practices",
-    "headings": [
-      "Performance Optimization",
-      "Right-Sizing Resources",
-      "Caching — The Express Lane",
-      "Load Balancing — Sharing the Work",
-      "Common Issues and Solutions",
-      "Slow Response Times",
-      "Connectivity Issues",
-      "Storage Running Low",
-      "Service Unavailable Errors",
-      "When to Escalate",
-      "Key Takeaways"
-    ],
-    "body": "Performance & Troubleshooting Understand how to keep your OPCP services running at peak efficiency and what to do when something goes wrong — no technical expertise required. Performance Optimization Think of your cloud environment like a car engine. A well-tuned engine runs smoothly, uses fuel efficiently, and lasts longer. Here is how to keep your OPCP \"engine\" in top shape. Right-Sizing Resources Imagine buying a delivery truck to carry a single envelope — that is wasted capacity. Conversely,",
-    "path": "en/best-practices/performance-troubleshooting.html"
-  },
+
   {
     "id": "en/best-practices/quick-reference",
     "title": "Quick Reference - Best Practices",
@@ -178,6 +160,23 @@
     ],
     "body": "Resource Allocation Intermediate What is Resource Allocation? When you set up a node in OPCP, you need to decide how much computing power to assign to it. This is called resource allocation — the process of dividing available resources among your workloads. Think of it like dividing a department budget . You have a total amount to work with, and you need to distribute it wisely across salaries, equipment, travel, and supplies. Give too much to one area and others suffer. Give too little everywhe",
     "path": "en/core-concepts/resource-allocation.html"
+  },
+  {
+    "id": "en/getting-started/opcp-overview",
+    "title": "OPCP Overview - Getting Started",
+    "headings": [
+      "What is On-Prem Cloud Platform (OPCP)?",
+      "Become a Sovereign Cloud Provider",
+      "Take the Cloud Where You Need It",
+      "Operate in Disconnected Mode",
+      "Tackling Modern Business Challenges",
+      "Modular Three-Layer Architecture",
+      "Best Cloud Technologies",
+      "Choose Your Delegation Level",
+      "Learn More"
+    ],
+    "body": "OPCP is a comprehensive solution from OVHcloud for deploying, automating, and maintaining on-premises cloud computing environments. It brings the power of a flexible, innovative, and secure cloud directly where you need it: on-site, at the edge, or in isolated and critical environments. OPCP delivers a modern cloud environment straight to your datacentres, supporting both your internal operations and those of your clients. It is based on a modular three-layer architecture: OPCP Core for infrastructure automation, Cloud Store for service deployment, and Landing Zone Manager for workload governance.",
+    "path": "en/getting-started/opcp-overview.html"
   },
   {
     "id": "en/getting-started/getting-started-with-OPCP",
@@ -492,25 +491,7 @@
     "body": "Opérations et Sécurité Apprenez à maintenir votre environnement OPCP en bon état de fonctionnement et en toute sécurité — expliqué à travers l'analogie de la gestion d'un immeuble. Imaginez la gestion d'un immeuble Imaginez que vous êtes propriétaire d'un grand immeuble de bureaux. Vous devez maintenir l'éclairage, faire fonctionner les ascenseurs et verrouiller les portes. La gestion de votre environnement OPCP fonctionne de la même manière : La gestion des ressources revient à surveiller la co",
     "path": "fr/best-practices/operations-security.html"
   },
-  {
-    "id": "fr/best-practices/performance-troubleshooting",
-    "title": "Performance et Dépannage - Bonnes Pratiques",
-    "headings": [
-      "Optimisation des performances",
-      "Dimensionnement adapté",
-      "Mise en cache — La voie express",
-      "Répartition de charge — Partager le travail",
-      "Problèmes courants et solutions",
-      "Temps de réponse lents",
-      "Problèmes de connectivité",
-      "Stockage insuffisant",
-      "Erreurs de service indisponible",
-      "Quand escalader",
-      "Points clés à retenir"
-    ],
-    "body": "Performance et Dépannage Comprenez comment maintenir vos services OPCP à leur efficacité maximale et que faire quand quelque chose ne va pas — aucune expertise technique requise. Optimisation des performances Pensez à votre environnement cloud comme à un moteur de voiture. Un moteur bien réglé tourne en douceur, consomme le carburant efficacement et dure plus longtemps. Voici comment garder votre « moteur » OPCP en pleine forme. Dimensionnement adapté Imaginez acheter un camion de livraison pour",
-    "path": "fr/best-practices/performance-troubleshooting.html"
-  },
+
   {
     "id": "fr/best-practices/quick-reference",
     "title": "Référence Rapide - Bonnes Pratiques",
@@ -651,6 +632,23 @@
     ],
     "body": "Allocation des Ressources Intermédiaire Qu'est-ce que l'Allocation des Ressources ? Lorsque vous configurez un nœud dans OPCP, vous devez décider quelle puissance de calcul lui attribuer. C'est ce qu'on appelle l' allocation des ressources — le processus de répartition des ressources disponibles entre vos charges de travail. Pensez-y comme répartir un budget de département . Vous avez un montant total à disposition, et vous devez le distribuer judicieusement entre les salaires, l'équipement, les",
     "path": "fr/core-concepts/resource-allocation.html"
+  },
+  {
+    "id": "fr/getting-started/opcp-overview",
+    "title": "Présentation d'OPCP - Premiers Pas",
+    "headings": [
+      "Qu'est-ce que l'On-Prem Cloud Platform (OPCP) ?",
+      "Devenez fournisseur de cloud souverain",
+      "Amenez le cloud là où vous en avez besoin",
+      "Opérez en mode déconnecté",
+      "Répondre aux défis business du monde numérique",
+      "Architecture modulaire en trois couches",
+      "Les meilleures technologies cloud",
+      "Choisissez votre niveau de délégation",
+      "En savoir plus"
+    ],
+    "body": "OPCP est une solution complète d'OVHcloud pour déployer, automatiser et maintenir des environnements de cloud computing sur site. Elle apporte la puissance d'un cloud flexible, innovant et sécurisé directement là où vous en avez besoin : sur site, en périphérie, ou dans des environnements isolés ou stratégiques. La plateforme OPCP apporte un environnement cloud moderne directement dans vos datacenters. Elle repose sur une architecture modulaire en trois couches : OPCP Core pour l'automatisation de l'infrastructure, Cloud Store pour le déploiement de services, et Landing Zone Manager pour la gouvernance des workloads.",
+    "path": "fr/getting-started/opcp-overview.html"
   },
   {
     "id": "fr/getting-started/getting-started-with-OPCP",

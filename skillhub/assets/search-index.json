@@ -196,6 +196,27 @@
     "path": "en/getting-started/getting-started-with-OPCP.html"
   },
   {
+    "id": "en/getting-started/cloudstore-getting-started",
+    "title": "Getting Started with CloudStore - Getting Started",
+    "headings": [
+      "Objective",
+      "Prerequisites",
+      "Logging In to CloudStore",
+      "The CloudStore Dashboard",
+      "Key Concepts",
+      "The Personas",
+      "The Controller / App Model",
+      "Creating an Account",
+      "Deploying a Service",
+      "Scaling Capacity",
+      "Authentication and Access Levels",
+      "The Landing Zone",
+      "Key Takeaways"
+    ],
+    "body": "Getting Started with CloudStore. CloudStore is a high-level infrastructure framework deployed on top of OPCP. It provides core services to help cloud providers deploy and manage cloud-native solutions for their customers through a marketplace-based platform. This guide shows you how to log in to your CloudStore management interface, understand its key concepts, and perform initial operations such as creating accounts and deploying services.",
+    "path": "en/getting-started/cloudstore-getting-started.html"
+  },
+  {
     "id": "en/getting-started/dashboard-access",
     "title": "Dashboard Access - Getting Started - OPCP Skillhub",
     "headings": [
@@ -666,6 +687,27 @@
     ],
     "body": "Configuration du Compte Débutant Présentation La configuration de votre compte OPCP est la première étape pour accéder aux services de cloud privé d'OVHcloud. C'est un peu comme ouvrir un compte bancaire : vous fournissez vos informations, vérifiez votre identité, puis vous recevez l'accès à votre propre espace sécurisé. Ce guide vous accompagne à chaque étape du processus avec des repères visuels clairs pour que vous sachiez exactement où cliquer. Ce dont vous avez besoin avant de commencer Une",
     "path": "fr/getting-started/getting-started-with-OPCP.html"
+  },
+  {
+    "id": "fr/getting-started/cloudstore-getting-started",
+    "title": "Premiers pas avec CloudStore - Premiers Pas",
+    "headings": [
+      "Objectif",
+      "Prérequis",
+      "Connexion à CloudStore",
+      "Le tableau de bord CloudStore",
+      "Concepts clés",
+      "Les personas",
+      "Le modèle contrôleur / app",
+      "Créer un compte",
+      "Déployer un service",
+      "Dimensionner la capacité",
+      "Authentification et niveaux d'accès",
+      "La Landing Zone",
+      "Points clés à retenir"
+    ],
+    "body": "Premiers pas avec CloudStore. CloudStore est un framework d'infrastructure de haut niveau déployé au-dessus de la plateforme OPCP. Il fournit des services de base pour aider les fournisseurs cloud à déployer et gérer des solutions cloud-natives pour leurs clients via une plateforme basée sur un catalogue de services. Ce guide vous montre comment vous connecter à l'interface de gestion de votre CloudStore, comprendre ses concepts clés, et effectuer les premières opérations.",
+    "path": "fr/getting-started/cloudstore-getting-started.html"
   },
   {
     "id": "fr/getting-started/dashboard-access",

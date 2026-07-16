@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Découvrez le Landing Zone Manager d'OPCP : le portail permettant à chaque équipe de déployer et gérer ses workloads de manière autonome dans un espace dédié et isolé.">
+  <title>Landing Zone Manager - Premiers Pas - OPCP Skillhub</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+
+  <header class="site-header" role="banner">
+    <div class="logo"><a href="../introduction/what-is-opcp.html" aria-label="Accueil SkillHub">SkillHub</a></div>
+    <div class="header-right">
+      <div class="lang-toggle" aria-label="Language selector"></div>
+      <div class="progress-bar-container" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="Learning progress">
+        <div class="progress-bar-fill"></div>
+      </div>
+      <span class="progress-text">0%</span>
+      <button class="hamburger-btn" aria-label="Open navigation menu" aria-expanded="false">☰</button>
+    </div>
+  </header>
+  <div class="sidebar-overlay" aria-hidden="true"></div>
+  <div class="site-wrapper">
+    <aside class="sidebar" role="navigation" aria-label="Lesson navigation">
+      <nav id="sidebar-nav"></nav>
+    </aside>
+    <main class="main-content" role="main" id="main-content">
+      <div class="breadcrumbs" aria-label="Breadcrumb"></div>
+
+      <header class="lesson-header">
+                    <h1>Landing Zone Manager</h1>
+                    <div class="lesson-meta">
+                        <span class="badge badge-intermediate">Intermédiaire</span>
+                        <a href="../../en/getting-started/landing-zone-manager.html" class="language-switch" aria-label="Switch to English">
+                            <span>🇬🇧</span> <span>English</span>
+                        </a>
+                    </div>
+                </header>
+
+                <section aria-labelledby="objective-heading">
+                    <h2 id="objective-heading">Objectif</h2>
+                    <p>Le <strong>Landing Zone Manager</strong> est le portail utilisateur final de la plateforme OPCP. Il permet à chaque équipe, département ou client de déployer et gérer ses workloads de manière autonome, dans un espace dédié et isolé.</p>
+                    <p>Les administrateurs provisionnent les utilisateurs et leur donnent accès à la plateforme. Chaque compte utilisateur repose sur un realm dédié dans l'instance Keycloak sous-jacente, garantissant une isolation multi-tenant des accès.</p>
+                </section>
+
+                <section aria-labelledby="prerequisites-heading">
+                    <h2 id="prerequisites-heading">Prérequis</h2>
+                    <ul>
+                        <li>Accès administrateur au Landing Zone Manager</li>
+                        <li>Mot de passe par défaut de première connexion</li>
+                        <li>URL du Landing Zone Manager</li>
+                        <li>Informations de l'utilisateur à provisionner (nom, prénom, email)</li>
+                    </ul>
+                </section>
+
+                <section aria-labelledby="step1-heading">
+                    <h2 id="step1-heading">Étape 1 : Accéder à la gestion des comptes</h2>
+                    <p>Connectez-vous au Landing Zone Manager avec vos privilèges administrateur. Une fois connecté, naviguez vers la section <strong>« Gestion des comptes »</strong> (Account management) depuis le menu principal.</p>
+                </section>
+
+                <section aria-labelledby="step2-heading">
+                    <h2 id="step2-heading">Étape 2 : Créer un nouveau compte utilisateur</h2>
+                    <p>Cliquez sur le bouton <strong>« + Créer un nouveau compte »</strong> et remplissez les informations suivantes :</p>
+                    <ul>
+                        <li><strong>Nom</strong> — Nom du compte (identifiant de l'organisation ou du projet)</li>
+                        <li><strong>Email</strong> — Adresse email de l'utilisateur (également utilisée comme identifiant de connexion)</li>
+                        <li><strong>Prénom</strong> — Prénom de l'utilisateur</li>
+                        <li><strong>Nom de famille</strong> — Nom de famille de l'utilisateur</li>
+                    </ul>
+                </section>
+
+                <section aria-labelledby="step3-heading">
+                    <h2 id="step3-heading">Étape 3 : Communiquer les identifiants de première connexion</h2>
+                    <p>Une fois le compte créé, communiquez à l'utilisateur les informations suivantes :</p>
+                    <ul>
+                        <li><strong>URL</strong> — L'adresse du Landing Zone Manager</li>
+                        <li><strong>Identifiant</strong> — L'adresse email renseignée lors de la création</li>
+                        <li><strong>Mot de passe par défaut</strong> — Le mot de passe partagé pour toutes les premières connexions (défini au moment du déploiement)</li>
+                    </ul>
+                    <div class="info-box">
+                        <p><strong>Important :</strong> Le mot de passe par défaut est commun à tous les nouveaux comptes. Il est défini lors du déploiement de la plateforme et doit être communiqué de manière sécurisée.</p>
+                    </div>
+                </section>
+
+                <section aria-labelledby="step4-heading">
+                    <h2 id="step4-heading">Étape 4 : Première connexion</h2>
+                    <p>Lors de sa première connexion, l'utilisateur :</p>
+                    <ol>
+                        <li>Se connecte avec son adresse email et le mot de passe par défaut</li>
+                        <li>Est immédiatement invité à <strong>changer son mot de passe</strong> pour un mot de passe personnel et sécurisé</li>
+                    </ol>
+                </section>
+
+                <section aria-labelledby="keycloak-heading">
+                    <h2 id="keycloak-heading">Mapping Keycloak</h2>
+                    <p>Le Landing Zone Manager dispose de sa propre stack Keycloak dédiée. Cette instance n'est <strong>pas fédérée</strong> avec le Keycloak d'OPCP Core ni celui de CloudStore.</p>
+                    <p>Chaque compte créé dans le Landing Zone Manager génère un <strong>realm dédié</strong> dans Keycloak, garantissant :</p>
+                    <ul>
+                        <li><strong>Un flux d'authentification indépendant</strong> — Configuration personnalisable par compte</li>
+                        <li><strong>Des bases utilisateurs séparées</strong> — Isolation complète des utilisateurs entre realms</li>
+                        <li><strong>Des mappings de rôles distincts</strong> — Gestion des permissions propre à chaque realm</li>
+                    </ul>
+                    <div class="info-box">
+                        <p><strong>Architecture multi-tenant :</strong> L'isolation par realm Keycloak garantit qu'aucun compte ne peut accéder aux ressources ou aux utilisateurs d'un autre compte. Chaque tenant opère dans un espace complètement cloisonné.</p>
+                    </div>
+                </section>
+
+                <section aria-labelledby="summary-heading">
+                    <h2 id="summary-heading">Points clés à retenir</h2>
+                    <ul>
+                        <li>Le <strong>Landing Zone Manager</strong> est le portail utilisateur final d'OPCP pour le déploiement autonome de workloads.</li>
+                        <li>Les administrateurs créent les comptes et communiquent les identifiants de première connexion.</li>
+                        <li>Chaque utilisateur doit changer son mot de passe lors de la première connexion.</li>
+                        <li>Le Landing Zone Manager utilise sa propre instance Keycloak (non fédérée avec OPCP Core ou CloudStore).</li>
+                        <li>Chaque compte dispose d'un realm Keycloak dédié assurant une isolation multi-tenant complète.</li>
+                    </ul>
+                </section>
+
+      <button class="mark-complete-btn" type="button" aria-label="✓ Marquer comme terminé">
+        ✓ Marquer comme terminé
+      </button>
+      <div class="prev-next-nav" aria-label="Lesson navigation"></div>
+    </main>
+  </div>
+  <footer class="site-footer" role="contentinfo">
+    SkillHub Training — OVHcloud
+  </footer>
+  <script type="module" src="../../assets/js/lessons.js"></script>
+  <script type="module" src="../../assets/js/i18n.js"></script>
+  <script type="module" src="../../assets/js/navigation.js"></script>
+  <script type="module" src="../../assets/js/code-highlight.js"></script>
+  <script type="module" src="../../assets/js/main.js"></script>
+</body>
+</html>

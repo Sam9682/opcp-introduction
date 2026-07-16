@@ -353,19 +353,19 @@
   },
   {
     "id": "en/getting-started/cloudstore-overview",
-    "title": "CloudStore Overview - Getting Started - OPCP Skillhub",
+    "title": "CloudStore Overview - Getting Started",
     "headings": [
-      "The Secure Warehouse Analogy",
-      "How CloudStore Works",
-      "Common Use Cases",
-      "Document Storage",
-      "Media Archives",
-      "Application Data",
-      "Backups",
-      "Why Customers Choose CloudStore",
-      "Key Takeaways"
+      "What is Cloud Store?",
+      "Next-Generation Service Catalogue",
+      "Native Integration with OPCP Core",
+      "Multi-Tenancy and Fine-Grained Provisioning",
+      "Key Benefits",
+      "Strategic Use Cases",
+      "Cloud Store in Action",
+      "Key Takeaways",
+      "Learn More"
     ],
-    "body": "CloudStore Overview Intermediate 🇫🇷 Français The Secure Warehouse Analogy Imagine your business generates mountains of documents, photos, videos, and data files every day. Where do you keep all of it? Think of CloudStore as a secure, expandable warehouse for your digital assets . Just like a professional storage facility: It grows with you — need more space? Simply request additional room. No construction required. It's always accessible — authorised staff can retrieve items anytime, from anyw",
+    "body": "Cloud Store is the Platform as a Service (PaaS) layer of the OPCP stack. It lets you deploy cloud environments like apps: easily provision ready-to-use platforms and services — virtual machines, containers, databases, AI, and storage — for your users or clients, directly on your premises. Cloud Store gives you access to a wide selection of preconfigured cloud services: Kubernetes, PostgreSQL, S3 storage, OVHcloud AI solutions, and more. Each service is validated and maintained.",
     "path": "en/getting-started/cloudstore-overview.html"
   },
   {
@@ -846,19 +846,19 @@
   },
   {
     "id": "fr/getting-started/cloudstore-overview",
-    "title": "Présentation de CloudStore - Premiers Pas - OPCP Skillhub",
+    "title": "Présentation CloudStore - Premiers Pas",
     "headings": [
-      "L'analogie de l'entrepôt sécurisé",
-      "Comment fonctionne CloudStore",
-      "Cas d'utilisation courants",
-      "Stockage de documents",
-      "Archives multimédia",
-      "Données applicatives",
-      "Sauvegardes",
-      "Pourquoi les clients choisissent CloudStore",
-      "Points clés à retenir"
+      "Qu'est-ce que Cloud Store ?",
+      "Catalogue de services de dernière génération",
+      "Intégration native avec OPCP Core",
+      "Multi-tenancy et allocation fine",
+      "Avantages clés",
+      "Cas d'usage stratégiques",
+      "Cloud Store en action",
+      "Points clés à retenir",
+      "En savoir plus"
     ],
-    "body": "Présentation de CloudStore Intermédiaire 🇬🇧 English L'analogie de l'entrepôt sécurisé Imaginez que votre entreprise génère des montagnes de documents, photos, vidéos et fichiers de données chaque jour. Où stockez-vous tout cela ? Pensez à CloudStore comme un entrepôt sécurisé et extensible pour vos actifs numériques . Tout comme un centre de stockage professionnel : Il grandit avec vous — besoin de plus d'espace ? Il suffit de demander de la place supplémentaire. Aucune construction nécessaire",
+    "body": "Cloud Store est la couche Platform as a Service (PaaS) de la stack OPCP. Il permet de déployer des environnements cloud comme des applications : provisionner facilement des plateformes et services prêts à l'emploi — machines virtuelles, conteneurs, bases de données, IA et stockage — pour vos utilisateurs ou clients, directement sur vos sites. Cloud Store donne accès à une large sélection de services cloud préconfigurés : Kubernetes, PostgreSQL, stockage S3, solutions IA OVHcloud, et plus encore.",
     "path": "fr/getting-started/cloudstore-overview.html"
   },
   {

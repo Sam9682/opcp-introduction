@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Découvrez CloudStore sur OPCP : un service de stockage objet S3-compatible fonctionnant on-premise sur votre rack, ses limitations et cas d'utilisation.">
-  <title>Présentation de CloudStore - Solutions de Stockage - OPCP Skillhub</title>
+  <meta name="description" content="Découvrez OPCP Cloud Store : une couche Platform as a Service qui permet de déployer des environnements cloud comme des apps — Kubernetes, bases de données, IA, stockage et plus — directement sur vos sites.">
+  <title>Présentation CloudStore - Premiers Pas - OPCP Skillhub</title>
   <link rel="stylesheet" href="../../assets/css/style.css">
 </head>
 <body>
@@ -14,160 +14,157 @@
     <div class="logo"><a href="../introduction/what-is-opcp.html" aria-label="Accueil SkillHub">SkillHub</a></div>
     <div class="header-right">
       <div class="lang-toggle" aria-label="Language selector"></div>
-      <div class="progress-bar-container" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="Learning progress">
+      <div class="progress-bar-container" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="Progression d'apprentissage">
         <div class="progress-bar-fill"></div>
       </div>
       <span class="progress-text">0%</span>
-      <button class="hamburger-btn" aria-label="Open navigation menu" aria-expanded="false">☰</button>
+      <button class="hamburger-btn" aria-label="Ouvrir le menu de navigation" aria-expanded="false">☰</button>
     </div>
   </header>
   <div class="sidebar-overlay" aria-hidden="true"></div>
   <div class="site-wrapper">
-    <aside class="sidebar" role="navigation" aria-label="Lesson navigation">
+    <aside class="sidebar" role="navigation" aria-label="Navigation des leçons">
       <nav id="sidebar-nav"></nav>
     </aside>
     <main class="main-content" role="main" id="main-content">
-      <div class="breadcrumbs" aria-label="Breadcrumb"></div>
+      <div class="breadcrumbs" aria-label="Fil d'Ariane"></div>
 
       <header class="lesson-header">
-                    <h1>Présentation de CloudStore</h1>
-                    <div class="lesson-meta">
-                        <span class="badge badge-beginner">Débutant</span>
-                        <a href="../../en/getting-started/cloudstore-overview.html" class="language-switch" aria-label="Switch to English">
-                            <span>🇬🇧</span> <span>English</span>
-                        </a>
-                    </div>
-                </header>
+        <h1>Présentation CloudStore</h1>
+        <div class="lesson-meta">
+          <span class="badge badge-beginner">Débutant</span>
+          <a href="../../en/getting-started/cloudstore-overview.html" class="language-switch" aria-label="Switch to English">
+            <span>🇬🇧</span> <span>English</span>
+          </a>
+        </div>
+      </header>
 
-                <section aria-labelledby="analogy-heading">
-                    <h2 id="analogy-heading">L'analogie de l'entrepôt sécurisé</h2>
-                    <p>Imaginez que votre entreprise génère des montagnes de documents, photos, vidéos et fichiers de données chaque jour. Où stockez-vous tout cela ?</p>
+      <section aria-labelledby="what-is-cloudstore">
+        <h2 id="what-is-cloudstore">Qu'est-ce que Cloud Store ?</h2>
+        <p><dfn class="glossary-term" title="OPCP Cloud Store — Couche Platform as a Service d'OPCP qui fournit un catalogue de services cloud prêts à l'emploi déployables sur vos sites">Cloud Store</dfn> est la couche <strong>Platform as a Service (PaaS)</strong> de la stack OPCP. Il permet de déployer des environnements cloud comme des applications : provisionner facilement des plateformes et services prêts à l'emploi — machines virtuelles, conteneurs, bases de données, IA et stockage — pour vos utilisateurs ou clients, directement sur vos sites.</p>
+        <p>Avec Cloud Store, vous accédez directement à toute l'expertise logicielle d'OVHcloud sur site, avec un contrôle total sur votre infrastructure.</p>
+      </section>
 
-                    <p>Pensez à <a href="../glossary.html#term-cloudstore" class="glossary-term"><strong>CloudStore</strong></a> comme <strong>un entrepôt sécurisé et extensible pour vos actifs numériques — situé directement dans vos propres locaux</strong>. Tout comme un centre de stockage professionnel :</p>
+      <section aria-labelledby="service-catalogue">
+        <h2 id="service-catalogue">Catalogue de services de dernière génération</h2>
+        <p>Cloud Store vous donne accès à une large sélection de services cloud préconfigurés :</p>
+        <ul>
+          <li><strong>Kubernetes</strong> — Orchestration de conteneurs</li>
+          <li><strong>PostgreSQL</strong> — Bases de données relationnelles managées</li>
+          <li><strong>Stockage S3</strong> — Stockage objet compatible avec les SDK AWS</li>
+          <li><strong>Solutions IA OVHcloud</strong> — Machine learning et inférence</li>
+          <li>Et d'autres services issus d'un catalogue en constante évolution</li>
+        </ul>
+        <p>Chaque service est validé et maintenu, de sorte qu'il peut être rapidement déployé, standardisé et géré avec un contrôle total dans votre cadre technique. Vous pouvez également packager vos propres services et applications pour automatiser leur déploiement.</p>
+      </section>
 
-                    <ul>
-                        <li><strong>Il grandit avec vous</strong> — besoin de plus d'espace ? Il suffit de demander de la place supplémentaire. Aucune construction nécessaire.</li>
-                        <li><strong>Il est toujours accessible</strong> — le personnel autorisé peut récupérer des éléments à tout moment grâce à des outils S3-compatibles standards.</li>
-                        <li><strong>Il est géré professionnellement</strong> — l'installation gère la sécurité, la maintenance et la disponibilité. Vous vous concentrez sur votre activité.</li>
-                        <li><strong>Vos éléments restent sur site</strong> — les données ne quittent jamais vos locaux, garantissant une souveraineté totale.</li>
-                    </ul>
+      <section aria-labelledby="native-integration">
+        <h2 id="native-integration">Intégration native avec OPCP Core</h2>
+        <p>Cloud Store est directement intégré à <strong>OPCP Core</strong> (la couche infrastructure) et fournit automatiquement les ressources matérielles nécessaires à chaque service : serveurs, stockage et réseau.</p>
+        <p>L'ensemble du cycle de vie de vos services est géré de manière à garantir une expérience utilisateur fluide et simple, sans nécessiter de configurations complexes.</p>
+      </section>
 
-                    <div class="info-box">
-                        <p><strong>CloudStore</strong> est le service de <strong class="term">stockage objet S3-compatible</strong> d'OVHcloud au sein de la plateforme OPCP. Il fonctionne localement sur votre rack OPCP on-premise, vous permettant de stocker, organiser et récupérer tout type de données numériques via l'API S3 standard (compatible AWS SDK) — sans que vos données ne quittent jamais votre site.</p>
-                    </div>
-                </section>
+      <section aria-labelledby="multi-tenancy">
+        <h2 id="multi-tenancy">Multi-tenancy et allocation fine</h2>
+        <p>Conçu pour les environnements complexes, Cloud Store permet :</p>
+        <ul>
+          <li><strong>Gestion détaillée des quotas</strong> — Allouer les ressources avec précision par projet, équipe ou client</li>
+          <li><strong>Isolation complète des projets</strong> — Segmenter départements, clients ou environnements en toute sécurité</li>
+          <li><strong>Suivi de l'utilisation</strong> — Monitorer la consommation des ressources en temps réel</li>
+        </ul>
+        <p>Chaque ressource est allouée avec précision pour maintenir performance, sécurité et maîtrise des coûts.</p>
+      </section>
 
-                <section aria-labelledby="diagram-heading">
-                    <h2 id="diagram-heading">Comment fonctionne CloudStore</h2>
-                    <figure class="diagram-scroll">
-                        <svg viewBox="0 0 700 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagramme montrant comment CloudStore connecte votre entreprise à un stockage objet S3-compatible on-premise géré par OVHcloud sur votre rack OPCP">
-                            <!-- Votre Entreprise -->
-                            <rect x="20" y="100" width="160" height="100" rx="10" fill="#e8f4fd" stroke="#000E9C" stroke-width="2"/>
-                            <text x="100" y="135" text-anchor="middle" font-size="13" font-weight="bold" fill="#000E9C">Votre Entreprise</text>
-                            <text x="100" y="160" text-anchor="middle" font-size="10" fill="#333">Documents, médias,</text>
-                            <text x="100" y="175" text-anchor="middle" font-size="10" fill="#333">données applicatives</text>
+      <section aria-labelledby="key-benefits">
+        <h2 id="key-benefits">Avantages clés</h2>
 
-                            <!-- Flèche -->
-                            <line x1="180" y1="150" x2="260" y2="150" stroke="#4949FF" stroke-width="2" marker-end="url(#arrowhead)"/>
-                            <text x="220" y="140" text-anchor="middle" font-size="9" fill="#4949FF">API S3</text>
+        <h3>Rapidité et simplicité</h3>
+        <p>Déployez services et applications rapidement grâce à l'automatisation intégrée. Les équipes réduisent la complexité, finalisent les projets plus vite et gagnent en autonomie.</p>
+        <ul>
+          <li><strong>Déploiement en 1 clic</strong> — Provisionnement, mises à jour, sauvegardes et récupération automatisés</li>
+          <li><strong>Cycle de vie applicatif complet</strong> — Patching et versioning à grande échelle</li>
+          <li><strong>Innovation accélérée</strong> — Nouveaux services disponibles en quelques minutes</li>
+          <li><strong>Réutilisation simplifiée</strong> — Services packagés et réutilisés pour gagner du temps</li>
+        </ul>
 
-                            <!-- CloudStore -->
-                            <rect x="260" y="60" width="200" height="180" rx="10" fill="#d4edda" stroke="#1b7a3d" stroke-width="2"/>
-                            <text x="360" y="50" text-anchor="middle" font-size="14" font-weight="bold" fill="#1b7a3d">CloudStore (S3)</text>
-                            <rect x="280" y="85" width="160" height="35" rx="5" fill="#ffffff" stroke="#1b7a3d" stroke-width="1"/>
-                            <text x="360" y="107" text-anchor="middle" font-size="11" fill="#333">API S3-Compatible</text>
-                            <rect x="280" y="130" width="160" height="35" rx="5" fill="#ffffff" stroke="#1b7a3d" stroke-width="1"/>
-                            <text x="360" y="152" text-anchor="middle" font-size="11" fill="#333">Capacité évolutive</text>
-                            <rect x="280" y="175" width="160" height="35" rx="5" fill="#ffffff" stroke="#1b7a3d" stroke-width="1"/>
-                            <text x="360" y="197" text-anchor="middle" font-size="11" fill="#333">Chiffrement SSE-C</text>
+        <h3>Protection et conformité</h3>
+        <p>Cloud Store intègre nativement les mécanismes de sécurité et de conformité requis pour vos environnements sur site. Chaque service est livré prêt à l'emploi et isolé, avec contrôle d'accès et traçabilité complète.</p>
+        <ul>
+          <li><strong>Isolation multi-tenant</strong> — Segmentation des projets, départements ou clients</li>
+          <li><strong>IAM natif</strong> — SSO, RBAC et MFA intégrés pour un contrôle d'accès précis</li>
+          <li><strong>Audit et traçabilité</strong> — Logs centralisés, transparents et prêts pour l'audit</li>
+          <li><strong>Conformité facilitée</strong> — Architecture conforme aux standards pour une certification accélérée</li>
+        </ul>
 
-                            <!-- Flèche vers Rack OPCP -->
-                            <line x1="460" y1="150" x2="520" y2="150" stroke="#4949FF" stroke-width="2" marker-end="url(#arrowhead)"/>
-                            <text x="490" y="140" text-anchor="middle" font-size="9" fill="#4949FF">Local</text>
+        <h3>Maîtrise et transparence</h3>
+        <p>Cloud Store offre supervision, métriques et suivi pour chaque service, vous donnant un contrôle total sur vos ressources.</p>
+        <ul>
+          <li><strong>Monitoring natif</strong> — Logs, métriques et alertes intégrés (Prometheus, Grafana)</li>
+          <li><strong>Gouvernance standardisée</strong> — Politiques d'accès et quotas unifiés</li>
+          <li><strong>Transparence totale</strong> — Suivi et reporting en temps réel</li>
+        </ul>
 
-                            <!-- Rack OPCP -->
-                            <rect x="520" y="80" width="160" height="140" rx="10" fill="#f0e6ff" stroke="#4949FF" stroke-width="2"/>
-                            <text x="600" y="115" text-anchor="middle" font-size="12" font-weight="bold" fill="#4949FF">Rack OPCP</text>
-                            <text x="600" y="140" text-anchor="middle" font-size="10" fill="#333">Matériel on-premise</text>
-                            <text x="600" y="160" text-anchor="middle" font-size="10" fill="#333">Sécurité et surveillance</text>
-                            <text x="600" y="180" text-anchor="middle" font-size="10" fill="#333">Géré par OVHcloud</text>
-                            <text x="600" y="200" text-anchor="middle" font-size="10" fill="#333">Vos locaux</text>
+        <h3>Scalabilité et modernisation</h3>
+        <p>Cloud Store est conçu pour répondre à vos besoins actuels et futurs.</p>
+        <ul>
+          <li><strong>Pérennité</strong> — Socle technologique partagé avec les services OVHcloud publics</li>
+          <li><strong>Catalogue personnalisable</strong> — Packagez et déployez vos propres applications</li>
+          <li><strong>Scalabilité horizontale</strong> — Montée en charge sans refonte</li>
+          <li><strong>Technologie ouverte</strong> — Fondations open-source et compatibilité avec l'écosystème OVHcloud</li>
+        </ul>
+      </section>
 
-                            <!-- Marqueur de flèche -->
-                            <defs>
-                                <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
-                                    <polygon points="0 0, 10 3.5, 0 7" fill="#4949FF"/>
-                                </marker>
-                            </defs>
-                        </svg>
-                        <figcaption>CloudStore fonctionne localement sur votre rack OPCP on-premise, fournissant un stockage objet S3-compatible sans que les données ne quittent votre site</figcaption>
-                    </figure>
-                </section>
+      <section aria-labelledby="use-cases">
+        <h2 id="use-cases">Cas d'usage stratégiques</h2>
 
-                <section aria-labelledby="use-cases-heading">
-                    <h2 id="use-cases-heading">Cas d'utilisation courants</h2>
-                    <p>CloudStore est suffisamment polyvalent pour répondre à de nombreux besoins métier. Voici les scénarios les plus courants :</p>
+        <h3>Cloud Provider</h3>
+        <p>Transformez votre infrastructure en véritable plateforme de services. Offrez à vos équipes internes et clients l'accès au catalogue d'applications managées de Cloud Store (bases de données, VMs, Kubernetes, middleware), déployables en un clic, avec facturation et gouvernance intégrées.</p>
 
-                    <h3>Stockage de documents</h3>
-                    <p>Stockez contrats, rapports, tableurs et présentations dans un emplacement central accessible à toute votre équipe. Pensez-y comme un classeur partagé qui ne manque jamais de tiroirs et qui est accessible depuis n'importe quel outil S3-compatible.</p>
+        <h3>Platform Engineering</h3>
+        <p>Fournissez aux équipes DevOps une plateforme unifiée équipée de pipelines CI/CD préconstruits, Kubernetes et services applicatifs. Cloud Store accélère la standardisation, réduit la dette technique et construit une base solide pour le platform engineering à grande échelle.</p>
 
-                    <h3>Archives multimédia</h3>
-                    <p>Conservez de grandes collections d'images, vidéos et fichiers audio en toute sécurité et de manière organisée. Les équipes marketing, agences créatives et entreprises médias utilisent CloudStore pour maintenir leurs bibliothèques grandissantes sans se soucier du manque d'espace.</p>
+        <h3>Technologies de pointe on-premises</h3>
+        <p>Intégrez des technologies avancées telles que l'IA GPU-ready, les plateformes de données souveraines, les bases de données distribuées et l'analytics dans votre datacenter. Traitez vos données confidentielles localement, sans dépendre d'un fournisseur externe.</p>
 
-                    <h3>Données applicatives</h3>
-                    <p>Les applications logicielles génèrent des données en permanence — enregistrements utilisateurs, journaux de transactions, fichiers de configuration. CloudStore fournit un hébergement fiable pour ces données via l'API S3, garantissant que les applications peuvent lire et écrire des informations rapidement et en toute sécurité.</p>
+        <h3>Déploiement applicatif à grande échelle</h3>
+        <p>Packagez et déployez vos applications sur plusieurs sites (agences, usines, points de vente). Cloud Store fournit un système unifié avec déploiement rapide, mises à jour régulières et contrôle opérationnel total sur plus de 200 sites.</p>
+      </section>
 
-                    <h3>Sauvegardes</h3>
-                    <p>Créez des copies de sécurité de vos données métier critiques. Si quelque chose tourne mal avec vos systèmes principaux — panne matérielle, suppression accidentelle ou incident de sécurité — vos sauvegardes dans CloudStore vous permettent de récupérer rapidement, le tout sans que les données ne quittent vos locaux.</p>
-                </section>
+      <section aria-labelledby="in-action">
+        <h2 id="in-action">Cloud Store en action</h2>
+        <p>Cloud Store offre bien plus qu'un simple catalogue. Il transforme la façon dont vos équipes utilisent et gèrent les services cloud à travers quatre capacités clés :</p>
+        <ul>
+          <li><strong>Catalogue Click &amp; Deploy</strong> — Déployez bases de données, clusters Kubernetes, services IA ou solutions de stockage en quelques secondes depuis un catalogue unique</li>
+          <li><strong>Supervision et gouvernance intégrées</strong> — Gérez vos services déployés en temps réel avec des tableaux de bord unifiés regroupant métriques, logs et alertes</li>
+          <li><strong>Quotas et gestion multi-tenant</strong> — Allouez quotas et ressources par projet, équipe ou client pour garantir l'autonomie des utilisateurs avec un contrôle centralisé</li>
+          <li><strong>Gestion complète du cycle de vie</strong> — Du provisionnement automatisé au décommissionnement sécurisé, le processus complet est orchestré pour accélérer les lancements et renforcer la gouvernance</li>
+        </ul>
+      </section>
 
-                <section aria-labelledby="opcp-specifics-heading">
-                    <h2 id="opcp-specifics-heading">Caractéristiques spécifiques à OPCP</h2>
-                    <p>CloudStore sur OPCP possède des caractéristiques spécifiques qui le différencient de l'offre S3 cloud public. Comprendre ces points permet de conseiller les clients avec précision :</p>
+      <section aria-labelledby="summary-heading">
+        <h2 id="summary-heading">Points clés à retenir</h2>
+        <ul>
+          <li><strong>Cloud Store</strong> est la couche PaaS d'OPCP — un catalogue de services pour déployer des plateformes cloud prêtes à l'emploi sur vos sites.</li>
+          <li>Il donne accès à Kubernetes, PostgreSQL, le stockage S3, les solutions IA, et plus encore, tous préconfigurés et maintenus.</li>
+          <li>Il s'intègre nativement à OPCP Core, qui provisionne automatiquement les ressources matérielles nécessaires.</li>
+          <li>Le multi-tenancy, l'IAM, le monitoring et la conformité intégrés en font une solution prête pour l'entreprise.</li>
+          <li>Il couvre des cas d'usage allant des plateformes cloud provider au déploiement edge à grande échelle.</li>
+        </ul>
+      </section>
 
-                    <ul>
-                        <li><strong class="term">MonoAZ uniquement</strong> — CloudStore opère dans une seule zone de disponibilité (votre rack on-premise). Il n'y a pas de configuration multi-AZ.</li>
-                        <li><strong>Classe de stockage Standard uniquement</strong> — Seule la classe « Standard » est disponible. Il n'y a pas de classe « High Performance » sur OPCP.</li>
-                        <li><strong class="term">Chiffrement SSE-C</strong> — Le chiffrement côté serveur avec clés fournies par le client est supporté. Le client gère et fournit la clé de chiffrement à chaque requête. Il n'y a <strong>pas de chiffrement au repos par défaut</strong>.</li>
-                        <li><strong>Versionnement via API</strong> — Le versionnement des objets est supporté et géré via l'API S3.</li>
-                        <li><strong>Pas de politiques utilisateur</strong> — Toutes les clés d'accès peuvent accéder à tous les buckets. Il n'y a pas de restriction par utilisateur par bucket.</li>
-                        <li><strong>Pas d'endpoint API de métadonnées</strong> — L'endpoint de métadonnées n'est pas disponible sur OPCP.</li>
-                        <li><strong>API S3-compatible</strong> — Entièrement compatible avec les AWS SDKs et les outils S3 standards.</li>
-                        <li><strong>Buckets locaux</strong> — Tous les buckets sont locaux à la plateforme OPCP, stockés on-premise sur le site du client.</li>
-                    </ul>
-
-                    <div class="info-box">
-                        <p><strong>Documentation officielle :</strong> Pour une liste complète des limitations et fonctionnalités supportées, consultez le <a href="https://docs.ovhcloud.com/fr/guides/hosted-private-cloud/opcp/s3-opcp-limitations" target="_blank" rel="noopener">guide des limitations S3 OPCP</a>.</p>
-                    </div>
-                </section>
-
-                <section aria-labelledby="benefits-heading">
-                    <h2 id="benefits-heading">Pourquoi les clients choisissent CloudStore</h2>
-                    <ul>
-                        <li><strong>Souveraineté totale des données</strong> — Les données restent sur VOS locaux, dans votre propre rack. Elles ne transitent jamais par des centres de données externes.</li>
-                        <li><strong>Compatibilité S3</strong> — Utilisez les outils, SDKs et workflows existants conçus pour S3 sans modification.</li>
-                        <li><strong>Performance on-premise</strong> — Le stockage local signifie un accès à faible latence sans dépendance à internet.</li>
-                        <li><strong>Aucun matériel à gérer</strong> — OVHcloud gère l'infrastructure au sein de votre rack.</li>
-                        <li><strong>Prêt pour la conformité</strong> — Respectez les exigences strictes de résidence des données puisque les données restent physiquement sur site.</li>
-                        <li><strong>Capacité évolutive</strong> — Le stockage croît avec vos besoins dans la limite de la capacité physique du rack.</li>
-                    </ul>
-                </section>
-
-                <section aria-labelledby="summary-heading">
-                    <h2 id="summary-heading">Points clés à retenir</h2>
-                    <ul>
-                        <li><strong>CloudStore</strong> est un service de stockage objet S3-compatible fonctionnant localement sur votre rack OPCP.</li>
-                        <li>Il gère documents, médias, données applicatives et sauvegardes via l'API S3 standard.</li>
-                        <li>Les données ne quittent jamais vos locaux — souveraineté et conformité par conception.</li>
-                        <li>Limitations clés : MonoAZ, classe Standard uniquement, chiffrement SSE-C (pas de chiffrement au repos par défaut), pas de politiques utilisateur.</li>
-                        <li>Compatible avec les AWS SDKs et tout outil S3-compatible.</li>
-                    </ul>
-                </section>
+      <section aria-labelledby="learn-more">
+        <h2 id="learn-more">En savoir plus</h2>
+        <ul>
+          <li><a href="https://www.ovhcloud.com/fr/hosted-private-cloud/onprem-cloud-platform/cloud-store/">Cloud Store — Page officielle OVHcloud</a></li>
+          <li><a href="https://www.ovhcloud.com/fr/hosted-private-cloud/onprem-cloud-platform/opcp-core/">OPCP Core — Infrastructure as a Service</a></li>
+          <li><a href="https://www.ovhcloud.com/fr/hosted-private-cloud/onprem-cloud-platform/landing-zone-manager/">Landing Zone Manager — Cloud Ready</a></li>
+        </ul>
+      </section>
 
       <button class="mark-complete-btn" type="button" aria-label="✓ Marquer comme terminé">
         ✓ Marquer comme terminé
       </button>
-      <div class="prev-next-nav" aria-label="Lesson navigation"></div>
+      <div class="prev-next-nav" aria-label="Navigation des leçons"></div>
     </main>
   </div>
   <footer class="site-footer" role="contentinfo">
